@@ -226,7 +226,7 @@
 		1639B1EB1E71F48F001D9D52 /* interest_rate_background_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = interest_rate_background_disabled.png; sourceTree = SOURCE_ROOT; };
 		1639B1EF1E720BB3001D9D52 /* maxtrack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maxtrack.png; sourceTree = SOURCE_ROOT; };
 		1639B1F01E720BB3001D9D52 /* mintrack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mintrack.png; sourceTree = SOURCE_ROOT; };
-		165DB8BE1F1D434000CBAE16 /* Student Loan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Student Loan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		165DB8BE1F1D434000CBAE16 /* Student Loans.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Student Loans.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		165DB8BF1F1D434000CBAE16 /* Instructional Apps to Promote Financial LiteracyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Instructional Apps to Promote Financial LiteracyTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		165DB8C01F1D434000CBAE16 /* Instructional Apps to Promote Financial LiteracyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Instructional Apps to Promote Financial LiteracyUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1664DDD81C3EB3DB00FADD95 /* down_arrow_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down_arrow_button.png; sourceTree = SOURCE_ROOT; };
@@ -454,7 +454,7 @@
 				16922AE71BC86EEA0033F069 /* Instructional Apps to Promote Financial Literacy */,
 				16922AFC1BC86EEA0033F069 /* Instructional Apps to Promote Financial LiteracyTests */,
 				16922B071BC86EEA0033F069 /* Instructional Apps to Promote Financial LiteracyUITests */,
-				165DB8BE1F1D434000CBAE16 /* Student Loan.app */,
+				165DB8BE1F1D434000CBAE16 /* Student Loans.app */,
 				165DB8BF1F1D434000CBAE16 /* Instructional Apps to Promote Financial LiteracyTests.xctest */,
 				165DB8C01F1D434000CBAE16 /* Instructional Apps to Promote Financial LiteracyUITests.xctest */,
 			);
@@ -695,7 +695,7 @@
 			);
 			name = "Instructional Apps to Promote Financial Literacy";
 			productName = "Instructional Apps to Promote Financial Literacy";
-			productReference = 165DB8BE1F1D434000CBAE16 /* Student Loan.app */;
+			productReference = 165DB8BE1F1D434000CBAE16 /* Student Loans.app */;
 			productType = "com.apple.product-type.application";
 		};
 		16922AF81BC86EEA0033F069 /* Instructional Apps to Promote Financial LiteracyTests */ = {
@@ -1150,7 +1150,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.edsilkworth.Instructional-Apps-to-Promote-Financial-Literacy";
-				PRODUCT_NAME = "Student Loan";
+				PRODUCT_NAME = "Student Loans";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -1172,7 +1172,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.edsilkworth.Instructional-Apps-to-Promote-Financial-Literacy";
-				PRODUCT_NAME = "Student Loan";
+				PRODUCT_NAME = "Student Loans";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
