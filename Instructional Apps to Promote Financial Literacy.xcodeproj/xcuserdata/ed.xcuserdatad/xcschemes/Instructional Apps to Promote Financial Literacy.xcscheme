@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "16922AE41BC86EEA0033F069"
-               BuildableName = "Student Loans.app"
+               BuildableName = "Student Loan.app"
                BlueprintName = "Instructional Apps to Promote Financial Literacy"
                ReferencedContainer = "container:Instructional Apps to Promote Financial Literacy.xcodeproj">
             </BuildableReference>
@@ -54,7 +54,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "16922AE41BC86EEA0033F069"
-            BuildableName = "Student Loans.app"
+            BuildableName = "Student Loan.app"
             BlueprintName = "Instructional Apps to Promote Financial Literacy"
             ReferencedContainer = "container:Instructional Apps to Promote Financial Literacy.xcodeproj">
          </BuildableReference>
@@ -78,7 +78,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "16922AE41BC86EEA0033F069"
-            BuildableName = "Student Loans.app"
+            BuildableName = "Student Loan.app"
             BlueprintName = "Instructional Apps to Promote Financial Literacy"
             ReferencedContainer = "container:Instructional Apps to Promote Financial Literacy.xcodeproj">
          </BuildableReference>
@@ -97,7 +97,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "16922AE41BC86EEA0033F069"
-            BuildableName = "Student Loans.app"
+            BuildableName = "Student Loan.app"
             BlueprintName = "Instructional Apps to Promote Financial Literacy"
             ReferencedContainer = "container:Instructional Apps to Promote Financial Literacy.xcodeproj">
          </BuildableReference>
