@@ -1,6 +1,6 @@
 Install each application package using iTunes or Apple Configurator on iPhone 6, 6s, 7 and 8 devices.
 
-RECOMMENDATION: Verify each iOS application package.
+RECOMMENDATION: Unzip, then verify, each iOS application package.
 
 Do so by opening a terminal application and typing, for example:
 $ codesign -d --extract-certificates latest-2.4.ipa && \
