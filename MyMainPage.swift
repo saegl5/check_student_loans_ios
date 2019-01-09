@@ -56,7 +56,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 
     // Do you want to revert to old main screen and mathematics screen?
     let decision = false // false = No, true = Yes, default is false
-    //test
 
     @IBOutlet weak var splash_screen: UIView! //for old splash screen
     @IBOutlet weak var step_1: UIImageView! //for old splash screen
