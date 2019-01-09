@@ -34,7 +34,7 @@ Get [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12 "Click here 
 
 Clone the project:
 <pre>
-https://gitlab.com/ed.silkworth/check_student_loans_app_iOS.git
+https://gitlab.com/saegEl/check_student_loans_app_iOS.git
 </pre>
 
 (Recommended) Open the Terminal, and verify the project's integrity:
