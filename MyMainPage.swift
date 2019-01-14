@@ -3094,7 +3094,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         return rates.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = self.table_view.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell!
+        let cell:UITableViewCell = self.table_view.dequeueReusableCell(withIdentifier: "cell") as! UITableViewCell!
         cell.textLabel!.text = self.rates_text[(indexPath as NSIndexPath).row]
         cell.textLabel!.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
 
@@ -4026,7 +4026,9 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         edit_apr_shape_tweak_trianglePath.close()
         
         edit_apr_shape_tweak_triangleLayer.path = edit_apr_shape_tweak_trianglePath.cgPath
-        edit_apr_shape_tweak_triangleLayer.position = CGPoint(x: ((edit_apr_shape.frame.width-interest_rate_unpressed.frame.width)/2)+0.75*interest_rate_unpressed.frame.width-8.5, y: edit_apr_shape.frame.height-interest_rate_unpressed.frame.height-10+interest_rate_unpressed.frame.height/2-6)//
+        let CGPoint_xtemp = ((edit_apr_shape.frame.width-interest_rate_unpressed.frame.width)/2)+(0.75*interest_rate_unpressed.frame.width-8.5)
+        let CGPoint_ytemp = edit_apr_shape.frame.height-interest_rate_unpressed.frame.height-10+interest_rate_unpressed.frame.height/2-6
+        edit_apr_shape_tweak_triangleLayer.position = CGPoint(x: CGPoint_xtemp, y: CGPoint_ytemp)//
         edit_apr_shape_tweak_triangleLayer.fillColor = UIColor.clear.cgColor
         edit_apr_shape_tweak_triangleLayer.borderWidth = 0.25
         //edit_apr_shape_tweak_triangleLayer.cornerRadius = 0
@@ -4059,7 +4061,9 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         switch_thumb_outline.borderWidth = 0.25
         switch_thumb_outline.cornerRadius = apr.frame.height/2
 
-        down_outline.frame = CGRect(x: (edit_pay_shape.frame.width-down_unpressed.frame.width*2-pay_monthly_box.frame.width)/2+5, y: edit_pay_shape.frame.height - 65 - down_unpressed.frame.height-1, width: down_unpressed.frame.width, height: down_unpressed.frame.height)
+        let CGRect_xtemp = (edit_pay_shape.frame.width)/2-down_unpressed.frame.width-(pay_monthly_box.frame.width)/2+5
+        let CGRect_ytemp = edit_pay_shape.frame.height - 65 - down_unpressed.frame.height-1
+        down_outline.frame = CGRect(x: CGRect_xtemp, y: CGRect_ytemp, width: down_unpressed.frame.width, height: down_unpressed.frame.height)
         //down_outline.frame = CGRect(x: (edit_pay_shape.frame.width-down_unpressed.frame.width*2-pay_monthly_box.frame.width)/2+5, y: (edit_pay_shape.frame.height - down_unpressed.frame.height)/2-1, width: down_unpressed.frame.width, height: down_unpressed.frame.height)
         down_outline.fillColor = UIColor.clear.cgColor
         down_outline.borderWidth = 0.25
@@ -4075,8 +4079,10 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         pay_outline.fillColor = UIColor.clear.cgColor
         pay_outline.borderWidth = 0.25
         //pay_outline.cornerRadius = 5
-
-        up_outline.frame = CGRect(x: (edit_pay_shape.frame.width-up_unpressed.frame.width*2-pay_monthly_box.frame.width)/2+down_unpressed.frame.width+pay_monthly_box.frame.width-5, y: edit_pay_shape.frame.height - 65 - up_unpressed.frame.height-1, width: up_unpressed.frame.width, height: up_unpressed.frame.height)
+        let CGRect_xtemp2pre = (edit_pay_shape.frame.width)/2-up_unpressed.frame.width-(pay_monthly_box.frame.width)/2
+        let CGRect_xtemp2 = CGRect_xtemp2pre+down_unpressed.frame.width+pay_monthly_box.frame.width-5
+        let CGRect_ytemp2 = edit_pay_shape.frame.height - 65 - up_unpressed.frame.height-1
+        up_outline.frame = CGRect(x: CGRect_xtemp2, y: CGRect_ytemp2, width: up_unpressed.frame.width, height: up_unpressed.frame.height)
         //up_outline.frame = CGRect(x: (edit_pay_shape.frame.width-up_unpressed.frame.width*2-pay_monthly_box.frame.width)/2+down_unpressed.frame.width+pay_monthly_box.frame.width-5, y: (edit_pay_shape.frame.height - up_unpressed.frame.height)/2-1, width: up_unpressed.frame.width, height: up_unpressed.frame.height)
         up_outline.fillColor = UIColor.clear.cgColor
         up_outline.borderWidth = 0.25
