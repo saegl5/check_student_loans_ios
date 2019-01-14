@@ -1,6 +1,6 @@
 import UIKit
 import Foundation //needed?
-import AVKit //test
+import AVKit
 
 class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
