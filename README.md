@@ -87,7 +87,7 @@ Video introduction does not render correctly, if installed from the App Store
 
 MIT License
 
-Copyright (c) 2018 Ed Silkworth
+Copyright (c) 2018-2019 Ed Silkworth
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
