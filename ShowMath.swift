@@ -1626,7 +1626,7 @@ class ShowMath: UIViewController {
             subtract.frame = CGRect(x: Int(subtract.frame.origin.x), y: 0, width: Int(subtract.frame.width), height: 132)
             payment.frame = CGRect(x: Int(payment.frame.origin.x), y: 0, width: Int(payment.frame.width), height: 132)
             equals.frame = CGRect(x: Int(equals.frame.origin.x), y: 0, width: Int(equals.frame.width), height: 132)
-            remaining.frame = CGRect(x: Int(remaining.frame.origin.x), y: 0, width: Int(table.frame.width-balance.frame.width-add.frame.width-charged_interest.frame.width)-Int(subtract.frame.width-payment.frame.width-equals.frame.width), height: 132)
+            remaining.frame = CGRect(x: Int(remaining.frame.origin.x), y: 0, width: Int(table.frame.width-balance.frame.width-add.frame.width-charged_interest.frame.width)-Int(subtract.frame.width+payment.frame.width+equals.frame.width), height: 132)
             //remaining.frame = CGRect(x: Int(remaining.frame.origin.x), y: 0, width: Int(table.frame.width-balance.frame.width-add.frame.width-charged_interest.frame.width-subtract.frame.width-payment.frame.width-equals.frame.width), height: 132)
             pay_insight.frame = CGRect(x: 10, y: 0, width: Int(pay_insight.frame.width), height: 132)
 

@@ -1,6 +1,13 @@
 import UIKit
 import Foundation //needed?
 import AVKit
+//import AVFoundation
+
+/*class AvPlayerNoStatusBar: AVPlayerViewController {
+    override var prefersStatusBarHidden: Bool {
+            return true
+    }
+}*/
 
 class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
@@ -771,6 +778,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             return
         }
     }
+    
     
     //var video = AVPlayer()
     //let videoController = AVPlayerViewController()
@@ -2275,12 +2283,12 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         edit_pay_shape.bringSubview(toFront: submit_changes_pay)
         edit_pay_shape.bringSubview(toFront: stack_inputs_timers_down)
         edit_pay_shape.bringSubview(toFront: stack_inputs_timers_up)
-
+        
         edit_pay_shape.addSubview(pay_monthly_title)
         edit_pay_shape.bringSubview(toFront: pay_monthly_title)
         
-        edit_pay_shape.addSubview(minimum)
-        edit_pay_shape.bringSubview(toFront: minimum)
+        //edit_pay_shape.addSubview(minimum)
+        //edit_pay_shape.bringSubview(toFront: minimum)
         submit_changes_pay.alpha = 0.0
 
 
@@ -2437,8 +2445,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         edit_pay_shape.willRemoveSubview(pay_monthly_title)
         view.addSubview(pay_monthly_title)
         view.bringSubview(toFront: table_view) //may be redundant
-        edit_pay_shape.willRemoveSubview(minimum)
-        view.addSubview(minimum)
+        //edit_pay_shape.willRemoveSubview(minimum)
+        //view.addSubview(minimum)
         pay_monthly_title.alpha = 1.0
         minimum.textColor = UIColor(red:109/255.0, green:130/255.0, blue:159/255.0, alpha: 1.0)
         pay_monthly_title.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
@@ -3094,7 +3102,9 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         return rates.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = self.table_view.dequeueReusableCell(withIdentifier: "cell") as! UITableViewCell!
+        //let cell:UITableViewCell = self.table_view.dequeueReusableCell(withIdentifier: "cell") as! UITableViewCell!
+        let cell:UITableViewCell! = self.table_view.dequeueReusableCell(withIdentifier: "cell")
+
         cell.textLabel!.text = self.rates_text[(indexPath as NSIndexPath).row]
         cell.textLabel!.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
 
@@ -3890,7 +3900,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             savings_title.text = "Savings"
             //don't change layout constraints
         }
-        print(view.frame.height)
+        //print(view.frame.height)
         if (view.frame.height == 736) {
             splash_width.constant = 414
             splash_height.constant = 736
@@ -3952,7 +3962,9 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         edit_slider_shape.isHidden = true
         edit_apr_shape.isHidden = true
         edit_pay_shape.isHidden = true
-        
+        //view.addSubview(edit_pay_shape)
+        //view.bringSubview(toFront: edit_pay_shape)
+
         submit_changes.isHidden = true
         submit_changes_apr.isHidden = true
         submit_changes_pay.isHidden = true
@@ -4935,6 +4947,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         //step_2_background.frame = CGRect(x: step_2.frame.origin.x, y: step_2.frame.origin.y, width: step_2.frame.width, height: step_2.frame.height) //shifted a little
 
         //no longer using iPhone 5/5s/SE, but keeping for nastalgic purposes
+        
         if (view.frame.height == 568) {
             //print("You have an iPhone 5/5s/SE", terminator: "\n\n")
             
@@ -5041,6 +5054,49 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         else {
             //do nothing
         }
+
+        //if (view.frame.height == 568) {
+
+
+        //}
+        //else {
+            //do nothing
+        //}
+        
+        let messageVC = UIAlertController(title: "Caution", message: "Your device is incompatible!" , preferredStyle: .alert)
+        
+        let proceedAction = UIAlertAction(title:"Proceed",
+                                          style: .default) //{ (action) -> Void in
+        //print("You selected the submit action.")
+        //}
+        messageVC.addAction(proceedAction)
+        
+        /*switch UIDevice.current.userInterfaceIdiom {
+        case .pad: present(messageVC, animated: true)
+        case .phone:
+            if (view.frame.height <= 568) {
+                present(messageVC, animated: true)
+            }
+        case .unspecified: break
+        case .tv: break
+        case .carPlay: break
+        }*/
+        
+        if (UIDevice.current.userInterfaceIdiom == .phone) {
+            if (view.frame.height > 568) {
+                //proceed
+            }
+            else {
+                present(messageVC, animated: true)
+            }
+        }
+        else {
+            present(messageVC, animated: true)
+        }
+        
+        /*func Step_Main() {
+            timer_step = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(MyMainPage.Step_Instructions), userInfo: nil, repeats: false)
+        }*/
 
         
         //splash_screen.frame = CGRect(x: view.frame.origin.x, y: view.frame.origin.y, width: view.frame.width, height: view.frame.height) //for old splash screen
@@ -5188,3 +5244,11 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         })
  task.res*/
 }
+
+/*extension AVPlayerViewController {
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+}*/
+
+
