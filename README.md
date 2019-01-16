@@ -44,7 +44,7 @@ $ git show-ref --heads --hash
 </pre>
 Check that the hash matches the commit SHA.<p>
 
-Latest version is 2.4. Known to work on macOS High Sierra 10.13.6, in Xcode 9.1 (9B55).
+Latest version is 2.5.1. Known to work on macOS Mojave 10.14.2, in Xcode 10.1
 
 ## Usage
 
@@ -74,6 +74,7 @@ For any issues, submit a new issue.<p>
 
 ## History
 
+Jan 16, 2019 &middot; Version 2.5.1: upgraded codebase, fixed video introduction close button, hid status bar when video introduction controls are displayed, fixed edit pay monthly box from dropping to bottom of video controller, displaying alert if device is incompatible with app
 Oct 1, 2018 &middot; Version 2.4: permitting users to revert developments, fixed issue where coffee cup displays even though users must pay extra, fixed issue where text in remaining balance column is misaligned for greater monthly payments, fixed issue where text colors in remaining balance did not return after closing breakdown of pay, fixed text color of dots for remaining balance<br>
 May 27, 2018 &middot; Version 2.3.2: corrected maturity rating, fulfilled conditions of SIL Open Font License<br>
 Mar 24, 2018 &middot; Version 2.3.1: added key to Info.plist, added license<br>
