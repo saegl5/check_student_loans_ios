@@ -26,7 +26,7 @@ Alternative downloads:<br>
 [Version 2.2.2 for Panel Discussion](/Archives/panel_discussion.ipa.zip "Click here to access the download link.")[^1]<br>
 [Version 2.5.1 - Latest](/Archives/latest-2.5.1.ipa.zip "Click here to access the download link.")<p>
 
-Install alternative downloads using iTunes or Apple Configurator.
+Install alternative downloads using iTunes or Apple Configurator on iPhone devices.
 
 ## Build from Source Code
 
