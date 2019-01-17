@@ -16,8 +16,8 @@ Features:
 * Swipe leftward (if enabled) to view how estimates were calculated
 * Swipe leftward (if enabled) to examine how estimates would vary, depending if interest compounded and on the percentage of interest users paid monthly.
 
-Designed for iPhone 6, 6s, 7 and 8. Compatible with iPhone 6+, 6s+, 7+, 8+ and X. Incompatible with iPhone SE or below.<br>
-Not designed for iPad devices, but compatible with iPad Pro 12.9-inch. Incompatible with iPad Pro 10.5-inch or below.<p>
+Designed for iPhone 6, 6s, 7 and 8. Compatible with iPhone 6+, 6s+, 7+, 8+ and later. Incompatible with iPhone SE or below.<br>
+Not designed for iPad devices.<p>
 
 [![Alt](/badge.png "Download on the App Store.")](https://itunes.apple.com/us/app/student-loans/id1260436932?mt=8)<br>
 (Version 2.3.1)<p>
