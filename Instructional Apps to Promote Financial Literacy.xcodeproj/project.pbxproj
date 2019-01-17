@@ -89,7 +89,6 @@
 		64A8D3801FFEBC1000A65EAC /* maxtrack3_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A8D37A1FFEBC0F00A65EAC /* maxtrack3_2.png */; };
 		64A8D3811FFEBC1000A65EAC /* maxtrack_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A8D37B1FFEBC0F00A65EAC /* maxtrack_2.png */; };
 		64A8D3821FFEBC1000A65EAC /* maxtrack2_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 64A8D37C1FFEBC0F00A65EAC /* maxtrack2_2.png */; };
-		64B7A19E21EFC4A800B6AD37 /* Icons in Resources */ = {isa = PBXBuildFile; fileRef = 64B7A19D21EFC4A800B6AD37 /* Icons */; };
 		64BCFCFC206A10FD00CB9121 /* cmunbx.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 64BCFCFA206A10FC00CB9121 /* cmunbx.ttf */; };
 		64BCFCFD206A10FD00CB9121 /* cmunrm.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 64BCFCFB206A10FD00CB9121 /* cmunrm.ttf */; };
 		64C7C920215D8A2500167BFA /* b1p.png in Resources */ = {isa = PBXBuildFile; fileRef = 64C7C914215D8A2000167BFA /* b1p.png */; };
@@ -202,6 +201,7 @@
 		64E8F19521EFDC4100590B92 /* icon40 - Copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E8F19221EFDC3F00590B92 /* icon40 - Copy.png */; };
 		64E8F19621EFDC4100590B92 /* icon1024 - Copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E8F19321EFDC4000590B92 /* icon1024 - Copy.png */; };
 		64E8F19721EFDC4100590B92 /* icon60 - Copy.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E8F19421EFDC4000590B92 /* icon60 - Copy.png */; };
+		64E8F19D21F002BE00590B92 /* Icons in Resources */ = {isa = PBXBuildFile; fileRef = 64E8F19C21F002BE00590B92 /* Icons */; };
 		64EB80A421EE47AE00598719 /* AVPlayerNoStatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB80A321EE47AE00598719 /* AVPlayerNoStatusBar.swift */; };
 /* End PBXBuildFile section */
 
@@ -311,7 +311,6 @@
 		64A8D37A1FFEBC0F00A65EAC /* maxtrack3_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maxtrack3_2.png; sourceTree = SOURCE_ROOT; };
 		64A8D37B1FFEBC0F00A65EAC /* maxtrack_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maxtrack_2.png; sourceTree = SOURCE_ROOT; };
 		64A8D37C1FFEBC0F00A65EAC /* maxtrack2_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maxtrack2_2.png; sourceTree = SOURCE_ROOT; };
-		64B7A19D21EFC4A800B6AD37 /* Icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Icons; sourceTree = SOURCE_ROOT; };
 		64BCFCFA206A10FC00CB9121 /* cmunbx.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = cmunbx.ttf; path = Fonts/cmunbx.ttf; sourceTree = SOURCE_ROOT; };
 		64BCFCFB206A10FD00CB9121 /* cmunrm.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = cmunrm.ttf; path = Fonts/cmunrm.ttf; sourceTree = SOURCE_ROOT; };
 		64C7C914215D8A2000167BFA /* b1p.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = b1p.png; sourceTree = SOURCE_ROOT; };
@@ -424,6 +423,7 @@
 		64E8F19221EFDC3F00590B92 /* icon40 - Copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon40 - Copy.png"; sourceTree = SOURCE_ROOT; };
 		64E8F19321EFDC4000590B92 /* icon1024 - Copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon1024 - Copy.png"; sourceTree = SOURCE_ROOT; };
 		64E8F19421EFDC4000590B92 /* icon60 - Copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon60 - Copy.png"; sourceTree = SOURCE_ROOT; };
+		64E8F19C21F002BE00590B92 /* Icons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Icons; sourceTree = SOURCE_ROOT; };
 		64EB80A321EE47AE00598719 /* AVPlayerNoStatusBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerNoStatusBar.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -467,7 +467,7 @@
 		16922AE71BC86EEA0033F069 /* Instructional Apps to Promote Financial Literacy */ = {
 			isa = PBXGroup;
 			children = (
-				64B7A19D21EFC4A800B6AD37 /* Icons */,
+				64E8F19C21F002BE00590B92 /* Icons */,
 				64BCFCFA206A10FC00CB9121 /* cmunbx.ttf */,
 				64BCFCFB206A10FD00CB9121 /* cmunrm.ttf */,
 				16ED4DFF1F1D50A400E6B96A /* LaunchScreen.storyboard */,
@@ -971,7 +971,7 @@
 				16922B1D1BC87AA50033F069 /* line.png in Resources */,
 				64C7C92B215D8A2500167BFA /* b2p.png in Resources */,
 				64C7C9AC215D8A8100167BFA /* s3_cX.png in Resources */,
-				64B7A19E21EFC4A800B6AD37 /* Icons in Resources */,
+				64E8F19D21F002BE00590B92 /* Icons in Resources */,
 				64C7C9BD215D8A8100167BFA /* s3se_cN.png in Resources */,
 				64C7C9B7215D8A8100167BFA /* s10.png in Resources */,
 				649B8A1C200D4B2F002387F9 /* first_timer2.png in Resources */,
