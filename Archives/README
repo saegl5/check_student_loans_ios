@@ -3,8 +3,8 @@ Install each application package using iTunes or Apple Configurator on iPhone 6,
 RECOMMENDATION: Unzip, then verify, each iOS application package.
 
 Do so by opening a terminal application and typing, for example:
-$ codesign -d --extract-certificates latest-2.4.ipa && \
-openssl x509 -noout -fingerprint -sha256 -inform DER -in codesign0
+$ codesign -d --extract-certificates latest-2.5.1.ipa && \
+openssl x509 -noout -fingerprint -sha1 -inform DER -in codesign0
 
 Check the fingerprint:
-9B:96:61:03:B0:C5:E1:F8:35:96:F7:B1:45:C0:3C:31:93:60:FD:21:03:A9:4C:1B:27:46:D9:9D:84:13:57:18
+DE:63:34:E7:19:DB:BE:2E:8E:A3:82:F2:62:AD:9E:73:37:A2:77:AA
