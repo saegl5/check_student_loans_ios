@@ -24,7 +24,7 @@ Not designed for iPad devices.<p>
 
 Alternative downloads:<br>
 [Version 2.2.2 for Panel Discussion](/Archives/panel_discussion.ipa.zip "Click here to access the download link.")[^1]<br>
-[Version 2.4 - Latest](/Archives/latest-2.4.ipa.zip "Click here to access the download link.")<p>
+[Version 2.5.1 - Latest](/Archives/latest-2.5.1.ipa.zip "Click here to access the download link.")<p>
 
 Install alternative downloads using iTunes or Apple Configurator on iPhone 6, 6s, 7 and 8 devices.
 
