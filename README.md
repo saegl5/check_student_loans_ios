@@ -14,9 +14,9 @@ Features:
 * Automatic estimation
 * Customization
 * Swipe leftward (if enabled) to view how estimates were calculated
-* Swipe leftward (if enabled) to examine how estimates would vary, depending if interest compounded and on the percentage of interest users paid monthly.
+* Swipe leftward (if enabled) to examine how estimates would vary, depending if interest compounded and on the percentage of interest users paid monthly
 
-Designed for iPhone 6, 6s, 7 and 8. Compatible with iPhone 6+, 6s+, 7+, 8+ and later. Incompatible with iPhone SE or below.<br>
+Designed for iPhone 7. Compatible with iPhone 6/6+, 6s/6s+, 7+, 8/8+ or later. Incompatible with iPhone SE or below.<br>
 Not designed for iPad devices.<p>
 
 [![Alt](/badge.png "Download on the App Store.")](https://itunes.apple.com/us/app/student-loans/id1260436932?mt=8)<br>
@@ -26,7 +26,7 @@ Alternative downloads:<br>
 [Version 2.2.2 for Panel Discussion](/Archives/panel_discussion.ipa.zip "Click here to access the download link.")[^1]<br>
 [Version 2.5.1 - Latest](/Archives/latest-2.5.1.ipa.zip "Click here to access the download link.")<p>
 
-Install alternative downloads using iTunes or Apple Configurator on iPhone 6, 6s, 7 and 8 devices.
+Install alternative downloads using iTunes or Apple Configurator.
 
 ## Build from Source Code
 
@@ -82,7 +82,7 @@ Mar 17, 2018 &middot; Version 2.3: initial commit
 
 ## Known Issues
 
-Video introduction does not render correctly, if installed from the App Store
+Video introduction does not render correctly, if installed from the App Store.
 
 ## License
 
