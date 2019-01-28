@@ -4,10 +4,10 @@ class ShowMath: UIViewController {
     
     // Do you want to revert to old math screen?
     //let decision = true // false = No, true = Yes, default is false
-    var decision = Bool()
+//    var decision = Bool()
 
     
-    @IBOutlet weak var blur: UIVisualEffectView!
+//    @IBOutlet weak var blur: UIVisualEffectView!
     @IBOutlet weak var loaned: UILabel!
     
     @IBOutlet weak var stack1_trailing: NSLayoutConstraint!
@@ -80,7 +80,7 @@ class ShowMath: UIViewController {
     @IBOutlet weak var headers: UIStackView!
     @IBOutlet weak var proportion: UIStackView!
     @IBOutlet weak var percent_interest: UILabel!
-    @IBOutlet weak var slider_header: UILabel!
+//    @IBOutlet weak var slider_header: UILabel!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var percent_balance: UILabel!
     @IBOutlet weak var plus_sign: UIImageView!
@@ -681,43 +681,44 @@ class ShowMath: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        decision = shared_preferences.bool(forKey: "decision")
+//        decision = shared_preferences.bool(forKey: "decision")
 
-        if (decision == true) {
-            compound.isHidden = true //redundant if compound_stack hidden
-            titleof_compound.isHidden = true //redundant if compound_stack hidden
-            percent_interest.isHidden = true
-            slider.isHidden = true
-            percent_balance.isHidden = true
-            time_label.text = "Estimated Payoff Time"
-            savings_label.text = "Estimated Savings"
-            //line.isHidden = true
-            line.image = UIImage(named: "")
-            view.addConstraint(line.heightAnchor.constraint(equalToConstant: 30))
-            aprstack_width.isActive = false
-            //view.addConstraint(APR_stack.widthAnchor.constraint(equalToConstant: APR_compound_stack.frame.width))
-            //APR_stack.alignment = .center
-            //APR_stack.alignment = .center
-            compound_stack.isHidden = true
-            table_header.isHidden = true
-            enlarge.isHidden = true
-            view.addConstraint(NSLayoutConstraint(item: monthly_balance, attribute: .bottom, relatedBy: .equal, toItem: table, attribute: .top, multiplier: 1, constant: 0))
-            note_constraint.isActive = false
-            note_right.isHidden = true
-            view.addConstraint(note.widthAnchor.constraint(equalToConstant: stack2.frame.width))
-            plus_sign.isHidden = true
-            minus_sign.isHidden = true
-            equals_sign.isHidden = true
-            bottom_layout_guide.isActive = false
-            view.addConstraint(NSLayoutConstraint(item: bottomLayoutGuide, attribute: .top, relatedBy: .equal, toItem: stack2, attribute: .centerY, multiplier: 2.2, constant: 0))
-            view.backgroundColor = UIColor.white
-            blur.isHidden = false
-            stack1_leading.isActive = false
-            stack1_trailing.isActive = false
-            view.addConstraint(NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: stack1, attribute: .trailing, multiplier: 1, constant: 50))
-            view.addConstraint(NSLayoutConstraint(item: stack1, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 50))
-        }
-        else { //may be redundant
+//        if (decision == true) {
+//            compound.isHidden = true //redundant if compound_stack hidden
+//            titleof_compound.isHidden = true //redundant if compound_stack hidden
+//            percent_interest.isHidden = true
+//            slider.isHidden = true
+//            percent_balance.isHidden = true
+//            time_label.text = "Estimated Payoff Time"
+//            savings_label.text = "Estimated Savings"
+//            //line.isHidden = true
+//            line.image = UIImage(named: "")
+//            view.addConstraint(line.heightAnchor.constraint(equalToConstant: 30))
+//            aprstack_width.isActive = false
+//            //view.addConstraint(APR_stack.widthAnchor.constraint(equalToConstant: APR_compound_stack.frame.width))
+//            //APR_stack.alignment = .center
+//            //APR_stack.alignment = .center
+//            compound_stack.isHidden = true
+//            table_header.isHidden = true
+//            enlarge.isHidden = true
+//            view.addConstraint(NSLayoutConstraint(item: monthly_balance, attribute: .bottom, relatedBy: .equal, toItem: table, attribute: .top, multiplier: 1, constant: 0))
+//            note_constraint.isActive = false
+//            note_right.isHidden = true
+//            view.addConstraint(note.widthAnchor.constraint(equalToConstant: stack2.frame.width))
+//            plus_sign.isHidden = true
+//            minus_sign.isHidden = true
+//            equals_sign.isHidden = true
+//            bottom_layout_guide.isActive = false
+//            view.addConstraint(NSLayoutConstraint(item: bottomLayoutGuide, attribute: .top, relatedBy: .equal, toItem: stack2, attribute: .centerY, multiplier: 2.2, constant: 0))
+//            view.backgroundColor = UIColor.white
+////            blur.isHidden = false
+//            stack1_leading.isActive = false
+//            stack1_trailing.isActive = false
+//            view.addConstraint(NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: stack1, attribute: .trailing, multiplier: 1, constant: 50))
+//            view.addConstraint(NSLayoutConstraint(item: stack1, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 50))
+//        }
+//        else {
+        //may be redundant
             compound.isHidden = false //redundant if compound_stack unhidden
             titleof_compound.isHidden = false //redundant if compound_stack unhidden
             percent_interest.isHidden = false
@@ -741,21 +742,21 @@ class ShowMath: UIViewController {
             equals_sign.isHidden = false
             //leave constraint as is
             //keep view color as is
-            blur.isHidden = true
+//            blur.isHidden = true
             //leave constraints as they are
-        }
+//        }
         
         blinked = 0
-        if (decision == false) {
+//        if (decision == false) {
             numberFormatter.usesGroupingSeparator = true
             numberFormatter.groupingSeparator = ","
             numberFormatter.groupingSize = 3
-        }
-        else {
-            numberFormatter.usesGroupingSeparator = false
-            //numberFormatter.groupingSeparator = ","
-            //numberFormatter.groupingSize = 3
-        }
+//        }
+//        else {
+//            numberFormatter.usesGroupingSeparator = false
+//            //numberFormatter.groupingSeparator = ","
+//            //numberFormatter.groupingSize = 3
+//        }
         enlarge.adjustsImageWhenHighlighted = false
         shrink.adjustsImageWhenHighlighted = false
         
@@ -814,12 +815,12 @@ class ShowMath: UIViewController {
         
         let attributedLoanedTitle = NSMutableAttributedString(string: "Loaned", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Bold", size: 18.0)! ])
         var attributedLoanedSummary = NSMutableAttributedString()
-        if (decision == false) {
+//        if (decision == false) {
             attributedLoanedSummary = NSMutableAttributedString(string: " $" + numberFormatter.string(from: NSNumber(value: p))!, attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!])
-        }
-        else {
-            attributedLoanedSummary = NSMutableAttributedString(string: " $" + numberFormatter.string(from: NSNumber(value: p))!+".00", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!])
-        }
+//        }
+//        else {
+//            attributedLoanedSummary = NSMutableAttributedString(string: " $" + numberFormatter.string(from: NSNumber(value: p))!+".00", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!])
+//        }
         attributedLoanedTitle.append(attributedLoanedSummary)
         loaned.attributedText = attributedLoanedTitle
         
@@ -845,39 +846,39 @@ class ShowMath: UIViewController {
         if (i == 0) {
             //attributedAPRSummary = NSMutableAttributedString(string: " 0%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
             
-            if (decision == false) {
+//            if (decision == false) {
                 attributedAPRSummary = NSMutableAttributedString(string: " " + String(format: "%.0f", i * 12 * 100) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
                 attributedAPRPeriodic = NSMutableAttributedString(string: "\n" + "÷ 12 = 0." + String(temp) + "00...% monthly", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedStringKey.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
                     attributedAPRDecimalEquivalent = NSMutableAttributedString(string: "\n" + "÷ 100 = 0.00" + String(temp) + "...", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedStringKey.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
-            }
-            else {
-                attributedAPRSummary = NSMutableAttributedString(string: " " + String(format: "%.2f", i * 12 * 100) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
-                attributedAPRPeriodic = NSMutableAttributedString(string: "\n" + "÷ 12 = 0." + String(temp) + "00...% monthly", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedStringKey.foregroundColor: UIColor.black ])
-                attributedAPRDecimalEquivalent = NSMutableAttributedString(string: "\n" + "÷ 100 = 0.00" + String(temp) + "... of balance", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedStringKey.foregroundColor: UIColor.black ])
-            }
+//            }
+//            else {
+//                attributedAPRSummary = NSMutableAttributedString(string: " " + String(format: "%.2f", i * 12 * 100) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+//                attributedAPRPeriodic = NSMutableAttributedString(string: "\n" + "÷ 12 = 0." + String(temp) + "00...% monthly", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedStringKey.foregroundColor: UIColor.black ])
+//                attributedAPRDecimalEquivalent = NSMutableAttributedString(string: "\n" + "÷ 100 = 0.00" + String(temp) + "... of balance", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedStringKey.foregroundColor: UIColor.black ])
+//            }
         }
         else {
             attributedAPRSummary = NSMutableAttributedString(string: " " + String(format: "%.2f", i * 12 * 100) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
             attributedAPRPeriodic = NSMutableAttributedString(string: "\n" + "÷ 12 = 0." + String(temp) + "...% monthly", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
-            if (decision == false) {
+//            if (decision == false) {
                 attributedAPRDecimalEquivalent = NSMutableAttributedString(string: "\n" + "÷ 100 = 0.00" + String(temp) + "...", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
-            }
-            else {
-                attributedAPRDecimalEquivalent = NSMutableAttributedString(string: "\n" + "÷ 100 = 0.00" + String(temp) + "... of balance", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
-            }
+//            }
+//            else {
+//                attributedAPRDecimalEquivalent = NSMutableAttributedString(string: "\n" + "÷ 100 = 0.00" + String(temp) + "... of balance", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+//            }
         }
         attributedAPRTitle.append(attributedAPRSummary)
         attributedAPRTitle.append(attributedAPRPeriodic)
         attributedAPRTitle.append(attributedAPRDecimalEquivalent)
         nominal_rate.attributedText = attributedAPRTitle //"nominal_rate" should be renamed
         
-        if (decision == true) {
-            nominal_rate.textAlignment = .center
-            //APR_stack.backgroundColor = UIColor.red
-        }
-        else {
-            //keep as is
-        }
+//        if (decision == true) {
+//            nominal_rate.textAlignment = .center
+//            //APR_stack.backgroundColor = UIColor.red
+//        }
+//        else {
+//            //keep as is
+//        }
         if (i == 0) {
             //self.slider.value = 4
             compound.isEnabled = false
@@ -1124,12 +1125,12 @@ class ShowMath: UIViewController {
         var attributedPercentInterestTitle = NSMutableAttributedString()
         var attributedPercentBalanceTitle = NSMutableAttributedString()
         if (i == 0) {
-            if (decision == false) {
-                slider_header.alpha = 0.25
-            }
-            else {
-                //ignore header
-            }
+//            if (decision == false) {
+//                slider_header.alpha = 0.25
+//            }
+//            else {
+//                //ignore header
+//            }
             attributedPercentInterestTitle = NSMutableAttributedString(string: "Interest", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedStringKey.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5)])
             attributedPercentBalanceTitle = NSMutableAttributedString(string: "Later", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedStringKey.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5)])
         }
@@ -1268,12 +1269,12 @@ class ShowMath: UIViewController {
 
 
         Variables()
-        if (decision == false) {
-            //proceed
-        }
-        else {
-            payment.isEnabled = false
-        }
+//        if (decision == false) {
+//            //proceed
+//        }
+//        else {
+//            payment.isEnabled = false
+//        }
 
         //remaining_label.frame = CGRect(x: 0, y: 0, width: remaining.frame.width, height: remaining.frame.height)
         //remaining_label.frame = CGRect(x: remaining.frame.origin.x, y: 0, width: remaining.frame.width, height: remaining.frame.height)
@@ -1552,7 +1553,7 @@ class ShowMath: UIViewController {
         else { tempx_x = (round(p*i*100)+1)/100 }
         
         attributedPayTitle = NSMutableAttributedString(string: "Pay Monthly", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Bold", size: 18.0)! ])
-        if (decision == false) {
+//        if (decision == false) {
             if (a == tempx_x) {
                 if (progress == 100) {
                     attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
@@ -1579,10 +1580,10 @@ class ShowMath: UIViewController {
                     attributedPaySummary = NSMutableAttributedString(string: " $" + numberFormatter.string(from: NSNumber(value: a))!, attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
                 }
             }
-        }
-        else {
-            attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
-        }
+//        }
+//        else {
+//            attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+//        }
         attributedPayTitle.append(attributedPaySummary)
         pay_monthly.attributedText = attributedPayTitle
         
@@ -1595,27 +1596,27 @@ class ShowMath: UIViewController {
         //view.addConstraint(equals.widthAnchor.constraint(equalToConstant: 6))
 
         //remaining frame or remaining label shifts after pressing switch or moving thumb, non issue if set constraints visually
-        if (decision == true) {
-            add.frame.size.width = 12
-            add_width.constant = CGFloat(12)
-            add.widthAnchor.constraint(equalToConstant: CGFloat(12))
-            //subtract.frame.size.width = 6
-            //subtract_width.constant = CGFloat(6)
-            //subtract.widthAnchor.constraint(equalToConstant: CGFloat(6))
-            equals.frame.size.width = 8
-            equals_width.constant = CGFloat(8)
-            equals.widthAnchor.constraint(equalToConstant: CGFloat(8))
-
-            
-            //subtract.frame.size.width = 7
-            //equals.frame.size.width = 8
-            //view.addConstraint(add.widthAnchor.constraint(equalToConstant: 11))
-            //view.addConstraint(subtract.widthAnchor.constraint(equalToConstant: 7))
-            //view.addConstraint(equals.widthAnchor.constraint(equalToConstant: 8))
-        }
-        else {
-            //proceed
-        }
+//        if (decision == true) {
+//            add.frame.size.width = 12
+//            add_width.constant = CGFloat(12)
+//            add.widthAnchor.constraint(equalToConstant: CGFloat(12))
+//            //subtract.frame.size.width = 6
+//            //subtract_width.constant = CGFloat(6)
+//            //subtract.widthAnchor.constraint(equalToConstant: CGFloat(6))
+//            equals.frame.size.width = 8
+//            equals_width.constant = CGFloat(8)
+//            equals.widthAnchor.constraint(equalToConstant: CGFloat(8))
+//
+//
+//            //subtract.frame.size.width = 7
+//            //equals.frame.size.width = 8
+//            //view.addConstraint(add.widthAnchor.constraint(equalToConstant: 11))
+//            //view.addConstraint(subtract.widthAnchor.constraint(equalToConstant: 7))
+//            //view.addConstraint(equals.widthAnchor.constraint(equalToConstant: 8))
+//        }
+//        else {
+//            //proceed
+//        }
         if (j > 4) {
             //NSLayoutConstraint.deactivate([table.heightAnchor.constraint(equalToConstant: CGFloat(22*(j+1)))])
             //NSLayoutConstraint.activate([table.heightAnchor.constraint(equalToConstant: 132)])
@@ -1656,21 +1657,21 @@ class ShowMath: UIViewController {
         balance_shape.bounds = balance.frame
         balance_shape.position = balance.center
         balance_shape.path = UIBezierPath(roundedRect: balance.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        if (decision == false) {
+//        if (decision == false) {
             balance_shape.strokeColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.125).cgColor
             balance_shape.fillColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.25+0.125).cgColor
-        }
-        else {
-            balance_shape.strokeColor = UIColor.clear.cgColor
-            balance_shape.fillColor = UIColor.clear.cgColor
-        }
+//        }
+//        else {
+//            balance_shape.strokeColor = UIColor.clear.cgColor
+//            balance_shape.fillColor = UIColor.clear.cgColor
+//        }
         balance_shape.lineWidth = 0
 
         //Shape of interest body---------------------
         charged_interest_shape.bounds = charged_interest.frame
         charged_interest_shape.position = charged_interest.center
         charged_interest_shape.path = UIBezierPath(roundedRect: charged_interest.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        if (decision == false) {
+//        if (decision == false) {
             if (i == 0) {
                 charged_interest_shape.fillColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.0625).cgColor
                 charged_interest_shape.strokeColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.020).cgColor
@@ -1679,11 +1680,11 @@ class ShowMath: UIViewController {
                 charged_interest_shape.fillColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.25+0.125).cgColor
                 charged_interest_shape.strokeColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.125).cgColor
             }
-        }
-        else {
-                charged_interest_shape.fillColor = UIColor.clear.cgColor
-                charged_interest_shape.strokeColor = UIColor.clear.cgColor
-        }
+//        }
+//        else {
+//                charged_interest_shape.fillColor = UIColor.clear.cgColor
+//                charged_interest_shape.strokeColor = UIColor.clear.cgColor
+//        }
         charged_interest_shape.lineWidth = 0
 
         //Shape of payment body---------------------
@@ -1691,14 +1692,14 @@ class ShowMath: UIViewController {
         payment_shape.position = payment.center
         //define in viewdidload BUT after Variables(): (or else will change path if switch or slider move)
         //payment_shape.path = UIBezierPath(roundedRect: payment.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        if (decision == false) {
+//        if (decision == false) {
             payment_shape.strokeColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.125).cgColor
             payment_shape.fillColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.25+0.125).cgColor
-        }
-        else {
-            payment_shape.strokeColor = UIColor.clear.cgColor
-            payment_shape.fillColor = UIColor.clear.cgColor
-        }
+//        }
+//        else {
+//            payment_shape.strokeColor = UIColor.clear.cgColor
+//            payment_shape.fillColor = UIColor.clear.cgColor
+//        }
         payment_shape.lineWidth = 0
         
         if (insight == 1) {
@@ -1995,14 +1996,14 @@ class ShowMath: UIViewController {
                 String(format: "%.2f", temp2) + "\n" +
                 String(format: "%.2f", temp3) + "\n", attributes: [ :])
             var etc = NSMutableAttributedString()
-            if (decision == false) {
+//            if (decision == false) {
                 etc = NSMutableAttributedString(string:
                     "︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray])
-            }
-            else {
-                etc = NSMutableAttributedString(string:
-                    "\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray])
-            }
+//            }
+//            else {
+//                etc = NSMutableAttributedString(string:
+//                    "\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+//            }
             let remains = NSMutableAttributedString(string:
                 String(format: "%.2f", remainingbalance), attributes: [ :])
             balance_shape_label_jg4.append(etc)
@@ -2039,13 +2040,13 @@ class ShowMath: UIViewController {
             balance_shape_label.text = String(format: "%.2f", remainingbalance)
             //balance_shape_label.textAlignment = .right
         }
-        if (decision == false) {
+//        if (decision == false) {
             balance_shape_label.textAlignment = .center
-        }
-        else {
-            balance_shape_label.textAlignment = .center
-            //balance_shape_label.textAlignment = .right
-        }
+//        }
+//        else {
+//            balance_shape_label.textAlignment = .center
+//            //balance_shape_label.textAlignment = .right
+//        }
         balance_shape_label.numberOfLines = 0
         //balance_shape_label.textColor = UIColor.white
         balance_shape_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
@@ -2056,51 +2057,51 @@ class ShowMath: UIViewController {
         //balance.text = "hello\nagain"
         
         //ADD--------------------------------------------
-        if (decision == true) {
-            if (j > 4) {
-                add_label.text = "+" + "\n" +
-                    "+" + "\n" +
-                    "+" + "\n" +
-                    "+" + "\n" +
-                    "\n" +
-                "+"
-            }
-            else if (j == 4) {
-                add_label.text = "+" + "\n" +
-                    "+" + "\n" +
-                    "+" + "\n" +
-                    "+" + "\n" +
-                "+"
-            }
-            else if (j == 3) {
-                add_label.text = "+" + "\n" +
-                    "+" + "\n" +
-                    "+" + "\n" +
-                "+"
-            }
-            else if (j == 2) {
-                add_label.text = "+" + "\n" +
-                    "+" + "\n" +
-                "+"
-            }
-            else if (j == 1) {
-                add_label.text = "+" + "\n" +
-                "+"
-            }
-            else {
-                add_label.text = "+"
-            }
-            add_label.textAlignment = .center
-            add_label.numberOfLines = 0
-            add_label.textColor = UIColor.gray
-            add_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
-            add_label.adjustsFontSizeToFitWidth = true
-            //add_label.backgroundColor = UIColor.red
-
-        }
-        else {
-            //don't display plus signs
-        }
+//        if (decision == true) {
+//            if (j > 4) {
+//                add_label.text = "+" + "\n" +
+//                    "+" + "\n" +
+//                    "+" + "\n" +
+//                    "+" + "\n" +
+//                    "\n" +
+//                "+"
+//            }
+//            else if (j == 4) {
+//                add_label.text = "+" + "\n" +
+//                    "+" + "\n" +
+//                    "+" + "\n" +
+//                    "+" + "\n" +
+//                "+"
+//            }
+//            else if (j == 3) {
+//                add_label.text = "+" + "\n" +
+//                    "+" + "\n" +
+//                    "+" + "\n" +
+//                "+"
+//            }
+//            else if (j == 2) {
+//                add_label.text = "+" + "\n" +
+//                    "+" + "\n" +
+//                "+"
+//            }
+//            else if (j == 1) {
+//                add_label.text = "+" + "\n" +
+//                "+"
+//            }
+//            else {
+//                add_label.text = "+"
+//            }
+//            add_label.textAlignment = .center
+//            add_label.numberOfLines = 0
+//            add_label.textColor = UIColor.gray
+//            add_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
+//            add_label.adjustsFontSizeToFitWidth = true
+//            //add_label.backgroundColor = UIColor.red
+//
+//        }
+//        else {
+//            //don't display plus signs
+//        }
         
         
         //Text of interest body----------------------
@@ -2114,7 +2115,7 @@ class ShowMath: UIViewController {
         }
         
         var charged_interest_max_string_count = Int()
-        if (decision == false) {
+//        if (decision == false) {
             if (j > 4) {
                 let paragraph_charged_interest = NSMutableParagraphStyle()
                 paragraph_charged_interest.alignment = .right
@@ -2125,14 +2126,14 @@ class ShowMath: UIViewController {
                     String(format: "%.2f", temp2) + " · 0.00" + String(temp) + "...\n" +
                     String(format: "%.2f", temp3) + " · 0.00" + String(temp) + "...\n", attributes: [NSAttributedStringKey.paragraphStyle: paragraph_charged_interest])
                 var etc = NSMutableAttributedString()
-                if (decision == false) {
+//                if (decision == false) {
                     etc = NSMutableAttributedString(string:
                         "︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.paragraphStyle: paragraph_charged_interest_ellipse ])
-                }
-                else {
-                    etc = NSMutableAttributedString(string:
-                        "           ︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.paragraphStyle: paragraph_charged_interest_ellipse ])
-                }
+//                }
+//                else {
+//                    etc = NSMutableAttributedString(string:
+//                        "           ︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.paragraphStyle: paragraph_charged_interest_ellipse ])
+//                }
                 let remains = NSMutableAttributedString(string:
                     String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...", attributes: [NSAttributedStringKey.paragraphStyle: paragraph_charged_interest])
                 
@@ -2217,118 +2218,118 @@ class ShowMath: UIViewController {
                 }
                 charged_interest_max_string_count = (String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...").count //used for right inset
             }
-        }
-        else {
-            if (j > 4) {
-                let paragraph_charged_interest = NSMutableParagraphStyle()
-                paragraph_charged_interest.alignment = .right
-                let paragraph_charged_interest_ellipse = NSMutableParagraphStyle()
-                paragraph_charged_interest_ellipse.alignment = .center
-                let charged_interest_shape_label_jg4 = NSMutableAttributedString(string: "(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)\n(" +
-                    String(format: "%.2f", temp1) + " · 0.00" + String(temp) + "...)\n(" +
-                    String(format: "%.2f", temp2) + " · 0.00" + String(temp) + "...)\n(" +
-                    String(format: "%.2f", temp3) + " · 0.00" + String(temp) + "...)\n", attributes: [NSAttributedStringKey.paragraphStyle: paragraph_charged_interest])
-                var etc = NSMutableAttributedString()
-                if (decision == false) {
-                    etc = NSMutableAttributedString(string:
-                        "︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.paragraphStyle: paragraph_charged_interest_ellipse ])
-                }
-                else {
-                    etc = NSMutableAttributedString(string:
-                        "           ︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.paragraphStyle: paragraph_charged_interest_ellipse ])
-                }
-                let remains = NSMutableAttributedString(string: "(" +
-                    String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)", attributes: [NSAttributedStringKey.paragraphStyle: paragraph_charged_interest])
-                
-                if (i == 0) {
-                    charged_interest_shape_label_jg4.setAttributes([NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.paragraphStyle: paragraph_charged_interest], range: NSRange(location:0,length: charged_interest_shape_label_jg4.length))
-                    etc.setAttributes([NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.paragraphStyle: paragraph_charged_interest_ellipse], range: NSRange(location:0,length: etc.length))
-                    remains.setAttributes([NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.paragraphStyle: paragraph_charged_interest], range: NSRange(location:0,length: remains.length))
-                    
-                }
-                else {
-                    //do nothing
-                }
-                charged_interest_shape_label_jg4.append(etc)
-                charged_interest_shape_label_jg4.append(remains)
-                charged_interest_shape_label.attributedText = charged_interest_shape_label_jg4
-                
-                charged_interest_max_string_count = ("(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)").count //used for right inset
-                //print((String(format: "%.2f", p) + " · 0.00" + String(temp) + "...").count)
-            }
-                
-            else if (j == 4) {
-                charged_interest_shape_label.text = "(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)\n(" +
-                    String(format: "%.2f", temp1) + " · 0.00" + String(temp) + "...)\n(" +
-                    String(format: "%.2f", temp2) + " · 0.00" + String(temp) + "...)\n(" +
-                    String(format: "%.2f", temp3) + " · 0.00" + String(temp) + "...)\n(" +
-                    String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)"
-                charged_interest_shape_label.textAlignment = .right
-                if (i == 0) {
-                    charged_interest_shape_label.textColor = UIColor.black
-                }
-                else {
-                    //do nothing
-                }
-                charged_interest_max_string_count = ("(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)").count //used for right inset
-            }
-            else if (j == 3) {
-                charged_interest_shape_label.text = "(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)\n(" +
-                    String(format: "%.2f", temp1) + " · 0.00" + String(temp) + "...)\n(" +
-                    String(format: "%.2f", temp2) + " · 0.00" + String(temp) + "...)\n(" +
-                    String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)"
-                charged_interest_shape_label.textAlignment = .right
-                if (i == 0) {
-                    charged_interest_shape_label.textColor = UIColor.black
-                }
-                else {
-                    //do nothing
-                }
-                charged_interest_max_string_count = ("(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)").count //used for right inset
-            }
-            else if (j == 2) {
-                charged_interest_shape_label.text = "(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)\n(" +
-                    String(format: "%.2f", temp1) + " · 0.00" + String(temp) + "...)\n(" +
-                    String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)"
-                charged_interest_shape_label.textAlignment = .right
-                if (i == 0) {
-                    charged_interest_shape_label.textColor = UIColor.black
-                }
-                else {
-                    //do nothing
-                }
-                charged_interest_max_string_count = ("(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)").count //used for right inset
-            }
-            else if (j == 1) {
-                charged_interest_shape_label.text = "(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)\n(" +
-                    String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)"
-                charged_interest_shape_label.textAlignment = .right
-                if (i == 0) {
-                    charged_interest_shape_label.textColor = UIColor.black
-                }
-                else {
-                    //do nothing
-                }
-                charged_interest_max_string_count = ("(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)").count //used for right inset
-            }
-            else {
-                charged_interest_shape_label.text = "(" + String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)"
-                charged_interest_shape_label.textAlignment = .right
-                if (i == 0) {
-                    charged_interest_shape_label.textColor = UIColor.black
-                }
-                else {
-                    //do nothing
-                }
-                charged_interest_max_string_count = ("(" + String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)").count //used for right inset
-            }
-        }
-        if (decision == false) {
-            //keep
-        }
-        else {
-            //charged_interest_shape_label.textAlignment = .center
-        }
+//        }
+//        else {
+//            if (j > 4) {
+//                let paragraph_charged_interest = NSMutableParagraphStyle()
+//                paragraph_charged_interest.alignment = .right
+//                let paragraph_charged_interest_ellipse = NSMutableParagraphStyle()
+//                paragraph_charged_interest_ellipse.alignment = .center
+//                let charged_interest_shape_label_jg4 = NSMutableAttributedString(string: "(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)\n(" +
+//                    String(format: "%.2f", temp1) + " · 0.00" + String(temp) + "...)\n(" +
+//                    String(format: "%.2f", temp2) + " · 0.00" + String(temp) + "...)\n(" +
+//                    String(format: "%.2f", temp3) + " · 0.00" + String(temp) + "...)\n", attributes: [NSAttributedStringKey.paragraphStyle: paragraph_charged_interest])
+//                var etc = NSMutableAttributedString()
+////                if (decision == false) {
+//                    etc = NSMutableAttributedString(string:
+//                        "︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.paragraphStyle: paragraph_charged_interest_ellipse ])
+////                }
+////                else {
+////                    etc = NSMutableAttributedString(string:
+////                        "           ︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.paragraphStyle: paragraph_charged_interest_ellipse ])
+////                }
+//                let remains = NSMutableAttributedString(string: "(" +
+//                    String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)", attributes: [NSAttributedStringKey.paragraphStyle: paragraph_charged_interest])
+//
+//                if (i == 0) {
+//                    charged_interest_shape_label_jg4.setAttributes([NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.paragraphStyle: paragraph_charged_interest], range: NSRange(location:0,length: charged_interest_shape_label_jg4.length))
+//                    etc.setAttributes([NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.paragraphStyle: paragraph_charged_interest_ellipse], range: NSRange(location:0,length: etc.length))
+//                    remains.setAttributes([NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.paragraphStyle: paragraph_charged_interest], range: NSRange(location:0,length: remains.length))
+//
+//                }
+//                else {
+//                    //do nothing
+//                }
+//                charged_interest_shape_label_jg4.append(etc)
+//                charged_interest_shape_label_jg4.append(remains)
+//                charged_interest_shape_label.attributedText = charged_interest_shape_label_jg4
+//
+//                charged_interest_max_string_count = ("(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)").count //used for right inset
+//                //print((String(format: "%.2f", p) + " · 0.00" + String(temp) + "...").count)
+//            }
+//
+//            else if (j == 4) {
+//                charged_interest_shape_label.text = "(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)\n(" +
+//                    String(format: "%.2f", temp1) + " · 0.00" + String(temp) + "...)\n(" +
+//                    String(format: "%.2f", temp2) + " · 0.00" + String(temp) + "...)\n(" +
+//                    String(format: "%.2f", temp3) + " · 0.00" + String(temp) + "...)\n(" +
+//                    String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)"
+//                charged_interest_shape_label.textAlignment = .right
+//                if (i == 0) {
+//                    charged_interest_shape_label.textColor = UIColor.black
+//                }
+//                else {
+//                    //do nothing
+//                }
+//                charged_interest_max_string_count = ("(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)").count //used for right inset
+//            }
+//            else if (j == 3) {
+//                charged_interest_shape_label.text = "(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)\n(" +
+//                    String(format: "%.2f", temp1) + " · 0.00" + String(temp) + "...)\n(" +
+//                    String(format: "%.2f", temp2) + " · 0.00" + String(temp) + "...)\n(" +
+//                    String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)"
+//                charged_interest_shape_label.textAlignment = .right
+//                if (i == 0) {
+//                    charged_interest_shape_label.textColor = UIColor.black
+//                }
+//                else {
+//                    //do nothing
+//                }
+//                charged_interest_max_string_count = ("(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)").count //used for right inset
+//            }
+//            else if (j == 2) {
+//                charged_interest_shape_label.text = "(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)\n(" +
+//                    String(format: "%.2f", temp1) + " · 0.00" + String(temp) + "...)\n(" +
+//                    String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)"
+//                charged_interest_shape_label.textAlignment = .right
+//                if (i == 0) {
+//                    charged_interest_shape_label.textColor = UIColor.black
+//                }
+//                else {
+//                    //do nothing
+//                }
+//                charged_interest_max_string_count = ("(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)").count //used for right inset
+//            }
+//            else if (j == 1) {
+//                charged_interest_shape_label.text = "(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)\n(" +
+//                    String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)"
+//                charged_interest_shape_label.textAlignment = .right
+//                if (i == 0) {
+//                    charged_interest_shape_label.textColor = UIColor.black
+//                }
+//                else {
+//                    //do nothing
+//                }
+//                charged_interest_max_string_count = ("(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)").count //used for right inset
+//            }
+//            else {
+//                charged_interest_shape_label.text = "(" + String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)"
+//                charged_interest_shape_label.textAlignment = .right
+//                if (i == 0) {
+//                    charged_interest_shape_label.textColor = UIColor.black
+//                }
+//                else {
+//                    //do nothing
+//                }
+//                charged_interest_max_string_count = ("(" + String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)").count //used for right inset
+//            }
+//        }
+//        if (decision == false) {
+//            //keep
+//        }
+//        else {
+//            //charged_interest_shape_label.textAlignment = .center
+//        }
         charged_interest_shape_label.numberOfLines = 0
         //charged_interest_shape_label = UIColor.white
         charged_interest_shape_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
@@ -2336,51 +2337,51 @@ class ShowMath: UIViewController {
         
         
         //SUBTRACT--------------------------------------------
-        if (decision == true) {
-            if (j > 4) {
-                subtract_label.text = "-" + "\n" +
-                    "-" + "\n" +
-                    "-" + "\n" +
-                    "-" + "\n" +
-                    "\n" +
-                "-"
-            }
-            else if (j == 4) {
-                subtract_label.text = "-" + "\n" +
-                    "-" + "\n" +
-                    "-" + "\n" +
-                    "-" + "\n" +
-                "-"
-            }
-            else if (j == 3) {
-                subtract_label.text = "-" + "\n" +
-                    "-" + "\n" +
-                    "-" + "\n" +
-                "-"
-            }
-            else if (j == 2) {
-                subtract_label.text = "-" + "\n" +
-                    "-" + "\n" +
-                "-"
-            }
-            else if (j == 1) {
-                subtract_label.text = "-" + "\n" +
-                "-"
-            }
-            else {
-                subtract_label.text = "-"
-            }
-            subtract_label.textAlignment = .center
-            subtract_label.numberOfLines = 0
-            subtract_label.textColor = UIColor.lightGray
-            subtract_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
-            subtract_label.adjustsFontSizeToFitWidth = true
-            //subtract_label.backgroundColor = UIColor.red
-
-        }
-        else {
-            //don't display minus signs
-        }
+//        if (decision == true) {
+//            if (j > 4) {
+//                subtract_label.text = "-" + "\n" +
+//                    "-" + "\n" +
+//                    "-" + "\n" +
+//                    "-" + "\n" +
+//                    "\n" +
+//                "-"
+//            }
+//            else if (j == 4) {
+//                subtract_label.text = "-" + "\n" +
+//                    "-" + "\n" +
+//                    "-" + "\n" +
+//                    "-" + "\n" +
+//                "-"
+//            }
+//            else if (j == 3) {
+//                subtract_label.text = "-" + "\n" +
+//                    "-" + "\n" +
+//                    "-" + "\n" +
+//                "-"
+//            }
+//            else if (j == 2) {
+//                subtract_label.text = "-" + "\n" +
+//                    "-" + "\n" +
+//                "-"
+//            }
+//            else if (j == 1) {
+//                subtract_label.text = "-" + "\n" +
+//                "-"
+//            }
+//            else {
+//                subtract_label.text = "-"
+//            }
+//            subtract_label.textAlignment = .center
+//            subtract_label.numberOfLines = 0
+//            subtract_label.textColor = UIColor.lightGray
+//            subtract_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
+//            subtract_label.adjustsFontSizeToFitWidth = true
+//            //subtract_label.backgroundColor = UIColor.red
+//
+//        }
+//        else {
+//            //don't display minus signs
+//        }
         
         //Text of payment body--------------------------------------------
         
@@ -2409,14 +2410,14 @@ class ShowMath: UIViewController {
                         String(format: "%.2f", a) + "\n" +
                         String(format: "%.2f", a) + "\n" +
                         String(format: "%.2f", a) + "\n", attributes: [ :])
-                    if (decision == false) {
+//                    if (decision == false) {
                         etc = NSMutableAttributedString(string:
                             "︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
-                    }
-                    else {
-                        etc = NSMutableAttributedString(string:
-                            "\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
-                    }
+//                    }
+//                    else {
+//                        etc = NSMutableAttributedString(string:
+//                            "\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+//                    }
                     remains = NSMutableAttributedString(string:
                         String(format: "%.2f", remainingbalance + remaining_interest + outstandingbalance), attributes: [ :])
                 }
@@ -2425,14 +2426,14 @@ class ShowMath: UIViewController {
                         String(format: "%.2f", a) + "\n" +
                         String(format: "%.2f", a) + "\n" +
                         String(format: "%.2f", a) + "\n", attributes: [ :])
-                    if (decision == false) {
+//                    if (decision == false) {
                         etc = NSMutableAttributedString(string:
                             "︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
-                    }
-                    else {
-                        etc = NSMutableAttributedString(string:
-                            "\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
-                    }
+//                    }
+//                    else {
+//                        etc = NSMutableAttributedString(string:
+//                            "\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+//                    }
                     remains = NSMutableAttributedString(string:
                         String(format: "%.2f", remainingbalance + remaining_interest + outstandingbalance), attributes: [ :])
                 }
@@ -2442,14 +2443,14 @@ class ShowMath: UIViewController {
                     String(format: "%.2f", a) + "\n" +
                     String(format: "%.2f", a) + "\n" +
                     String(format: "%.2f", a) + "\n", attributes: [ :])
-                if (decision == false) {
+//                if (decision == false) {
                     etc = NSMutableAttributedString(string:
                         "︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
-                }
-                else {
-                    etc = NSMutableAttributedString(string:
-                        "\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
-                }
+//                }
+//                else {
+//                    etc = NSMutableAttributedString(string:
+//                        "\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+//                }
                 remains = NSMutableAttributedString(string:
                     String(format: "%.2f", remainingbalance + remaining_interest + outstandingbalance), attributes: [ :])
             }
@@ -2560,51 +2561,51 @@ class ShowMath: UIViewController {
         payment_shape_label.adjustsFontSizeToFitWidth = true
         
         //EQUALS--------------------------------------------
-        if (decision == true) {
-            if (j > 4) {
-                equals_label.text = "≈" + "\n" +
-                    "≈" + "\n" +
-                    "≈" + "\n" +
-                    "≈" + "\n" +
-                    "\n" +
-                "≈"
-            }
-            else if (j == 4) {
-                equals_label.text = "≈" + "\n" +
-                    "≈" + "\n" +
-                    "≈" + "\n" +
-                    "≈" + "\n" +
-                "≈"
-            }
-            else if (j == 3) {
-                equals_label.text = "≈" + "\n" +
-                    "≈" + "\n" +
-                    "≈" + "\n" +
-                "≈"
-            }
-            else if (j == 2) {
-                equals_label.text = "≈" + "\n" +
-                    "≈" + "\n" +
-                "≈"
-            }
-            else if (j == 1) {
-                equals_label.text = "≈" + "\n" +
-                "≈"
-            }
-            else {
-                equals_label.text = "≈"
-            }
-            equals_label.textAlignment = .center
-            equals_label.numberOfLines = 0
-            equals_label.textColor = UIColor.gray
-            equals_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
-            equals_label.adjustsFontSizeToFitWidth = true
-            //equals_label.backgroundColor = UIColor.red
-
-        }
-        else {
-            //don't display equal signs
-        }
+//        if (decision == true) {
+//            if (j > 4) {
+//                equals_label.text = "≈" + "\n" +
+//                    "≈" + "\n" +
+//                    "≈" + "\n" +
+//                    "≈" + "\n" +
+//                    "\n" +
+//                "≈"
+//            }
+//            else if (j == 4) {
+//                equals_label.text = "≈" + "\n" +
+//                    "≈" + "\n" +
+//                    "≈" + "\n" +
+//                    "≈" + "\n" +
+//                "≈"
+//            }
+//            else if (j == 3) {
+//                equals_label.text = "≈" + "\n" +
+//                    "≈" + "\n" +
+//                    "≈" + "\n" +
+//                "≈"
+//            }
+//            else if (j == 2) {
+//                equals_label.text = "≈" + "\n" +
+//                    "≈" + "\n" +
+//                "≈"
+//            }
+//            else if (j == 1) {
+//                equals_label.text = "≈" + "\n" +
+//                "≈"
+//            }
+//            else {
+//                equals_label.text = "≈"
+//            }
+//            equals_label.textAlignment = .center
+//            equals_label.numberOfLines = 0
+//            equals_label.textColor = UIColor.gray
+//            equals_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
+//            equals_label.adjustsFontSizeToFitWidth = true
+//            //equals_label.backgroundColor = UIColor.red
+//
+//        }
+//        else {
+//            //don't display equal signs
+//        }
         
         //REMAINING------------------------------------------------------------
         /*let remaining_shape = CAShapeLayer()
@@ -2622,14 +2623,14 @@ class ShowMath: UIViewController {
                 String(format: "%.2f", temp3) + "\n" +
                 String(format: "%.2f", temp4) + "\n", attributes: [ :])
             var etc = NSMutableAttributedString()
-            if (decision == false) {
+//            if (decision == false) {
                 etc = NSMutableAttributedString(string:
                     "︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
-            }
-            else {
-                etc = NSMutableAttributedString(string:
-                    "\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
-            }
+//            }
+//            else {
+//                etc = NSMutableAttributedString(string:
+//                    "\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+//            }
             let remains = NSMutableAttributedString(string:
                 "0.00", attributes: [ :])
             if (insight == 1) {
@@ -2713,13 +2714,13 @@ class ShowMath: UIViewController {
             }
             //remaining_label.frame = CGRect(x: remaining.frame.origin.x+10, y: 0, width: remaining.frame.width, height: remaining.frame.height)
         }
-        if (decision == false) {
+//        if (decision == false) {
             remaining_label.textAlignment = .center
-        }
-        else {
-            remaining_label.textAlignment = .center
-            //remaining_label.textAlignment = .left
-        }
+//        }
+//        else {
+//            remaining_label.textAlignment = .center
+//            //remaining_label.textAlignment = .left
+//        }
         remaining_label.numberOfLines = 0
         //remaining_label.sizeToFit()
         //remaining_label.layoutMargins = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 0)
@@ -2923,13 +2924,13 @@ class ShowMath: UIViewController {
             outstanding.text = "Unpaid interest becomes outstanding and must be paid later."
         }*/
         else {
-            if (decision == false) {
+//            if (decision == false) {
                 note_overlap.text = ""
-            }
-            else {
-                note_overlap.text = ""
-                //note_overlap.text = "Rounded interest ↓\nRounded balance ↑"
-            }
+//            }
+//            else {
+//                note_overlap.text = ""
+//                //note_overlap.text = "Rounded interest ↓\nRounded balance ↑"
+//            }
         }
         //outstanding.backgroundColor = UIColor.blue
         let pay_insight_max_string_count = max(pay_insight_max_string_count_1,pay_insight_max_string_count_2)
@@ -3172,12 +3173,12 @@ class ShowMath: UIViewController {
             else {
                     refund_string = NSMutableAttributedString(string: "Pay Extra $", attributes: [ :])
                     pt1 = abs(a - (remainingbalance + remaining_interest + outstandingbalance))
-                if (decision == true) {
-                    refund.isHidden = true
-                }
-                else {
+//                if (decision == true) {
+//                    refund.isHidden = true
+//                }
+//                else {
                     refund.isHidden = false
-                }
+//                }
             }
             
             
@@ -3286,17 +3287,17 @@ class ShowMath: UIViewController {
         
         let years_string = NSMutableAttributedString(string: numberFormatter.string(from: NSNumber(value: j + 1))!)
         var months_label = NSMutableAttributedString()
-        if (decision == false) {
+//        if (decision == false) {
             if (j+1 == 1) {
                 months_label = NSMutableAttributedString(string: " month", attributes: [ :])
             }
             else {
                 months_label = NSMutableAttributedString(string: " total months", attributes: [ :])
             }
-        }
-        else {
-            months_label = NSMutableAttributedString(string: " total month(s)", attributes: [ :])
-        }
+//        }
+//        else {
+//            months_label = NSMutableAttributedString(string: " total month(s)", attributes: [ :])
+//        }
         
         let years_amount = NSMutableAttributedString(string: " ÷ 12 = " + numberFormatter.string(from: NSNumber(value: temp5))!, attributes: [ :])
         var years_amount_decimal_part = NSMutableAttributedString()
@@ -3324,41 +3325,41 @@ class ShowMath: UIViewController {
          " year"
          }*/
         var years_amount_label = NSMutableAttributedString()
-        if (decision == false) {
+//        if (decision == false) {
             if (temp5 == 1) {
                 years_amount_label = NSMutableAttributedString(string: " year", attributes: [ :])
             }
             else {
                 years_amount_label = NSMutableAttributedString(string: " years", attributes: [ :])
             }
-        }
-        else {
-            years_amount_label = NSMutableAttributedString(string: " year(s)", attributes: [ :])
-        }
+//        }
+//        else {
+//            years_amount_label = NSMutableAttributedString(string: " year(s)", attributes: [ :])
+//        }
         years_string.append(months_label)
         years_string.append(years_amount)
-        if (decision == false) {
+//        if (decision == false) {
             years_string.append(years_amount_decimal_part)
-        }
-        else {
-            //don't append decimal part
-        }
+//        }
+//        else {
+//            //don't append decimal part
+//        }
         years_string.append(years_amount_label)
         /*years.text = String(j + 1) +
          " total month(s) ÷ 12 = " + String(temp3) +
          " year(s)"*/
         
-        if (decision == false) {
+//        if (decision == false) {
             months.text = numberFormatter.string(from: NSNumber(value: j + 1))! +
                 " – (12 · " + numberFormatter.string(from: NSNumber(value: temp5))! +
             ") = "
-        }
-        else {
-            months.text = numberFormatter.string(from: NSNumber(value: j + 1))! +
-                " – (" + numberFormatter.string(from: NSNumber(value: temp5))! +
-            " · 12) = "
-        }
-        if (decision == false) {
+//        }
+//        else {
+//            months.text = numberFormatter.string(from: NSNumber(value: j + 1))! +
+//                " – (" + numberFormatter.string(from: NSNumber(value: temp5))! +
+//            " · 12) = "
+//        }
+//        if (decision == false) {
             if ((j + 1) - temp5 * 12 == 1) {
                 months.text! += String((j + 1) - temp5 * 12) +
                 " month";
@@ -3367,13 +3368,13 @@ class ShowMath: UIViewController {
                 months.text! += String((j + 1) - temp5 * 12) +
                 " months";
             }
-        }
-        else {
-            months.text! += String((j + 1) - temp5 * 12) +
-            " month(s)";
-        }
+//        }
+//        else {
+//            months.text! += String((j + 1) - temp5 * 12) +
+//            " month(s)";
+//        }
         //overrided by:
-        if (decision == false) {
+//        if (decision == false) {
             if (temp5 == 0) {
                 years.text = "0 years"
                 if (j + 1 == 1) {
@@ -3393,11 +3394,11 @@ class ShowMath: UIViewController {
                     months.text = months.text!
                 }
             }
-        }
-        else {
-            years.attributedText = years_string
-            months.text = months.text!
-        }
+//        }
+//        else {
+//            years.attributedText = years_string
+//            months.text = months.text!
+//        }
         years.adjustsFontSizeToFitWidth = true
         months.adjustsFontSizeToFitWidth = true
 
@@ -3513,12 +3514,12 @@ class ShowMath: UIViewController {
                 "", attributes: [ :])
         }
         var total_paid_amount_decimal_part_label = NSMutableAttributedString()
-        if (decision == false) {
+//        if (decision == false) {
             total_paid_amount_decimal_part_label = NSMutableAttributedString(string: " paid")
-        }
-        else {
-            total_paid_amount_decimal_part_label = NSMutableAttributedString(string: " total paid")
-        }
+//        }
+//        else {
+//            total_paid_amount_decimal_part_label = NSMutableAttributedString(string: " total paid")
+//        }
         
         if (j == 0) {
             //don't append total_paid_amount
@@ -3527,13 +3528,13 @@ class ShowMath: UIViewController {
             total_paid_string.append(total_paid_expression)
         }
         total_paid_string.append(NSMutableAttributedString(string: "$"))
-        if (decision == false) {
+//        if (decision == false) {
             total_paid_string.append(total_paid_amount)
             total_paid_string.append(total_paid_amount_decimal_part)
-        }
-        else {
-            total_paid_string.append(NSMutableAttributedString(string: String(format: "%.2f", ppt1), attributes: [:]))
-        }
+//        }
+//        else {
+//            total_paid_string.append(NSMutableAttributedString(string: String(format: "%.2f", ppt1), attributes: [:]))
+//        }
         total_paid_string.append(total_paid_amount_decimal_part_label)
         total_paid.attributedText = total_paid_string
         
@@ -3796,12 +3797,12 @@ class ShowMath: UIViewController {
                 " = ", attributes: [ :])
         }
         var total_paid_amount_if_min = NSMutableAttributedString()
-        if (decision == false) {
+//        if (decision == false) {
             total_paid_amount_if_min = NSMutableAttributedString(string: "$" + numberFormatter.string(from: NSNumber(value: floor(pppt1)))!)
-        }
-        else {
-            total_paid_amount_if_min = NSMutableAttributedString(string: numberFormatter.string(from: NSNumber(value: floor(pppt1)))!)
-        }
+//        }
+//        else {
+//            total_paid_amount_if_min = NSMutableAttributedString(string: numberFormatter.string(from: NSNumber(value: floor(pppt1)))!)
+//        }
         var total_paid_amount_decimal_part_if_min =                 NSMutableAttributedString()
         if (pppt3 < 100) && (pppt3 >= 10) {
             total_paid_amount_decimal_part_if_min = NSMutableAttributedString(string:
@@ -3823,14 +3824,14 @@ class ShowMath: UIViewController {
         total_paid_string_if_min.append(total_paid_amount_if_min)
         total_paid_string_if_min.append(total_paid_amount_decimal_part_if_min)
         total_paid_string_if_min.append(total_paid_amount_if_min_label)
-        if (decision == false) {
+//        if (decision == false) {
             total_paid_min.attributedText = total_paid_string_if_min
             total_paid_min.isHidden = false
-        }
-        else {
-            //total_paid_min.text = ""
-            total_paid_min.isHidden = true
-        }
+//        }
+//        else {
+//            //total_paid_min.text = ""
+//            total_paid_min.isHidden = true
+//        }
         
         var ppppt1 = total_repay_minimum-total
         if (ppppt1*100 - floor(ppppt1*100) > 0.499999) && (ppppt1*100 - floor(ppppt1*100) < 0.5) //just in case, and to be consistant, probably not necessary
@@ -3850,23 +3851,23 @@ class ShowMath: UIViewController {
         let saved = ppppt1
         let savings_string = NSMutableAttributedString()
         var savings_string_subtract = NSMutableAttributedString()
-        if (decision == false) {
+//        if (decision == false) {
             savings_string_subtract = NSMutableAttributedString(string: " – ", attributes: [ :])
-        }
-        else {
-            savings_string_subtract = NSMutableAttributedString(string: " (if pay min) – ", attributes: [ :])
-        }
+//        }
+//        else {
+//            savings_string_subtract = NSMutableAttributedString(string: " (if pay min) – ", attributes: [ :])
+//        }
         let savings_string_equals = NSMutableAttributedString(string: " = $", attributes: [ :])
         var savings_string_equals_amount = NSMutableAttributedString()
         var savings_string_equals_amount_decimal_part = NSMutableAttributedString()
         if (saved <= 0) {
             savings_string_equals_amount = NSMutableAttributedString(string: "0")
-            if (decision == false) {
+//            if (decision == false) {
                 savings_string_equals_amount_decimal_part = NSMutableAttributedString(string: "")
-            }
-            else {
-                savings_string_equals_amount_decimal_part = NSMutableAttributedString(string: ".00")
-            }
+//            }
+//            else {
+//                savings_string_equals_amount_decimal_part = NSMutableAttributedString(string: ".00")
+//            }
             /*savings.text = String(format: "%.2f", total_repay_minimum) +
              " – " + String(format: "%.2f", total) +
              " = $" + String(format: "%.2f", Double(0)) +
@@ -3899,37 +3900,37 @@ class ShowMath: UIViewController {
              " = $" + String(format: "%.2f", saved) +
              " save"*/
         }
-        if (decision == false) {
+//        if (decision == false) {
             savings_string.append(total_paid_amount_if_min)
             savings_string.append(total_paid_amount_decimal_part_if_min)
-        }
-        else {
-            savings_string.append(NSMutableAttributedString(string: String(format: "%.2f", pppt1), attributes: [:]))
-        }
+//        }
+//        else {
+//            savings_string.append(NSMutableAttributedString(string: String(format: "%.2f", pppt1), attributes: [:]))
+//        }
         savings_string.append(savings_string_subtract)
-        if (decision == false) {
+//        if (decision == false) {
             savings_string.append(NSMutableAttributedString(string: "$"))
-        }
-        else {
-            //proceed
-        }
-        if (decision == false) {
+//        }
+//        else {
+//            //proceed
+//        }
+//        if (decision == false) {
             savings_string.append(total_paid_amount)
             savings_string.append(total_paid_amount_decimal_part)
-        }
-        else {
-            savings_string.append(NSMutableAttributedString(string: String(format: "%.2f", ppt1), attributes: [:]))
-        }
+//        }
+//        else {
+//            savings_string.append(NSMutableAttributedString(string: String(format: "%.2f", ppt1), attributes: [:]))
+//        }
         savings_string.append(savings_string_equals)
         savings_string.append(savings_string_equals_amount)
         savings_string.append(savings_string_equals_amount_decimal_part)
 
-        if (decision == false) {
-            //proceed
-        }
-        else {
-            savings_string.append(NSMutableAttributedString(string: " save", attributes: [ :]))
-        }
+//        if (decision == false) {
+//            //proceed
+//        }
+//        else {
+//            savings_string.append(NSMutableAttributedString(string: " save", attributes: [ :]))
+//        }
         
         
         savings.attributedText = savings_string
