@@ -1,5 +1,0 @@
-Jan 16, 2019 · Version 2.5.1: upgraded codebase, fixed video introduction close button, hid status bar when video introduction controls are displayed, fixed edit pay monthly box from dropping to bottom of view controller, displayed alert if device is incompatible with app, addressed warnings<br>
-Oct 1, 2018 · Version 2.4: permitting users to revert developments, fixed issue where coffee cup displays even though users must pay extra, fixed issue where text in remaining balance column is misaligned for greater monthly payments, fixed issue where text colors in remaining balance did not return after closing breakdown of pay, fixed text color of dots for remaining balance
-Mar 27, 2018 · Version 2.3.2: corrected maturity rating, fulfilled conditions of SIL Open Font License
-Mar 24, 2018 · Version 2.3.1: added key to Info.plist, added license
-Mar 17, 2018 · Version 2.3: initial commit
