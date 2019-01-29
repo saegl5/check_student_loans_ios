@@ -31,7 +31,7 @@
 		6461067821FFAACB0017D23F /* MyMainPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMainPage.swift; sourceTree = "<group>"; };
 		6461067C21FFADF30017D23F /* cmunbx.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = cmunbx.ttf; path = Fonts/cmunbx.ttf; sourceTree = "<group>"; };
 		6461067D21FFADF40017D23F /* cmunrm.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = cmunrm.ttf; path = Fonts/cmunrm.ttf; sourceTree = "<group>"; };
-		6461068021FFAE120017D23F /* introduction.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = introduction.mov; path = "Resources/\"How to Use App\" Video/introduction.mov"; sourceTree = "<group>"; };
+		6461068021FFAE120017D23F /* introduction.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = introduction.mov; path = "../Resources/\"How to Use App\" Video/introduction.mov"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
