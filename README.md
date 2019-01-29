@@ -24,7 +24,7 @@ Not designed for iPad devices.<p>
 
 Alternative downloads:<br>
 [Version 2.2.2 for Panel Discussion](/Archives/panel_discussion.ipa.zip "Click here to access the download link.")[^1]<br>
-[Version 2.5.1 - Latest](/Archives/latest-2.5.1.ipa.zip "Click here to access the download link.")<p>
+[Version 2.5.2 - Latest](/Archives/latest-2.5.2.ipa.zip "Click here to access the download link.")<p>
 
 Install alternative downloads using iTunes or Apple Configurator on iPhone devices.
 
@@ -44,7 +44,7 @@ $ git show-ref --heads --hash
 </pre>
 Check that the hash matches the commit SHA.<p>
 
-Latest version is 2.5.1. Known to work on macOS Mojave 10.14.2, in Xcode 10.1
+Latest version is 2.5.2. Known to work on macOS Mojave 10.14.2, in Xcode 10.1
 
 ## Usage
 
@@ -74,6 +74,7 @@ For any issues, submit a new issue.<p>
 
 ## History
 
+Jan 29, 2019 &middot; Version 2.5.2: fixed issue where outstanding totals would not disappear if insight is closed, fixed issue where keyboard displayed after clicking on monthly balance boxes, fixed issue where users could paste text into monthly balances<br>
 Jan 16, 2019 &middot; Version 2.5.1: upgraded codebase, fixed video introduction close button, hid status bar when video introduction controls are displayed, fixed edit pay monthly box from dropping to bottom of view controller, displayed alert if device is incompatible with app, addressed warnings<br>
 Oct 1, 2018 &middot; Version 2.4: permitting users to revert developments, fixed issue where coffee cup displays even though users must pay extra, fixed issue where text in remaining balance column is misaligned for greater monthly payments, fixed issue where text colors in remaining balance did not return after closing breakdown of pay, fixed text color of dots for remaining balance<br>
 May 27, 2018 &middot; Version 2.3.2: corrected maturity rating, fulfilled conditions of SIL Open Font License<br>
