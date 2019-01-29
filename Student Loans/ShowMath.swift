@@ -1,3 +1,11 @@
+//
+//  ShowMath.swift
+//  Student Loans
+//
+//  Created by Ed Silkworth on 10/9/15.
+//  Copyright © 2015-2019 Ed Silkworth. All rights reserved.
+//
+
 import UIKit
 
 class ShowMath: UIViewController {
@@ -184,18 +192,18 @@ class ShowMath: UIViewController {
         
         
         var attributedPercentInterestTitle = NSMutableAttributedString()
-        attributedPercentInterestTitle = NSMutableAttributedString(string: "Interest", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedStringKey.foregroundColor: UIColor.black])
-        let attributedPercentInterestSpace = NSMutableAttributedString(string: " \n", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 3.0)! ])
-        let attributedPercentBalanceTitle = NSMutableAttributedString(string: "Later", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedStringKey.foregroundColor: UIColor.black])
-        let attributedPercentBalanceSpace = NSMutableAttributedString(string: " \n", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 3.0)! ])
+        attributedPercentInterestTitle = NSMutableAttributedString(string: "Interest", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedString.Key.foregroundColor: UIColor.black])
+        let attributedPercentInterestSpace = NSMutableAttributedString(string: " \n", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 3.0)! ])
+        let attributedPercentBalanceTitle = NSMutableAttributedString(string: "Later", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedString.Key.foregroundColor: UIColor.black])
+        let attributedPercentBalanceSpace = NSMutableAttributedString(string: " \n", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 3.0)! ])
         var attributedPercentInterest = NSMutableAttributedString()
         var attributedPercentBalance = NSMutableAttributedString()
-        attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+        attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
         /*if compound.isOn && (progress != 100) {
-            attributedPercentBalance = NSMutableAttributedString(string: "Rest", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+            attributedPercentBalance = NSMutableAttributedString(string: "Rest", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
         }
         else {*/
-            attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", 100 - percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+            attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", 100 - percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
         //}
         attributedPercentInterest.append(attributedPercentInterestSpace)
         attributedPercentInterest.append(attributedPercentInterestTitle)
@@ -226,7 +234,7 @@ class ShowMath: UIViewController {
         plus_sign.isHidden = true
         minus_sign.isHidden = true
         pay_insight_header.addSubview(shrink)
-        pay_insight_header.bringSubview(toFront: shrink)
+        pay_insight_header.bringSubviewToFront(shrink)
         pay_insight.frame = CGRect(x: 10, y: pay_insight.frame.origin.y, width: pay_insight.frame.width, height: pay_insight.frame.height)
         pay_insight_header.frame = CGRect(x: 10, y: pay_insight_header.frame.origin.y, width: pay_insight_header.frame.width, height: pay_insight_header.frame.height)
         UIView.animate(withDuration: 0.25, animations: {
@@ -272,7 +280,7 @@ class ShowMath: UIViewController {
             //self.tip_3.isHidden = false
             
             //self.step_2_background.addSubview(self.tip_3)
-            //self.step_2_background.bringSubview(toFront: self.tip_3)
+            //self.step_2_background.bringSubviewToFront(self.tip_3)
             //self.Step_Main()
             //self.splash_timer_count += 1
             self.pay_insight.frame = CGRect(x: self.pay_insight.frame.origin.x, y: self.pay_insight.frame.origin.y, width: self.pay_insight.frame.width, height: self.pay_insight.frame.height)
@@ -304,7 +312,7 @@ class ShowMath: UIViewController {
         //pay_insight.layer.addSublayer(pay_insight_shape)
         //pay_insight_header.layer.addSublayer(pay_insight_header_shape)
         pay_insight_header.addSubview(shrink)
-        pay_insight_header.bringSubview(toFront: shrink)
+        pay_insight_header.bringSubviewToFront(shrink)
         pay_insight.frame = CGRect(x: 10, y: pay_insight.frame.origin.y, width: pay_insight.frame.width, height: pay_insight.frame.height)
         pay_insight_header.frame = CGRect(x: 10, y: pay_insight_header.frame.origin.y, width: pay_insight_header.frame.width, height: pay_insight_header.frame.height)
         UIView.animate(withDuration: 0.25, animations: {
@@ -553,19 +561,19 @@ class ShowMath: UIViewController {
         //some of this may be redundant
         var attributedPercentInterestTitle = NSMutableAttributedString()
         /*if (i == 0) {
-            attributedPercentInterestTitle = NSMutableAttributedString(string: "Interest", attributes: [ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 12.0)!, NSAttributedStringKey.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
+            attributedPercentInterestTitle = NSMutableAttributedString(string: "Interest", attributes: [ NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 12.0)!, NSAttributedString.Key.foregroundColor: UIColor.white.withAlphaComponent(0.5)])
         }
         else {*/
-            attributedPercentInterestTitle = NSMutableAttributedString(string: "Interest", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedStringKey.foregroundColor: UIColor.black])
+            attributedPercentInterestTitle = NSMutableAttributedString(string: "Interest", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedString.Key.foregroundColor: UIColor.black])
         //}
-        let attributedPercentInterestSpace = NSMutableAttributedString(string: " \n", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 3.0)! ])
-        let attributedPercentBalanceTitle = NSMutableAttributedString(string: "Later", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedStringKey.foregroundColor: UIColor.black])
-        let attributedPercentBalanceSpace = NSMutableAttributedString(string: " \n", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 3.0)! ])
+        let attributedPercentInterestSpace = NSMutableAttributedString(string: " \n", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 3.0)! ])
+        let attributedPercentBalanceTitle = NSMutableAttributedString(string: "Later", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedString.Key.foregroundColor: UIColor.black])
+        let attributedPercentBalanceSpace = NSMutableAttributedString(string: " \n", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 3.0)! ])
         var attributedPercentInterest = NSMutableAttributedString()
         var attributedPercentBalance = NSMutableAttributedString()
         /*if (i == 0) {
-            attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", 100-percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedStringKey.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
-            attributedPercentBalance = NSMutableAttributedString(string: "entire", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedStringKey.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
+            attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", 100-percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
+            attributedPercentBalance = NSMutableAttributedString(string: "entire", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
         }*/
         //else {
             /*var percentage_post = Double()
@@ -586,61 +594,61 @@ class ShowMath: UIViewController {
             }
             //simplifying percentages:
             if (percentage - floor(percentage) == 0) {
-                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
-                attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", 100 - percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", 100 - percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
             }
             else if (percentage*10 - floor(percentage*10) == 0) {
-                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.1f", percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
-                attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.1f", 100 - percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.1f", percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.1f", 100 - percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
             }
             //arbitrary:
             else if (progress != 0) && (a == ceil(Double(Int(p*i*100)+1))/100) {
-                    attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
-                    attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", 100 - percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                    attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                    attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", 100 - percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
             }
             else {
-                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.2f", percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
-                attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.2f", 100 - percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.2f", percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.2f", 100 - percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
             }*/
-            attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+            attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
         /*if compound.isOn && (progress != 100) {
-            attributedPercentBalance = NSMutableAttributedString(string: "Rest", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+            attributedPercentBalance = NSMutableAttributedString(string: "Rest", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
         }
         else {*/
-            attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", 100 - percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+            attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", 100 - percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
         //}
 
             //for consistency: <-- because rounded interest down everywhere else
             /*if (progress == 0) {
-                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
-                attributedPercentBalance = NSMutableAttributedString(string: "1¢", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentBalance = NSMutableAttributedString(string: "1¢", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
             }
             else if (progress == 100) {
-                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
-                attributedPercentBalance = NSMutableAttributedString(string: "entire", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentBalance = NSMutableAttributedString(string: "entire", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
             }
             else {
-                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
-                attributedPercentBalance = NSMutableAttributedString(string: "remains", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentBalance = NSMutableAttributedString(string: "remains", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
             }*/
 
             /*
             if (percentage - floor(percentage) == 0) {
-                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
-                attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", 100 - percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", 100 - percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
             }
             else if (percentage*10 - floor(percentage*10) == 0) {
-                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.1f", percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
-                attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.1f", 100 - percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.1f", percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.1f", 100 - percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
             }
                 //arbitrary:
             else if (progress != 0) && (a == ceil(Double(Int(p*i*100)+1))/100) {
-                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
-                attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", 100 - percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", 100 - percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
             }
             else {
-                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.2f", percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
-                attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.2f", 100 - percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.2f", percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.2f", 100 - percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
             }*/
 
         //}
@@ -767,9 +775,9 @@ class ShowMath: UIViewController {
         
         
         view.addSubview(pay_insight)
-        view.bringSubview(toFront: pay_insight)
+        view.bringSubviewToFront(pay_insight)
         //view.addSubview(pay_insight_header)
-        //view.bringSubview(toFront: pay_insight_header)
+        //view.bringSubviewToFront(pay_insight_header)
 
         
         pay_insight.frame = CGRect(x: 10, y: pay_insight.frame.origin.y, width: pay_insight.frame.width, height: pay_insight.frame.height)
@@ -813,13 +821,13 @@ class ShowMath: UIViewController {
          loanedTitle.text = "Loaned"
          loanedSummary.text = "= $" + String(format: "%.2f", p)*/
         
-        let attributedLoanedTitle = NSMutableAttributedString(string: "Loaned", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Bold", size: 18.0)! ])
+        let attributedLoanedTitle = NSMutableAttributedString(string: "Loaned", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Bold", size: 18.0)! ])
         var attributedLoanedSummary = NSMutableAttributedString()
 //        if (decision == false) {
-            attributedLoanedSummary = NSMutableAttributedString(string: " $" + numberFormatter.string(from: NSNumber(value: p))!, attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!])
+            attributedLoanedSummary = NSMutableAttributedString(string: " $" + numberFormatter.string(from: NSNumber(value: p))!, attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!])
 //        }
 //        else {
-//            attributedLoanedSummary = NSMutableAttributedString(string: " $" + numberFormatter.string(from: NSNumber(value: p))!+".00", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!])
+//            attributedLoanedSummary = NSMutableAttributedString(string: " $" + numberFormatter.string(from: NSNumber(value: p))!+".00", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!])
 //        }
         attributedLoanedTitle.append(attributedLoanedSummary)
         loaned.attributedText = attributedLoanedTitle
@@ -830,7 +838,7 @@ class ShowMath: UIViewController {
         
         /*nominal_rate.text = "APR = " + String(format: "%.2f", i * 12 * 100) + "%"*/
         
-        let attributedAPRTitle = NSMutableAttributedString(string: "APR", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Bold", size: 18.0)! ])
+        let attributedAPRTitle = NSMutableAttributedString(string: "APR", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Bold", size: 18.0)! ])
         var attributedAPRSummary = NSMutableAttributedString()
         var attributedAPRPeriodic = NSMutableAttributedString()
         var attributedAPRDecimalEquivalent = NSMutableAttributedString()
@@ -844,27 +852,27 @@ class ShowMath: UIViewController {
         }
         
         if (i == 0) {
-            //attributedAPRSummary = NSMutableAttributedString(string: " 0%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+            //attributedAPRSummary = NSMutableAttributedString(string: " 0%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
             
 //            if (decision == false) {
-                attributedAPRSummary = NSMutableAttributedString(string: " " + String(format: "%.0f", i * 12 * 100) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
-                attributedAPRPeriodic = NSMutableAttributedString(string: "\n" + "÷ 12 = 0." + String(temp) + "00...% monthly", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedStringKey.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
-                    attributedAPRDecimalEquivalent = NSMutableAttributedString(string: "\n" + "÷ 100 = 0.00" + String(temp) + "...", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedStringKey.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
+                attributedAPRSummary = NSMutableAttributedString(string: " " + String(format: "%.0f", i * 12 * 100) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+                attributedAPRPeriodic = NSMutableAttributedString(string: "\n" + "÷ 12 = 0." + String(temp) + "00...% monthly", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
+                    attributedAPRDecimalEquivalent = NSMutableAttributedString(string: "\n" + "÷ 100 = 0.00" + String(temp) + "...", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
 //            }
 //            else {
-//                attributedAPRSummary = NSMutableAttributedString(string: " " + String(format: "%.2f", i * 12 * 100) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
-//                attributedAPRPeriodic = NSMutableAttributedString(string: "\n" + "÷ 12 = 0." + String(temp) + "00...% monthly", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedStringKey.foregroundColor: UIColor.black ])
-//                attributedAPRDecimalEquivalent = NSMutableAttributedString(string: "\n" + "÷ 100 = 0.00" + String(temp) + "... of balance", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedStringKey.foregroundColor: UIColor.black ])
+//                attributedAPRSummary = NSMutableAttributedString(string: " " + String(format: "%.2f", i * 12 * 100) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+//                attributedAPRPeriodic = NSMutableAttributedString(string: "\n" + "÷ 12 = 0." + String(temp) + "00...% monthly", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedString.Key.foregroundColor: UIColor.black ])
+//                attributedAPRDecimalEquivalent = NSMutableAttributedString(string: "\n" + "÷ 100 = 0.00" + String(temp) + "... of balance", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedString.Key.foregroundColor: UIColor.black ])
 //            }
         }
         else {
-            attributedAPRSummary = NSMutableAttributedString(string: " " + String(format: "%.2f", i * 12 * 100) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
-            attributedAPRPeriodic = NSMutableAttributedString(string: "\n" + "÷ 12 = 0." + String(temp) + "...% monthly", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+            attributedAPRSummary = NSMutableAttributedString(string: " " + String(format: "%.2f", i * 12 * 100) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+            attributedAPRPeriodic = NSMutableAttributedString(string: "\n" + "÷ 12 = 0." + String(temp) + "...% monthly", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
 //            if (decision == false) {
-                attributedAPRDecimalEquivalent = NSMutableAttributedString(string: "\n" + "÷ 100 = 0.00" + String(temp) + "...", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+                attributedAPRDecimalEquivalent = NSMutableAttributedString(string: "\n" + "÷ 100 = 0.00" + String(temp) + "...", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
 //            }
 //            else {
-//                attributedAPRDecimalEquivalent = NSMutableAttributedString(string: "\n" + "÷ 100 = 0.00" + String(temp) + "... of balance", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+//                attributedAPRDecimalEquivalent = NSMutableAttributedString(string: "\n" + "÷ 100 = 0.00" + String(temp) + "... of balance", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
 //            }
         }
         attributedAPRTitle.append(attributedAPRSummary)
@@ -896,33 +904,33 @@ class ShowMath: UIViewController {
         { tempx = (round(p*i*100 + 1)+1)/100}
         else { tempx = (round(p*i*100)+1)/100 }
         
-        attributedPayTitle = NSMutableAttributedString(string: "Pay Monthly", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Bold", size: 18.0)! ])
+        attributedPayTitle = NSMutableAttributedString(string: "Pay Monthly", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Bold", size: 18.0)! ])
         //if (decision == false) {
             if (a == tempx) {
-                attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+                attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
             }
             else if (i == 0) {
                 let check = a
                 if (check - floor(check) > 0) {
-                    attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+                    attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
                 }
                 else {
-                    attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.0f", a), attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+                    attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.0f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
                 }
             }
             else {
                 let check = a
                 if (check - floor(check) > 0) {
-                    attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+                    attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
                 }
                 else {
-                    attributedPaySummary = NSMutableAttributedString(string: " $" + numberFormatter.string(from: NSNumber(value: a))!, attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+                    attributedPaySummary = NSMutableAttributedString(string: " $" + numberFormatter.string(from: NSNumber(value: a))!, attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
                 }
 
             }
         /*}
         else {
-            attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+            attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
         }*/
             
         //print(i)
@@ -1056,7 +1064,7 @@ class ShowMath: UIViewController {
         //let textRect_pay_insight = CGRect(x: 0, y: 0, width: pay_insight.frame.width, height: pay_insight.frame.height)
         //let insets_pay_insight = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //let insets_pay_insight = UIEdgeInsets(top: 0, left: 0.02*pay_insight.frame.width, bottom: 0, right: 2*2*0.02*pay_insight.frame.width)
-        //pay_insight_shape_label.frame = UIEdgeInsetsInsetRect(textRect_pay_insight, insets_pay_insight)
+        //pay_insight_shape_label.frame = CGRect.inset(by:)(textRect_pay_insight, insets_pay_insight)
 
 
         
@@ -1091,9 +1099,9 @@ class ShowMath: UIViewController {
          balance_header_shape_label.font = UIFont(name: "HelveticaNeue-Bold", size: 12.0)*/
         
         proportion.layer.addSublayer(proportion_shape)
-        proportion.bringSubview(toFront: percent_interest)
-        proportion.bringSubview(toFront: slider)
-        proportion.bringSubview(toFront: percent_balance)
+        proportion.bringSubviewToFront(percent_interest)
+        proportion.bringSubviewToFront(slider)
+        proportion.bringSubviewToFront(percent_balance)
         //balance_header.addSubview(balance_header_shape_label)
         /*if (a == ceil(Double(Int(p*i*100)+1))/100) {
             max_percent_interest = (ceil(Double(Int(p*i*100)))/100)/(ceil(Double(Int(p*i*100)+1))/100)*100
@@ -1131,23 +1139,23 @@ class ShowMath: UIViewController {
 //            else {
 //                //ignore header
 //            }
-            attributedPercentInterestTitle = NSMutableAttributedString(string: "Interest", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedStringKey.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5)])
-            attributedPercentBalanceTitle = NSMutableAttributedString(string: "Later", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedStringKey.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5)])
+            attributedPercentInterestTitle = NSMutableAttributedString(string: "Interest", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5)])
+            attributedPercentBalanceTitle = NSMutableAttributedString(string: "Later", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5)])
         }
         else {
-            attributedPercentInterestTitle = NSMutableAttributedString(string: "Interest", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedStringKey.foregroundColor: UIColor.black])
-            attributedPercentBalanceTitle = NSMutableAttributedString(string: "Later", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedStringKey.foregroundColor: UIColor.black])
+            attributedPercentInterestTitle = NSMutableAttributedString(string: "Interest", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedString.Key.foregroundColor: UIColor.black])
+            attributedPercentBalanceTitle = NSMutableAttributedString(string: "Later", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedString.Key.foregroundColor: UIColor.black])
         }
-        let attributedPercentInterestSpace = NSMutableAttributedString(string: " \n", attributes: [ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 3.0)! ])
-        let attributedPercentBalanceSpace = NSMutableAttributedString(string: " \n", attributes: [ NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 3.0)! ])
+        let attributedPercentInterestSpace = NSMutableAttributedString(string: " \n", attributes: [ NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 3.0)! ])
+        let attributedPercentBalanceSpace = NSMutableAttributedString(string: " \n", attributes: [ NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 3.0)! ])
         var attributedPercentInterest = NSMutableAttributedString()
         var attributedPercentBalance = NSMutableAttributedString()
         if (i == 0) {
             //self.slider.value = 4
             slider.isEnabled = false
-            attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedStringKey.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
-            //attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", max_percent_interest) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
-            attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", 100 - percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedStringKey.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
+            attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
+            //attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", max_percent_interest) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+            attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", 100 - percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
         }
         else {
             slider.isEnabled = true
@@ -1167,40 +1175,40 @@ class ShowMath: UIViewController {
             
             //simplifying percentages:
             if (percentage - floor(percentage) == 0) {
-                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
                 /*if compound.isOn && (progress != 100) {
-                    attributedPercentBalance = NSMutableAttributedString(string: "Rest", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                    attributedPercentBalance = NSMutableAttributedString(string: "Rest", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
                 }
                 else {*/
-                    attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", 100 - percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                    attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", 100 - percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
                 //}
             }
             else if (percentage*10 - floor(percentage*10) == 0) {
-                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.1f", percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.1f", percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
                 /*if compound.isOn && (progress != 100) {
-                    attributedPercentBalance = NSMutableAttributedString(string: "Rest", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                    attributedPercentBalance = NSMutableAttributedString(string: "Rest", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
                 }
                 else {*/
-                    attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.1f", 100 - percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                    attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.1f", 100 - percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
                 //}
             }
                 //arbitrary:
             else if (progress != 100) && (a == tempx) {
-                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
                 /*if compound.isOn && (progress != 100) {
-                    attributedPercentBalance = NSMutableAttributedString(string: "Rest", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                    attributedPercentBalance = NSMutableAttributedString(string: "Rest", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
                 }
                 else {*/
-                    attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", 100 - percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                    attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", 100 - percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
                 //}
             }
             else {
-                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.2f", percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.2f", percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
                 /*if compound.isOn && (progress != 100) {
-                    attributedPercentBalance = NSMutableAttributedString(string: "Rest", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                    attributedPercentBalance = NSMutableAttributedString(string: "Rest", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
                 }
                 else {*/
-                    attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.2f", 100 - percentage) + "%", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
+                    attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.2f", 100 - percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
                 //}
             }
         }
@@ -1552,37 +1560,37 @@ class ShowMath: UIViewController {
         { tempx_x = (round(p*i*100 + 1)+1)/100}
         else { tempx_x = (round(p*i*100)+1)/100 }
         
-        attributedPayTitle = NSMutableAttributedString(string: "Pay Monthly", attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Bold", size: 18.0)! ])
+        attributedPayTitle = NSMutableAttributedString(string: "Pay Monthly", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Bold", size: 18.0)! ])
 //        if (decision == false) {
             if (a == tempx_x) {
                 if (progress == 100) {
-                    attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+                    attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
                 }
                 else {
-                    attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+                    attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
                 }
             }
             else if (i == 0) {
                 let check = a
                 if (check - floor(check) > 0) {
-                    attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+                    attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
                 }
                 else {
-                    attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.0f", a), attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+                    attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.0f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
                 }
             }
             else {
                 let check = a
                 if (check - floor(check) > 0) {
-                    attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+                    attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
                 }
                 else {
-                    attributedPaySummary = NSMutableAttributedString(string: " $" + numberFormatter.string(from: NSNumber(value: a))!, attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+                    attributedPaySummary = NSMutableAttributedString(string: " $" + numberFormatter.string(from: NSNumber(value: a))!, attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
                 }
             }
 //        }
 //        else {
-//            attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedStringKey.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+//            attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
 //        }
         attributedPayTitle.append(attributedPaySummary)
         pay_monthly.attributedText = attributedPayTitle
@@ -1967,7 +1975,7 @@ class ShowMath: UIViewController {
         //let textRect = CGRect(x: 0.2*balance.frame.width, y: 0, width: balance.frame.width-2*0.2*balance.frame.width, height: balance.frame.height)
         //let textRect_balance = CGRect(x: 0, y: 0, width: balance.frame.width, height: balance.frame.height)
         //let insets_balance = UIEdgeInsets(top: 0, left: 0.03*balance.frame.width, bottom: 0, right: 2*0.05*balance.frame.width)
-        //balance_shape_label.frame = UIEdgeInsetsInsetRect(textRect_balance, insets_balance)
+        //balance_shape_label.frame = CGRect.inset(by:)(textRect_balance, insets_balance)
         //titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.25, bottom: 0.0, right: 0.0)
         //let array = [String(format: "%.2f", p), String(format: "%.2f", temp1), String(format: "%.2f", temp2), String(format: "%.2f", temp3), String(format: "%.2f", remainingbalance)]
         /*balance_shape_label.text = array[0] + "\n" +
@@ -1998,11 +2006,11 @@ class ShowMath: UIViewController {
             var etc = NSMutableAttributedString()
 //            if (decision == false) {
                 etc = NSMutableAttributedString(string:
-                    "︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+                    "︙\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray])
 //            }
 //            else {
 //                etc = NSMutableAttributedString(string:
-//                    "\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+//                    "\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray])
 //            }
             let remains = NSMutableAttributedString(string:
                 String(format: "%.2f", remainingbalance), attributes: [ :])
@@ -2124,23 +2132,23 @@ class ShowMath: UIViewController {
                 let charged_interest_shape_label_jg4 = NSMutableAttributedString(string: String(format: "%.2f", p) + " · 0.00" + String(temp) + "...\n" +
                     String(format: "%.2f", temp1) + " · 0.00" + String(temp) + "...\n" +
                     String(format: "%.2f", temp2) + " · 0.00" + String(temp) + "...\n" +
-                    String(format: "%.2f", temp3) + " · 0.00" + String(temp) + "...\n", attributes: [NSAttributedStringKey.paragraphStyle: paragraph_charged_interest])
+                    String(format: "%.2f", temp3) + " · 0.00" + String(temp) + "...\n", attributes: [NSAttributedString.Key.paragraphStyle: paragraph_charged_interest])
                 var etc = NSMutableAttributedString()
 //                if (decision == false) {
                     etc = NSMutableAttributedString(string:
-                        "︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.paragraphStyle: paragraph_charged_interest_ellipse ])
+                        "︙\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.paragraphStyle: paragraph_charged_interest_ellipse ])
 //                }
 //                else {
 //                    etc = NSMutableAttributedString(string:
-//                        "           ︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.paragraphStyle: paragraph_charged_interest_ellipse ])
+//                        "           ︙\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.paragraphStyle: paragraph_charged_interest_ellipse ])
 //                }
                 let remains = NSMutableAttributedString(string:
-                    String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...", attributes: [NSAttributedStringKey.paragraphStyle: paragraph_charged_interest])
+                    String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...", attributes: [NSAttributedString.Key.paragraphStyle: paragraph_charged_interest])
                 
                 if (i == 0) {
-                    charged_interest_shape_label_jg4.setAttributes([NSAttributedStringKey.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5), NSAttributedStringKey.paragraphStyle: paragraph_charged_interest], range: NSRange(location:0,length: charged_interest_shape_label_jg4.length))
-                    etc.setAttributes([NSAttributedStringKey.foregroundColor: UIColor.lightGray.withAlphaComponent(0.125), NSAttributedStringKey.paragraphStyle: paragraph_charged_interest_ellipse], range: NSRange(location:0,length: etc.length))
-                    remains.setAttributes([NSAttributedStringKey.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5), NSAttributedStringKey.paragraphStyle: paragraph_charged_interest], range: NSRange(location:0,length: remains.length))
+                    charged_interest_shape_label_jg4.setAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5), NSAttributedString.Key.paragraphStyle: paragraph_charged_interest], range: NSRange(location:0,length: charged_interest_shape_label_jg4.length))
+                    etc.setAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.125), NSAttributedString.Key.paragraphStyle: paragraph_charged_interest_ellipse], range: NSRange(location:0,length: etc.length))
+                    remains.setAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5), NSAttributedString.Key.paragraphStyle: paragraph_charged_interest], range: NSRange(location:0,length: remains.length))
                 }
                 else {
                     //do nothing
@@ -2228,23 +2236,23 @@ class ShowMath: UIViewController {
 //                let charged_interest_shape_label_jg4 = NSMutableAttributedString(string: "(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)\n(" +
 //                    String(format: "%.2f", temp1) + " · 0.00" + String(temp) + "...)\n(" +
 //                    String(format: "%.2f", temp2) + " · 0.00" + String(temp) + "...)\n(" +
-//                    String(format: "%.2f", temp3) + " · 0.00" + String(temp) + "...)\n", attributes: [NSAttributedStringKey.paragraphStyle: paragraph_charged_interest])
+//                    String(format: "%.2f", temp3) + " · 0.00" + String(temp) + "...)\n", attributes: [NSAttributedString.Key.paragraphStyle: paragraph_charged_interest])
 //                var etc = NSMutableAttributedString()
 ////                if (decision == false) {
 //                    etc = NSMutableAttributedString(string:
-//                        "︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.paragraphStyle: paragraph_charged_interest_ellipse ])
+//                        "︙\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.paragraphStyle: paragraph_charged_interest_ellipse ])
 ////                }
 ////                else {
 ////                    etc = NSMutableAttributedString(string:
-////                        "           ︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.paragraphStyle: paragraph_charged_interest_ellipse ])
+////                        "           ︙\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.paragraphStyle: paragraph_charged_interest_ellipse ])
 ////                }
 //                let remains = NSMutableAttributedString(string: "(" +
-//                    String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)", attributes: [NSAttributedStringKey.paragraphStyle: paragraph_charged_interest])
+//                    String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)", attributes: [NSAttributedString.Key.paragraphStyle: paragraph_charged_interest])
 //
 //                if (i == 0) {
-//                    charged_interest_shape_label_jg4.setAttributes([NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.paragraphStyle: paragraph_charged_interest], range: NSRange(location:0,length: charged_interest_shape_label_jg4.length))
-//                    etc.setAttributes([NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.paragraphStyle: paragraph_charged_interest_ellipse], range: NSRange(location:0,length: etc.length))
-//                    remains.setAttributes([NSAttributedStringKey.foregroundColor: UIColor.black, NSAttributedStringKey.paragraphStyle: paragraph_charged_interest], range: NSRange(location:0,length: remains.length))
+//                    charged_interest_shape_label_jg4.setAttributes([NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.paragraphStyle: paragraph_charged_interest], range: NSRange(location:0,length: charged_interest_shape_label_jg4.length))
+//                    etc.setAttributes([NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.paragraphStyle: paragraph_charged_interest_ellipse], range: NSRange(location:0,length: etc.length))
+//                    remains.setAttributes([NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.paragraphStyle: paragraph_charged_interest], range: NSRange(location:0,length: remains.length))
 //
 //                }
 //                else {
@@ -2412,11 +2420,11 @@ class ShowMath: UIViewController {
                         String(format: "%.2f", a) + "\n", attributes: [ :])
 //                    if (decision == false) {
                         etc = NSMutableAttributedString(string:
-                            "︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+                            "︙\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
 //                    }
 //                    else {
 //                        etc = NSMutableAttributedString(string:
-//                            "\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+//                            "\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
 //                    }
                     remains = NSMutableAttributedString(string:
                         String(format: "%.2f", remainingbalance + remaining_interest + outstandingbalance), attributes: [ :])
@@ -2428,11 +2436,11 @@ class ShowMath: UIViewController {
                         String(format: "%.2f", a) + "\n", attributes: [ :])
 //                    if (decision == false) {
                         etc = NSMutableAttributedString(string:
-                            "︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+                            "︙\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
 //                    }
 //                    else {
 //                        etc = NSMutableAttributedString(string:
-//                            "\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+//                            "\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
 //                    }
                     remains = NSMutableAttributedString(string:
                         String(format: "%.2f", remainingbalance + remaining_interest + outstandingbalance), attributes: [ :])
@@ -2445,11 +2453,11 @@ class ShowMath: UIViewController {
                     String(format: "%.2f", a) + "\n", attributes: [ :])
 //                if (decision == false) {
                     etc = NSMutableAttributedString(string:
-                        "︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+                        "︙\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
 //                }
 //                else {
 //                    etc = NSMutableAttributedString(string:
-//                        "\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+//                        "\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
 //                }
                 remains = NSMutableAttributedString(string:
                     String(format: "%.2f", remainingbalance + remaining_interest + outstandingbalance), attributes: [ :])
@@ -2625,24 +2633,24 @@ class ShowMath: UIViewController {
             var etc = NSMutableAttributedString()
 //            if (decision == false) {
                 etc = NSMutableAttributedString(string:
-                    "︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+                    "︙\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
 //            }
 //            else {
 //                etc = NSMutableAttributedString(string:
-//                    "\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+//                    "\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
 //            }
             let remains = NSMutableAttributedString(string:
                 "0.00", attributes: [ :])
             if (insight == 1) {
-                remaining_label_jg4.setAttributes([NSAttributedStringKey.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5)], range: NSRange(location:0,length: remaining_label_jg4.length))
-                etc.setAttributes([NSAttributedStringKey.foregroundColor: UIColor.lightGray.withAlphaComponent(0.125)], range: NSRange(location:0,length: etc.length))
-                remains.setAttributes([NSAttributedStringKey.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5)], range: NSRange(location:0,length: remains.length))
+                remaining_label_jg4.setAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5)], range: NSRange(location:0,length: remaining_label_jg4.length))
+                etc.setAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.125)], range: NSRange(location:0,length: etc.length))
+                remains.setAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5)], range: NSRange(location:0,length: remains.length))
             
             }
             else {
-                remaining_label_jg4.setAttributes([NSAttributedStringKey.foregroundColor: UIColor.black], range: NSRange(location:0,length: remaining_label_jg4.length))
-                etc.setAttributes([NSAttributedStringKey.foregroundColor: UIColor.lightGray], range: NSRange(location:0,length: etc.length))
-                remains.setAttributes([NSAttributedStringKey.foregroundColor: UIColor.black], range: NSRange(location:0,length: remains.length))
+                remaining_label_jg4.setAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], range: NSRange(location:0,length: remaining_label_jg4.length))
+                etc.setAttributes([NSAttributedString.Key.foregroundColor: UIColor.lightGray], range: NSRange(location:0,length: etc.length))
+                remains.setAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], range: NSRange(location:0,length: remains.length))
             }
             remaining_label_jg4.append(etc)
             remaining_label_jg4.append(remains)
@@ -2758,13 +2766,13 @@ class ShowMath: UIViewController {
                     payment_insight_shape_label_jg4 = NSMutableAttributedString(string: String(format: "%.2f", principal_pay1) + " Prin.  + " + String(format: "%.2f", interest_pay1) + " Int. =\n" +
                         String(format: "%.2f", principal_pay2) + " Prin.  + " + String(format: "%.2f", interest_pay2) + " Int. =\n" +
                         String(format: "%.2f", principal_pay3) + " Prin.  + " + String(format: "%.2f", interest_pay3) + " Int. =\n" +
-                        String(format: "%.2f", principal_pay4) + " Prin.  + " + String(format: "%.2f", interest_pay4) + " Int. =\n", attributes: [NSAttributedStringKey.paragraphStyle: paragraph_pay_insight])
+                        String(format: "%.2f", principal_pay4) + " Prin.  + " + String(format: "%.2f", interest_pay4) + " Int. =\n", attributes: [NSAttributedString.Key.paragraphStyle: paragraph_pay_insight])
                     etc = NSMutableAttributedString(string:
-                        "\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.paragraphStyle: paragraph_pay_insight_ellipse ])
+                        "\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.paragraphStyle: paragraph_pay_insight_ellipse ])
                     remains = NSMutableAttributedString(string:
-                        String(format: "%.2f", remainingbalance) + " Prin.  + " + String(format: "%.2f", remaining_interest + outstandingbalance) + " Int. =", attributes: [NSAttributedStringKey.paragraphStyle: paragraph_pay_insight])
+                        String(format: "%.2f", remainingbalance) + " Prin.  + " + String(format: "%.2f", remaining_interest + outstandingbalance) + " Int. =", attributes: [NSAttributedString.Key.paragraphStyle: paragraph_pay_insight])
             //if (progress == 100) {
-                //payment_insight_shape_label_jg4 = NSMutableAttributedString(string: "Breakdown of Pay\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.font: UIFont(name: "HelveticaNeue-Bold", size: 12.0)! ])
+                //payment_insight_shape_label_jg4 = NSMutableAttributedString(string: "Breakdown of Pay\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-Bold", size: 12.0)! ])
             //}
             /*else {
                 if (a > ceil(Double(Int(p*i*100)+1))/100) {
@@ -2773,7 +2781,7 @@ class ShowMath: UIViewController {
                         String(format: "%.2f", interest_temp5) + " Prin.  + " + String(format: "%.2f", a - interest_temp5) + " Int. =\n" +
                         String(format: "%.2f", interest_temp6) + " Prin.  + " + String(format: "%.2f", a - interest_temp6) + " Int. =\n", attributes: [ :])
                     etc = NSMutableAttributedString(string:
-                        "︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+                        "︙\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
                     remains = NSMutableAttributedString(string:
                         String(format: "%.2f", ceil(Double(Int(remainingbalance*i*100)))/100 + outstandingbalance) + " Prin.  + " + String(format: "%.2f", remainingbalance) + " Int.  = ", attributes: [ :])
                 }
@@ -2783,7 +2791,7 @@ class ShowMath: UIViewController {
                         String(format: "%.2f", interest_temp5) + " Prin.  + " + String(format: "%.2f", a - 0.01 - interest_temp5) + " Int. =\n" +
                         String(format: "%.2f", interest_temp6) + " Prin.  + " + String(format: "%.2f", a - 0.01 - interest_temp6) + " Int. =\n", attributes: [ :])
                     etc = NSMutableAttributedString(string:
-                        "︙\n", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+                        "︙\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
                     remains = NSMutableAttributedString(string:
                         String(format: "%.2f", ceil(Double(Int(remainingbalance*i*100)))/100 + outstandingbalance) + " Prin.  + " + String(format: "%.2f", remainingbalance) + " Int.  = ", attributes: [ :])
                 }
@@ -2950,7 +2958,7 @@ class ShowMath: UIViewController {
         let textRect_balance_shape_label = CGRect(x: 0, y: 0, width: balance.frame.width, height: balance.frame.height)
         //let insets_balance_shape_label = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 2)
         let insets_balance_shape_label = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        balance_shape_label.frame = UIEdgeInsetsInsetRect(textRect_balance_shape_label, insets_balance_shape_label)
+        balance_shape_label.frame = textRect_balance_shape_label.inset(by: insets_balance_shape_label)
         balance_shape_label.bounds = balance.frame
         add_label.frame = CGRect(x: 0, y: 0, width: add.frame.width, height: add.frame.height)
         add_label.bounds = add.frame
@@ -2959,7 +2967,7 @@ class ShowMath: UIViewController {
         let textRect_charged_interest = CGRect(x: 0, y: 0, width: charged_interest.frame.width, height: charged_interest.frame.height)
         let insets_charged_interest = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: (charged_interest.frame.width - CGFloat(charged_interest_max_string_count)*character_length)/2)
         //let insets_charged_interest = UIEdgeInsets(top: 0, left: 0.02*charged_interest.frame.width, bottom: 0, right: 2*0.02*charged_interest.frame.width)
-        charged_interest_shape_label.frame = UIEdgeInsetsInsetRect(textRect_charged_interest, insets_charged_interest)
+        charged_interest_shape_label.frame = textRect_charged_interest.inset(by: insets_charged_interest)
         charged_interest_shape_label.bounds = charged_interest.frame
         //charged_interest_shape_label.backgroundColor = UIColor.red
         
@@ -2976,7 +2984,7 @@ class ShowMath: UIViewController {
         let textRect_remaining_label = CGRect(x: 0, y: 0, width: remaining.frame.width, height: remaining.frame.height)
         //let insets_remaining_label = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 0)
         let insets_remaining_label = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        remaining_label.frame = UIEdgeInsetsInsetRect(textRect_remaining_label, insets_remaining_label)
+        remaining_label.frame = textRect_remaining_label.inset(by: insets_remaining_label)
         //remaining_label.frame = CGRect(x: 0, y: 0, width: remaining.frame.width, height: remaining.frame.height)
         remaining_label.bounds = remaining.frame
         //remaining_label.backgroundColor = UIColor.green
@@ -3021,7 +3029,7 @@ class ShowMath: UIViewController {
         let insets_pay_insight = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: ((balance.frame.width+add.frame.width+charged_interest.frame.width+subtract.frame.width) - CGFloat(pay_insight_max_string_count)*character_length)/2)
         //let insets_pay_insight = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         //let insets_pay_insight = UIEdgeInsets(top: 0, left: 0.02*pay_insight.frame.width, bottom: 0, right: 2*2*0.02*pay_insight.frame.width)
-        pay_insight_shape_label.frame = UIEdgeInsetsInsetRect(textRect_pay_insight, insets_pay_insight)
+        pay_insight_shape_label.frame = textRect_pay_insight.inset(by: insets_pay_insight)
         pay_insight_shape_label.bounds = pay_insight.frame
         //pay_insight_shape_label.text = "Pay"
         //pay_insight_shape_label.textAlignment = .center
@@ -3031,7 +3039,7 @@ class ShowMath: UIViewController {
 
         /*let textRect_note = CGRect(x: 0, y: 0, width: outstanding.frame.width, height: outstanding.frame.height)
         let insets_note = UIEdgeInsets(top: 100, left: 0, bottom: 0, right: 0)
-        outstanding.frame = UIEdgeInsetsInsetRect(textRect_note, insets_note)
+        outstanding.frame = CGRect.inset(by:)(textRect_note, insets_note)
         /*if (j >= 4) {*/
          month1.text = String(format: "%.2f", p) +
          " + (" + String(format: "%.2f", p) +
@@ -3237,22 +3245,22 @@ class ShowMath: UIViewController {
              var years_amount_decimal_part = NSMutableAttributedString()
              if (t3 < 1000) && (t3 >= 100) {
              years_amount_decimal_part = NSMutableAttributedString(string:
-             "." + String(t4), attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+             "." + String(t4), attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
              }
              else if (t3 < 100) && (t3 >= 10) {
              years_amount_decimal_part = NSMutableAttributedString(string:
-             ".0" + String(t4), attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+             ".0" + String(t4), attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
              }
              else if (t3 < 10) && (t3 >= 1) {
              years_amount_decimal_part = NSMutableAttributedString(string:
-             ".00" + String(t4), attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+             ".00" + String(t4), attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
              }
              else if (t3 < 1) && (t3 > 0) {
              years_amount_decimal_part = NSMutableAttributedString(string:
-             ".000" + String(t4), attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+             ".000" + String(t4), attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
              }
              else {
-             years_amount_decimal_part = NSMutableAttributedString(string: "", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+             years_amount_decimal_part = NSMutableAttributedString(string: "", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
              }*/
         }
         else {
@@ -3303,19 +3311,19 @@ class ShowMath: UIViewController {
         var years_amount_decimal_part = NSMutableAttributedString()
         if (t3 < 1000) && (t3 >= 100) {
             years_amount_decimal_part = NSMutableAttributedString(string:
-                "." + String(t4), attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+                "." + String(t4), attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
         }
         else if (t3 < 100) && (t3 >= 10) {
             years_amount_decimal_part = NSMutableAttributedString(string:
-                ".0" + String(t4), attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+                ".0" + String(t4), attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
         }
         else if (t3 < 10) && (t3 >= 1) {
             years_amount_decimal_part = NSMutableAttributedString(string:
-                ".00" + String(t4), attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+                ".00" + String(t4), attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
         }
         else {
             years_amount_decimal_part = NSMutableAttributedString(string:
-                "", attributes: [ NSAttributedStringKey.foregroundColor: UIColor.lightGray ])
+                "", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
         }
         // ((Double(j) + 1) / 12)-floor((Double(j) + 1) / 12)
         //Double(Int(floor(Double((j + 1) / 12)))))

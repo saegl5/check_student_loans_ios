@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  Instructional Apps to Promote Financial Literacy
+//  Student Loans
 //
 //  Created by Ed Silkworth on 10/9/15.
-//  Copyright © 2015 Ed Silkworth. All rights reserved.
+//  Copyright © 2015-2019 Ed Silkworth. All rights reserved.
 //
 
 import UIKit
@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
     }

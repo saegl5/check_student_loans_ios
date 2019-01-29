@@ -1,3 +1,11 @@
+//
+//  MyMainPage.swift
+//  Student Loans
+//
+//  Created by Ed Silkworth on 10/9/15.
+//  Copyright © 2015-2019 Ed Silkworth. All rights reserved.
+//
+
 import UIKit
 import AVKit
 
@@ -317,7 +325,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 //
 //                    self.tip_1.isHidden = false
 //                    self.step_2_background.addSubview(self.tip_1)
-//                    self.step_2_background.bringSubview(toFront: self.tip_1)
+//                    self.step_2_background.bringSubviewToFront(self.tip_1)
 //
 ////                    self.Step_Main()
 //                    self.splash_timer_count += 1
@@ -363,7 +371,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 //            step_1_background.frame = CGRect(x: 0, y: 0, width: step_1.frame.width, height: step_1.frame.height)
 ////            splash_screen.addSubview(step_1)
 //            splash_screen.addSubview(step_1_background)
-//            splash_screen.bringSubview(toFront: step_1)
+//            splash_screen.bringSubviewToFront(step_1)
 //            step_1.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.85)
 //            step_1.image = nil
 //            step_1.frame = CGRect(x: step_1.frame.origin.x, y: step_1.frame.origin.y, width: step_1.frame.width, height: 0)
@@ -388,7 +396,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 //                (finished: Bool) -> Void in
 //                self.tip_2.isHidden = false
 //                self.step_1.addSubview(self.tip_2)
-//                self.step_1.bringSubview(toFront: self.tip_2)
+//                self.step_1.bringSubviewToFront(self.tip_2)
 ////                self.Step_Main()
 //                self.splash_timer_count += 1
 //                self.step_2.image = self.step_2_images[0]
@@ -451,7 +459,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 //            step_2_background.frame = CGRect(x: step_2.frame.origin.x, y: step_2.frame.origin.y, width: step_2.frame.width, height: 0)
 //            /*splash_screen.addSubview(step_1)
 //            splash_screen.addSubview(step_1_background)
-//            splash_screen.bringSubview(toFront: step_1)*/
+//            splash_screen.bringSubviewToFront(step_1)*/
 //            /*step_2.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.75)
 //            step_2.image = nil*/
 //            /*step_2.frame = CGRect(x: step_2.frame.origin.x, y: step_2.frame.origin.y, width: step_2.frame.width, height: 0)*/
@@ -464,7 +472,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 //                self.tip_3.isHidden = false
 //
 //                self.step_2_background.addSubview(self.tip_3)
-//                self.step_2_background.bringSubview(toFront: self.tip_3)
+//                self.step_2_background.bringSubviewToFront(self.tip_3)
 ////                self.Step_Main()
 //                self.splash_timer_count += 1
 //                self.step_3.frame = CGRect(x: self.step_3.frame.origin.x, y: self.step_3.frame.origin.y-frame_height_temp, width: self.step_3.frame.width, height: frame_height_temp)
@@ -634,7 +642,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 //                self.tip_4.isHidden = false
 //
 //                self.step_2_background.addSubview(self.tip_4)
-//                self.step_2_background.bringSubview(toFront: self.tip_4)
+//                self.step_2_background.bringSubviewToFront(self.tip_4)
 ////                self.Step_Main()
 //                self.splash_timer_count += 1
 //                self.step_4.frame = CGRect(x: self.step_4.frame.origin.x, y: self.step_4.frame.origin.y-(0.70*self.step_2.frame.height), width: self.step_4.frame.width, height: frame_height_temp)
@@ -658,7 +666,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 //            /*if (splash_timer_count == step_1_images.count+step_2_images.count+step_3_images.count+bottom_images.count+2) {*/
 //                tip_4.text = "Swipe left for more"
 //            splash_screen.addSubview(disregard)
-//            splash_screen.bringSubview(toFront: disregard)
+//            splash_screen.bringSubviewToFront(disregard)
 //
 //            //}
 //
@@ -686,7 +694,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 //            self.splash_screen_background.image = self.slide_images[0]
 //            self.splash_screen.addSubview(self.splash_screen_background)
 //            splash_screen.addSubview(disregard)
-//            splash_screen.bringSubview(toFront: disregard)
+//            splash_screen.bringSubviewToFront(disregard)
 //
 //
 //
@@ -737,11 +745,11 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 //                self.step_2_background.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.85)
 //                /*splash_screen.addSubview(step_2)*/
 //                self.splash_screen.addSubview(self.step_2_background)
-//                /*splash_screen.bringSubview(toFront: step_1)*/
+//                /*splash_screen.bringSubviewToFront(step_1)*/
 //                self.step_3.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.85)
 //                self.step_4.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.85)
 //                self.splash_screen.addSubview(self.disregard)
-//                self.splash_screen.bringSubview(toFront: self.disregard)
+//                self.splash_screen.bringSubviewToFront(self.disregard)
 //                //self.minimum.isHidden = false
 ////                self.Step_Main()
 //
@@ -781,7 +789,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             videoController.view.frame = self.view.frame
             self.view.addSubview(videoController.view)
             self.addChildViewController(videoController)*/
-            //self.view.bringSubview(toFront: videoController.view)
+            //self.view.bringSubviewToFront(videoController.view)
             //self.showDetailViewController(videoController, sender: self) //shows "done"button
             //self.present(videoController, animated: false, completion: nil)
             present(videoController, animated: false, completion: { self.video.play() } )
@@ -1915,7 +1923,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         
         view.addSubview(edit_slider_shape)
         //edit_slider_shape.frame = CGRect(x: view.frame.origin.x+5, y: edit_slider_shape.frame.origin.y, width: view.frame.width-10, height: edit_slider_shape.frame.height)
-        view.bringSubview(toFront: edit_slider_shape)
+        view.bringSubviewToFront(edit_slider_shape)
         
         view.willRemoveSubview(stack_min)
         view.addSubview(stack_max)
@@ -1929,22 +1937,22 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         //edit_slider_shape.addSubview(loaned_min_input)
         //edit_slider_shape.addSubview(loaned_max_input)
         edit_slider_shape.addSubview(submit_changes)
-        edit_slider_shape.bringSubview(toFront: stack_min)
-        edit_slider_shape.bringSubview(toFront: stack_max)
-        edit_slider_shape.bringSubview(toFront: even_out)
-        //edit_slider_shape.bringSubview(toFront: loaned_min_input)
-        //edit_slider_shape.bringSubview(toFront: loaned_max_input)
-        edit_slider_shape.bringSubview(toFront: submit_changes)
+        edit_slider_shape.bringSubviewToFront(stack_min)
+        edit_slider_shape.bringSubviewToFront(stack_max)
+        edit_slider_shape.bringSubviewToFront(even_out)
+        //edit_slider_shape.bringSubviewToFront(loaned_min_input)
+        //edit_slider_shape.bringSubviewToFront(loaned_max_input)
+        edit_slider_shape.bringSubviewToFront(submit_changes)
         //from old idea, now part of stack_inputs:
-        edit_slider_shape.bringSubview(toFront: stack_inputs)
-        //edit_slider_shape.bringSubview(toFront: increment_input_left_label)
-        //edit_slider_shape.bringSubview(toFront: increment_input)
-        //edit_slider_shape.bringSubview(toFront: increment_input_right_label)
-        //edit_slider_shape.bringSubview(toFront: input_number_of_increments)
-        edit_slider_shape.bringSubview(toFront: bare_track)
+        edit_slider_shape.bringSubviewToFront(stack_inputs)
+        //edit_slider_shape.bringSubviewToFront(increment_input_left_label)
+        //edit_slider_shape.bringSubviewToFront(increment_input)
+        //edit_slider_shape.bringSubviewToFront(increment_input_right_label)
+        //edit_slider_shape.bringSubviewToFront(input_number_of_increments)
+        edit_slider_shape.bringSubviewToFront(bare_track)
         
         edit_slider_shape.addSubview(loaned_title)
-        edit_slider_shape.bringSubview(toFront: loaned_title)
+        edit_slider_shape.bringSubviewToFront(loaned_title)
         submit_changes.alpha = 0.0
         
         
@@ -2094,17 +2102,17 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         submit_changes_apr.isHidden = false
         
         view.addSubview(edit_apr_shape)
-        view.bringSubview(toFront: edit_apr_shape)
+        view.bringSubviewToFront(edit_apr_shape)
         
         edit_apr_shape.addSubview(edit_apr_text)
         edit_apr_shape.addSubview(submit_changes_apr)
-        edit_apr_shape.bringSubview(toFront: edit_apr_text)
-        edit_apr_shape.bringSubview(toFront: submit_changes_apr)
+        edit_apr_shape.bringSubviewToFront(edit_apr_text)
+        edit_apr_shape.bringSubviewToFront(submit_changes_apr)
         
         edit_apr_shape.addSubview(apr_title)
-        edit_apr_shape.bringSubview(toFront: apr_title)
+        edit_apr_shape.bringSubviewToFront(apr_title)
         //edit_apr_shape.addSubview(apr)
-        //edit_apr_shape.bringSubview(toFront: apr)
+        //edit_apr_shape.bringSubviewToFront(apr)
         //apr.isEnabled = false
         //apr.alpha = 0.125
         submit_changes_apr.alpha = 0.0
@@ -2257,7 +2265,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         submit_changes_pay.isHidden = false
         
         view.addSubview(edit_pay_shape)
-        view.bringSubview(toFront: edit_pay_shape)
+        view.bringSubviewToFront(edit_pay_shape)
         
         edit_pay_shape.addSubview(edit_pay_text)
         edit_pay_shape.addSubview(stack_inputs_down)
@@ -2265,18 +2273,18 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         edit_pay_shape.addSubview(submit_changes_pay)
         edit_pay_shape.addSubview(stack_inputs_timers_down)
         edit_pay_shape.addSubview(stack_inputs_timers_up)
-        edit_pay_shape.bringSubview(toFront: edit_pay_text)
-        edit_pay_shape.bringSubview(toFront: stack_inputs_down)
-        edit_pay_shape.bringSubview(toFront: stack_inputs_up)
-        edit_pay_shape.bringSubview(toFront: submit_changes_pay)
-        edit_pay_shape.bringSubview(toFront: stack_inputs_timers_down)
-        edit_pay_shape.bringSubview(toFront: stack_inputs_timers_up)
+        edit_pay_shape.bringSubviewToFront(edit_pay_text)
+        edit_pay_shape.bringSubviewToFront(stack_inputs_down)
+        edit_pay_shape.bringSubviewToFront(stack_inputs_up)
+        edit_pay_shape.bringSubviewToFront(submit_changes_pay)
+        edit_pay_shape.bringSubviewToFront(stack_inputs_timers_down)
+        edit_pay_shape.bringSubviewToFront(stack_inputs_timers_up)
         
         edit_pay_shape.addSubview(pay_monthly_title)
-        edit_pay_shape.bringSubview(toFront: pay_monthly_title)
+        edit_pay_shape.bringSubviewToFront(pay_monthly_title)
         
         //edit_pay_shape.addSubview(minimum)
-        //edit_pay_shape.bringSubview(toFront: minimum)
+        //edit_pay_shape.bringSubviewToFront(minimum)
         submit_changes_pay.alpha = 0.0
 
 
@@ -2343,7 +2351,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                             self.pay_monthly_title.alpha = 0.125
                             self.minimum.textColor = UIColor(red:255/255.0, green:255/255.0, blue:255/255.0, alpha: 0.03125)
                             self.pay_monthly_title.font = UIFont(name: "HelveticaNeue", size: 17.0)
-                            self.view.bringSubview(toFront: self.table_view) //in case someone wants to open table_view
+                            self.view.bringSubviewToFront(self.table_view) //in case someone wants to open table_view
                             self.submit_changes_pay.alpha = 1.0
                             self.down_number.backgroundColor = UIColor(red: 109/255.0, green: 129/255.0, blue: 158/255.0, alpha: 0.125)
                             self.pay_number.backgroundColor = UIColor(red: 109/255.0, green: 129/255.0, blue: 158/255.0, alpha: 0.125)
@@ -2432,7 +2440,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         
         edit_pay_shape.willRemoveSubview(pay_monthly_title)
         view.addSubview(pay_monthly_title)
-        view.bringSubview(toFront: table_view) //may be redundant
+        view.bringSubviewToFront(table_view) //may be redundant
         //edit_pay_shape.willRemoveSubview(minimum)
         //view.addSubview(minimum)
         pay_monthly_title.alpha = 1.0
@@ -2663,8 +2671,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             /*bubble_label_arrow.backgroundColor = UIColor(patternImage: UIImage(named: "bubble_label_arrow.png")!)*/
             thumb_bubble.addSubview(bubble_label)
             thumb_bubble.addSubview(bubble_label_arrow)
-            thumb_bubble.bringSubview(toFront: bubble_label_arrow)
-            thumb_bubble.bringSubview(toFront: bubble_label)
+            thumb_bubble.bringSubviewToFront(bubble_label_arrow)
+            thumb_bubble.bringSubviewToFront(bubble_label)
             bubble_label.text = "$" + numberFormatter.string(from: NSNumber(value: progress))!
             var previous_subviews = loaned.subviews
             previous_subviews.removeAll()
@@ -2757,7 +2765,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         bubble_label_arrow.isHidden = false
 
         
-        UIView.animate(withDuration: 0.125, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.125, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.bubble_label.alpha = 1.0
             self.bubble_label_arrow.alpha = 1.0
 
@@ -2777,7 +2785,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     @IBAction func Slider_Touch_Up(_ sender: UISlider) {
         /*bubble_label.isHidden = true
         bubble_label_arrow.isHidden = true*/
-        UIView.animate(withDuration: 0.125, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.125, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.bubble_label.alpha = 0.0
             self.bubble_label_arrow.alpha = 0.0
         }, completion: nil)
@@ -2829,8 +2837,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             edit_apr_shape.isHidden = true
             edit_apr_shape.willRemoveSubview(edit_apr_text)
             view.addSubview(edit_apr_text)
-            view.bringSubview(toFront: invisible)
-            view.bringSubview(toFront: invisible_back)
+            view.bringSubviewToFront(invisible)
+            view.bringSubviewToFront(invisible_back)
             submit_changes_apr.isHidden = true
             apr_sign.alpha = 0.125
             apr_number.alpha = 0.125
@@ -2945,7 +2953,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         
         table_view.alpha = 1.0
         table_view.frame = CGRect(x: table_view.frame.origin.x, y: table_view.frame.origin.y, width: table_view.frame.width, height: 0)
-        UIView.animate(withDuration: 0.25, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.25, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.table_view.frame = CGRect(x: self.table_view.frame.origin.x, y: self.table_view.frame.origin.y, width: self.table_view.frame.width, height: 100)
 
             /*self.bubble_label.alpha = 1.0
@@ -3133,16 +3141,16 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         view.addSubview(interest_rate_unpressed_copy)
         view.addSubview(invisible)
         view.addSubview(invisible_back)
-        view.bringSubview(toFront: interest_rate_unpressed_copy)
-        view.bringSubview(toFront: interest_rate_unpressed)
-        view.bringSubview(toFront: edit_apr_text_back)
-        view.bringSubview(toFront: edit_apr_text)
-        view.bringSubview(toFront: edit_apr_shape)
-        view.bringSubview(toFront: edit_apr)//or else edit_apr_shape starts out behind interest_rate_unpressed
-        view.bringSubview(toFront: invisible)
-        view.bringSubview(toFront: invisible_back)
-//        view.bringSubview(toFront: splash_screen) //for old splash screen
-        //view.bringSubview(toFront: videoController.view)
+        view.bringSubviewToFront(interest_rate_unpressed_copy)
+        view.bringSubviewToFront(interest_rate_unpressed)
+        view.bringSubviewToFront(edit_apr_text_back)
+        view.bringSubviewToFront(edit_apr_text)
+        view.bringSubviewToFront(edit_apr_shape)
+        view.bringSubviewToFront(edit_apr)//or else edit_apr_shape starts out behind interest_rate_unpressed
+        view.bringSubviewToFront(invisible)
+        view.bringSubviewToFront(invisible_back)
+//        view.bringSubviewToFront(splash_screen) //for old splash screen
+        //view.bringSubviewToFront(videoController.view)
         
         return cell
     }
@@ -3837,7 +3845,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         view.addSubview(stack_min)
         view.addSubview(stack_max)
         //view.addSubview(input_background)
-        //view.bringSubview(toFront: input_background)
+        //view.bringSubviewToFront(input_background)
         //input_background.alpha = 0.0
 //        if (decision == true) {
 //            locked.isHidden = true
@@ -3951,7 +3959,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         edit_apr_shape.isHidden = true
         edit_pay_shape.isHidden = true
         //view.addSubview(edit_pay_shape)
-        //view.bringSubview(toFront: edit_pay_shape)
+        //view.bringSubviewToFront(edit_pay_shape)
 
         submit_changes.isHidden = true
         submit_changes_apr.isHidden = true
@@ -5118,7 +5126,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 //            print(6*(self.splash_screen.frame.height-(self.step_1.frame.height+self.step_2.frame.height+self.step_3.frame.height+self.step_4.frame.height))/self.splash_screen.frame.height,terminator: "\n")*/
 //
 ////        self.splash_screen.addSubview(self.disregard) //for old splash screen
-////        self.splash_screen.bringSubview(toFront: self.disregard) //for old splash screen
+////        self.splash_screen.bringSubviewToFront(self.disregard) //for old splash screen
 ////        self.Step_Main() //for old splash screen
 //            //print(self.splash_screen.frame.height,terminator: "\n")
 //            //print(self.splash_screen.frame.width,terminator: "\n")
@@ -5211,10 +5219,10 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         view.addSubview(up_pressed)
         view.addSubview(down_unpressed)
         view.addSubview(down_pressed)
-        view.bringSubview(toFront: up_unpressed)
-        view.bringSubview(toFront: up_pressed)
-        view.bringSubview(toFront: down_unpressed)
-        view.bringSubview(toFront: down_pressed)*/
+        view.bringSubviewToFront(up_unpressed)
+        view.bringSubviewToFront(up_pressed)
+        view.bringSubviewToFront(down_unpressed)
+        view.bringSubviewToFront(down_pressed)*/
     }
     
     /*func getNameFromProfileUrl(profileUrl: NSURL, completionHandler: @escaping (String?) -> Void) {
