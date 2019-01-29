@@ -70,7 +70,7 @@ class ShowMath: UIViewController {
     //@IBOutlet weak var monthmax: UILabel!
     @IBOutlet weak var refund: UILabel!
     @IBOutlet weak var coffee_cup: UILabel!
-    @IBOutlet weak var note: UITextView! //mixed up with "outstanding"
+    @IBOutlet weak var note: UITextView!
     @IBOutlet weak var note_overlap: UITextView!
     @IBOutlet weak var note_constraint: NSLayoutConstraint!
     @IBOutlet weak var note_right: UITextView!
@@ -94,7 +94,7 @@ class ShowMath: UIViewController {
     @IBOutlet weak var plus_sign: UIImageView!
     @IBOutlet weak var minus_sign: UIImageView!
     @IBOutlet weak var equals_sign: UIImageView!
-    @IBOutlet weak var outstanding: UITextView!
+//    @IBOutlet weak var outstanding: UITextView!
     @IBOutlet weak var time_label: UILabel!
     @IBOutlet weak var savings_label: UILabel!
     @IBOutlet weak var line: UIImageView!
@@ -689,6 +689,7 @@ class ShowMath: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
 //        decision = shared_preferences.bool(forKey: "decision")
 
 //        if (decision == true) {
@@ -1246,15 +1247,18 @@ class ShowMath: UIViewController {
         //allow users to magnify the table, if the table is too small
         balance.tintColor = .clear
         balance.isEditable = true //bug, should be isSelectable, but isSelectable only highlights first line
+        balance.inputView = UIView() //prevents keyboard
         if (i != 0) {
             charged_interest.tintColor = .clear
             charged_interest.isEditable = true //bug, should be isSelectable, but isSelectable only highlights first line
+            charged_interest.inputView = UIView() //prevents keyboard
         }
         else {
             //don't
         }
         remaining.tintColor = .clear
         remaining.isEditable = true //bug, should be isSelectable, but isSelectable only highlights first line
+        remaining.inputView = UIView() //prevents keyboard
 
         /*if (view.frame.width == 414) {
             view.addConstraint(add.widthAnchor.constraint(equalToConstant: 18))
@@ -2925,7 +2929,7 @@ class ShowMath: UIViewController {
         
         //if (insight == 1) && (compound.isOn == false) {
         if (insight == 1) {
-            outstanding.text = "Last Month Charged Interest: " + String(format: "%.2f", remaining_interest) + "\n" +
+            note.text = "Last Month Charged Interest: " + String(format: "%.2f", remaining_interest) + "\n" +
                 "Outstanding Interest: " + String(format: "%.2f", outstandingbalance)
         }
         /*else if (insight == 1) {
@@ -2933,7 +2937,8 @@ class ShowMath: UIViewController {
         }*/
         else {
 //            if (decision == false) {
-                note_overlap.text = ""
+                //note_overlap.text = ""
+                note.text = ""
 //            }
 //            else {
 //                note_overlap.text = ""
@@ -3948,6 +3953,13 @@ class ShowMath: UIViewController {
         
     }
 
-   
 
 }
+//disable copy, paste, delete, etc.
+extension UITextView {
+    
+    open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+        return false
+    }
+}
+

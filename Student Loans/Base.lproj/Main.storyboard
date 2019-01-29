@@ -1807,7 +1807,6 @@ Later</string>
                         <outlet property="note_overlap" destination="OS4-Ed-1Ej" id="8eB-LG-hby"/>
                         <outlet property="note_right" destination="Ej6-on-58T" id="8Tc-bx-p7v"/>
                         <outlet property="note_view" destination="Acs-Ik-6yG" id="aFf-6X-DT7"/>
-                        <outlet property="outstanding" destination="AnN-OQ-3PP" id="bFR-Uu-EHc"/>
                         <outlet property="pay_insight" destination="aPQ-J2-lkN" id="V16-iW-nvp"/>
                         <outlet property="pay_insight_header" destination="gkh-uu-mgD" id="jc5-7p-OdY"/>
                         <outlet property="pay_monthly" destination="JD9-pN-80J" id="1YI-aI-B5z"/>
