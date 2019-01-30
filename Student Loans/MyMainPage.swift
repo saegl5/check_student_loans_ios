@@ -192,6 +192,10 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 //    @IBOutlet weak var step1height: NSLayoutConstraint!
 //    @IBOutlet weak var step2height: NSLayoutConstraint!
 //    @IBOutlet weak var step3height: NSLayoutConstraint!
+    @IBOutlet weak var absmin: UILabel!
+    @IBOutlet weak var tenyrmin: UILabel!
+    @IBOutlet weak var linemin: UIImageView!
+    
     
     var min_value = 2000.0
     var max_value = 10000.0
@@ -3833,6 +3837,13 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        unlocked.alpha = 1.0
+        absmin.alpha = 1.0
+        absolute.alpha = 1.0
+        linemin.alpha = 0.0625
+        tenyrmin.alpha = 1.0
+        tenyr.alpha = 1.0
+
 //        shared_preferences.set(decision, forKey: "decision"); shared_preferences.synchronize()
 
         //reset frames, or else calayers won't conform to them
