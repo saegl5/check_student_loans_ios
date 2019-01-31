@@ -689,7 +689,9 @@ class ShowMath: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        enlarge.alpha = 1.0
+        shrink.alpha = 1.0
+        pay_insight_header.alpha = 1.0
 //        decision = shared_preferences.bool(forKey: "decision")
 
 //        if (decision == true) {
@@ -1309,7 +1311,6 @@ class ShowMath: UIViewController {
         //blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         //view.addSubview(blurEffectView)
         //blurEffectView.alpha = 0.125
-
     }
     
     
@@ -1655,7 +1656,7 @@ class ShowMath: UIViewController {
             subtract.frame = CGRect(x: Int(subtract.frame.origin.x), y: 0, width: Int(subtract.frame.width), height: 22*(j+1))
             payment.frame = CGRect(x: Int(payment.frame.origin.x), y: 0, width: Int(payment.frame.width), height: 22*(j+1))
             equals.frame = CGRect(x: Int(equals.frame.origin.x), y: 0, width: Int(equals.frame.width), height: 22*(j+1))
-            let CGRect_widthtemp = Int(table.frame.width-balance.frame.width-add.frame.width-charged_interest.frame.width)-Int(subtract.frame.width-payment.frame.width-equals.frame.width)
+            let CGRect_widthtemp = Int(table.frame.width-balance.frame.width-add.frame.width-charged_interest.frame.width)-Int(subtract.frame.width+payment.frame.width+equals.frame.width)
             remaining.frame = CGRect(x: Int(remaining.frame.origin.x), y: 0, width: CGRect_widthtemp, height: 22*(j+1))
             //remaining.frame = CGRect(x: Int(remaining.frame.origin.x), y: 0, width: Int(table.frame.width-balance.frame.width-add.frame.width-charged_interest.frame.width-subtract.frame.width-payment.frame.width-equals.frame.width), height: 132)
 
@@ -2990,7 +2991,9 @@ class ShowMath: UIViewController {
         //let insets_remaining_label = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 0)
         let insets_remaining_label = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         remaining_label.frame = textRect_remaining_label.inset(by: insets_remaining_label)
-        //remaining_label.frame = CGRect(x: 0, y: 0, width: remaining.frame.width, height: remaining.frame.height)
+//        remaining_label.frame = CGRect(x: 0, y: 0, width: remaining.frame.width, height: remaining.frame.height)
+//        print(remaining.frame.width)
+//        print(remaining.frame.height)
         remaining_label.bounds = remaining.frame
         //remaining_label.backgroundColor = UIColor.green
         //remaining.backgroundColor = UIColor.red
@@ -3950,7 +3953,8 @@ class ShowMath: UIViewController {
         savings.adjustsFontSizeToFitWidth = true
 
         
-        
+//        print(j)
+
     }
 
 

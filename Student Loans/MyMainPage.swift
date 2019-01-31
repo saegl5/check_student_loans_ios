@@ -3843,7 +3843,10 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         linemin.alpha = 0.0625
         tenyrmin.alpha = 1.0
         tenyr.alpha = 1.0
-
+        years.alpha = 1.0
+        months.alpha = 1.0
+        minimum.alpha = 1.0
+        
 //        shared_preferences.set(decision, forKey: "decision"); shared_preferences.synchronize()
 
         //reset frames, or else calayers won't conform to them
