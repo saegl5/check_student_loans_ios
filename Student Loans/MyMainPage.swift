@@ -164,6 +164,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var months_text: UILabel!
     @IBOutlet weak var savings_title: UILabel!
     @IBOutlet weak var savings: UILabel!
+    @IBOutlet weak var delta: UILabel!
     @IBOutlet weak var savings_change: UILabel!
     @IBOutlet var swipe: UISwipeGestureRecognizer!
     @IBOutlet weak var locked: UIButton!
@@ -3837,6 +3838,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        delta.isHidden = true
         unlocked.alpha = 1.0
         absmin.alpha = 1.0
         absolute.alpha = 1.0

@@ -691,7 +691,15 @@ class ShowMath: UIViewController {
         super.viewDidLoad()
         enlarge.alpha = 1.0
         shrink.alpha = 1.0
+        charged_interest.text = ""
         pay_insight_header.alpha = 1.0
+        balance_header.backgroundColor = UIColor.clear
+        interest_header.backgroundColor = UIColor.clear
+        payment_header.backgroundColor = UIColor.clear
+        balance.backgroundColor = UIColor.clear
+        charged_interest.backgroundColor = UIColor.clear
+        payment.backgroundColor = UIColor.clear
+
 //        decision = shared_preferences.bool(forKey: "decision")
 
 //        if (decision == true) {
