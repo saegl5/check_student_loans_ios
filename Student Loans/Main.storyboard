@@ -30,12 +30,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xAx-TM-0Zq">
-                                <rect key="frame" x="172.5" y="632" width="30" height="30"/>
+                                <rect key="frame" x="91.5" y="632" width="192" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="W3f-6d-XOG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Italic" family="Helvetica Neue" pointSize="17"/>
-                                <state key="normal" title="?">
+                                <state key="normal" title="Hidden One-Time Trigger">
                                     <color key="titleColor" red="0.42745098039215684" green="0.50980392156862742" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -1182,7 +1182,6 @@
                         <outlet property="pay_monthly_title" destination="cA3-Di-33v" id="ZNn-wQ-EuK"/>
                         <outlet property="pay_number" destination="3y9-LJ-CFB" id="w24-3e-16d"/>
                         <outlet property="pay_sign" destination="Rjj-ub-eyh" id="Qgs-du-sCa"/>
-                        <outlet property="question" destination="xAx-TM-0Zq" id="lkF-a8-8Zl"/>
                         <outlet property="savings" destination="xCx-i0-706" id="LGT-m9-vE1"/>
                         <outlet property="savings_change" destination="0k2-LH-5yh" id="ZIE-ro-pwl"/>
                         <outlet property="savings_title" destination="8vu-by-kFw" id="dYU-YT-LvN"/>

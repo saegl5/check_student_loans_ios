@@ -15,7 +15,6 @@ class ShowMath: UIViewController {
 //    var decision = Bool()
 
     
-//    @IBOutlet weak var blur: UIVisualEffectView!
     @IBOutlet weak var loaned: UILabel!
     
     @IBOutlet weak var stack1_trailing: NSLayoutConstraint!
@@ -27,12 +26,7 @@ class ShowMath: UIViewController {
     
     
     @IBOutlet weak var nominal_rate: UILabel!
-    //@IBOutlet weak var periodic_rate: UILabel!
-    //@IBOutlet weak var decimal_equivalent: UILabel!
     @IBOutlet weak var pay_monthly: UILabel!
-    //@IBOutlet weak var heading: UILabel!
-    //@IBOutlet weak var headers: UIStackView!
-    //@IBOutlet weak var pay_insight: UIView!
     
     @IBOutlet weak var titleof_compound: UILabel!
     @IBOutlet weak var APR_compound_stack: UIStackView!
@@ -53,21 +47,13 @@ class ShowMath: UIViewController {
     @IBOutlet weak var charged_interest: UITextView!
     @IBOutlet weak var subtract: UITextView!
     @IBOutlet weak var payment_header: UIButton!
-    //@IBOutlet weak var payment_header: UITextView!
     @IBOutlet weak var payment: UIButton!
     @IBOutlet weak var enlarge: UIButton!
     @IBOutlet weak var shrink: UIButton!
     
-    //@IBOutlet weak var payment: UITextView!
     @IBOutlet weak var equals: UITextView!
     @IBOutlet weak var remaining: UITextView!
     @IBOutlet weak var note_view: UIStackView!
-    //@IBOutlet weak var month1: UILabel!
-    //@IBOutlet weak var month2: UILabel!
-    //@IBOutlet weak var month3: UILabel!
-    //@IBOutlet weak var month4: UILabel!
-    //@IBOutlet weak var keep_going_until: UILabel!
-    //@IBOutlet weak var monthmax: UILabel!
     @IBOutlet weak var refund: UILabel!
     @IBOutlet weak var coffee_cup: UILabel!
     @IBOutlet weak var note: UITextView!
@@ -88,13 +74,11 @@ class ShowMath: UIViewController {
     @IBOutlet weak var headers: UIStackView!
     @IBOutlet weak var proportion: UIStackView!
     @IBOutlet weak var percent_interest: UILabel!
-//    @IBOutlet weak var slider_header: UILabel!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var percent_balance: UILabel!
     @IBOutlet weak var plus_sign: UIImageView!
     @IBOutlet weak var minus_sign: UIImageView!
     @IBOutlet weak var equals_sign: UIImageView!
-//    @IBOutlet weak var outstanding: UITextView!
     @IBOutlet weak var time_label: UILabel!
     @IBOutlet weak var savings_label: UILabel!
     @IBOutlet weak var line: UIImageView!
@@ -139,7 +123,6 @@ class ShowMath: UIViewController {
         if compound.isOn {
             //c = 1.0
             i = pow(1 + i*12*100/365.25/100,365.25/12) - 1
-            //print(i)
             var temp = Double()
             if (tenyr_indicator == 0) {
                 if (percentage/100*p*i*100 - floor(percentage/100*p*i*100) > 0.499999) && (percentage/100*p*i*100 - floor(percentage/100*p*i*100) < 0.5)
@@ -248,8 +231,6 @@ class ShowMath: UIViewController {
             self.payment_header_shape.path = UIBezierPath(roundedRect: self.payment_header.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
             self.payment_shape.path = UIBezierPath(roundedRect: self.payment.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
             //self.pay_insight_header.frame = CGRect(x: self.pay_insight_header.frame.origin.x, y: self.pay_insight_header.frame.origin.y, width: self.pay_insight_header.frame.width, height: self.pay_insight_header.frame.height)
-            //print("before -> x:",self.pay_insight.frame.origin.x,"y:",self.pay_insight.frame.origin.y,"width:",self.pay_insight.frame.width,"height:",self.pay_insight.frame.height)
-
         },
         completion: {
             (finished: Bool) -> Void in
@@ -266,32 +247,7 @@ class ShowMath: UIViewController {
                 self.payment_shape.path = UIBezierPath(roundedRect: self.payment.bounds, byRoundingCorners: [.bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
                 self.remaining.textColor = UIColor.lightGray.withAlphaComponent(0.5)
                 }
-            //print("after -> x:",self.pay_insight.frame.origin.x,"y:",self.pay_insight.frame.origin.y,"width:",self.pay_insight.frame.width,"height:",self.pay_insight.frame.height)
-
         })
-
-        
-        
-        /*UIView.animate(withDuration: 0.25, delay: 0.0, options: UIViewAnimationOptions.curveEaseIn, animations: {
-            self.pay_insight.frame = CGRect(x: self.pay_insight.frame.origin.x, y: self.pay_insight.frame.origin.y+200, width: self.pay_insight.frame.width, height: self.pay_insight.frame.height-200)
-            //self.step_3.frame = CGRect(x: self.step_3.frame.origin.x, y: self.step_3.frame.origin.y+self.step_3.frame.height, width: self.step_3.frame.width, height: 0)
-        }, completion: {
-            (finished: Bool) -> Void in
-            //self.tip_3.isHidden = false
-            
-            //self.step_2_background.addSubview(self.tip_3)
-            //self.step_2_background.bringSubviewToFront(self.tip_3)
-            //self.Step_Main()
-            //self.splash_timer_count += 1
-            self.pay_insight.frame = CGRect(x: self.pay_insight.frame.origin.x, y: self.pay_insight.frame.origin.y, width: self.pay_insight.frame.width, height: self.pay_insight.frame.height)
-            //self.step_3.frame = CGRect(x: self.step_3.frame.origin.x, y: self.step_3.frame.origin.y-frame_height_temp, width: self.step_3.frame.width, height: frame_height_temp)
-            //self.step_3.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.0)
-        })*/
-
-        
-        
-        
-        
         
         enlarge.isHidden = true
         shrink.isHidden = false
@@ -459,7 +415,6 @@ class ShowMath: UIViewController {
         { sender.value = roundf(sender.value + 1) }
         else { sender.value = roundf(sender.value) }
         //sender.value = roundf(sender.value)
-        //print(sender.value)
         
         //progress = Int(sender.value)
         //progress = Double(sender.value)
@@ -659,13 +614,6 @@ class ShowMath: UIViewController {
         attributedPercentBalance.append(attributedPercentBalanceSpace)
         attributedPercentBalance.append(attributedPercentBalanceTitle)
         percent_balance.attributedText = attributedPercentBalance
-        //print(percentage)
-        //print(percentage*100 - floor(percentage*100))
-        //print(floor((percentage*10 - floor(percentage*10))*10))
-        //print(floor((percentage*100 - floor(percentage*100))*10))
-
-        
-
         //balance_shape_label.adjustsFontSizeToFitWidth = true
 
 
@@ -700,43 +648,6 @@ class ShowMath: UIViewController {
         charged_interest.backgroundColor = UIColor.clear
         payment.backgroundColor = UIColor.clear
 
-//        decision = shared_preferences.bool(forKey: "decision")
-
-//        if (decision == true) {
-//            compound.isHidden = true //redundant if compound_stack hidden
-//            titleof_compound.isHidden = true //redundant if compound_stack hidden
-//            percent_interest.isHidden = true
-//            slider.isHidden = true
-//            percent_balance.isHidden = true
-//            time_label.text = "Estimated Payoff Time"
-//            savings_label.text = "Estimated Savings"
-//            //line.isHidden = true
-//            line.image = UIImage(named: "")
-//            view.addConstraint(line.heightAnchor.constraint(equalToConstant: 30))
-//            aprstack_width.isActive = false
-//            //view.addConstraint(APR_stack.widthAnchor.constraint(equalToConstant: APR_compound_stack.frame.width))
-//            //APR_stack.alignment = .center
-//            //APR_stack.alignment = .center
-//            compound_stack.isHidden = true
-//            table_header.isHidden = true
-//            enlarge.isHidden = true
-//            view.addConstraint(NSLayoutConstraint(item: monthly_balance, attribute: .bottom, relatedBy: .equal, toItem: table, attribute: .top, multiplier: 1, constant: 0))
-//            note_constraint.isActive = false
-//            note_right.isHidden = true
-//            view.addConstraint(note.widthAnchor.constraint(equalToConstant: stack2.frame.width))
-//            plus_sign.isHidden = true
-//            minus_sign.isHidden = true
-//            equals_sign.isHidden = true
-//            bottom_layout_guide.isActive = false
-//            view.addConstraint(NSLayoutConstraint(item: bottomLayoutGuide, attribute: .top, relatedBy: .equal, toItem: stack2, attribute: .centerY, multiplier: 2.2, constant: 0))
-//            view.backgroundColor = UIColor.white
-////            blur.isHidden = false
-//            stack1_leading.isActive = false
-//            stack1_trailing.isActive = false
-//            view.addConstraint(NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: stack1, attribute: .trailing, multiplier: 1, constant: 50))
-//            view.addConstraint(NSLayoutConstraint(item: stack1, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 50))
-//        }
-//        else {
         //may be redundant
             compound.isHidden = false //redundant if compound_stack unhidden
             titleof_compound.isHidden = false //redundant if compound_stack unhidden
@@ -761,21 +672,12 @@ class ShowMath: UIViewController {
             equals_sign.isHidden = false
             //leave constraint as is
             //keep view color as is
-//            blur.isHidden = true
             //leave constraints as they are
-//        }
         
         blinked = 0
-//        if (decision == false) {
             numberFormatter.usesGroupingSeparator = true
             numberFormatter.groupingSeparator = ","
             numberFormatter.groupingSize = 3
-//        }
-//        else {
-//            numberFormatter.usesGroupingSeparator = false
-//            //numberFormatter.groupingSeparator = ","
-//            //numberFormatter.groupingSize = 3
-//        }
         enlarge.adjustsImageWhenHighlighted = false
         shrink.adjustsImageWhenHighlighted = false
         
@@ -834,12 +736,7 @@ class ShowMath: UIViewController {
         
         let attributedLoanedTitle = NSMutableAttributedString(string: "Loaned", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Bold", size: 18.0)! ])
         var attributedLoanedSummary = NSMutableAttributedString()
-//        if (decision == false) {
             attributedLoanedSummary = NSMutableAttributedString(string: " $" + numberFormatter.string(from: NSNumber(value: p))!, attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!])
-//        }
-//        else {
-//            attributedLoanedSummary = NSMutableAttributedString(string: " $" + numberFormatter.string(from: NSNumber(value: p))!+".00", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!])
-//        }
         attributedLoanedTitle.append(attributedLoanedSummary)
         loaned.attributedText = attributedLoanedTitle
         
@@ -865,39 +762,20 @@ class ShowMath: UIViewController {
         if (i == 0) {
             //attributedAPRSummary = NSMutableAttributedString(string: " 0%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
             
-//            if (decision == false) {
                 attributedAPRSummary = NSMutableAttributedString(string: " " + String(format: "%.0f", i * 12 * 100) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
                 attributedAPRPeriodic = NSMutableAttributedString(string: "\n" + "÷ 12 = 0." + String(temp) + "00...% monthly", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
                     attributedAPRDecimalEquivalent = NSMutableAttributedString(string: "\n" + "÷ 100 = 0.00" + String(temp) + "...", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
-//            }
-//            else {
-//                attributedAPRSummary = NSMutableAttributedString(string: " " + String(format: "%.2f", i * 12 * 100) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
-//                attributedAPRPeriodic = NSMutableAttributedString(string: "\n" + "÷ 12 = 0." + String(temp) + "00...% monthly", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedString.Key.foregroundColor: UIColor.black ])
-//                attributedAPRDecimalEquivalent = NSMutableAttributedString(string: "\n" + "÷ 100 = 0.00" + String(temp) + "... of balance", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedString.Key.foregroundColor: UIColor.black ])
-//            }
         }
         else {
             attributedAPRSummary = NSMutableAttributedString(string: " " + String(format: "%.2f", i * 12 * 100) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
             attributedAPRPeriodic = NSMutableAttributedString(string: "\n" + "÷ 12 = 0." + String(temp) + "...% monthly", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
-//            if (decision == false) {
                 attributedAPRDecimalEquivalent = NSMutableAttributedString(string: "\n" + "÷ 100 = 0.00" + String(temp) + "...", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
-//            }
-//            else {
-//                attributedAPRDecimalEquivalent = NSMutableAttributedString(string: "\n" + "÷ 100 = 0.00" + String(temp) + "... of balance", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
-//            }
         }
         attributedAPRTitle.append(attributedAPRSummary)
         attributedAPRTitle.append(attributedAPRPeriodic)
         attributedAPRTitle.append(attributedAPRDecimalEquivalent)
         nominal_rate.attributedText = attributedAPRTitle //"nominal_rate" should be renamed
         
-//        if (decision == true) {
-//            nominal_rate.textAlignment = .center
-//            //APR_stack.backgroundColor = UIColor.red
-//        }
-//        else {
-//            //keep as is
-//        }
         if (i == 0) {
             //self.slider.value = 4
             compound.isEnabled = false
@@ -943,10 +821,6 @@ class ShowMath: UIViewController {
         else {
             attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
         }*/
-            
-        //print(i)
-        //print(a)
-        
         attributedPayTitle.append(attributedPaySummary)
         pay_monthly.attributedText = attributedPayTitle
         /*heading.text = String("Balance") +
@@ -1144,12 +1018,6 @@ class ShowMath: UIViewController {
         var attributedPercentInterestTitle = NSMutableAttributedString()
         var attributedPercentBalanceTitle = NSMutableAttributedString()
         if (i == 0) {
-//            if (decision == false) {
-//                slider_header.alpha = 0.25
-//            }
-//            else {
-//                //ignore header
-//            }
             attributedPercentInterestTitle = NSMutableAttributedString(string: "Interest", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5)])
             attributedPercentBalanceTitle = NSMutableAttributedString(string: "Later", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5)])
         }
@@ -1291,12 +1159,6 @@ class ShowMath: UIViewController {
 
 
         Variables()
-//        if (decision == false) {
-//            //proceed
-//        }
-//        else {
-//            payment.isEnabled = false
-//        }
 
         //remaining_label.frame = CGRect(x: 0, y: 0, width: remaining.frame.width, height: remaining.frame.height)
         //remaining_label.frame = CGRect(x: remaining.frame.origin.x, y: 0, width: remaining.frame.width, height: remaining.frame.height)
@@ -1358,8 +1220,6 @@ class ShowMath: UIViewController {
             { interest = round(remainingbalance*i*100 + 1)/100}
             else { interest = round(remainingbalance*i*100)/100 }
 
-            //print(interest)
-
           //var interest_pay = round(round(percentage)/100*remainingbalance*i*100)/100
             var interest_pay = Double()
             //var x = percentage/100*interest
@@ -1367,7 +1227,6 @@ class ShowMath: UIViewController {
             if (x*100 - floor(x*100) > 0.499999) && (x*100 - floor(x*100) < 0.5)
             { interest_pay = round(x*100 + 1)/100}
             else { interest_pay = round(x*100)/100 }
-            //print(interest_pay)
         
             var tempx = Double()
             if (p*i*100 - floor(p*i*100) > 0.499999) && (p*i*100 - floor(p*i*100) < 0.5)
@@ -1380,7 +1239,6 @@ class ShowMath: UIViewController {
                 else { principal_pay = a - interest_pay } //won't need 0.01, if interest not compounded
             }
             else { principal_pay = a - interest_pay }
-            //print(principal_pay)
 
             /*var interest_not_pay = Double()
             let x1 = remainingbalance*i*100
@@ -1391,14 +1249,11 @@ class ShowMath: UIViewController {
                 interest_not_pay = ceil(Double(Int(remainingbalance*i*100)))/100 - interest_pay
             }*/
             
-            //print(remainingbalance + c*interest)
-            //print(c*interest_pay + principal_pay)
             /*remainingbalance = remainingbalance + c*interest - (c*interest_pay + principal_pay)
             x = remainingbalance*i*100
             if (x - floor(x) > 0.99999) {
                 interest = Double(Int(remainingbalance*i*100)+1)/100 }
             else { interest = Double(Int(remainingbalance*i*100))/100 }
-            //print("x:",x,floor(x),x-floor(x))
             x2 = round(percentage)/100*remainingbalance*i*100
             if (x2 - floor(x2) > 0.99999) {
                 interest_pay = Double(Int(round(percentage)/100*remainingbalance*i*100)+1)/100 }
@@ -1409,13 +1264,11 @@ class ShowMath: UIViewController {
                 else { principal_pay = a - (1.0-c)*0.01 - interest_pay } //won't need 0.01, if interest not compounded
             }
             else { principal_pay = a - interest_pay }
-            //print("y:",x2,floor(x2),x2-floor(x2))
             remainingbalance = remainingbalance + c*interest - (c*interest_pay + principal_pay)
             x = remainingbalance*i*100
             if (x - floor(x) > 0.99999) {
                 interest = Double(Int(remainingbalance*i*100)+1)/100 }
             else { interest = Double(Int(remainingbalance*i*100))/100 }
-            //print("x:",x,floor(x),x-floor(x))
             x2 = round(percentage)/100*remainingbalance*i*100
             if (x2 - floor(x2) > 0.99999) {
                 interest_pay = Double(Int(round(percentage)/100*remainingbalance*i*100)+1)/100 }
@@ -1426,17 +1279,11 @@ class ShowMath: UIViewController {
                 else { principal_pay = a - (1.0-c)*0.01 - interest_pay } //won't need 0.01, if interest not compounded
             }
             else { principal_pay = a - interest_pay }
-            //print("y:",x2,floor(x2),x2-floor(x2))
-            print(a)
-            print("interest",interest,"interest_pay",interest_pay,"principal_pay",principal_pay,"remainingbalance",remainingbalance)
             */
-        //print(remainingbalance - principal_pay)
-        //print(a)
         while (remainingbalance - principal_pay > 0) {
             //while (remainingbalance + c*interest > c*interest_pay + principal_pay) {// >= because if c=0 and not paying interest yet, then final month will merge with interest owed
             //while (remainingbalance + c*interest >= c*interest_pay + principal_pay) {// >= because if c=0 and not paying interest yet, then final month will merge with interest owed
                 //remainingbalance = remainingbalance + c*interest - (c*interest_pay + principal_pay)
-                //print(remainingbalance)
                 remainingbalance = remainingbalance - principal_pay
 
                 if (remainingbalance*100 - floor(remainingbalance*100) > 0.499999) && (remainingbalance*100 - floor(remainingbalance*100) < 0.5)
@@ -1475,30 +1322,8 @@ class ShowMath: UIViewController {
                 
                 j += 1
                 
-                //print(remainingbalance,"+",interest,"-(",interest_pay,"+",principal_pay,")")
-//                print(outstandingbalance,"=",outstandingbalance,"+",interest,"-",interest_pay)
-                //print("remainingbalance:",remainingbalance)
-                //print("outstandingbalance:",outstandingbalance)
-                //print(remainingbalance,"+",interest,"- (",interest_pay,"+",principal_pay,") =",remainingbalance+interest-(interest_pay+principal_pay))
                 }
-            //}
-        //}
-        //print(j)
-        
-            
 
-            
-
-
-            
-            
-            
-            
-            
-            
-            
-            
-                //print(pay)
                 //let interest_temp = round(percentage)/100*ceil(Double(Int(p*i*100)))/100
                 //let payment_temp = (100-round(percentage))/100*(a-0.01)
                 //rounding interest consistently downward, so rounding payment upward
@@ -1512,9 +1337,6 @@ class ShowMath: UIViewController {
                     
                     //let y = round(percentage_calculations)/100*remainingbalance*i*100
                     let y = round(percentage)/100*remainingbalance*i*100
-                    /*print("y:",y)
-                    print("floor(y):",floor(y))
-                    print("y-floor(y):",y - floor(y))*/
                     if (y - floor(y) > 0.99999) {
                         interest_temp2 = Double(Int(round(percentage)/100*remainingbalance*i*100)+1)/100
                     }
@@ -1529,21 +1351,10 @@ class ShowMath: UIViewController {
                         pre_outstandingbalance = ceil(Double(Int(remainingbalance*i*100)))/100
                     }
                     //"pre" is interest charged, it's just that I had to increment it
-                    //print("z:",z)
-                    //print("floor(z):",floor(z))
-                    //print("z-floor(z):",z - floor(z))
 
 
                     if (pre_outstandingbalance - interest_temp2 > 0) {
                         outstandingbalance += pre_outstandingbalance - interest_temp2
-                        //print(Int(remainingbalance*i*100))
-                        //print("remaining balance:",remainingbalance)
-                        //print("z - floor(z):",z - floor(z))
-                        //print("interest charged:",ceil(Double(Int(remainingbalance*i*100)))/100)
-                        //print("interest paid:",interest_temp2)
-                        //print("interest pre_outstanding:",pre_outstandingbalance)
-                        //print("interest outstanding:",outstandingbalance)
-                        //print("still owe:",pre_outstandingbalance - interest_temp2)
                     }
                     if (a == ceil(Double(Int(p*i*100)+1))/100) {
                         pay = a - 0.01 - interest_temp2
@@ -1554,7 +1365,6 @@ class ShowMath: UIViewController {
 
                     remainingbalance = remainingbalance - pay
                     j += 1
-                    //print("interest outstanding:",outstandingbalance)
                 }*/
             //breaking it up like this may not matter for months 1-4 part, but did so anyway to be consistent
             //originally, a = interest + 0.01, now we assume interest doesn't compound, and extra penny is not necessary - BASED ON FIRST MONTH!!!!!! and am not considering larger cases, yet
@@ -1574,37 +1384,32 @@ class ShowMath: UIViewController {
         else { tempx_x = (round(p*i*100)+1)/100 }
         
         attributedPayTitle = NSMutableAttributedString(string: "Pay Monthly", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Bold", size: 18.0)! ])
-//        if (decision == false) {
-            if (a == tempx_x) {
-                if (progress == 100) {
-                    attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
-                }
-                else {
-                    attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
-                }
-            }
-            else if (i == 0) {
-                let check = a
-                if (check - floor(check) > 0) {
-                    attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
-                }
-                else {
-                    attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.0f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
-                }
+        if (a == tempx_x) {
+            if (progress == 100) {
+                attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
             }
             else {
-                let check = a
-                if (check - floor(check) > 0) {
-                    attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
-                }
-                else {
-                    attributedPaySummary = NSMutableAttributedString(string: " $" + numberFormatter.string(from: NSNumber(value: a))!, attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
-                }
+                attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
             }
-//        }
-//        else {
-//            attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
-//        }
+        }
+        else if (i == 0) {
+            let check = a
+            if (check - floor(check) > 0) {
+                attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+            }
+            else {
+                attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.0f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+            }
+        }
+        else {
+            let check = a
+            if (check - floor(check) > 0) {
+                attributedPaySummary = NSMutableAttributedString(string: " $" + String(format: "%.2f", a), attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+            }
+            else {
+                attributedPaySummary = NSMutableAttributedString(string: " $" + numberFormatter.string(from: NSNumber(value: a))!, attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+            }
+        }
         attributedPayTitle.append(attributedPaySummary)
         pay_monthly.attributedText = attributedPayTitle
         
@@ -1617,27 +1422,6 @@ class ShowMath: UIViewController {
         //view.addConstraint(equals.widthAnchor.constraint(equalToConstant: 6))
 
         //remaining frame or remaining label shifts after pressing switch or moving thumb, non issue if set constraints visually
-//        if (decision == true) {
-//            add.frame.size.width = 12
-//            add_width.constant = CGFloat(12)
-//            add.widthAnchor.constraint(equalToConstant: CGFloat(12))
-//            //subtract.frame.size.width = 6
-//            //subtract_width.constant = CGFloat(6)
-//            //subtract.widthAnchor.constraint(equalToConstant: CGFloat(6))
-//            equals.frame.size.width = 8
-//            equals_width.constant = CGFloat(8)
-//            equals.widthAnchor.constraint(equalToConstant: CGFloat(8))
-//
-//
-//            //subtract.frame.size.width = 7
-//            //equals.frame.size.width = 8
-//            //view.addConstraint(add.widthAnchor.constraint(equalToConstant: 11))
-//            //view.addConstraint(subtract.widthAnchor.constraint(equalToConstant: 7))
-//            //view.addConstraint(equals.widthAnchor.constraint(equalToConstant: 8))
-//        }
-//        else {
-//            //proceed
-//        }
         if (j > 4) {
             //NSLayoutConstraint.deactivate([table.heightAnchor.constraint(equalToConstant: CGFloat(22*(j+1)))])
             //NSLayoutConstraint.activate([table.heightAnchor.constraint(equalToConstant: 132)])
@@ -1678,21 +1462,14 @@ class ShowMath: UIViewController {
         balance_shape.bounds = balance.frame
         balance_shape.position = balance.center
         balance_shape.path = UIBezierPath(roundedRect: balance.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-//        if (decision == false) {
             balance_shape.strokeColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.125).cgColor
             balance_shape.fillColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.25+0.125).cgColor
-//        }
-//        else {
-//            balance_shape.strokeColor = UIColor.clear.cgColor
-//            balance_shape.fillColor = UIColor.clear.cgColor
-//        }
         balance_shape.lineWidth = 0
 
         //Shape of interest body---------------------
         charged_interest_shape.bounds = charged_interest.frame
         charged_interest_shape.position = charged_interest.center
         charged_interest_shape.path = UIBezierPath(roundedRect: charged_interest.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-//        if (decision == false) {
             if (i == 0) {
                 charged_interest_shape.fillColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.0625).cgColor
                 charged_interest_shape.strokeColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.020).cgColor
@@ -1701,11 +1478,6 @@ class ShowMath: UIViewController {
                 charged_interest_shape.fillColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.25+0.125).cgColor
                 charged_interest_shape.strokeColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.125).cgColor
             }
-//        }
-//        else {
-//                charged_interest_shape.fillColor = UIColor.clear.cgColor
-//                charged_interest_shape.strokeColor = UIColor.clear.cgColor
-//        }
         charged_interest_shape.lineWidth = 0
 
         //Shape of payment body---------------------
@@ -1713,14 +1485,8 @@ class ShowMath: UIViewController {
         payment_shape.position = payment.center
         //define in viewdidload BUT after Variables(): (or else will change path if switch or slider move)
         //payment_shape.path = UIBezierPath(roundedRect: payment.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-//        if (decision == false) {
             payment_shape.strokeColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.125).cgColor
             payment_shape.fillColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.25+0.125).cgColor
-//        }
-//        else {
-//            payment_shape.strokeColor = UIColor.clear.cgColor
-//            payment_shape.fillColor = UIColor.clear.cgColor
-//        }
         payment_shape.lineWidth = 0
         
         if (insight == 1) {
@@ -1906,60 +1672,21 @@ class ShowMath: UIViewController {
 
             
             
-            //print("interest_temp:",interest_temp,"\nround_interest:",round_interest,"\npay:",pay)
             //let round_payment = ceil(payment_temp*100)/100
             //breaking it up like this may not matter for months 1-4 part, but did so anyway to be consistent
             //originally, a = interest + 0.01, now we assume interest doesn't compound, and extra penny is not necessary - BASED ON FIRST MONTH!!!!!! and am not considering larger cases, yet
 
-            //print("-------")
-            //print(round(percentage))
-            //print(Int(round(percentage)))
-            //print(Double(Int(round(percentage))))
-            //print(Double(Int(round(percentage)))/100*p*i)
-            //print(Double(Int(round(percentage)))/100*p*i*100)
             //let something = Double(Int(round(percentage)))/100*p*i*1000
             //let that = something.rounded(.down)
-            //print(Int(Double(Int(round(percentage)))/100*p*i*1000))
-            //print(that)
-            //print(p)
-            //print(i)
-            //print(p*i)
-            //print(round(percentage)/100*p*i)
-            //print(round(percentage)/100*p*i*100)//deceiving when decimal is ...999999999
             //let x = round(percentage)/100*p*i*100
             //if (x - floor(x) > 0.99999) {
-            //    print(Double(Int(round(percentage)/100*p*i*100)+1)/100)
             //}
             //else {
-            //    print(Double(Int(round(percentage)/100*p*i*100))/100)
             //}
-            //print(x-floor(x))
-            //print(round(round(percentage)/100*p*i*100))
-            //print(Int(round(round(percentage)/100*p*i*100)))
 
             //let something = floor(round(percentage)/100*p*i*100)
             //let that = round(percentage)/100*p*i*100 - something
-            //print(round(percentage)/100*p*i*100 - that)
-            //print(floor(round(percentage)/100*p*i*1000000000000))
-            //print(Int(Double(Int(round(percentage)))/100*p*i*100))
-            //print(Double(Int(Double(Int(round(percentage)))/100*p*i*100)))
-            //print(ceil(Double(Int(Double(Int(round(percentage)))/100*p*i*100)))/100)
-
-
-            //print((round(percentage)/100*p*i*100)/100)
-            //print(floor(round(percentage)/100*p*i*100)/100)
-            //print(ceil(floor(round(percentage)/100*p*i*100)/100))
-            //print(interest_temp,"\n",pay,"\n",temp1)
-            //print(p," ",temp1," ",temp2," ",temp3)
-            //print(round_interest," ",round_payment)
         //}
-        /*if (decision == true) {
-            note_view.isHidden = false
-            note.text = "Rounded interest ↓\n"
-        }
-        else {
-            //proceed
-        }*/
         if (i == 0) { //<--- old code
             note_view.isHidden = true
             //payment.isEnabled = false
@@ -2017,14 +1744,8 @@ class ShowMath: UIViewController {
                 String(format: "%.2f", temp2) + "\n" +
                 String(format: "%.2f", temp3) + "\n", attributes: [ :])
             var etc = NSMutableAttributedString()
-//            if (decision == false) {
                 etc = NSMutableAttributedString(string:
                     "︙\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-//            }
-//            else {
-//                etc = NSMutableAttributedString(string:
-//                    "\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-//            }
             let remains = NSMutableAttributedString(string:
                 String(format: "%.2f", remainingbalance), attributes: [ :])
             balance_shape_label_jg4.append(etc)
@@ -2061,13 +1782,7 @@ class ShowMath: UIViewController {
             balance_shape_label.text = String(format: "%.2f", remainingbalance)
             //balance_shape_label.textAlignment = .right
         }
-//        if (decision == false) {
             balance_shape_label.textAlignment = .center
-//        }
-//        else {
-//            balance_shape_label.textAlignment = .center
-//            //balance_shape_label.textAlignment = .right
-//        }
         balance_shape_label.numberOfLines = 0
         //balance_shape_label.textColor = UIColor.white
         balance_shape_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
@@ -2076,54 +1791,6 @@ class ShowMath: UIViewController {
         
         //balance.textAlignment = .right
         //balance.text = "hello\nagain"
-        
-        //ADD--------------------------------------------
-//        if (decision == true) {
-//            if (j > 4) {
-//                add_label.text = "+" + "\n" +
-//                    "+" + "\n" +
-//                    "+" + "\n" +
-//                    "+" + "\n" +
-//                    "\n" +
-//                "+"
-//            }
-//            else if (j == 4) {
-//                add_label.text = "+" + "\n" +
-//                    "+" + "\n" +
-//                    "+" + "\n" +
-//                    "+" + "\n" +
-//                "+"
-//            }
-//            else if (j == 3) {
-//                add_label.text = "+" + "\n" +
-//                    "+" + "\n" +
-//                    "+" + "\n" +
-//                "+"
-//            }
-//            else if (j == 2) {
-//                add_label.text = "+" + "\n" +
-//                    "+" + "\n" +
-//                "+"
-//            }
-//            else if (j == 1) {
-//                add_label.text = "+" + "\n" +
-//                "+"
-//            }
-//            else {
-//                add_label.text = "+"
-//            }
-//            add_label.textAlignment = .center
-//            add_label.numberOfLines = 0
-//            add_label.textColor = UIColor.gray
-//            add_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
-//            add_label.adjustsFontSizeToFitWidth = true
-//            //add_label.backgroundColor = UIColor.red
-//
-//        }
-//        else {
-//            //don't display plus signs
-//        }
-        
         
         //Text of interest body----------------------
         
@@ -2136,7 +1803,6 @@ class ShowMath: UIViewController {
         }
         
         var charged_interest_max_string_count = Int()
-//        if (decision == false) {
             if (j > 4) {
                 let paragraph_charged_interest = NSMutableParagraphStyle()
                 paragraph_charged_interest.alignment = .right
@@ -2147,14 +1813,8 @@ class ShowMath: UIViewController {
                     String(format: "%.2f", temp2) + " · 0.00" + String(temp) + "...\n" +
                     String(format: "%.2f", temp3) + " · 0.00" + String(temp) + "...\n", attributes: [NSAttributedString.Key.paragraphStyle: paragraph_charged_interest])
                 var etc = NSMutableAttributedString()
-//                if (decision == false) {
                     etc = NSMutableAttributedString(string:
                         "︙\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.paragraphStyle: paragraph_charged_interest_ellipse ])
-//                }
-//                else {
-//                    etc = NSMutableAttributedString(string:
-//                        "           ︙\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.paragraphStyle: paragraph_charged_interest_ellipse ])
-//                }
                 let remains = NSMutableAttributedString(string:
                     String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...", attributes: [NSAttributedString.Key.paragraphStyle: paragraph_charged_interest])
                 
@@ -2171,7 +1831,6 @@ class ShowMath: UIViewController {
                 charged_interest_shape_label.attributedText = charged_interest_shape_label_jg4
                 
                 charged_interest_max_string_count = (String(format: "%.2f", p) + " · 0.00" + String(temp) + "...").count //used for right inset
-                //print((String(format: "%.2f", p) + " · 0.00" + String(temp) + "...").count)
             }
                 
             else if (j == 4) {
@@ -2239,170 +1898,10 @@ class ShowMath: UIViewController {
                 }
                 charged_interest_max_string_count = (String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...").count //used for right inset
             }
-//        }
-//        else {
-//            if (j > 4) {
-//                let paragraph_charged_interest = NSMutableParagraphStyle()
-//                paragraph_charged_interest.alignment = .right
-//                let paragraph_charged_interest_ellipse = NSMutableParagraphStyle()
-//                paragraph_charged_interest_ellipse.alignment = .center
-//                let charged_interest_shape_label_jg4 = NSMutableAttributedString(string: "(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)\n(" +
-//                    String(format: "%.2f", temp1) + " · 0.00" + String(temp) + "...)\n(" +
-//                    String(format: "%.2f", temp2) + " · 0.00" + String(temp) + "...)\n(" +
-//                    String(format: "%.2f", temp3) + " · 0.00" + String(temp) + "...)\n", attributes: [NSAttributedString.Key.paragraphStyle: paragraph_charged_interest])
-//                var etc = NSMutableAttributedString()
-////                if (decision == false) {
-//                    etc = NSMutableAttributedString(string:
-//                        "︙\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.paragraphStyle: paragraph_charged_interest_ellipse ])
-////                }
-////                else {
-////                    etc = NSMutableAttributedString(string:
-////                        "           ︙\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.paragraphStyle: paragraph_charged_interest_ellipse ])
-////                }
-//                let remains = NSMutableAttributedString(string: "(" +
-//                    String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)", attributes: [NSAttributedString.Key.paragraphStyle: paragraph_charged_interest])
-//
-//                if (i == 0) {
-//                    charged_interest_shape_label_jg4.setAttributes([NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.paragraphStyle: paragraph_charged_interest], range: NSRange(location:0,length: charged_interest_shape_label_jg4.length))
-//                    etc.setAttributes([NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.paragraphStyle: paragraph_charged_interest_ellipse], range: NSRange(location:0,length: etc.length))
-//                    remains.setAttributes([NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.paragraphStyle: paragraph_charged_interest], range: NSRange(location:0,length: remains.length))
-//
-//                }
-//                else {
-//                    //do nothing
-//                }
-//                charged_interest_shape_label_jg4.append(etc)
-//                charged_interest_shape_label_jg4.append(remains)
-//                charged_interest_shape_label.attributedText = charged_interest_shape_label_jg4
-//
-//                charged_interest_max_string_count = ("(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)").count //used for right inset
-//                //print((String(format: "%.2f", p) + " · 0.00" + String(temp) + "...").count)
-//            }
-//
-//            else if (j == 4) {
-//                charged_interest_shape_label.text = "(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)\n(" +
-//                    String(format: "%.2f", temp1) + " · 0.00" + String(temp) + "...)\n(" +
-//                    String(format: "%.2f", temp2) + " · 0.00" + String(temp) + "...)\n(" +
-//                    String(format: "%.2f", temp3) + " · 0.00" + String(temp) + "...)\n(" +
-//                    String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)"
-//                charged_interest_shape_label.textAlignment = .right
-//                if (i == 0) {
-//                    charged_interest_shape_label.textColor = UIColor.black
-//                }
-//                else {
-//                    //do nothing
-//                }
-//                charged_interest_max_string_count = ("(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)").count //used for right inset
-//            }
-//            else if (j == 3) {
-//                charged_interest_shape_label.text = "(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)\n(" +
-//                    String(format: "%.2f", temp1) + " · 0.00" + String(temp) + "...)\n(" +
-//                    String(format: "%.2f", temp2) + " · 0.00" + String(temp) + "...)\n(" +
-//                    String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)"
-//                charged_interest_shape_label.textAlignment = .right
-//                if (i == 0) {
-//                    charged_interest_shape_label.textColor = UIColor.black
-//                }
-//                else {
-//                    //do nothing
-//                }
-//                charged_interest_max_string_count = ("(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)").count //used for right inset
-//            }
-//            else if (j == 2) {
-//                charged_interest_shape_label.text = "(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)\n(" +
-//                    String(format: "%.2f", temp1) + " · 0.00" + String(temp) + "...)\n(" +
-//                    String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)"
-//                charged_interest_shape_label.textAlignment = .right
-//                if (i == 0) {
-//                    charged_interest_shape_label.textColor = UIColor.black
-//                }
-//                else {
-//                    //do nothing
-//                }
-//                charged_interest_max_string_count = ("(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)").count //used for right inset
-//            }
-//            else if (j == 1) {
-//                charged_interest_shape_label.text = "(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)\n(" +
-//                    String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)"
-//                charged_interest_shape_label.textAlignment = .right
-//                if (i == 0) {
-//                    charged_interest_shape_label.textColor = UIColor.black
-//                }
-//                else {
-//                    //do nothing
-//                }
-//                charged_interest_max_string_count = ("(" + String(format: "%.2f", p) + " · 0.00" + String(temp) + "...)").count //used for right inset
-//            }
-//            else {
-//                charged_interest_shape_label.text = "(" + String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)"
-//                charged_interest_shape_label.textAlignment = .right
-//                if (i == 0) {
-//                    charged_interest_shape_label.textColor = UIColor.black
-//                }
-//                else {
-//                    //do nothing
-//                }
-//                charged_interest_max_string_count = ("(" + String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...)").count //used for right inset
-//            }
-//        }
-//        if (decision == false) {
-//            //keep
-//        }
-//        else {
-//            //charged_interest_shape_label.textAlignment = .center
-//        }
         charged_interest_shape_label.numberOfLines = 0
         //charged_interest_shape_label = UIColor.white
         charged_interest_shape_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
         charged_interest_shape_label.adjustsFontSizeToFitWidth = true
-        
-        
-        //SUBTRACT--------------------------------------------
-//        if (decision == true) {
-//            if (j > 4) {
-//                subtract_label.text = "-" + "\n" +
-//                    "-" + "\n" +
-//                    "-" + "\n" +
-//                    "-" + "\n" +
-//                    "\n" +
-//                "-"
-//            }
-//            else if (j == 4) {
-//                subtract_label.text = "-" + "\n" +
-//                    "-" + "\n" +
-//                    "-" + "\n" +
-//                    "-" + "\n" +
-//                "-"
-//            }
-//            else if (j == 3) {
-//                subtract_label.text = "-" + "\n" +
-//                    "-" + "\n" +
-//                    "-" + "\n" +
-//                "-"
-//            }
-//            else if (j == 2) {
-//                subtract_label.text = "-" + "\n" +
-//                    "-" + "\n" +
-//                "-"
-//            }
-//            else if (j == 1) {
-//                subtract_label.text = "-" + "\n" +
-//                "-"
-//            }
-//            else {
-//                subtract_label.text = "-"
-//            }
-//            subtract_label.textAlignment = .center
-//            subtract_label.numberOfLines = 0
-//            subtract_label.textColor = UIColor.lightGray
-//            subtract_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
-//            subtract_label.adjustsFontSizeToFitWidth = true
-//            //subtract_label.backgroundColor = UIColor.red
-//
-//        }
-//        else {
-//            //don't display minus signs
-//        }
         
         //Text of payment body--------------------------------------------
         
@@ -2410,10 +1909,6 @@ class ShowMath: UIViewController {
         if (remainingbalance*i*100 - floor(remainingbalance*i*100) > 0.499999) && (remainingbalance*i*100 - floor(remainingbalance*i*100) < 0.5)
         { remaining_interest = round(remainingbalance*i*100 + 1)/100}
         else { remaining_interest = round(remainingbalance*i*100)/100 }
-        
-        //print(remaining_interest)
-        
-        
         
         if (j > 4) {
             var payment_shape_label_jg4 = NSMutableAttributedString()
@@ -2431,14 +1926,8 @@ class ShowMath: UIViewController {
                         String(format: "%.2f", a) + "\n" +
                         String(format: "%.2f", a) + "\n" +
                         String(format: "%.2f", a) + "\n", attributes: [ :])
-//                    if (decision == false) {
                         etc = NSMutableAttributedString(string:
                             "︙\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
-//                    }
-//                    else {
-//                        etc = NSMutableAttributedString(string:
-//                            "\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
-//                    }
                     remains = NSMutableAttributedString(string:
                         String(format: "%.2f", remainingbalance + remaining_interest + outstandingbalance), attributes: [ :])
                 }
@@ -2447,14 +1936,8 @@ class ShowMath: UIViewController {
                         String(format: "%.2f", a) + "\n" +
                         String(format: "%.2f", a) + "\n" +
                         String(format: "%.2f", a) + "\n", attributes: [ :])
-//                    if (decision == false) {
                         etc = NSMutableAttributedString(string:
                             "︙\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
-//                    }
-//                    else {
-//                        etc = NSMutableAttributedString(string:
-//                            "\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
-//                    }
                     remains = NSMutableAttributedString(string:
                         String(format: "%.2f", remainingbalance + remaining_interest + outstandingbalance), attributes: [ :])
                 }
@@ -2464,14 +1947,8 @@ class ShowMath: UIViewController {
                     String(format: "%.2f", a) + "\n" +
                     String(format: "%.2f", a) + "\n" +
                     String(format: "%.2f", a) + "\n", attributes: [ :])
-//                if (decision == false) {
                     etc = NSMutableAttributedString(string:
                         "︙\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
-//                }
-//                else {
-//                    etc = NSMutableAttributedString(string:
-//                        "\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
-//                }
                 remains = NSMutableAttributedString(string:
                     String(format: "%.2f", remainingbalance + remaining_interest + outstandingbalance), attributes: [ :])
             }
@@ -2480,10 +1957,6 @@ class ShowMath: UIViewController {
             payment_shape_label.attributedText = payment_shape_label_jg4
             //CALCULATIONS//
             
-            //print(remainingbalance)
-            //print(ceil(Double(Int(remainingbalance*i*100)))/100)
-            //print(outstandingbalance)
-            //print(remainingbalance + ceil(Double(Int(remainingbalance*i*100)))/100 + outstandingbalance)
         }
         else if (j == 4) {
             if (a == tempx) {
@@ -2581,53 +2054,6 @@ class ShowMath: UIViewController {
         payment_shape_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
         payment_shape_label.adjustsFontSizeToFitWidth = true
         
-        //EQUALS--------------------------------------------
-//        if (decision == true) {
-//            if (j > 4) {
-//                equals_label.text = "≈" + "\n" +
-//                    "≈" + "\n" +
-//                    "≈" + "\n" +
-//                    "≈" + "\n" +
-//                    "\n" +
-//                "≈"
-//            }
-//            else if (j == 4) {
-//                equals_label.text = "≈" + "\n" +
-//                    "≈" + "\n" +
-//                    "≈" + "\n" +
-//                    "≈" + "\n" +
-//                "≈"
-//            }
-//            else if (j == 3) {
-//                equals_label.text = "≈" + "\n" +
-//                    "≈" + "\n" +
-//                    "≈" + "\n" +
-//                "≈"
-//            }
-//            else if (j == 2) {
-//                equals_label.text = "≈" + "\n" +
-//                    "≈" + "\n" +
-//                "≈"
-//            }
-//            else if (j == 1) {
-//                equals_label.text = "≈" + "\n" +
-//                "≈"
-//            }
-//            else {
-//                equals_label.text = "≈"
-//            }
-//            equals_label.textAlignment = .center
-//            equals_label.numberOfLines = 0
-//            equals_label.textColor = UIColor.gray
-//            equals_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
-//            equals_label.adjustsFontSizeToFitWidth = true
-//            //equals_label.backgroundColor = UIColor.red
-//
-//        }
-//        else {
-//            //don't display equal signs
-//        }
-        
         //REMAINING------------------------------------------------------------
         /*let remaining_shape = CAShapeLayer()
          remaining_shape.frame = remaining.bounds
@@ -2644,14 +2070,8 @@ class ShowMath: UIViewController {
                 String(format: "%.2f", temp3) + "\n" +
                 String(format: "%.2f", temp4) + "\n", attributes: [ :])
             var etc = NSMutableAttributedString()
-//            if (decision == false) {
                 etc = NSMutableAttributedString(string:
                     "︙\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
-//            }
-//            else {
-//                etc = NSMutableAttributedString(string:
-//                    "\n", attributes: [ NSAttributedString.Key.foregroundColor: UIColor.lightGray ])
-//            }
             let remains = NSMutableAttributedString(string:
                 "0.00", attributes: [ :])
             if (insight == 1) {
@@ -2735,13 +2155,7 @@ class ShowMath: UIViewController {
             }
             //remaining_label.frame = CGRect(x: remaining.frame.origin.x+10, y: 0, width: remaining.frame.width, height: remaining.frame.height)
         }
-//        if (decision == false) {
             remaining_label.textAlignment = .center
-//        }
-//        else {
-//            remaining_label.textAlignment = .center
-//            //remaining_label.textAlignment = .left
-//        }
         remaining_label.numberOfLines = 0
         //remaining_label.sizeToFit()
         //remaining_label.layoutMargins = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 0)
@@ -2945,18 +2359,11 @@ class ShowMath: UIViewController {
             outstanding.text = "Unpaid interest becomes outstanding and must be paid later."
         }*/
         else {
-//            if (decision == false) {
                 //note_overlap.text = ""
                 note.text = ""
-//            }
-//            else {
-//                note_overlap.text = ""
-//                //note_overlap.text = "Rounded interest ↓\nRounded balance ↑"
-//            }
         }
         //outstanding.backgroundColor = UIColor.blue
         let pay_insight_max_string_count = max(pay_insight_max_string_count_1,pay_insight_max_string_count_2)
-        //print(pay_insight_max_string_count)
         /*outstanding.contentInset = UIEdgeInsetsMake(0,0,0,0)
         outstanding.textContainer.lineFragmentPadding = 0
         note.contentInset = UIEdgeInsetsMake(0,0,0,0)
@@ -2999,15 +2406,9 @@ class ShowMath: UIViewController {
         //let insets_remaining_label = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 0)
         let insets_remaining_label = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         remaining_label.frame = textRect_remaining_label.inset(by: insets_remaining_label)
-//        remaining_label.frame = CGRect(x: 0, y: 0, width: remaining.frame.width, height: remaining.frame.height)
-//        print(remaining.frame.width)
-//        print(remaining.frame.height)
         remaining_label.bounds = remaining.frame
         //remaining_label.backgroundColor = UIColor.green
         //remaining.backgroundColor = UIColor.red
-        //print("remaining_label:",remaining_label.frame.width)
-        //print("remaining:",remaining.frame.width)
-        //print("remaining.frame.origin.x",remaining.frame.origin.x)
         /*let pay_insight_shape_left = CAShapeLayer()
          pay_insight_shape_left.bounds = charged_interest.frame
          pay_insight_shape_left.position = charged_interest.center
@@ -3170,23 +2571,18 @@ class ShowMath: UIViewController {
             
             var pt1 = Double()
             //var pt1 = a - (remainingbalance + remaining_interest + outstandingbalance)
-            //print(a,"-(",remainingbalance,"+",remaining_interest,"+",outstandingbalance,")")
             /*if (pt1*100 - floor(pt1*100) > 0.499999) && (pt1*100 - floor(pt1*100) < 0.5) //just in case, and to be consistant
             { pt1 = round(pt1*100 + 1)/100 }
             else { pt1 = round(pt1*100)/100 }
-            //print(pt1)
             //pt1 = round((a - (remainingbalance + remaining_interest))*100)/100
 
             //let pt1 = a - (remainingbalance + ceil(Double(Int(remainingbalance*i*100)))/100)
             let pt2 = pt1 - floor(pt1)
-            //print(pt2)
             let pt3 = pt2*100
-            //print(pt3)
             var pt4 = Int()
             if (pt3 - floor(pt3) > 0.99999)
             { pt4 = Int(pt3 + 1) }
             else { pt4 = Int(pt3) }*/
-            //print(pt4)
             //let pt4 = Int(round(pt3)) //figure out how to round to nearest hundredth
             
             var refund_string = NSMutableAttributedString()
@@ -3197,26 +2593,18 @@ class ShowMath: UIViewController {
             else {
                     refund_string = NSMutableAttributedString(string: "Pay Extra $", attributes: [ :])
                     pt1 = abs(a - (remainingbalance + remaining_interest + outstandingbalance))
-//                if (decision == true) {
-//                    refund.isHidden = true
-//                }
-//                else {
                     refund.isHidden = false
-//                }
             }
             
             
             if (pt1*100 - floor(pt1*100) > 0.499999) && (pt1*100 - floor(pt1*100) < 0.5) //just in case, and to be consistant
             { pt1 = round(pt1*100 + 1)/100 }
             else { pt1 = round(pt1*100)/100 }
-            //print(pt1)
             //pt1 = round((a - (remainingbalance + remaining_interest))*100)/100
             
             //let pt1 = a - (remainingbalance + ceil(Double(Int(remainingbalance*i*100)))/100)
             let pt2 = pt1 - floor(pt1)
-            //print(pt2)
             let pt3 = pt2*100
-            //print(pt3)
             var pt4 = Int()
             if (pt3 - floor(pt3) > 0.99999)
             { pt4 = Int(pt3 + 1) }
@@ -3242,7 +2630,6 @@ class ShowMath: UIViewController {
             refund_string.append(refund_amount_decimal_part)
             refund.attributedText = refund_string
             //}
-            //print(floor(pt1))
             if (floor(pt1) >= 5) && (a - (remainingbalance + remaining_interest + outstandingbalance) > 0) { //arbitrary
                 coffee_cup.text = "☕︎"
             }
@@ -3298,12 +2685,11 @@ class ShowMath: UIViewController {
         //if (floor(Double((j + 1) / 12)) - floor(floor(Double((j + 1) / 12))) > 0.99999)
         //{ temp5 = Int(floor(Double((j + 1) / 12)) + 1) }
         //else { temp5 = Int(floor(Double((j + 1) / 12))) }
-        //print("showmath",j)
 
         
-        let t1 = (Double(j) + 1) / 12//; print(t1)
-        let t2 = t1 - floor(t1)//; print(t2)
-        let t3 = t2*1000//; print(t3)
+        let t1 = (Double(j) + 1) / 12
+        let t2 = t1 - floor(t1)
+        let t3 = t2*1000
         var t4 = Int()
         if (t3 - floor(t3) > 0.99999)
         { t4 = Int(t3 + 1) }
@@ -3311,17 +2697,12 @@ class ShowMath: UIViewController {
         
         let years_string = NSMutableAttributedString(string: numberFormatter.string(from: NSNumber(value: j + 1))!)
         var months_label = NSMutableAttributedString()
-//        if (decision == false) {
-            if (j+1 == 1) {
-                months_label = NSMutableAttributedString(string: " month", attributes: [ :])
-            }
-            else {
-                months_label = NSMutableAttributedString(string: " total months", attributes: [ :])
-            }
-//        }
-//        else {
-//            months_label = NSMutableAttributedString(string: " total month(s)", attributes: [ :])
-//        }
+        if (j+1 == 1) {
+            months_label = NSMutableAttributedString(string: " month", attributes: [ :])
+        }
+        else {
+            months_label = NSMutableAttributedString(string: " total months", attributes: [ :])
+        }
         
         let years_amount = NSMutableAttributedString(string: " ÷ 12 = " + numberFormatter.string(from: NSNumber(value: temp5))!, attributes: [ :])
         var years_amount_decimal_part = NSMutableAttributedString()
@@ -3349,41 +2730,23 @@ class ShowMath: UIViewController {
          " year"
          }*/
         var years_amount_label = NSMutableAttributedString()
-//        if (decision == false) {
             if (temp5 == 1) {
                 years_amount_label = NSMutableAttributedString(string: " year", attributes: [ :])
             }
             else {
                 years_amount_label = NSMutableAttributedString(string: " years", attributes: [ :])
             }
-//        }
-//        else {
-//            years_amount_label = NSMutableAttributedString(string: " year(s)", attributes: [ :])
-//        }
         years_string.append(months_label)
         years_string.append(years_amount)
-//        if (decision == false) {
             years_string.append(years_amount_decimal_part)
-//        }
-//        else {
-//            //don't append decimal part
-//        }
         years_string.append(years_amount_label)
         /*years.text = String(j + 1) +
          " total month(s) ÷ 12 = " + String(temp3) +
          " year(s)"*/
         
-//        if (decision == false) {
             months.text = numberFormatter.string(from: NSNumber(value: j + 1))! +
                 " – (12 · " + numberFormatter.string(from: NSNumber(value: temp5))! +
             ") = "
-//        }
-//        else {
-//            months.text = numberFormatter.string(from: NSNumber(value: j + 1))! +
-//                " – (" + numberFormatter.string(from: NSNumber(value: temp5))! +
-//            " · 12) = "
-//        }
-//        if (decision == false) {
             if ((j + 1) - temp5 * 12 == 1) {
                 months.text! += String((j + 1) - temp5 * 12) +
                 " month";
@@ -3392,13 +2755,7 @@ class ShowMath: UIViewController {
                 months.text! += String((j + 1) - temp5 * 12) +
                 " months";
             }
-//        }
-//        else {
-//            months.text! += String((j + 1) - temp5 * 12) +
-//            " month(s)";
-//        }
         //overrided by:
-//        if (decision == false) {
             if (temp5 == 0) {
                 years.text = "0 years"
                 if (j + 1 == 1) {
@@ -3418,11 +2775,6 @@ class ShowMath: UIViewController {
                     months.text = months.text!
                 }
             }
-//        }
-//        else {
-//            years.attributedText = years_string
-//            months.text = months.text!
-//        }
         years.adjustsFontSizeToFitWidth = true
         months.adjustsFontSizeToFitWidth = true
 
@@ -3481,9 +2833,7 @@ class ShowMath: UIViewController {
         else {
             ppt4 = Int(round(ppt3))
         }
-        print("ppt3",ppt3)
-        print("round(ppt3)",round(ppt3))
-        print("ppt4",ppt4) */
+        */
         let total_paid_string = NSMutableAttributedString()
         var total_paid_expression = NSMutableAttributedString()
         
@@ -3538,12 +2888,7 @@ class ShowMath: UIViewController {
                 "", attributes: [ :])
         }
         var total_paid_amount_decimal_part_label = NSMutableAttributedString()
-//        if (decision == false) {
             total_paid_amount_decimal_part_label = NSMutableAttributedString(string: " paid")
-//        }
-//        else {
-//            total_paid_amount_decimal_part_label = NSMutableAttributedString(string: " total paid")
-//        }
         
         if (j == 0) {
             //don't append total_paid_amount
@@ -3552,13 +2897,8 @@ class ShowMath: UIViewController {
             total_paid_string.append(total_paid_expression)
         }
         total_paid_string.append(NSMutableAttributedString(string: "$"))
-//        if (decision == false) {
             total_paid_string.append(total_paid_amount)
             total_paid_string.append(total_paid_amount_decimal_part)
-//        }
-//        else {
-//            total_paid_string.append(NSMutableAttributedString(string: String(format: "%.2f", ppt1), attributes: [:]))
-//        }
         total_paid_string.append(total_paid_amount_decimal_part_label)
         total_paid.attributedText = total_paid_string
         
@@ -3687,16 +3027,11 @@ class ShowMath: UIViewController {
             }
         }
         
-        //print(temp_pay)
-        //print(ceil(Double(Int(p*i*100)+1))/100)
-
-        
         //if (i != 0) {
             //for _ in 0...4 {
         while (remainingbalance_repay_minimum - temp_pay > 0) {
         //while (remainingbalance_repay_minimum + temp_interest_min > temp_pay) {
             //while (remainingbalance_repay_minimum + c*temp_interest_min > temp_pay) {
-                //print(remainingbalance_repay_minimum,"=",remainingbalance_repay_minimum,"+",temp_interest_min,"- ",temp_pay)
 
                 //remainingbalance_repay_minimum = remainingbalance_repay_minimum + c*temp_interest_min - temp_pay
                 remainingbalance_repay_minimum = remainingbalance_repay_minimum - temp_pay
@@ -3707,8 +3042,7 @@ class ShowMath: UIViewController {
                 
                 //outstandingbalance_min = outstandingbalance_min + (1.0-c)*temp_interest_min - (1.0-c)*interest_pay_min
                 outstandingbalance_min = outstandingbalance_min + temp_interest_min - interest_pay_min
-                //print(outstandingbalance_min,"=",outstandingbalance_min,"+",(1.0-c)*temp_interest_min,"-",(1.0-c)*interest_pay_min)
-                
+            
                 if (remainingbalance_repay_minimum*i*100 - floor(remainingbalance_repay_minimum*i*100) > 0.499999) && (remainingbalance_repay_minimum*i*100 - floor(remainingbalance_repay_minimum*i*100) < 0.5)
                 { temp_interest_min = round(remainingbalance_repay_minimum*i*100 + 1)/100}
                 else { temp_interest_min = round(remainingbalance_repay_minimum*i*100)/100 }
@@ -3771,10 +3105,6 @@ class ShowMath: UIViewController {
 
                 k += 1
             }
-            //print("showmath",k)
-
-            //print(k)
-            //print(remainingbalance_repay_minimum)
         //}
         /*else {
             if (p / 0.01 - 1 - floor(p / 0.01 - 1) > 0.99999)
@@ -3798,13 +3128,12 @@ class ShowMath: UIViewController {
         else { pppt1 = round(pppt1*100)/100 }
 
         //pppt1 = round(pppt1*100)/100 //just in case, and to be consistant
-        let pppt2 = pppt1 - floor(pppt1);// print(pppt2)
-        let pppt3 = pppt2*100; //print(pppt3)
+        let pppt2 = pppt1 - floor(pppt1)
+        let pppt3 = pppt2*100
         var pppt4 = Int()
         if (pppt3 - floor(pppt3) > 0.99999)
         { pppt4 = Int(pppt3 + 1) }
         else { pppt4 = Int(pppt3) }
-        //print(progress)
         //let pppt4 = Int(round(pppt3))
         
         let total_paid_string_if_min = NSMutableAttributedString()
@@ -3821,12 +3150,7 @@ class ShowMath: UIViewController {
                 " = ", attributes: [ :])
         }
         var total_paid_amount_if_min = NSMutableAttributedString()
-//        if (decision == false) {
             total_paid_amount_if_min = NSMutableAttributedString(string: "$" + numberFormatter.string(from: NSNumber(value: floor(pppt1)))!)
-//        }
-//        else {
-//            total_paid_amount_if_min = NSMutableAttributedString(string: numberFormatter.string(from: NSNumber(value: floor(pppt1)))!)
-//        }
         var total_paid_amount_decimal_part_if_min =                 NSMutableAttributedString()
         if (pppt3 < 100) && (pppt3 >= 10) {
             total_paid_amount_decimal_part_if_min = NSMutableAttributedString(string:
@@ -3843,19 +3167,12 @@ class ShowMath: UIViewController {
         let total_paid_amount_if_min_label = NSMutableAttributedString(string: " max")
         
         total_paid_string_if_min.append(total_paid_string_if_min)
-        //print("total",total,"min",total_repay_minimum,total_repay_minimum-total)
         total_paid_string_if_min.append(total_paid_expression_if_min)
         total_paid_string_if_min.append(total_paid_amount_if_min)
         total_paid_string_if_min.append(total_paid_amount_decimal_part_if_min)
         total_paid_string_if_min.append(total_paid_amount_if_min_label)
-//        if (decision == false) {
             total_paid_min.attributedText = total_paid_string_if_min
             total_paid_min.isHidden = false
-//        }
-//        else {
-//            //total_paid_min.text = ""
-//            total_paid_min.isHidden = true
-//        }
         
         var ppppt1 = total_repay_minimum-total
         if (ppppt1*100 - floor(ppppt1*100) > 0.499999) && (ppppt1*100 - floor(ppppt1*100) < 0.5) //just in case, and to be consistant, probably not necessary
@@ -3875,30 +3192,19 @@ class ShowMath: UIViewController {
         let saved = ppppt1
         let savings_string = NSMutableAttributedString()
         var savings_string_subtract = NSMutableAttributedString()
-//        if (decision == false) {
             savings_string_subtract = NSMutableAttributedString(string: " – ", attributes: [ :])
-//        }
-//        else {
-//            savings_string_subtract = NSMutableAttributedString(string: " (if pay min) – ", attributes: [ :])
-//        }
         let savings_string_equals = NSMutableAttributedString(string: " = $", attributes: [ :])
         var savings_string_equals_amount = NSMutableAttributedString()
         var savings_string_equals_amount_decimal_part = NSMutableAttributedString()
         if (saved <= 0) {
             savings_string_equals_amount = NSMutableAttributedString(string: "0")
-//            if (decision == false) {
                 savings_string_equals_amount_decimal_part = NSMutableAttributedString(string: "")
-//            }
-//            else {
-//                savings_string_equals_amount_decimal_part = NSMutableAttributedString(string: ".00")
-//            }
             /*savings.text = String(format: "%.2f", total_repay_minimum) +
              " – " + String(format: "%.2f", total) +
              " = $" + String(format: "%.2f", Double(0)) +
              " save"*/
         }
         else {
-            //if (decision == false) {
                 savings_string_equals_amount = NSMutableAttributedString(string: numberFormatter.string(from: NSNumber(value: floor(ppppt1)))!)
                 if (ppppt3 < 100) && (ppppt3 >= 10) {
                     savings_string_equals_amount_decimal_part = NSMutableAttributedString(string:
@@ -3912,10 +3218,6 @@ class ShowMath: UIViewController {
                     savings_string_equals_amount_decimal_part = NSMutableAttributedString(string:
                         "", attributes: [ :])
                 }
-            /*}
-            else {
-             
-            }*/
             
             //savings_string_equals_amount = NSMutableAttributedString(string: String(saved), attributes: [ :])
             
@@ -3924,44 +3226,18 @@ class ShowMath: UIViewController {
              " = $" + String(format: "%.2f", saved) +
              " save"*/
         }
-//        if (decision == false) {
-            savings_string.append(total_paid_amount_if_min)
-            savings_string.append(total_paid_amount_decimal_part_if_min)
-//        }
-//        else {
-//            savings_string.append(NSMutableAttributedString(string: String(format: "%.2f", pppt1), attributes: [:]))
-//        }
+        savings_string.append(total_paid_amount_if_min)
+        savings_string.append(total_paid_amount_decimal_part_if_min)
         savings_string.append(savings_string_subtract)
-//        if (decision == false) {
-            savings_string.append(NSMutableAttributedString(string: "$"))
-//        }
-//        else {
-//            //proceed
-//        }
-//        if (decision == false) {
-            savings_string.append(total_paid_amount)
-            savings_string.append(total_paid_amount_decimal_part)
-//        }
-//        else {
-//            savings_string.append(NSMutableAttributedString(string: String(format: "%.2f", ppt1), attributes: [:]))
-//        }
+        savings_string.append(NSMutableAttributedString(string: "$"))
+        savings_string.append(total_paid_amount)
+        savings_string.append(total_paid_amount_decimal_part)
         savings_string.append(savings_string_equals)
         savings_string.append(savings_string_equals_amount)
         savings_string.append(savings_string_equals_amount_decimal_part)
-
-//        if (decision == false) {
-//            //proceed
-//        }
-//        else {
-//            savings_string.append(NSMutableAttributedString(string: " save", attributes: [ :]))
-//        }
-        
         
         savings.attributedText = savings_string
         savings.adjustsFontSizeToFitWidth = true
-
-        
-//        print(j)
 
     }
 

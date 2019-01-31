@@ -58,14 +58,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     //          Therefore, a = Int(38.999... + 1)
     //          = Int(39.999...) = 39
 
-//    let decision = false // false = No, true = Yes, default is false
-
-//    @IBOutlet weak var splash_screen: UIView! //for old splash screen
-//    @IBOutlet weak var step_1: UIImageView! //for old splash screen
-//    @IBOutlet weak var step_2: UIImageView! //for old splash screen
-//    @IBOutlet weak var step_3: UIImageView! //for old splash screen
-//    @IBOutlet weak var step_4: UIImageView! //for old splash screen
-//    @IBOutlet weak var disregard: UIButton! //for old splash screen
     @IBOutlet weak var loaned_title: UILabel!
     
     @IBOutlet weak var loaned: UISlider!
@@ -76,7 +68,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var stack_max: UIStackView!
     //horizontally center each stack to slider, then double-click their constraints to align their centers to leading/trailing edge of slider
     
-    //@IBOutlet weak var input_background: UIView!
     @IBOutlet weak var stack_inputs: UIStackView!
     @IBOutlet weak var even_out: UILabel!
     @IBOutlet weak var stack_inputs_down: UIStackView!
@@ -188,11 +179,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var loaned_height: NSLayoutConstraint!
     @IBOutlet weak var stack_Y: NSLayoutConstraint!
     @IBOutlet weak var loaned_Y: NSLayoutConstraint!
-//    @IBOutlet weak var splash_width: NSLayoutConstraint!
-//    @IBOutlet weak var splash_height: NSLayoutConstraint!
-//    @IBOutlet weak var step1height: NSLayoutConstraint!
-//    @IBOutlet weak var step2height: NSLayoutConstraint!
-//    @IBOutlet weak var step3height: NSLayoutConstraint!
+
     @IBOutlet weak var absmin: UILabel!
     @IBOutlet weak var tenyrmin: UILabel!
     @IBOutlet weak var linemin: UIImageView!
@@ -223,30 +210,13 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     var bubble_label = UILabel(frame: CGRect(x: -30, y: -5, width: 80, height: -32))
     let bubble_label_arrow = UILabel(frame: CGRect(x: 4.5, y: -5, width: 14, height: 7))
     
-
-
-//    var step_1_images = [UIImage]() //for old splash screen
-//    var step_2_images = [UIImage]() //for old splash screen
-//    var step_3_images = [UIImage]() //for old splash screen
-//    var bottom_images = [UIImage]() //for old splash screen
-//    var slide_images = [UIImage]() //for old splash screen
-
     var timer1 = Timer()
     var timer2 = Timer()
-//    var timer_step = Timer()
     var down_button_increment = 50.0
     var temp_down = 50.0
     var up_button_increment = 50.0
     var temp_up = 50.0
     var timer_count = 0.0
-//    var splash_timer_count = 0 //for old splash screen
-//    let step_1_background = UIImageView() //for old splash screen
-//    let step_2_background = UIImageView() //for old splash screen
-//    let splash_screen_background = UIImageView() //for old splash screen
-//    let tip_1 = UILabel() //for old splash screen
-//    let tip_2 = UILabel() //for old splash screen
-//    let tip_3 = UILabel() //for old splash screen
-//    let tip_4 = UILabel() //for old splash screen
     
     @IBOutlet weak var edit_slider_shape: UIView!
     let edit_slider_shape_tweak = CAShapeLayer()
@@ -263,506 +233,10 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     let pay_outline = CAShapeLayer()
     let up_outline = CAShapeLayer()
     
-    @IBOutlet weak var question: UIButton!
     //let swipe_tab_shape_path = UIBezierPath()
     //let swipe_tab_shape_path_layer = CAShapeLayer()
     //let swipe_stop_tab_shape_path = UIBezierPath()
     //let swipe_stop_tab_shape_path_layer = CAShapeLayer()
-    
-//    @IBAction func Splash(_ sender: UIButton) { //for old splash screen
-////        splash_screen.isHidden = true
-//        splash_screen_background.isHidden = true
-////        timer_step.invalidate() //needed?
-//        splash_timer_count = -1 //make sure exiting loop
-//        tip_1.isHidden = true
-//        tip_2.isHidden = true
-//        tip_3.isHidden = true
-//        //tip_3.text = "" //just in case tip tries to appear again
-//        tip_4.isHidden = true
-////        step_1.isHidden = true
-////        step_2.isHidden = true
-////        step_3.isHidden = true
-////        step_4.isHidden = true
-//        step_1_background.isHidden = true
-//        step_2_background.isHidden = true
-//        //swipe.isEnabled = true
-//        //minimum.isHidden = false
-//    }
-//
-////    func Step_Main() {
-////        timer_step = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(MyMainPage.Step_Instructions), userInfo: nil, repeats: false)
-////    }
-//
-//    @objc func Step_Instructions() {
-//
-//        if (splash_timer_count == 0) {
-//            /*step_1.frame = CGRect(x: step_1.frame.origin.x, y: step_1.frame.origin.y, width: step_1.frame.width, height: 140.5)*/
-//            /*print(step_1.frame.origin.x,step_1.frame.origin.y,terminator: " ")*/
-//
-//            tip_1.frame = CGRect(x: 25, y: -step_2.frame.height, width: view.frame.maxX-50, height: view.frame.maxY)
-//            tip_1.bounds = view.frame
-//            tip_1.text = "Select estimated cost"
-//            tip_1.textAlignment = .center
-//            tip_1.numberOfLines = 0
-//            tip_1.textColor = UIColor.white
-//            tip_1.font = UIFont.boldSystemFont(ofSize: 26.0)
-//            let frame_height_temp = step_1.frame.height
-//            //print(frame_height_temp, step_1.frame.height,terminator: "\n")
-//
-//
-//
-//            UIView.animate(withDuration: 0.25, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-//                //start at (0,0), that is top-left, of frame width and frame height
-//                //gradually, move to (0,frame height), of frame width but 0 height
-////                self.step_1.frame = CGRect(x: self.step_1.frame.origin.x, y: self.step_1.frame.origin.y+self.step_1.frame.height, width: self.step_1.frame.width, height: 0)
-//                //i think the 0.5 had something to do with a screenshot mistake
-//                /*print(self.step_1.frame.origin.x,self.step_1.frame.origin.y,terminator: " ")*/
-//
-//                }, completion: {
-//                    //once finished, NOT! gradually finish
-//                    (finished: Bool) -> Void in
-//
-//                    self.step_2_background.frame = CGRect(x: self.step_2.frame.origin.x, y: self.step_2.frame.origin.y, width: self.step_2.frame.width, height: self.step_2.frame.height) //shifted a little
-//                    self.splash_screen.addSubview(self.step_2_background)
-//                    self.step_2.backgroundColor = nil
-//                    self.step_2_background.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.85)
-//
-//
-//                    self.tip_1.isHidden = false
-//                    self.step_2_background.addSubview(self.tip_1)
-//                    self.step_2_background.bringSubviewToFront(self.tip_1)
-//
-////                    self.Step_Main()
-//                    self.splash_timer_count += 1
-//                    self.step_1.frame = CGRect(x: self.step_1.frame.origin.x, y: self.step_1.frame.origin.y-frame_height_temp, width: self.step_1.frame.width, height: frame_height_temp)
-//                    /*print(self.step_1.frame.origin.x,self.step_1.frame.origin.y,terminator: " ")*/
-//
-////                    self.step_1.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.0)
-//            })
-//        }
-//
-//        else if (splash_timer_count <= step_1_images.count) {
-//
-////            self.Step_Main()
-//            step_1.image = step_1_images[splash_timer_count-1]
-//            splash_timer_count += 1
-//            /*print(step_1_images.count-1)*/
-//            }
-//
-//        else if (splash_timer_count == step_1_images.count+1) {
-//            tip_1.isHidden = true
-//
-//            tip_2.frame = CGRect(x: 25, y: -step_2.frame.height, width: view.frame.maxX-50, height: view.frame.maxY)
-//            tip_2.bounds = view.frame
-//            tip_2.text = "Select interest rate"
-//            tip_2.textAlignment = .center
-//            tip_2.numberOfLines = 0
-//            tip_2.textColor = UIColor.white
-//            tip_2.font = UIFont.boldSystemFont(ofSize: 26.0)
-//            let frame_height_temp = step_1.frame.height
-//
-//            //frame height already included the 0.5, since frame height continually updated, so i took it out
-//
-//            if (view.frame.height == 568) {
-//                step_1_background.image = UIImage(named: "s11se.png")
-//            }
-//            else if (view.frame.height == 667) {
-//                step_1_background.image = UIImage(named: "s11.png")
-//            }
-//            else {
-//                step_1_background.image = UIImage(named: "s11p.png")
-//            }
-//
-//            step_1_background.frame = CGRect(x: 0, y: 0, width: step_1.frame.width, height: step_1.frame.height)
-////            splash_screen.addSubview(step_1)
-//            splash_screen.addSubview(step_1_background)
-//            splash_screen.bringSubviewToFront(step_1)
-//            step_1.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.85)
-//            step_1.image = nil
-//            step_1.frame = CGRect(x: step_1.frame.origin.x, y: step_1.frame.origin.y, width: step_1.frame.width, height: 0)
-//            /*step_2.frame = CGRect(x: self.step_2.frame.origin.x, y: self.step_2.frame.origin.y, width: self.step_2.frame.width, height: 242)*/
-//            //VERY ODD!!!!
-//
-//            //hard keeping track of positions
-//            UIView.animate(withDuration: 0.25, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-//                self.step_1.frame = CGRect(x: self.step_1.frame.origin.x, y: self.step_1.frame.origin.y, width: self.step_1.frame.width, height: frame_height_temp)
-//                //this time leaving y be so that the animation is fluid
-//                /*self.step_2.frame = CGRect(x: self.step_2.frame.origin.x, y: self.step_2.frame.origin.y+242, width: self.step_2.frame.width, height: 0)*/
-//                self.step_2_background.frame = CGRect(x: self.step_2.frame.origin.x, y: self.step_2.frame.origin.y+self.step_2.frame.height, width: self.step_2.frame.width, height: 0)
-//
-//                /*print(self.step_2.frame.origin.x,self.step_2.frame.origin.y,terminator: " ")*/
-//
-//                /*let step_dot = UIImageView()
-//                step_dot.backgroundColor = UIColor(red: 0.0/255, green: 255.0/255, blue: 0.0/255, alpha: 0.75)
-//                step_dot.frame = CGRect(x: self.step_2.frame.origin.x, y: self.step_2.frame.origin.y, width: self.step_2.frame.width, height: 1)
-//                self.splash_screen.addSubview(step_dot)*/
-//
-//            }, completion: {
-//                (finished: Bool) -> Void in
-//                self.tip_2.isHidden = false
-//                self.step_1.addSubview(self.tip_2)
-//                self.step_1.bringSubviewToFront(self.tip_2)
-////                self.Step_Main()
-//                self.splash_timer_count += 1
-//                self.step_2.image = self.step_2_images[0]
-//                /*self.step_2.frame = CGRect(x: self.step_2.frame.origin.x, y: self.step_2.frame.origin.y-242, width: self.step_2.frame.width, height: 242)
-//                self.step_2.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.0)*/
-//            })
-//        }
-//
-//        else if (splash_timer_count <= step_1_images.count+step_2_images.count) {
-//            /*step_1.image = step_1_images[0]*/
-////            self.Step_Main()
-//
-//            step_2.image = step_2_images[splash_timer_count-step_1_images.count-1]
-//            //print("step_2[",splash_timer_count-step_1_images.count-1,"]",terminator:"\n")
-//
-//            splash_timer_count += 1
-//
-//
-//            if (splash_timer_count == step_1_images.count+step_2_images.count) {
-//                tip_2.text = "...or none"
-//
-//            }
-//            /*else if (splash_timer_count == step_1_images.count+step_2_images.count+1) {
-//                minimum.isHidden = true //hide "minimum" when it should hide
-//
-//            }*/
-//        }
-//
-//        else if (splash_timer_count == step_1_images.count+step_2_images.count+1) {
-//            tip_2.isHidden = true
-//
-//            tip_3.frame = CGRect(x: 25, y: -step_3.frame.height-130, width: view.frame.maxX-50, height: view.frame.maxY)
-//            tip_3.bounds = view.frame
-//            tip_3.text = "Select monthly payment"
-//            tip_3.textAlignment = .center
-//            tip_3.numberOfLines = 0
-//            tip_3.textColor = UIColor.white
-//            tip_3.font = UIFont.boldSystemFont(ofSize: 26.0)
-//
-//
-//            if (view.frame.height == 568) {
-////                step_2.image = UIImage(named: "s1se_cX.png")
-//                //s1_cX2
-//            }
-//            else if (view.frame.height == 667) {
-////                step_2.image = UIImage(named: "s1_cX.png")
-//                //s1_cX2
-//            }
-//            else {
-////                step_2.image = UIImage(named: "s1p_cX.png")
-//                //s1_cX2
-//            }
-//
-//
-//            let frame_height_temp = step_3.frame.height
-//
-//            /*let step_1_background = UIImageView()
-//            step_1_background.image = UIImage(named: "s11.png")*/
-//            /*step_2_background.frame = CGRect(x: 0, y: 0, width: step_1.frame.width, height: 140.5)*/
-//            step_2_background.frame = CGRect(x: step_2.frame.origin.x, y: step_2.frame.origin.y, width: step_2.frame.width, height: 0)
-//            /*splash_screen.addSubview(step_1)
-//            splash_screen.addSubview(step_1_background)
-//            splash_screen.bringSubviewToFront(step_1)*/
-//            /*step_2.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.75)
-//            step_2.image = nil*/
-//            /*step_2.frame = CGRect(x: step_2.frame.origin.x, y: step_2.frame.origin.y, width: step_2.frame.width, height: 0)*/
-//            UIView.animate(withDuration: 0.25, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-//                /*self.step_2.frame = CGRect(x: self.step_2.frame.origin.x, y: self.step_2.frame.origin.y, width: self.step_2.frame.width, height:  242)*/
-//                self.step_3.frame = CGRect(x: self.step_3.frame.origin.x, y: self.step_3.frame.origin.y+self.step_3.frame.height, width: self.step_3.frame.width, height: 0)
-//                self.step_2_background.frame = CGRect(x: self.step_2.frame.origin.x, y: self.step_2.frame.origin.y-30, width: self.step_2.frame.width, height: 0.70*self.step_2.frame.height)
-//            }, completion: {
-//                (finished: Bool) -> Void in
-//                self.tip_3.isHidden = false
-//
-//                self.step_2_background.addSubview(self.tip_3)
-//                self.step_2_background.bringSubviewToFront(self.tip_3)
-////                self.Step_Main()
-//                self.splash_timer_count += 1
-//                self.step_3.frame = CGRect(x: self.step_3.frame.origin.x, y: self.step_3.frame.origin.y-frame_height_temp, width: self.step_3.frame.width, height: frame_height_temp)
-//                self.step_3.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.0)
-//                /*self.step_2.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.0)*/
-//            })
-//
-//        }
-//
-//        else if (splash_timer_count <= step_1_images.count+step_2_images.count+step_3_images.count) {
-//
-//            if (splash_timer_count <= step_1_images.count+step_2_images.count+4) {
-//
-//                if (splash_timer_count == step_1_images.count+step_2_images.count+2) {
-//
-//
-//                    if (view.frame.height == 568) {
-////                        step_2.image = UIImage(named: "s2se_cX.png")
-//                        //s1_cX2
-//                    }
-//                    else if (view.frame.height == 667) {
-////                        step_2.image = UIImage(named: "s2_cX.png")
-//                        //s1_cX2
-//                    }
-//                    else {
-////                        step_2.image = UIImage(named: "s2p_cX.png")
-//                        //s1_cX2
-//                    }
-//
-//
-//                }
-//
-//                else if (splash_timer_count == step_1_images.count+step_2_images.count+3) {
-//
-//
-//                    if (view.frame.height == 568) {
-////                        step_2.image = UIImage(named: "s3se_cX.png")
-//                        //s1_cX2
-//                    }
-//                    else if (view.frame.height == 667) {
-////                        step_2.image = UIImage(named: "s3_cX.png")
-//                        //s1_cX2
-//                    }
-//                    else {
-////                        step_2.image = UIImage(named: "s3p_cX.png")
-//                        //s1_cX2
-//                    }
-//
-//
-//                }
-//
-//                else {
-//
-//
-//                    if (view.frame.height == 568) {
-////                        step_2.image = UIImage(named: "s4se_cX.png")
-//                        //s1_cX2
-//                    }
-//                    else if (view.frame.height == 667) {
-////                        step_2.image = UIImage(named: "s4_cX.png")
-//                        //s1_cX2
-//                    }
-//                    else {
-////                        step_2.image = UIImage(named: "s4p_cX.png")
-//                        //s1_cX2
-//                    }
-//
-//
-//                }
-//
-//
-//
-//            }
-//            else if (splash_timer_count == step_1_images.count+step_2_images.count+5) {
-//                if (view.frame.height == 568) {
-////                    step_2.image = UIImage(named: "s4se_c2X.png")
-//                    //s1_cX
-//                }
-//                else if (view.frame.height == 667) {
-////                    step_2.image = UIImage(named: "s4_c2X.png")
-//                    //s1_cX
-//                }
-//                else {
-////                    step_2.image = UIImage(named: "s4p_c2X.png")
-//                    //s1_cX
-//                }
-//            }
-//            else if (splash_timer_count < step_1_images.count+step_2_images.count+step_3_images.count) {
-//
-//
-//                if (splash_timer_count == step_1_images.count+step_2_images.count+6) {
-//
-//                    if (view.frame.height == 568) {
-////                        step_2.image = UIImage(named: "s3se_cNX.png")
-//                        //s1_cX3
-//                    }
-//                    else if (view.frame.height == 667) {
-////                        step_2.image = UIImage(named: "s3_cNX.png")
-//                        //s1_cX3
-//                    }
-//                    else {
-////                        step_2.image = UIImage(named: "s3p_cNX.png")
-//                        //s1_cX3
-//                    }
-//
-//                }
-//
-//                else {
-//
-//                    if (view.frame.height == 568) {
-////                        step_2.image = UIImage(named: "s2se_cNX.png")
-//                        //s1_cX3
-//                    }
-//                    else if (view.frame.height == 667) {
-////                        step_2.image = UIImage(named: "s2_cNX.png")
-//                        //s1_cX3
-//                    }
-//                    else {
-////                        step_2.image = UIImage(named: "s2p_cNX.png")
-//                        //s1_cX3
-//                    }
-//
-//                }
-//
-//
-//
-//            }
-//            else {
-//                if (view.frame.height == 568) {
-////                    step_2.image = UIImage(named: "s2se_cN2X.png")
-//                    //s1_cX
-//                }
-//                else if (view.frame.height == 667) {
-////                    step_2.image = UIImage(named: "s2_cN2X.png")
-//                    //s1_cX
-//                }
-//                else {
-////                    step_2.image = UIImage(named: "s2p_cN2X.png")
-//                    //s1_cX
-//                }
-//            }
-////            self.Step_Main()
-//            /*step_2.image = step_2_images[0]*/
-//            step_3.image = step_3_images[splash_timer_count-step_1_images.count-step_2_images.count-1]
-//            splash_timer_count += 1
-//
-//            /*timer_step.invalidate()*/
-//        }
-//        else if (splash_timer_count == step_1_images.count+step_2_images.count+step_3_images.count+1) {
-//            tip_3.isHidden = true
-//            tip_4.frame = CGRect(x: 25, y: -50, width: view.frame.maxX-50, height: view.frame.maxY)
-//            tip_4.bounds = view.frame
-//            tip_4.text = "View results"
-//            tip_4.textAlignment = .center
-//            tip_4.numberOfLines = 0
-//            tip_4.textColor = UIColor.white
-//            tip_4.font = UIFont.boldSystemFont(ofSize: 26.0)
-//            let frame_height_temp = step_4.frame.height
-//
-//
-//            /*step_2_background.frame = CGRect(x: step_2.frame.origin.x, y: step_2.frame.origin.y-242, width: step_2.frame.width, height: 0)*/
-//            UIView.animate(withDuration: 0.25, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-//                self.step_4.frame = CGRect(x: self.step_4.frame.origin.x, y: self.step_4.frame.origin.y+0.70*self.step_2.frame.height, width: self.step_4.frame.width, height: 0)
-//                self.step_2_background.frame = CGRect(x: self.step_2.frame.origin.x, y: self.step_2.frame.origin.y, width: self.step_2.frame.width, height: self.step_2.frame.height+self.step_3.frame.height)
-//            }, completion: {
-//                (finished: Bool) -> Void in
-//                self.tip_4.isHidden = false
-//
-//                self.step_2_background.addSubview(self.tip_4)
-//                self.step_2_background.bringSubviewToFront(self.tip_4)
-////                self.Step_Main()
-//                self.splash_timer_count += 1
-//                self.step_4.frame = CGRect(x: self.step_4.frame.origin.x, y: self.step_4.frame.origin.y-(0.70*self.step_2.frame.height), width: self.step_4.frame.width, height: frame_height_temp)
-//                //0.70*self.step_2.frame.height
-//                self.step_4.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.0)
-//            })
-//        }
-//        else if (splash_timer_count <= step_1_images.count+step_2_images.count+step_3_images.count+bottom_images.count+1) { //slight shift
-//            step_4.image = bottom_images[splash_timer_count-step_1_images.count-step_2_images.count-step_3_images.count-2] //slight shift
-//            /*print("bottom_images[",splash_timer_count-step_1_images.count-step_2_images.count-step_3_images.count-2,"]",terminator: "\n")
-//            print(splash_timer_count,terminator: "\n")*/
-//
-//
-////            self.Step_Main()
-//
-//
-//            splash_timer_count += 1
-//
-//        }
-//        else if (splash_timer_count == step_1_images.count+step_2_images.count+step_3_images.count+bottom_images.count+2) {
-//            /*if (splash_timer_count == step_1_images.count+step_2_images.count+step_3_images.count+bottom_images.count+2) {*/
-//                tip_4.text = "Swipe left for more"
-//            splash_screen.addSubview(disregard)
-//            splash_screen.bringSubviewToFront(disregard)
-//
-//            //}
-//
-//            UIView.animate(withDuration: 0.25, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-//                self.step_2_background.frame = CGRect(x: self.step_2.frame.origin.x, y: self.step_2.frame.origin.y, width: self.step_2.frame.width, height: self.step_2.frame.height+self.step_3.frame.height+0.70*self.step_2.frame.height)
-//            }, completion: {
-//                (finished: Bool) -> Void in
-//                /*self.step_1.image = nil
-//                self.step_2.image = nil
-//                self.step_3.image = nil
-//                self.step_4.image = nil
-//                self.step_1_background.image = nil
-//                self.step_2_background.image = nil*/
-////                self.Step_Main()
-//                self.splash_timer_count += 1
-//
-//                /*self.step_4.frame = CGRect(x: self.step_4.frame.origin.x, y: self.step_4.frame.origin.y-169.5, width: self.step_4.frame.width, height: 169.5)
-//                self.step_4.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.0)*/
-//            })
-//        }
-//        else if (splash_timer_count == step_1_images.count+step_2_images.count+step_3_images.count+bottom_images.count+3) {
-//            //step_1_images.count+step_2_images.count+step_3_images.count+bottom_images.count+slide_images.count+4) {
-//            self.tip_4.isHidden = true
-////            self.splash_screen_background.frame = CGRect(x: self.splash_screen.frame.maxX, y: self.splash_screen.frame.origin.y, width: self.splash_screen.frame.width, height: self.splash_screen.frame.height)
-//            self.splash_screen_background.image = self.slide_images[0]
-//            self.splash_screen.addSubview(self.splash_screen_background)
-//            splash_screen.addSubview(disregard)
-//            splash_screen.bringSubviewToFront(disregard)
-//
-//
-//
-//            //splash_screen_background.image = slide_images[splash_timer_count-step_1_images.count-step_2_images.count-step_3_images.count-bottom_images.count-3]
-//            /*self.Step_Main()
-//            splash_timer_count += 1*/
-//            /*print(splash_timer_count,terminator:"\n")
-//            print(1/pow(2.0,Double(splash_timer_count-26)),terminator:"\n")*/
-//
-//            UIView.animate(
-//                withDuration: 0.5,
-//                delay: 0.0,
-//                options: UIViewAnimationOptions.curveEaseOut,
-//                animations: {
-//                    self.splash_screen_background.frame = CGRect(x: self.splash_screen.frame.origin.x, y: self.splash_screen.frame.origin.y, width: self.splash_screen.frame.width, height: self.splash_screen.frame.height)//slightly faster
-//                },
-//                completion: {
-//                    (finished: Bool) -> Void in
-////                self.Step_Main()
-//                self.splash_timer_count += 1
-//
-//                /*self.step_4.frame = CGRect(x: self.step_4.frame.origin.x, y: self.step_4.frame.origin.y-169.5, width: self.step_4.frame.width, height: 169.5)
-//                 self.step_4.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.0)*/
-//                }
-//            )
-//
-//        }
-//        else { //reset and cycle
-//            //pause screen
-//            func delay(_ delay:Double, closure:@escaping ()->()) {
-//                DispatchQueue.main.asyncAfter(
-//                    deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
-//            }
-//            delay(2)
-//            {
-//                self.step_1.image = nil
-//                self.step_2.image = nil
-//                self.step_3.image = nil
-//                self.step_4.image = nil
-//                self.step_1_background.image = nil
-//                self.step_2_background.image = nil
-//                self.splash_timer_count = 0
-//                self.splash_screen_background.image = nil
-//                self.step_1.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.85)
-//                /*step_2.backgroundColor = UIColor(red: 255.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.75)*/
-//
-//                self.step_2_background.frame = CGRect(x: self.step_2.frame.origin.x, y: self.step_2.frame.origin.y, width: self.step_2.frame.width, height: self.step_2.frame.height) //shifted a little
-//                self.step_2_background.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.85)
-//                /*splash_screen.addSubview(step_2)*/
-//                self.splash_screen.addSubview(self.step_2_background)
-//                /*splash_screen.bringSubviewToFront(step_1)*/
-//                self.step_3.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.85)
-//                self.step_4.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.85)
-//                self.splash_screen.addSubview(self.disregard)
-//                self.splash_screen.bringSubviewToFront(self.disregard)
-//                //self.minimum.isHidden = false
-////                self.Step_Main()
-//
-//            }
-//
-//        }
-//
-//    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "myAVPlayerViewController") {
@@ -779,44 +253,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             return
         }
     }
-    
-    
-    //var video = AVPlayer()
-    //let videoController = AVPlayerViewController()
-
-    //func Introduction() {
-        //present("myAVPlayerViewController", animated: false, completion: { self.video.play() } )
-        /*if let filePath = Bundle.main.url(forResource: "introduction", withExtension: "mov") {
-            video = AVPlayer(url: filePath)
-            //videoController = AVPlayerViewController()
-            videoController.player = video
-            /*//attaches videoController to self:
-            videoController.view.frame = self.view.frame
-            self.view.addSubview(videoController.view)
-            self.addChildViewController(videoController)*/
-            //self.view.bringSubviewToFront(videoController.view)
-            //self.showDetailViewController(videoController, sender: self) //shows "done"button
-            //self.present(videoController, animated: false, completion: nil)
-            present(videoController, animated: false, completion: { self.video.play() } )
-            //present(videoController, animated: false, completion: {
-            //    self.video.play()
-            //})
-            
-        }*/
-        /*let fileManager = FileManager.default
-        
-        // Get attributes of 'myfile.txt' file
-        
-        do {
-            let attributes = try fileManager.attributesOfItem(atPath: "/Users/ed/Google Drive/Dissertation/Projects/iPhone/Instructional Apps to Promote Financial Literacy/introduction.mov")
-            print(attributes)
-        }
-        catch let error as NSError {
-            print("Ooops! Something went wrong: \(error)")
-        }*/
-
-    //}
-
     
     @IBAction func Locked(_ sender: UIButton) {
         unlocked.isHidden = false
@@ -862,35 +298,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         months_text.alpha = 1
         savings.alpha = 1
         savings_change.alpha = 1
-
-        
-        //swipe_blink.isHidden = true
-
-        //UIView.animate(withDuration: 0.25, animations: {
-            /*self.edit_slider.alpha = 1.0
-            self.edit_apr.alpha = 1.0
-            self.edit_pay.alpha = 1.0
-            self.swipe_label.alpha = 1.0
-            self.stopped.alpha = 1.0
-            self.swiping.alpha = 1.0
-            self.abs_10yr.alpha = 1.0
-            
-            self.time_title.alpha = 0
-            self.savings_title.alpha = 0
-            self.years.alpha = 0
-            self.years_text.alpha = 0
-            self.months.alpha = 0
-            self.months_text.alpha = 0
-            self.savings.alpha = 0
-            self.savings_change.alpha = 0*/
-
-        //},
-          //             completion: {
-          //              (finished: Bool) -> Void in
-                        //UIView.animate(withDuration: 0.25) {//otherwise increment_input wouldn't blend
-                        //}
-        //})
-        
         
         UIView.animate(withDuration: 0.25,
                        animations: {
@@ -1023,19 +430,14 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     
-    //@IBOutlet weak var loaned_max: UILabel!
     //register what users input for their own numbers
     @IBAction func Loaned_Min_Input(_ sender: UITextField) {
         //loaned.minimumValue = String(sender.text)
-        //print(loaned_min_input.text!)
         //let tempX = NSDecimalNumber(string: loaned_min_input.text!)
         //let tempX = loaned_min_input.text!
-        //print(tempX)
-        //print(loaned.maximumValue)
         //loaned.minimumValue = Float(truncating: removeFormat(string: tempX*0))
         //loaned_max.text = String(describing: max_value)
         //loaned.minimumValue = Float(truncating: tempX)
-        //print(loaned.minimumValue)
 
         min_value = Double(truncating: removeFormat(string: loaned_min_input.text!))
         if (min_value - floor(min_value) > 0.499999) && (min_value - floor(min_value) < 0.5)
@@ -1146,8 +548,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 
 
         //progress = increment * progress + min_value
-        //print("min_value changed to",min_value,"and increment is now",increment)
-        //print("progress",progress)
         
         //if (progress != min_value) {
             if (min_value < progress) {
@@ -1159,16 +559,13 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 //let rounded_value = round(value)
                 self.loaned.setValue(Float(value), animated: true) //figure out where it will go
                 //increment * progress + min_value
-                //print("value changed to",rounded_value,"= (",progress,"-",min_value,")/",increment)
             }
             else {
                 p = Double(min_value)
                 shared_preferences.set(p, forKey: "loaned"); shared_preferences.synchronize()
                 let value = 0
                 self.loaned.setValue(Float(value), animated: true)
-                //print("value changed to",value)
                 progress = increment * Double(self.loaned.value) + min_value
-                //print("progress changed to",progress,"which equals",increment,"*",self.loaned.value,"+",min_value)
             }
         var temp = Double()
         if (tenyr_indicator == 0) {
@@ -1315,13 +712,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             }
         }
 
-        /*else if (increment*10 - floor(increment*10) == 0) {
-            increment_input.text = String(format: "%.1f", increment)
-        }
-        else {
-            increment_input.text = String(format: "%.2f", increment)
-        }*/
-        //print("max_value changed to",max_value,"and increment is now",increment)
         if (max_value > progress) {
             var value = (progress - min_value)/increment
             if (value - floor(value) > 0.499999) && (value - floor(value) < 0.5)
@@ -1331,17 +721,13 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             //let rounded_value = round(value)
             self.loaned.setValue(Float(value), animated: true)
             //self.loaned.setValue(Float(value), animated: true)
-            //print("value changed to",rounded_value,"= (",progress,"-",min_value,")/",increment)
-
         }
         else {
             p = Double(max_value)
             shared_preferences.set(p, forKey: "loaned"); shared_preferences.synchronize()
             let value = number_of_increments
             self.loaned.setValue(Float(value), animated: true)
-            //print("value changed to",value)
             progress = increment * Double(self.loaned.value) + min_value
-            //print("progress changed to",progress,"which equals",increment,"*",self.loaned.value,"+",min_value)
         }
         var temp = Double()
         if (tenyr_indicator == 0) {
@@ -1392,23 +778,19 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         //number_of_increments = round((max_value - min_value)/increment)
         //input_number_of_increments.text = String(format: "%.0f", number_of_increments)
         //loaned slider value is already updating
-        //print("increment changed to",increment,"and number of increments is now",number_of_increments)
         /*if (max_value > progress) {
             let value = (progress - min_value)/increment
             let rounded_value = round(value)
             self.loaned.setValue(Float(rounded_value), animated: true)
             //self.loaned.setValue(Float(value), animated: true)
-            print("value changed to",rounded_value,"= (",progress,"-",min_value,")/",increment)
-            
+         
         }
         else {
             p = Double(max_value)
             shared_preferences.set(p, forKey: "loaned"); shared_preferences.synchronize()
             let value = number_of_increments
             self.loaned.setValue(Float(value), animated: true)
-            print("value changed to",value)
             progress = increment * Double(self.loaned.value) + min_value
-            print("progress changed to",progress,"which equals",increment,"*",self.loaned.value,"+",min_value)
         }*/
         /*let temp = ceil(Double(Int(p*i*100)+1))/100
         if (temp >= a)
@@ -1656,7 +1038,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             minimum.isHidden = false
             minimum.text = "Minimum"
             pay_number.text = String(format: "%.2f", a)
-            //print(a)
         }
         else {
             minimum.isHidden = false
@@ -2601,20 +1982,13 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         { sender.value = roundf(sender.value + 1) }
         else { sender.value = roundf(sender.value) }
         //sender.value = roundf(sender.value)
-        //print(sender.value)
 
         //sender.value = roundf(sender.value)
         //sender.value = Double(sender.value)
-        //print(sender.value)
         //var progress:Int = Int(sender.value)
         //progress = Int(sender.value)
         //progress = increment * progress + 2000
         progress = increment * Double(sender.value) + min_value
-//        progress = increment * sender.value + min_value
-        //print(increment)
-        //print(sender.value)
-        //print("progress changed to",progress,"which equals",increment,"*",sender.value,"+",min_value)
-
         /*//catching exception
         if progress.isNaN {
             progress = min_value
@@ -2686,12 +2060,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         
         if (Double(progress) != p) {
         p = Double(progress)
-            
-
-//        if (progress != p) {
-//            p = progress
-        
-        //print(p,terminator:"\n")
+           
         /*let temp = Double(Int((p * i + 0.01) * 100)) / 100*/
             var temp = Double()
             if (tenyr_indicator == 0) {
@@ -2713,14 +2082,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             //if (x*100 - floor(x*100) > 0.499999) && (x*100 - floor(x*100) < 0.5)
             //{ temp = (round(x*100 + 1) + 1)/100}
             //else { temp = (round(x*100) + 1)/100 }
-            
-
-
-        //print(p)
-        //print(i)
-        //print(Int(p*i*100))
-        //print(temp)
-        //print(a)
             
         if (temp >= a)
         {
@@ -2749,15 +2110,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         Lengthsaving()
         shared_preferences.set(p, forKey: "loaned"); shared_preferences.synchronize() //could place sooner because needless if !=p
             
-            //print(p,terminator:"\n")//do nothing
-
-            
-            
         } else {
             //do nothing?
-            //print("Slider Released")
-            
-            
         }
         view.willRemoveSubview(loaned)
 
@@ -2819,22 +2173,13 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             //apr_number.isUserInteractionEnabled = true
             /*arrow_unpressed.isHidden = false
             arrow_disabled.isHidden = true*/
-            //print(i)
             
         }
         else {
             i_reference = rates_reference[shared_preferences.integer(forKey: "position")]
-//            if (decision == true) {
-//                apr_number.text = String(format: "%.2f", i * 12 * 100)
-//                apr_number_back.text = String(format: "%.2f", i * 12 * 100)
-//                i = 0
-//            }
-//            else {
-                i = 0
-                apr_number.text = String(format: "%.2f", i * 12 * 100)
-                apr_number_back.text = String(format: "%.2f", i * 12 * 100)
-//            }
-            
+            i = 0
+            apr_number.text = String(format: "%.2f", i * 12 * 100)
+            apr_number_back.text = String(format: "%.2f", i * 12 * 100)
             interest_rate_unpressed.isHidden = true
             interest_rate_unpressed_copy.isHidden = true
             interest_rate_disabled.isHidden = false
@@ -3154,7 +2499,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         view.bringSubviewToFront(edit_apr)//or else edit_apr_shape starts out behind interest_rate_unpressed
         view.bringSubviewToFront(invisible)
         view.bringSubviewToFront(invisible_back)
-//        view.bringSubviewToFront(splash_screen) //for old splash screen
         //view.bringSubviewToFront(videoController.view)
         
         return cell
@@ -3298,30 +2642,15 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     @objc func Down() {
         temp_down = down_button_increment
-        
-//        if (decision == true) {
-//            if (timer_count < set_down_timer1_seconds*4) { //down_button_increment = 50
-//                if (timer_count > 0) { minimum.text = "▼ \(numberFormatter.string(from: NSNumber(value: temp_down))!)"; minimum.isHidden = false}
-//            }
-//            else if (timer_count < set_down_timer2_seconds*4) { temp_down = set_down_timer1_increment; minimum.text = "▼ \(numberFormatter.string(from: NSNumber(value: temp_down))!)" }
-//            else { temp_down = set_down_timer2_increment; minimum.text = "▼ \(numberFormatter.string(from: NSNumber(value: temp_down))!)" }
-//        }
-//        else {
-            if (timer_count < set_down_timer1_seconds*4) { //down_button_increment = 50
-                if (timer_count > 0) { minimum.text = "↓ \(numberFormatter.string(from: NSNumber(value: temp_down))!)"; minimum.isHidden = false}
-            }
-            else if (timer_count < set_down_timer2_seconds*4) { temp_down = set_down_timer1_increment; minimum.text = "↓ \(numberFormatter.string(from: NSNumber(value: temp_down))!)" }
-            else { temp_down = set_down_timer2_increment; minimum.text = "↓ \(numberFormatter.string(from: NSNumber(value: temp_down))!)" }
+        if (timer_count < set_down_timer1_seconds*4) { //down_button_increment = 50
+            if (timer_count > 0) { minimum.text = "↓ \(numberFormatter.string(from: NSNumber(value: temp_down))!)"; minimum.isHidden = false}
+        }
+        else if (timer_count < set_down_timer2_seconds*4) { temp_down = set_down_timer1_increment; minimum.text = "↓ \(numberFormatter.string(from: NSNumber(value: temp_down))!)" }
+        else { temp_down = set_down_timer2_increment; minimum.text = "↓ \(numberFormatter.string(from: NSNumber(value: temp_down))!)" }
 
-//        }
         
         //else if (timer_count < 32) { temp_down = temp_down*2*10; minimum.text = "↓ \(numberFormatter.string(from: NSNumber(value: temp_down))!)" }
         //else { temp_down = temp_down*2*10*10; minimum.text = "↓ \(numberFormatter.string(from: NSNumber(value: temp_down))!)" }
-        
-        //print(a)
-        //print(Double(temp_down))
-        
-        //print(i_reference)
         
         //if apr.isOn {
         
@@ -3460,10 +2789,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     /*minimum.isHidden = true*/
                 }
             }
-            //print(a)
-            //print(Double(temp_down))
-            //print(ceil(Double(Int(p*i*100)+1))/100)
-
         }*/
         Lengthsaving()
         shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
@@ -3497,28 +2822,14 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     @objc func Up() {
         minimum.isHidden = true
         temp_up = up_button_increment
-        
-//        if (decision == false) {
-            if (timer_count < set_up_timer1_seconds*4) { //up_button_increment = 50
-                if (timer_count > 0) { minimum.text = "↑ \(numberFormatter.string(from: NSNumber(value: temp_up))!)"; minimum.isHidden = false}
-                //if (timer_count > 0) { minimum.text = "↑ 50"; minimum.isHidden = false}
-            }
-            else if (timer_count < set_up_timer2_seconds*4) { temp_up = set_up_timer1_increment; minimum.text = "↑ \(numberFormatter.string(from: NSNumber(value: temp_up))!)"; minimum.isHidden = false }
-            //else if (timer_count < 16) { up_button_increment = 100; minimum.text = "↑ 100"; minimum.isHidden = false }
-            else { temp_up = set_up_timer2_increment; minimum.text = "↑ \(numberFormatter.string(from: NSNumber(value: temp_up))!)"; minimum.isHidden = false }
-            //else { up_button_increment = 1000; minimum.text = "↑ 1,000"; minimum.isHidden = false }
-//        }
-//        else {
-//            if (timer_count < set_up_timer1_seconds*4) { //up_button_increment = 50
-//                if (timer_count > 0) { minimum.text = "▲ \(numberFormatter.string(from: NSNumber(value: temp_up))!)"; minimum.isHidden = false}
-//                //if (timer_count > 0) { minimum.text = "↑ 50"; minimum.isHidden = false}
-//            }
-//            else if (timer_count < set_up_timer2_seconds*4) { temp_up = set_up_timer1_increment; minimum.text = "▲ \(numberFormatter.string(from: NSNumber(value: temp_up))!)"; minimum.isHidden = false }
-//                //else if (timer_count < 16) { up_button_increment = 100; minimum.text = "↑ 100"; minimum.isHidden = false }
-//            else { temp_up = set_up_timer2_increment; minimum.text = "▲ \(numberFormatter.string(from: NSNumber(value: temp_up))!)"; minimum.isHidden = false }
-//            //else { up_button_increment = 1000; minimum.text = "↑ 1,000"; minimum.isHidden = false }
-//        }
-        //print(a)
+        if (timer_count < set_up_timer1_seconds*4) { //up_button_increment = 50
+            if (timer_count > 0) { minimum.text = "↑ \(numberFormatter.string(from: NSNumber(value: temp_up))!)"; minimum.isHidden = false}
+            //if (timer_count > 0) { minimum.text = "↑ 50"; minimum.isHidden = false}
+        }
+        else if (timer_count < set_up_timer2_seconds*4) { temp_up = set_up_timer1_increment; minimum.text = "↑ \(numberFormatter.string(from: NSNumber(value: temp_up))!)"; minimum.isHidden = false }
+        //else if (timer_count < 16) { up_button_increment = 100; minimum.text = "↑ 100"; minimum.isHidden = false }
+        else { temp_up = set_up_timer2_increment; minimum.text = "↑ \(numberFormatter.string(from: NSNumber(value: temp_up))!)"; minimum.isHidden = false }
+        //else { up_button_increment = 1000; minimum.text = "↑ 1,000"; minimum.isHidden = false }
 
         if (a == a_reference) || (a - floor(a) > 0) {//later inequality is just in case someone manually inputs a
         //if (a == ceil(Double(Int(p*i*100)+1))/100) || (a == ceil(Double(Int(p*i_reference*100)+1))/100) || (a - floor(a) > 0) { //won't catch every case
@@ -3530,7 +2841,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 //{ a = ceil(a / up_button_increment + 1)*up_button_increment }
                 //else { a = ceil(a / up_button_increment)*up_button_increment }
                 a = ceil(a / up_button_increment)*up_button_increment
-                //print(a)
                 //a = floor(a) + up_button_increment
                 //a = floor(a + 1)
                 timer_count += 1
@@ -3637,7 +2947,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 { temp_interest_amount = (round(remainingbalance*i*100 + 1))/100}
                 else { temp_interest_amount = (round(remainingbalance*i*100))/100 }
 
-                //print(remainingbalance,"=",remainingbalance-(temp_interest_amount - a),"+",temp_interest_amount,"-",a)
                 j += 1
 
             }
@@ -3669,19 +2978,13 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     }
                 }
 
-                
-                //print(remainingbalance_repay_minimum,"=",remainingbalance_repay_minimum-(temp_interest_min - temp_pay),"+",temp_interest_min,"-",temp_pay)
-
                 k += 1
             }
-            //print("mainpage",k)
-            
+        
             /*if (i != 0) {
                 /*while (remainingbalance + ceil(Double(Int(remainingbalance * i * 100))) / 100 > a) {
                  remainingbalance = remainingbalance + ceil(Double(Int(remainingbalance * i * 100))) / 100 - a
                  j += 1
-                 /*print(remainingbalance, i, remainingbalance + Double(Int(remainingbalance * i * 100)) / 100, a, terminator: "\n")*/
-                 
                  }*/
                 
                 
@@ -3718,29 +3021,16 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         //if (floor(Double((j + 1) / 12)) - floor(floor(Double((j + 1) / 12))) > 0.99999) //seems like too much
         //{ temp = Int(floor(Double((j + 1) / 12)) + 1) }
         //else { temp = Int(floor(Double((j + 1) / 12))) }
-        //print("mainpage",j)
-        //print(j+1)
         /*if (a == 0.01) { years.text = "😢" } else { years.text = String(temp) }*/
         /*if (a == 0.01) { years.text = UIImageView(image: UIImage(named: "SadFace")) } else { years.text = String(temp) }*/
         years.text = numberFormatter.string(from: NSNumber(value: temp))!
         
-//        if (decision == false) {
-            if (temp == 1) {years_text.text = "year"}
-            else {years_text.text = "years"}
-//        }
-//        else {
-//            years_text.text = "year(s)"
-//        }
-//
+        if (temp == 1) {years_text.text = "year"}
+        else {years_text.text = "years"}
         months.text = String((j + 1) - temp * 12)
         
-//        if (decision == false) {
-            if ((j + 1) - temp * 12 == 1) {months_text.text = "month"}
-            else {months_text.text = "months"}
-//        }
-//        else {
-//            months_text.text = "month(s)"
-//        }
+        if ((j + 1) - temp * 12 == 1) {months_text.text = "month"}
+        else {months_text.text = "months"}
         
         if (remainingbalance_repay_minimum*i*100 - floor(remainingbalance_repay_minimum*i*100) > 0.499999) && (remainingbalance_repay_minimum*i*100 - floor(remainingbalance_repay_minimum*i*100) < 0.5)
         { temp_interest_min = (round(remainingbalance_repay_minimum*i*100 + 1))/100}
@@ -3767,33 +3057,18 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 
         if (saved <= 0) {
             
-//            if (decision == false) {
-                savings.text = "$" + numberFormatter.string(from: 0)!
-                if (0-savings_reference) < 0 {//rounding error is insignificant
-                    savings_change.text = "↓ $" + numberFormatter.string(from: NSNumber(value: abs(0-savings_reference)))!
-                }
-                else if (0-savings_reference) == 0 {
-                    savings_change.text = "no change"
-                }
-                else {
-                    savings_change.text = "↑ $" + numberFormatter.string(from: NSNumber(value: 0-savings_reference))!
-                }
-//            }
-//            else {
-//                savings.text = "$" + numberFormatter.string(from: 0)!
-//                if (0-savings_reference) < 0 {//rounding error is insignificant
-//                    savings_change.text = "▼ $" + numberFormatter.string(from: NSNumber(value: abs(0-savings_reference)))!
-//                }
-//                else if (0-savings_reference) == 0 {
-//                    savings_change.text = "no change"
-//                }
-//                else {
-//                    savings_change.text = "▲ $" + numberFormatter.string(from: NSNumber(value: 0-savings_reference))!
-//                }
-//            }
+            savings.text = "$" + numberFormatter.string(from: 0)!
+            if (0-savings_reference) < 0 {//rounding error is insignificant
+                savings_change.text = "↓ $" + numberFormatter.string(from: NSNumber(value: abs(0-savings_reference)))!
+            }
+            else if (0-savings_reference) == 0 {
+                savings_change.text = "no change"
+            }
+            else {
+                savings_change.text = "↑ $" + numberFormatter.string(from: NSNumber(value: 0-savings_reference))!
+            }
         }
         else {
-//            if (decision == false) {
                 if (saved - floor(saved) > 0.499999) && (saved - floor(saved) < 0.5)
                     { saved = (round(saved + 1))/100}
                 else { saved = round(saved) }
@@ -3808,33 +3083,10 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 else {
                     savings_change.text = "↑ $" + numberFormatter.string(from: NSNumber(value: saved-savings_reference))!
                 }
-//            }
-//            else {
-//                if (saved - floor(saved) > 0.499999) && (saved - floor(saved) < 0.5)
-//                { saved = (round(saved + 1))/100}
-//                else { saved = round(saved) }
-//
-//                savings.text = "$" + numberFormatter.string(from: NSNumber(value: saved))!
-//                if (saved-savings_reference) < 0 {
-//                    savings_change.text = "▼ $" + numberFormatter.string(from: NSNumber(value: abs(saved-savings_reference)))!
-//                }
-//                else if (saved-savings_reference) == 0 {
-//                    savings_change.text = "no change"
-//                }
-//                else {
-//                    savings_change.text = "▲ $" + numberFormatter.string(from: NSNumber(value: saved-savings_reference))!
-//                }
-//            }
-//
         }
         shared_preferences.set(saved, forKey: "savings_change_key"); shared_preferences.synchronize()
 
     }
-    
-    
-
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -3849,8 +3101,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         months.alpha = 1.0
         minimum.alpha = 1.0
         
-//        shared_preferences.set(decision, forKey: "decision"); shared_preferences.synchronize()
-
         //reset frames, or else calayers won't conform to them
         edit_slider_shape.frame = CGRect(x: view.frame.origin.x+5, y: edit_slider_shape.frame.origin.y, width: view.frame.width-10, height: edit_slider_shape.frame.height)
         edit_apr_shape.frame = CGRect(x: view.frame.origin.x+5, y: edit_apr_shape.frame.origin.y, width: view.frame.width-10, height: edit_apr_shape.frame.height)
@@ -3863,76 +3113,13 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         //view.addSubview(input_background)
         //view.bringSubviewToFront(input_background)
         //input_background.alpha = 0.0
-//        if (decision == true) {
-//            locked.isHidden = true
-//            swipe_note.isHidden = true
-//            swipe.isEnabled = true
-//            APR_DIRECT = 3.76
-//            time_title.text =  "Est. Payoff Time"
-//            savings_title.text = "Est. Savings"
-//            layout_interest_rate.isActive = false
-//            layout_minimum.isActive = false
-//            layout_savings.isActive = false
-//            layout_loaned.isActive = false
-//            layout_months.isActive = false
-//            //view.addConstraint(NSLayoutConstraint(item: bottomLayoutGuide, attribute: .top, relatedBy: .equal, toItem: interest_rate_unpressed, attribute: .bottom, multiplier: 2.2, constant: 50))
-//            //view.addConstraint(NSLayoutConstraint(item: bottomLayoutGuide, attribute: .top, relatedBy: .equal, toItem: minimum, attribute: .bottom, multiplier: 1.35, constant: 35))
-//            //view.addConstraint(NSLayoutConstraint(item: bottomLayoutGuide, attribute: .top, relatedBy: .equal, toItem: savings, attribute: .bottom, multiplier: 1.05, constant: 23))
-//            //view.addConstraint(NSLayoutConstraint(item: bottomLayoutGuide, attribute: .top, relatedBy: .equal, toItem: loaned, attribute: .bottom, multiplier: 4.5, constant: 122))
-//            //view.addConstraint(NSLayoutConstraint(item: savings, attribute: .top, relatedBy: .equal, toItem: months, attribute: .bottom, multiplier: 1, constant: 25))
-//
-//            //may not be necessary:
-//            view.addConstraint(NSLayoutConstraint(item: bottomLayoutGuide, attribute: .top, relatedBy: .equal, toItem: loaned, attribute: .bottom, multiplier: 5.54, constant: -1))
-//            view.addConstraint(NSLayoutConstraint(item: bottomLayoutGuide, attribute: .top, relatedBy: .equal, toItem: interest_rate_unpressed, attribute: .bottom, multiplier: 2.39, constant: 0))
-//            view.addConstraint(NSLayoutConstraint(item: bottomLayoutGuide, attribute: .top, relatedBy: .equal, toItem: minimum, attribute: .bottom, multiplier: 1.425, constant: 0))
-//            view.addConstraint(NSLayoutConstraint(item: savings, attribute: .top, relatedBy: .equal, toItem: months, attribute: .bottom, multiplier: 1, constant: 25))
-//            view.addConstraint(NSLayoutConstraint(item: bottomLayoutGuide, attribute: .top, relatedBy: .equal, toItem: savings, attribute: .bottom, multiplier: 1.085, constant: 0))
-//
-//            layout_stack_min.isActive = false
-//            layout_stack_max.isActive = false
-//            layout_loaned_trailing.isActive = false
-//            layout_loaned_leading.isActive = false
-//            stack_Y.isActive = false
-//            loaned_Y.isActive = false
-//            view.addConstraint(NSLayoutConstraint(item: loaned, attribute: .leading, relatedBy: .equal, toItem: stack_min, attribute: .centerX, multiplier: 1, constant: -10))
-//            view.addConstraint(NSLayoutConstraint(item: stack_max, attribute: .centerX, relatedBy: .equal, toItem: loaned, attribute: .trailing, multiplier: 1, constant: -9.25))
-//            view.addConstraint(NSLayoutConstraint(item: loaned, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1, constant: 39))
-//            view.addConstraint(NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: loaned, attribute: .trailing, multiplier: 1, constant:39))
-//            loaned_height.isActive = false
-//            view.addConstraint(loaned.heightAnchor.constraint(equalToConstant: 35))
-//            view.addConstraint(NSLayoutConstraint(item: loaned, attribute: .top, relatedBy: .equal, toItem: loaned_title, attribute: .bottom, multiplier: 1, constant: 38))
-//            view.addConstraint(NSLayoutConstraint(item: stack_min, attribute: .top, relatedBy: .equal, toItem: loaned_title, attribute: .bottom, multiplier: 1, constant: 6))
-//        }
-//        else {
-            locked.isHidden = false
-            swipe_note.isHidden = false
-            swipe.isEnabled = false
-            //keep the APR as is
-            time_title.text =  "Time"
-            savings_title.text = "Savings"
+        locked.isHidden = false
+        swipe_note.isHidden = false
+        swipe.isEnabled = false
+        //keep the APR as is
+        time_title.text =  "Time"
+        savings_title.text = "Savings"
             //don't change layout constraints
-//        }
-        //print(view.frame.height)
-        if (view.frame.height == 736) {
-//            splash_width.constant = 414
-//            splash_height.constant = 736
-            //splash_screen.backgroundColor = UIColor(patternImage: UIImage(named: "launchscreenbackgroundp.png")!) //for old splash screen
-            //step1height.constant = CGFloat(Double(148))
-            //step2height.constant = CGFloat(Double(307))
-            //step3height.constant = CGFloat(Double(94))
-//            step1height.constant = CGFloat(Double(150))
-//            step2height.constant = CGFloat(Double(310))
-//            step3height.constant = CGFloat(Double(89))
-
-            //step1height.constant = CGFloat(Double(451/3))
-            //step2height.constant = CGFloat(Double(929/3))
-            //step3height.constant = CGFloat(Double(268/3))
-        }
-        else {
-            //splash_screen.backgroundColor = UIColor(patternImage: UIImage(named: "launchscreenbackground.png")!) //for old splash screen
-            //keep rest
-        }
-
         unlocked.isHidden = true
         edit_slider.isHidden = true
         edit_apr.isHidden = true
@@ -3946,9 +3133,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         //swipe_note.isHidden = true
         swipe_note.text = "Swipe disabled."
         swipe_blink.isHidden = true
-        //print(rates_reference[0])
-        //print(rates_reference[1])
-        //print(rates_reference[2])
         loaned_min_input.delegate = self
         loaned_max_input.delegate = self
         increment_input.delegate = self
@@ -4093,10 +3277,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         down_outline.borderWidth = 0.25
         down_outline.cornerRadius = 5
         //(edit_pay_shape.frame.width-interest_rate_unpressed.frame.width*2-pay_monthly_box.frame.width)/2
-        //print(edit_pay_shape.frame.width)
-        //print(interest_rate_unpressed.frame.width)
-        //print(pay_monthly_box.frame.width)
-        //print((edit_pay_shape.frame.width-interest_rate_unpressed.frame.width*2-pay_monthly_box.frame.width)/2)
         
         pay_outline.frame = CGRect(x: (edit_pay_shape.frame.width-down_unpressed.frame.width*2-pay_monthly_box.frame.width)/2+down_unpressed.frame.width, y: edit_pay_shape.frame.height - 65 - up_unpressed.frame.height, width: pay_monthly_box.frame.width, height: pay_monthly_box.frame.height)
         //pay_outline.frame = CGRect(x: (edit_pay_shape.frame.width-down_unpressed.frame.width*2-pay_monthly_box.frame.width)/2+down_unpressed.frame.width, y: (edit_pay_shape.frame.height - down_unpressed.frame.height)/2+(down_unpressed.frame.height-pay_monthly_box.frame.height)/2, width: pay_monthly_box.frame.width, height: pay_monthly_box.frame.height)
@@ -4191,186 +3371,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         
         //swipe.isEnabled = false //disable until opening is done
         
-        /*DispatchQueue.global(qos: .background).async {
-            
-        //get most up-to-date information
-        if let url = URL(string: "https://studentaid.ed.gov/sa/types/loans/interest-rates") {
-            do {
-                let contents = try String(contentsOf: url)
-
-                    /*print(contents)*/
-                    /*let detagSource = "<!DOCTYPE html> <html> <body> <h1>Perkins Loans (regardless of the first disbursement date) have a fixed interest rate of 5%</h1> </body> </html>"*/
-                    .replacingOccurrences(
-                        of: "<[^>]+>",
-                        with: "",
-                        options: .regularExpression,
-                        range: nil
-                    )
-                    .replacingOccurrences(
-                        of: "\\Qx3C/script>\\E",
-                        with: "",
-                        options: .regularExpression,
-                        range: nil
-                    )
-                    .replacingOccurrences(
-                        of: "\\Q//-->\\E",
-                        with: "",
-                        options: .regularExpression,
-                        range: nil
-                    )
-                    .replacingOccurrences(
-                        of: " ",
-                        with: "",
-                        options: .regularExpression,
-                        range: nil
-                    )
-
-                //perkins loans
-                let extractPerkinsLoanRate = contents
-                    .replacingOccurrences(
-                        of: "\\QPerkinsLoans(regardlessofthefirstdisbursementdate)haveafixedinterestrateof\\E",
-                        with: "PerkinsLoans(regardlessofthefirstdisbursementdate)haveafixedinterestrateof>",
-                        options: .regularExpression,
-                        range: nil
-                    )
-                    .replacingOccurrences(
-                        of: "\\Q%.\\E",
-                        with: "<%.",
-                        options: .regularExpression,
-                        range: nil
-                    )
- 
-                let outerBracketsPerkins = "<" + "\(extractPerkinsLoanRate)" + ">"
-                
-                let extractedPerkinsLoanRate = outerBracketsPerkins
-                    .replacingOccurrences(
-                        of: "<[^>]+>",
-                        with: "",
-                        options: .regularExpression,
-                        range: nil
-                    )
-                /*let removeDuplicatesPerkins = Double(Int(ceil(Double(extractedPerkinsLoanRate)!)/10))*/
-                
-                var removeDuplicatesPerkins = self.APR_PERKINS
-                if (Double(extractedPerkinsLoanRate) != nil) {
-                    removeDuplicatesPerkins = Double(Int(Double(extractedPerkinsLoanRate)!/10))
-                }
-                else {
-                    //skip
-                }
-
-                //direct loans
-                let extractDirectLoanRate = contents
-                    .replacingOccurrences(
-                        of: "\\QDirectSubsidizedLoans,\\E",
-                        with: "",
-                        options: .regularExpression,
-                        range: nil
-                    )
-                    .replacingOccurrences(
-                        of: "\\QDirectSubsidizedLoans\\E",
-                        with: "DirectSubsizedLoans>",
-                        options: .regularExpression,
-                        range: nil
-                    )
-                    .replacingOccurrences(
-                        of: "\\Q%\\E",
-                        with: "<%",
-                        options: .regularExpression,
-                        range: nil
-                    )
-
-                let outerBracketsDirect = "<" + "\(extractDirectLoanRate)" + ">"
-                let extractedDirectLoanRate = outerBracketsDirect
-                    .replacingOccurrences(
-                        of: "<[^>]+>",
-                        with: "",
-                        options: .regularExpression,
-                        range: nil
-                    )
- 
-                let tidyDirectLoanRateMore = extractedDirectLoanRate
-                    .replacingOccurrences(
-                        of: "\\QUndergraduate\\E",
-                        with: "",
-                        options: .regularExpression,
-                        range: nil
-                    )
-                    .replacingOccurrences(
-                        of: "\\QandDirect\\E",
-                        with: "<andDirect",
-                        options: .regularExpression,
-                        range: nil
-                    )
-                    .appending(
-                        ">"
-                    )
-                    .replacingOccurrences(
-                        of: "<[^>]+>",
-                        with: "",
-                        options: .regularExpression,
-                        range: nil
-                    )
-                    .replacingOccurrences(
-                        of: "\n",
-                        with: "",
-                        options: .regularExpression,
-                        range: nil
-                    )
-
-                /*let tidiedDirectLoanRateMore = Double(Int(ceil(Double(tidyDirectLoanRateMore)!*100)))/100*/
-                var tidiedDirectLoanRateMore = self.APR_DIRECT
-                if (Double(tidyDirectLoanRateMore) != nil) {
-                    tidiedDirectLoanRateMore = Double(tidyDirectLoanRateMore)!
-                }
-                else {
-                    //skip
-                }
-                
-                
-                
-                /*print(Double(tidyDirectLoanRateMore)!, terminator: "\n")
-                print(Double(tidyDirectLoanRateMore)!*100, terminator: "\n")
-                print(ceil(Double(tidyDirectLoanRateMore)!*100), terminator: "\n")
-                print(Int(ceil(Double(tidyDirectLoanRateMore)!*100)), terminator: "\n")
-                print(Double(Int(ceil(Double(tidyDirectLoanRateMore)!*100))), terminator: "\n")
-                
-                print(Double(Int(ceil(Double(tidyDirectLoanRateMore)!*100)))/100, terminator: "\n")*/
-
-                DispatchQueue.main.async {
-                    //self.rates = ["\(tidiedDirectLoanRateMore)"+"%",String(format: "%.2f", removeDuplicatesPerkins)+"%"]
-                    self.rates = ["\(tidiedDirectLoanRateMore)",String(format: "%.2f", removeDuplicatesPerkins)]
-                    self.rates_text = ["\(tidiedDirectLoanRateMore)"+"% - Direct Loan", String(format: "%.2f", removeDuplicatesPerkins)+"% - Perkins Loan"]
-                    self.rates_reference = [tidiedDirectLoanRateMore / 12 / 100, removeDuplicatesPerkins / 12 / 100, Double()]
-                    self.i = tidiedDirectLoanRateMore/12/100
-                    /*let tempRate = Int(tidiedDirectLoanRateMore*100)
-                     i = Double(tempRate)/100/12/100*/
-                    self.apr_number.text = String(self.rates[0])
-                    self.apr_number_back.text = String(self.rates[0])
-
-
-                    //self.interest_rate_unpressed.setTitle(self.rates[0], for: UIControlState())
-                    //self.interest_rate_unpressed_copy.setTitle(self.rates[0], for: UIControlState())
-                    //self.interest_rate_pressed.setTitle(self.rates[0], for: UIControlState())
-                    //self.interest_rate_pressed_copy.setTitle(self.rates[0], for: UIControlState())
-                    //self.interest_rate_disabled.setTitle(self.rates[0], for: UIControlState())
-                    self.i_reference = self.i
-                    self.shared_preferences.set(self.i * 12 * 100, forKey: "interest"); self.shared_preferences.synchronize()
-                    self.table_view.reloadData() /* <-- fixes bug */
-                    self.table_view.frame = CGRect(x: self.table_view.frame.origin.x, y: self.table_view.frame.origin.y, width: self.table_view.frame.width, height: 0)
-                }
-                
-                
-                //additional fallback plans
-            } catch {
-                //do nothing, if contents could not be loaded (e.g., URL is under construction)
-            }
-        } else {
-            //do nothing, if the URL moved
-        }
-
-        }//end of queue*/
-        
         numberFormatter.usesGroupingSeparator = true
         numberFormatter.groupingSeparator = ","
         numberFormatter.groupingSize = 3
@@ -4399,10 +3399,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 temp = ceil(p/120*100)/100
             }
         }
-
-        //print(temp)
-        
-
 
         a = temp
         a_reference = temp
@@ -4609,7 +3605,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         interest_rate_unpressed.layer.addSublayer(interest_rate_unpressed_triangleLayer)
 
         interest_rate_unpressed.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.25*interest_rate_unpressed.frame.width, bottom: 0.0, right: 0.0) //*****
-        //print(0.25*interest_rate_unpressed.frame.width)
         
         interest_rate_unpressed.layer.shadowColor = UIColor.black.cgColor
         interest_rate_unpressed.layer.shadowOffset = CGSize(width: 0, height: 1)
@@ -4718,7 +3713,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         interest_rate_unpressed_copy.layer.addSublayer(arrow_unpressed_copy_label)*/
         
         interest_rate_unpressed_copy.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.25*interest_rate_unpressed_copy.frame.width, bottom: 0.0, right: 0.0)
-        //print(0.25*interest_rate_unpressed_copy.frame.width)
         
         interest_rate_unpressed_copy.layer.shadowColor = UIColor.black.cgColor
         interest_rate_unpressed_copy.layer.shadowOffset = CGSize(width: 0, height: 1)
@@ -4960,139 +3954,9 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 
         //no longer using iPhone 5/5s/SE, but keeping for nastalgic purposes
         
-        if (view.frame.height == 568) {
-            //print("You have an iPhone 5/5s/SE", terminator: "\n\n")
-            
-            //step_1_images.append(UIImage(named: "s1se.png")!)
-            //step_1_images.append(UIImage(named: "s9se.png")!)
-            //step_1_images.append(UIImage(named: "s10se.png")!)
-            //step_1_images.append(UIImage(named: "s11se.png")!)
-            
-            //step_2_images.append(UIImage(named: "s1se_b.png")!) //skipping for now
-            //step_2_images.append(UIImage(named: "s1se_b2.png")!)
-            //step_2_images.append(UIImage(named: "s2se_b.png")!)
-            //step_2_images.append(UIImage(named: "s2se_b2.png")!)
-            //step_2_images.append(UIImage(named: "s3se_b.png")!)
-            //step_2_images.append(UIImage(named: "s5se_b2.png")!)
-            //step_2_images.append(UIImage(named: "s6se_b.png")!)
-            
-            //step_3_images.append(UIImage(named: "s1se_c.png")!)
-            //step_3_images.append(UIImage(named: "s2se_c.png")!)
-            //step_3_images.append(UIImage(named: "s3se_c.png")!)
-            //step_3_images.append(UIImage(named: "s4se_c.png")!)
-            //step_3_images.append(UIImage(named: "s4se_c2.png")!)
-            //step_3_images.append(UIImage(named: "s3se_cN.png")!)
-            //step_3_images.append(UIImage(named: "s2se_cN.png")!)
-            //step_3_images.append(UIImage(named: "s2se_cN2.png")!)
-            
-            //bottom_images.append(UIImage(named: "b1se.png")!)
-            //bottom_images.append(UIImage(named: "b2se.png")!)
-            //bottom_images.append(UIImage(named: "b3se.png")!)
-            //bottom_images.append(UIImage(named: "b2Nse.png")!)
-            
-            //slide_images.append(UIImage(named: "slidese.png")!)
-
-            
-        }
-        else if (view.frame.height == 667) {
-            //print("You have an iPhone 6/6s/7", terminator: "\n\n")
-            
-            //step_1_images.append(UIImage(named: "s1.png")!)
-            //step_1_images.append(UIImage(named: "s9.png")!)
-            //step_1_images.append(UIImage(named: "s10.png")!)
-            //step_1_images.append(UIImage(named: "s11.png")!)
-
-            //step_2_images.append(UIImage(named: "s1_b.png")!) //skipping for now
-            //step_2_images.append(UIImage(named: "s1_b2.png")!)
-            //step_2_images.append(UIImage(named: "s2_b.png")!)
-            //step_2_images.append(UIImage(named: "s2_b2.png")!)
-            //step_2_images.append(UIImage(named: "s3_b.png")!)
-            //step_2_images.append(UIImage(named: "s5_b2.png")!)
-            //step_2_images.append(UIImage(named: "s6_b.png")!)
-
-            //step_3_images.append(UIImage(named: "s1_c.png")!)
-            //step_3_images.append(UIImage(named: "s2_c.png")!)
-            //step_3_images.append(UIImage(named: "s3_c.png")!)
-            //step_3_images.append(UIImage(named: "s4_c.png")!)
-            //step_3_images.append(UIImage(named: "s4_c2.png")!)
-            //step_3_images.append(UIImage(named: "s3_cN.png")!)
-            //step_3_images.append(UIImage(named: "s2_cN.png")!)
-            //step_3_images.append(UIImage(named: "s2_cN2.png")!)
-            
-            //bottom_images.append(UIImage(named: "b1.png")!)
-            //bottom_images.append(UIImage(named: "b2.png")!)
-            //bottom_images.append(UIImage(named: "b3.png")!)
-            //bottom_images.append(UIImage(named: "b2N.png")!)
- 
-            //slide_images.append(UIImage(named: "slide.png")!)
-            
-            
-            
-        }
-        else if (view.frame.height == 736) {
-            //print("You have an iPhone 6/6s/7 Plus", terminator: "\n\n")
-            
-            //step_1_images.append(UIImage(named: "s1p.png")!) //start with 2
-            //step_1_images.append(UIImage(named: "s9p.png")!)
-            //step_1_images.append(UIImage(named: "s10p.png")!)
-            //step_1_images.append(UIImage(named: "s11p.png")!)
-            
-            //step_2_images.append(UIImage(named: "s1p_b.png")!) //skipping for now
-            //step_2_images.append(UIImage(named: "s1p_b2.png")!)
-            //step_2_images.append(UIImage(named: "s2p_b.png")!)
-            //step_2_images.append(UIImage(named: "s2p_b2.png")!)
-            //step_2_images.append(UIImage(named: "s3p_b.png")!)
-            //step_2_images.append(UIImage(named: "s5p_b2.png")!)
-            //step_2_images.append(UIImage(named: "s6p_b.png")!)
-            
-            //step_3_images.append(UIImage(named: "s1p_c.png")!)
-            //step_3_images.append(UIImage(named: "s2p_c.png")!)
-            //step_3_images.append(UIImage(named: "s3p_c.png")!)
-            //step_3_images.append(UIImage(named: "s4p_c.png")!)
-            //step_3_images.append(UIImage(named: "s4p_c2.png")!)
-            //step_3_images.append(UIImage(named: "s3p_cN.png")!)
-            //step_3_images.append(UIImage(named: "s2p_cN.png")!)
-            //step_3_images.append(UIImage(named: "s2p_cN2.png")!)
-            
-            //bottom_images.append(UIImage(named: "b1p.png")!)
-            //bottom_images.append(UIImage(named: "b2p.png")!)
-            //bottom_images.append(UIImage(named: "b3p.png")!)
-            //bottom_images.append(UIImage(named: "b2Np.png")!)
-            
-            //slide_images.append(UIImage(named: "slidep.png")!)
-
-            
-        }
-        else {
-            //do nothing
-        }
-
-        //if (view.frame.height == 568) {
-
-
-        //}
-        //else {
-            //do nothing
-        //}
-        
         let messageVC = UIAlertController(title: "Caution", message: "Your device is incompatible!" , preferredStyle: .alert)
-        
-        let proceedAction = UIAlertAction(title:"Proceed",
-                                          style: .default) //{ (action) -> Void in
-        //print("You selected the submit action.")
-        //}
+        let proceedAction = UIAlertAction(title:"Proceed", style: .default)
         messageVC.addAction(proceedAction)
-        
-        /*switch UIDevice.current.userInterfaceIdiom {
-        case .pad: present(messageVC, animated: true)
-        case .phone:
-            if (view.frame.height <= 568) {
-                present(messageVC, animated: true)
-            }
-        case .unspecified: break
-        case .tv: break
-        case .carPlay: break
-        }*/
         
         if (UIDevice.current.userInterfaceIdiom == .phone) {
             if (view.frame.height > 568) {
@@ -5110,52 +3974,11 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             timer_step = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(MyMainPage.Step_Instructions), userInfo: nil, repeats: false)
         }*/
 
-        
-        //splash_screen.frame = CGRect(x: view.frame.origin.x, y: view.frame.origin.y, width: view.frame.width, height: view.frame.height) //for old splash screen
-        //splash_screen.frame = view.bounds //for old splash screen
-
         //step_2.backgroundColor = UIColor(patternImage: UIImage(named: "s1_b.png")!)
         //step_3.backgroundColor = UIColor(patternImage: UIImage(named: "s1_c.png")!)
 
         //dim splash screen steps at the beginning
         
-//        if (self.decision == true) {
-//
-//        UIView.animate(withDuration: 0.25, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-////            self.step_1.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.85) //for old splash screen
-////            self.step_2.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.85) //for old splash screen
-////            self.step_2_background.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.85) //for old splash screen
-////            self.step_3.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.85) //for old splash screen
-////            self.step_4.backgroundColor = UIColor(red: 0.0/255, green: 0.0/255, blue: 0.0/255, alpha: 0.85) //for old splash screen
-//            /*self.step_1.frame = CGRect(x: self.step_1.frame.origin.x, y: self.step_1.frame.origin.y+140.5, width: self.step_1.frame.width, height: 0)*/
-//        }, completion: {
-//            (finished: Bool) -> Void in
-//            /*print(self.splash_screen.frame.height,terminator: "\n")
-//            print(self.splash_screen.frame.height-(self.step_1.frame.height),terminator: "\n")
-//            print(self.splash_screen.frame.height-(self.step_1.frame.height+self.step_2.frame.height),terminator: "\n")
-//            print(self.splash_screen.frame.height-(self.step_1.frame.height+self.step_2.frame.height+self.step_3.frame.height),terminator: "\n")
-//            print(self.splash_screen.frame.height-(self.step_1.frame.height+self.step_2.frame.height+self.step_3.frame.height+self.step_4.frame.height),terminator: "\n")*/
-//            /*print(6*(self.splash_screen.frame.height)/self.splash_screen.frame.height,terminator: "\n")
-//            print(6*(self.splash_screen.frame.height-(self.step_1.frame.height))/self.splash_screen.frame.height,terminator: "\n")
-//            print(6*(self.splash_screen.frame.height-(self.step_1.frame.height+self.step_2.frame.height))/self.splash_screen.frame.height,terminator: "\n")
-//            print(6*(self.splash_screen.frame.height-(self.step_1.frame.height+self.step_2.frame.height+self.step_3.frame.height))/self.splash_screen.frame.height,terminator: "\n")
-//            print(6*(self.splash_screen.frame.height-(self.step_1.frame.height+self.step_2.frame.height+self.step_3.frame.height+self.step_4.frame.height))/self.splash_screen.frame.height,terminator: "\n")*/
-//
-////        self.splash_screen.addSubview(self.disregard) //for old splash screen
-////        self.splash_screen.bringSubviewToFront(self.disregard) //for old splash screen
-////        self.Step_Main() //for old splash screen
-//            //print(self.splash_screen.frame.height,terminator: "\n")
-//            //print(self.splash_screen.frame.width,terminator: "\n")
-//
-//
-//        })
-//        }
-//        else {
-////            self.disregard.isHidden = true
-////            self.splash_screen.isHidden = true
-////            self.splash_screen_background.isHidden = true
-//        }
-
         /*let step_dot = UIImageView()
         step_dot.backgroundColor = UIColor(red: 0.0/255, green: 255.0/255, blue: 0.0/255, alpha: 0.75)
         step_dot.frame = CGRect(x: step_2.frame.origin.x, y: step_2.frame.origin.y, width: step_2.frame.width, height: 1)
@@ -5183,7 +4006,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             
             guard let data = data, error == nil else { return }
             
-            print(NSString(data: data, encoding: String.Encoding.utf8.rawValue))
         }
         
         task.resume()*/
@@ -5193,7 +4015,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         
         let name    = fullNameArr[0]
         let surname = fullNameArr[1]
-        print(name, surname, terminator: " ")*/
+        */
         
         
 
@@ -5213,22 +4035,10 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         //<[^>]+ pattern > replace what precedes them with _ and merge but not text
         //<[^>]+> pattern > replace what precedes them with _ and merge but not text
         
-
-
-        /*print("step_1_images.count=",step_1_images.count,terminator: "\n")
-        print("step_2_images.count=",step_2_images.count,terminator: "\n")
-        print("step_3_images.count=",step_3_images.count,terminator: "\n")*/
-        question.isHidden = true //optional
-        
-//        if (decision == false) {
         DispatchQueue.main.async
             {
                 self.performSegue(withIdentifier: "myAVPlayerViewController", sender: self)
             }
-//        }
-//        else {
-//            //no video
-//        }
         //performSegue(withIdentifier: "myAVPlayerViewController", sender: nil)
         /*view.addSubview(pay_monthly_box)
         view.addSubview(up_unpressed)
@@ -5241,26 +4051,4 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         view.bringSubviewToFront(down_pressed)*/
     }
     
-    /*func getNameFromProfileUrl(profileUrl: NSURL, completionHandler: @escaping (String?) -> Void) {
-        let task = URLSession.shared.dataTask(with: profileUrl as URL, completionHandler: { (data, response, error) -> Void in
-            if error == nil {
-                var urlContent = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) as NSString!
-                var urlContentArray = urlContent?.components(separatedBy: "<title>")
-                var statusArray = urlContentArray?[1].componentsSeparatedByString("</title>")
-                let playerName = statusArray[0] as? String
-                
-                completionHandler(playerName)
-            } else {
-                completionHandler(nil)
-            }
-        })
- task.res*/
 }
-
-/*extension AVPlayerViewController {
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-}*/
-
-
