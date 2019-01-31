@@ -205,7 +205,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     lazy var rates = [String(format: "%.2f",APR_DIRECT), String(format: "%.2f",APR_PERKINS)]//for apr_number and its back
     lazy var rates_text = [String(format: "%.2f",APR_DIRECT) + "% - Direct Loan", String(format: "%.2f",APR_PERKINS) + "% - Perkins Loan"]//for table
     lazy var rates_reference = [APR_DIRECT / 12 / 100, APR_PERKINS / 12 / 100, Double()] //rates_reference[2] will store custom rate
-    /*let loaned_subview = UIView()*/
     //let bubble_label = UILabel(frame: CGRect(x: -30, y: -5, width: 80, height: -32))
     var bubble_label = UILabel(frame: CGRect(x: -30, y: -5, width: 80, height: -32))
     let bubble_label_arrow = UILabel(frame: CGRect(x: 4.5, y: -5, width: 14, height: 7))
@@ -467,16 +466,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
         //max_value = min_value + Int(loaned.maximumValue)*increment//doesn't know increment size yet, until move slider
         increment = (max_value - min_value)/number_of_increments
-        /*if (increment - floor(increment) == 0) {
-            increment_input.text = String(format: "%.0f", increment)
-            //increment_input.font = UIFont(name: "HelveticaNeue", size: 17.0)
-            increment_input.textColor = UIColor(red: 161/255.0, green: 166/255.0, blue: 168/255.0, alpha: 1.0)
-        }
-        else {
-            increment_input.text = String(format: "%.5f", increment)
-            //increment_input.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
-            increment_input.textColor = UIColor.red
-        }*/
         if (increment - floor(increment) == 0) {
             increment_input.text = String(format: "%.0f", increment)
             //increment_input.font = UIFont(name: "HelveticaNeue", size: 17.0)
@@ -637,16 +626,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 
         
         increment = (max_value - min_value)/number_of_increments
-        /*if (increment - floor(increment) == 0) {
-            increment_input.text = String(format: "%.0f", increment)
-            //increment_input.font = UIFont(name: "HelveticaNeue", size: 17.0)
-            increment_input.textColor = UIColor(red: 161/255.0, green: 166/255.0, blue: 168/255.0, alpha: 1.0)
-        }
-        else {
-            increment_input.text = String(format: "%.5f", increment)
-            //increment_input.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
-            increment_input.textColor = UIColor.red
-        }*/
         
         if (increment - floor(increment) == 0) {
             increment_input.text = String(format: "%.0f", increment)
@@ -771,44 +750,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
         Lengthsaving()
     }
-    
-    
-    @IBAction func Increment_Input(_ sender: UITextField) {
-        //increment = Double(truncating: removeFormat(string: increment_input.text!))
-        //number_of_increments = round((max_value - min_value)/increment)
-        //input_number_of_increments.text = String(format: "%.0f", number_of_increments)
-        //loaned slider value is already updating
-        /*if (max_value > progress) {
-            let value = (progress - min_value)/increment
-            let rounded_value = round(value)
-            self.loaned.setValue(Float(rounded_value), animated: true)
-            //self.loaned.setValue(Float(value), animated: true)
-         
-        }
-        else {
-            p = Double(max_value)
-            shared_preferences.set(p, forKey: "loaned"); shared_preferences.synchronize()
-            let value = number_of_increments
-            self.loaned.setValue(Float(value), animated: true)
-            progress = increment * Double(self.loaned.value) + min_value
-        }*/
-        /*let temp = ceil(Double(Int(p*i*100)+1))/100
-        if (temp >= a)
-        {
-            a = temp
-            shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
-            pay_monthly_box.text = "$" + String(format: "%.2f", a)
-            
-            minimum.isHidden = false
-            minimum.text = "Minimum"
-        }
-        else
-        {
-            minimum.isHidden = false
-            minimum.text = " "
-        }
-        Lengthsaving()*/
-    }
 
     @IBAction func Input_Number_of_Increments(_ sender: UITextField) {
         number_of_increments = Double(truncating: removeFormat(string: input_number_of_increments.text!))
@@ -908,12 +849,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         else {
             //keep going
         }
-        /*if (i == 0) {
-            apr.isOn = false
-        }
-        else {
-            //keep going
-        }*/
         rates_reference[2] = i
         shared_preferences.set(2, forKey: "position"); shared_preferences.synchronize()
         shared_preferences.set(i * 12 * 100, forKey: "interest"); shared_preferences.synchronize()
@@ -1030,7 +965,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 
         if (a <= temp) {
         //if (a <= ceil(Double(Int(p*i*100)+1))/100) {
-            /*let temp = Int((p * i + 0.01) * 100)*/
             //let temp = ceil(Double(Int(p*i*100)+1))/100
             
             a = temp
@@ -1350,14 +1284,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         UIView.animate(withDuration: 0.0125, animations: {
             //necessary????
             //self.edit_slider_shape.transform = CGAffineTransform(scaleX: 0.9375, y: 0.9375)
-            /*self.increment_input_left_label.alpha = 0.0
-            self.increment_input.alpha = 0.0
-            self.increment_input_right_label.alpha = 0.0
-            self.input_number_of_increments.alpha = 0.0
-            self.bare_track.alpha = 0.0
-            self.loaned_minimum.alpha = 1.0
-            self.loaned_maximum.alpha = 1.0
-            self.loaned_title.alpha = 1.0*/
             //self.edit_slider_shape_tweak.fillColor = UIColor(red:74/255.0, green:82/255.0, blue:86/255.0, alpha: 0.75).cgColor
             self.edit_slider_shape_tweak.fillColor = UIColor(red:32/255.0, green:36/255.0, blue:38/255.0, alpha: 0.0).cgColor
             //self.input_background.alpha = 0.0
@@ -1508,19 +1434,11 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         UIView.animate(withDuration: 0.0125, animations: {
             self.interest_rate_unpressed_outline.borderColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.0).cgColor
             self.edit_apr_shape_tweak_triangleLayer.strokeColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.0).cgColor
-            /*if (self.apr.isOn == false) {
-                self.apr_number.alpha = 0.125
-            }
-            else {
-                //self.apr_number.alpha = 1.0
-            }*/
             //self.edit_apr_shape_tweak.fillColor = UIColor(red:74/255.0, green:82/255.0, blue:86/255.0, alpha: 0.75).cgColor
             self.edit_apr_shape_tweak.fillColor = UIColor(red:32/255.0, green:36/255.0, blue:38/255.0, alpha: 0.0).cgColor
             //self.table_view.alpha = 1.0
             self.switch_outline.borderColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.0).cgColor
             self.switch_thumb_outline.borderColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.0).cgColor
-            /*self.apr_title.alpha = 1.0*/
-
         },
                        completion: {
                         (finished: Bool) -> Void in
@@ -1529,12 +1447,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                             self.interest_rate_unpressed_outline.borderColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.5).cgColor
                             self.edit_apr_shape_tweak_triangleLayer.strokeColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.125).cgColor
                             self.apr_number.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
-                            /*if (self.apr.isOn == false) {
-                                self.apr_number.alpha = 1.0
-                            }
-                            else {
-                                //self.apr_number.alpha = 1.0
-                            }*/
                             //self.edit_apr_shape_tweak.fillColor = UIColor(red:74/255.0, green:82/255.0, blue:86/255.0, alpha: 1.0).cgColor
                             self.edit_apr_shape_tweak.fillColor = UIColor(red:32/255.0, green:36/255.0, blue:38/255.0, alpha: 1.0).cgColor
                             self.table_view.alpha = 0.0 //if it's open
@@ -1560,13 +1472,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         //loaned_max_input.isUserInteractionEnabled = false
         //input_number_of_increments.isUserInteractionEnabled = false
         apr_number.isUserInteractionEnabled = false
-        
-        /*if (apr.isOn == false) {
-            apr_number.alpha = 0.125
-        }
-        else {
-            //apr_number.alpha = 1.0
-        }*/
         
         edit_apr_shape.isHidden = true
         //edit_apr_shape_tweak.fillColor = UIColor(red:74/255.0, green:82/255.0, blue:86/255.0, alpha: 0.75).cgColor
@@ -1679,17 +1584,10 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             self.down_outline.borderColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.0).cgColor
             self.pay_outline.borderColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.0).cgColor
             self.up_outline.borderColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.0).cgColor
-            /*self.pay_sign.alpha = 1.0
-            self.down_sign.alpha = 0.0
-            self.down_number.alpha = 0.0
-            self.up_sign.alpha = 0.0
-            self.up_number.alpha = 0.0*/
             //self.edit_pay_shape_tweak.fillColor = UIColor(red:74/255.0, green:82/255.0, blue:86/255.0, alpha: 0.75).cgColor
             self.edit_pay_shape_tweak.fillColor = UIColor(red:32/255.0, green:36/255.0, blue:38/255.0, alpha: 0.0).cgColor
             self.pay_monthly_title.alpha = 1.0
             self.minimum.textColor = UIColor(red:109/255.0, green:130/255.0, blue:159/255.0, alpha: 1.0)
-
-            //self.table_view.alpha = 1.0
         },
                        completion: {
                         (finished: Bool) -> Void in
@@ -1989,27 +1887,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         //progress = Int(sender.value)
         //progress = increment * progress + 2000
         progress = increment * Double(sender.value) + min_value
-        /*//catching exception
-        if progress.isNaN {
-            progress = min_value
-            //loaned.isEnabled = false
-        }
-        else {
-            //loaned.isEnabled = true
-            //keep going
-        }*/
-
 
         //set up loaned_view
-        /*view.addSubview(loaned_subview)
-        loaned_subview.translatesAutoresizingMaskIntoConstraints = false //Don't forget this line
-        let leftSideConstraint = NSLayoutConstraint(item: loaned_subview, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1.0, constant: 0.0)
-        let bottomConstraint = NSLayoutConstraint(item: loaned_subview, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0.0)
-        let widthConstraint = NSLayoutConstraint(item: loaned_subview, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1.0, constant: 0.0)
-        let heightConstraint = NSLayoutConstraint(item: loaned_subview, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 1.0, constant: 0.0)
-        view.addConstraints([leftSideConstraint, bottomConstraint, heightConstraint, widthConstraint])
-        
-        //subview slider and labels around it*/
         //view.addSubview(loaned_minimum)
         //view.addSubview(loaned_maximum)
         view.addSubview(loaned)
@@ -2024,13 +1903,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             bubble_label.layer.masksToBounds = true
             bubble_label.layer.cornerRadius = 5
             
-            /*let arrow_pressed_copy_label = CATextLayer()
-            arrow_pressed_copy_label.foregroundColor = UIColor(red: 254.0/255, green: 254.0/255, blue: 254.0/255, alpha: 1.0).cgColor
-            /*arrow_pressed_copy_label.frame = CGRect(x: 0.75*interest_rate_pressed_copy.frame.width-15, y: interest_rate_pressed_copy.frame.height/2-15+0.5, width: interest_rate_pressed_copy.frame.width, height: interest_rate_pressed_copy.frame.height)*/
-            arrow_pressed_copy_label.string = "↓"
-            arrow_pressed_copy_label.fontSize = 20
-            interest_rate_pressed_copy.layer.addSublayer(arrow_pressed_copy_label)*/
-            
             let trianglePath = UIBezierPath()
             trianglePath.move(to: CGPoint(x: 0, y: 0))
             trianglePath.addLine(to: CGPoint(x: 14, y: 0))
@@ -2042,12 +1914,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             triangleLayer.fillColor = UIColor(red: 161.0/255, green: 166.0/255, blue: 168.0/255, alpha: 1.0).cgColor
             bubble_label_arrow.layer.addSublayer(triangleLayer)
             
-            /*loaned.layer.addSublayer(mintrack_triangleLayer)*/
-            
-            /*loaned.minimumTrackImage(for: .normal).layer.mask = mintrack_triangleLayer*/
-
-
-            /*bubble_label_arrow.backgroundColor = UIColor(patternImage: UIImage(named: "bubble_label_arrow.png")!)*/
             thumb_bubble.addSubview(bubble_label)
             thumb_bubble.addSubview(bubble_label_arrow)
             thumb_bubble.bringSubviewToFront(bubble_label_arrow)
@@ -2055,7 +1921,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             bubble_label.text = "$" + numberFormatter.string(from: NSNumber(value: progress))!
             var previous_subviews = loaned.subviews
             previous_subviews.removeAll()
-            //thumb_bubble.isHidden = true
         }
         
         if (Double(progress) != p) {
