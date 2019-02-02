@@ -1926,7 +1926,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         if (Double(progress) != p) {
         p = Double(progress)
            
-        /*let temp = Double(Int((p * i + 0.01) * 100)) / 100*/
             var temp = Double()
             if (tenyr_indicator == 0) {
                 if (p*i*100 - floor(p*i*100) > 0.499999) && (p*i*100 - floor(p*i*100) < 0.5)
@@ -1983,8 +1982,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     @IBAction func Slider_Touch_Down(_ sender: UISlider) {
-        /*bubble_label.isHidden = false
-        bubble_label_arrow.isHidden = false*/
         bubble_label.isHidden = false
         bubble_label_arrow.isHidden = false
 
@@ -1995,28 +1992,19 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 
         }, completion: {
             (finished: Bool) -> Void in
-            /*self.test.text = "Hello"*/
 
-            /*// Fade in
-             UIView.animate(withDuration: 1.0, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-             self.test.alpha = 1.0
-             }, completion: nil)*/
         }
         )
 
         
     }
     @IBAction func Slider_Touch_Up(_ sender: UISlider) {
-        /*bubble_label.isHidden = true
-        bubble_label_arrow.isHidden = true*/
         UIView.animate(withDuration: 0.125, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.bubble_label.alpha = 0.0
             self.bubble_label_arrow.alpha = 0.0
         }, completion: nil)
         bubble_label.isHidden = true
         bubble_label_arrow.isHidden = true
-
-        /*loaned_subview.removeFromSuperview()*/
     }
     
     
@@ -2036,9 +2024,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             invisible.isHidden = false
             //invisible_back.isHidden = true
             //apr_number.isUserInteractionEnabled = true
-            /*arrow_unpressed.isHidden = false
-            arrow_disabled.isHidden = true*/
-            
         }
         else {
             i_reference = rates_reference[shared_preferences.integer(forKey: "position")]
@@ -2061,34 +2046,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             apr_number.font = UIFont(name: "HelveticaNeue", size: 17.0)
             invisible.isHidden = true
             invisible_back.isHidden = true
-            /*if (i_reference == 0) {
-                apr.isOn = false
-            }
-            else {
-                //keep going
-            }*/
-
-            
-            /*arrow_unpressed.isHidden = true
-            arrow_unpressed_copy.isHidden = true
-            arrow_disabled.isHidden = false*/
-            /*table_view.isHidden = true*/
-            /*down_unpressed.isHidden = false
-            pay_monthly_title.isHidden = false
-            pay_monthly_box.isHidden = false
-            up_unpressed.isHidden = false*/
             self.table_view.alpha = 0.0 //need self?
-
-            /*UIView.animate(withDuration: 0.125, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-                /*self.table_view.frame = CGRect(x: self.table_view.frame.origin.x, y: self.table_view.frame.origin.y, width: self.table_view.frame.width, height: 0)*/
-                /*self.view.addSubview(self.table_view)*/
-                self.table_view.alpha = 0.0
-                /*self.bubble_label.alpha = 0.0
-                 self.bubble_label_arrow.alpha = 0.0*/
-            }, completion: nil)*/
-        
-
-            
         }
         /*let temp = Double(Int((p * i + 0.01) * 100)) / 100*/
         /*        var temp = Double()
