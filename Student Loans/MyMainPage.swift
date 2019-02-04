@@ -2048,11 +2048,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             invisible_back.isHidden = true
             self.table_view.alpha = 0.0 //need self?
         }
-        /*let temp = Double(Int((p * i + 0.01) * 100)) / 100*/
-        /*        var temp = Double()
-        if (p*i*100 - floor(p*i*100) > 0.499999) && (p*i*100 - floor(p*i*100) < 0.5)
-            { temp = (round(p*i*100 + 1) + 1)/100}
-        else { temp = (round(p*i*100) + 1)/100 }*/
 
         var temp = Double()
         if (tenyr_indicator == 0) {
@@ -2097,60 +2092,21 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         shared_preferences.set(i * 12 * 100, forKey: "interest"); shared_preferences.synchronize()
     }
     
-    /*@IBAction func showAlert(_ sender: Any) {
-        let alertController = UIAlertController(title: "iOScreator", message:
-            "Hello, world!", preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-        
-        self.present(alertController, animated: true, completion: nil)
-    }*/
-
-    
     //instructions for interest_rate and arrow
     @IBAction func Interest_Rate_Unpressed(_ sender: UIButton) {
-        /*table_view.isHidden = false*/
-        /*down_unpressed.isHidden = true
-        pay_monthly_title.isHidden = true
-        pay_monthly_box.isHidden = true
-        up_unpressed.isHidden = true
-        minimum.isHidden = true*/
         interest_rate_unpressed_copy.isHidden = false
         interest_rate_pressed.isHidden = true
         edit_apr_text.isHidden = false
         edit_apr_text_back.isHidden = true
         invisible.isHidden = true
         invisible_back.isHidden = false
-        /*arrow_unpressed.isHidden = true
-        arrow_unpressed_copy.isHidden = false*/
-        /*arrow_pressed.isHidden = true*/
-        
         table_view.alpha = 1.0
         table_view.frame = CGRect(x: table_view.frame.origin.x, y: table_view.frame.origin.y, width: table_view.frame.width, height: 0)
         UIView.animate(withDuration: 0.25, delay: 0.0, options: UIView.AnimationOptions.curveEaseOut, animations: {
             self.table_view.frame = CGRect(x: self.table_view.frame.origin.x, y: self.table_view.frame.origin.y, width: self.table_view.frame.width, height: 100)
-
-            /*self.bubble_label.alpha = 1.0
-            self.bubble_label_arrow.alpha = 1.0*/
-            
-        }, completion: /*{
-            (finished: Bool) -> Void in
-            /*self.test.text = "Hello"*/
-            
-            /*// Fade in
-             UIView.animate(withDuration: 1.0, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-             self.test.alpha = 1.0
-             }, completion: nil)*/
-        }*/
-        nil)
-
-        
+        }, completion: nil)
     }
     @IBAction func Interest_Rate_Unpressed_Copy(_ sender: UIButton) {
-        /*table_view.isHidden = true*/
-        /*down_unpressed.isHidden = false
-        pay_monthly_title.isHidden = false
-        pay_monthly_box.isHidden = false
-        up_unpressed.isHidden = false*/
         var temp = Double()
         if (tenyr_indicator == 0) {
             if (p*i*100 - floor(p*i*100) > 0.499999) && (p*i*100 - floor(p*i*100) < 0.5)
@@ -2180,116 +2136,34 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         edit_apr_text_back.isHidden = true
         invisible.isHidden = false
         invisible_back.isHidden = true
-        /*arrow_pressed_copy.isHidden = true*/
-        /*arrow_unpressed.isHidden = false
-        arrow_unpressed_copy.isHidden = true*/
-        
-        
-        /*UIView.animate(withDuration: 0.25, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-            self.table_view.frame = CGRect(x: self.table_view.frame.origin.x, y: self.table_view.frame.origin.y, width: self.table_view.frame.width, height: 0)*/
-            /*self.bubble_label.alpha = 0.0
-            self.bubble_label_arrow.alpha = 0.0*/
-        /*}, completion: {
-            (finished: Bool) -> Void in*/
-            /*if self.table_view.frame.height == 0 {*/
-                //completion block always called, even though animation cancelled, so different if test was needed
-                self.table_view.alpha = 0.0
-                //self.table_view.isHidden = true
-            //}
-            /*else {
-                self.table_view.alpha = 1.0
-            }*/
-        //})
-
-
+        self.table_view.alpha = 0.0
     }
     @IBAction func Interest_Rate_Pressed(_ sender: UIButton) {
         interest_rate_unpressed.isHidden = true
         interest_rate_pressed.isHidden = false
         edit_apr_text.isHidden = true
         edit_apr_text_back.isHidden = false
-        /*arrow_unpressed.isHidden = true*/
-        /*arrow_pressed.isHidden = false*/
     }
     @IBAction func Interest_Rate_Pressed_Copy(_ sender: UIButton) {
         interest_rate_unpressed_copy.isHidden = true
         interest_rate_pressed_copy.isHidden = false
         edit_apr_text.isHidden = true
         edit_apr_text_back.isHidden = false
-        /*arrow_unpressed_copy.isHidden = true*/
-        /*arrow_pressed_copy.isHidden = false*/
     }
-    /*@IBAction func Arrow_Unpressed(_ sender: UIButton) {
-        table_view.isHidden = false
-        /*arrow_pressed.isHidden = true*/
-        /*arrow_unpressed.isHidden = true
-        arrow_unpressed_copy.isHidden = false*/
-        /*down_unpressed.isHidden = true
-        pay_monthly_title.isHidden = true
-        pay_monthly_box.isHidden = true
-        up_unpressed.isHidden = true
-        minimum.isHidden = true*/
-        interest_rate_unpressed.isHidden = true
-        interest_rate_unpressed_copy.isHidden = false
-        /*interest_rate_pressed.isHidden = true*/
-    }*/
-    /*@IBAction func Arrow_Unpressed_Copy(_ sender: UIButton) {
-        table_view.isHidden = true
-        /*arrow_pressed_copy.isHidden = true*/
-        /*arrow_unpressed_copy.isHidden = true
-        arrow_unpressed.isHidden = false*/
-        /*down_unpressed.isHidden = false
-        pay_monthly_title.isHidden = false
-        pay_monthly_box.isHidden = false
-        up_unpressed.isHidden = false*/
-        let temp = Double(Int((p * i + 0.01) * 100)) / 100
-        if (temp == a)
-        {
-            minimum.isHidden = false
-        }
-        else
-        {
-            minimum.isHidden = true
-        }
-        /*interest_rate_pressed_copy.isHidden = true*/
-        interest_rate_unpressed_copy.isHidden = true
-        interest_rate_unpressed.isHidden = false
-    }*/
-    /*@IBAction func Arrow_Pressed(_ sender: UIButton) {
-        arrow_unpressed.isHidden = true
-        arrow_pressed.isHidden = false
-        interest_rate_unpressed.isHidden = true
-        interest_rate_pressed.isHidden = false
-    }
-    @IBAction func Arrow_Pressed_Copy(_ sender: UIButton) {
-        arrow_unpressed_copy.isHidden = true
-        arrow_pressed_copy.isHidden = false
-        interest_rate_unpressed_copy.isHidden = true
-        interest_rate_pressed_copy.isHidden = false
-    }*/
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rates.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let cell:UITableViewCell = self.table_view.dequeueReusableCell(withIdentifier: "cell") as! UITableViewCell!
         let cell:UITableViewCell! = self.table_view.dequeueReusableCell(withIdentifier: "cell")
-
         cell.textLabel!.text = self.rates_text[(indexPath as NSIndexPath).row]
         cell.textLabel!.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
-
         cell.textLabel!.textColor = UIColor(red: 64.0/255, green: 73.0/255, blue: 77.0/255, alpha: 1.0)
-        /*cell.textLabel!.textAlignment = NSTextAlignment.center*/
         cell.indentationLevel = 2
-        /*cell.backgroundColor = UIColor(red: 175.0/255, green: 175.0/255, blue: 175.0/255, alpha: 1.0)*/
-        /*table_view.layer.cornerRadius=5*/
-        /*table_view.backgroundView = UIImageView(image: UIImage(named: "tableview_background.png")!)*/
-        /*table_view.backgroundColor = UIColor(red: 74.0/255, green: 82.0/255, blue: 86.0/255, alpha: 1.0)*/
         table_view.backgroundColor = UIColor.clear
-        
         if (indexPath.row == 0) {
             cell.backgroundColor = UIColor(red: 161.0/255, green: 166.0/255, blue: 168.0/255, alpha: 1.0)
-
-
         } else {
             cell.backgroundColor = UIColor(red: 161.0/255, green: 166.0/255, blue: 168.0/255, alpha: 1.0)
             let custom_background = CAShapeLayer()
@@ -2297,18 +2171,9 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             custom_background.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: table_view.frame.width, height: cell.frame.height), byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
             cell.layer.mask = custom_background
         }
-       
         table_view.rowHeight = 48
         cell.layoutMargins = UIEdgeInsets.zero
         cell.selectionStyle = .none
-        
-        
-        /*table_view.layer.shadowColor = UIColor.black.cgColor
-        table_view.layer.shadowOffset = CGSize(width: 0, height: 1)
-        table_view.layer.shadowOpacity = 0.125
-        table_view.layer.shadowRadius = 1
-        table_view.clipsToBounds = false*/
-        
         view.addSubview(table_view)
         view.addSubview(interest_rate_pressed_copy)
         view.addSubview(interest_rate_unpressed_copy)
@@ -2323,7 +2188,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         view.bringSubviewToFront(invisible)
         view.bringSubviewToFront(invisible_back)
         //view.bringSubviewToFront(videoController.view)
-        
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -2331,28 +2195,13 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         CATransaction.begin()
         CATransaction.setCompletionBlock { () -> Void in
             UIView.setAnimationsEnabled(true)
-        } /* didn't want text to blink when changed */
-        
-        /*let selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath)!*/
-        /*selectedCell.contentView.backgroundColor = UIColor(red: 175.0/255, green: 175.0/255, blue: 175.0/255, alpha: 1.0)*/
-        /*selectedCell.contentView.backgroundColor = UIColor.clear*/
-        table_view.reloadData() /* <-- fixes bug */
+        } //didn't want text to blink when changed
+        table_view.reloadData() //fixes potential bug
         i = rates_reference[(indexPath as NSIndexPath).row]
-        /*table_view.isHidden = true*/
-        
-      
-        
-        
-        /*down_unpressed.isHidden = false
-        pay_monthly_title.isHidden = false
-        pay_monthly_box.isHidden = false
-        up_unpressed.isHidden = false*/
         interest_rate_unpressed_copy.isHidden = true
         interest_rate_unpressed.isHidden = false
         invisible.isHidden = false
         invisible_back.isHidden = true
-        /*arrow_unpressed_copy.isHidden = true
-        arrow_unpressed.isHidden = false*/
         apr_number.text = String(rates[(indexPath as NSIndexPath).row])
         apr_number_back.text = String(rates[(indexPath as NSIndexPath).row])
         //interest_rate_unpressed.setTitle(rates[(indexPath as NSIndexPath).row], for: UIControlState())
@@ -2360,7 +2209,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         //interest_rate_pressed.setTitle(rates[(indexPath as NSIndexPath).row], for: UIControlState())
         //interest_rate_pressed_copy.setTitle(rates[(indexPath as NSIndexPath).row], for: UIControlState())
         //interest_rate_disabled.setTitle(rates[(indexPath as NSIndexPath).row], for: UIControlState())
-        /*let temp = Double(Int((p * i + 0.01) * 100)) / 100*/
         var temp = Double()
         if (tenyr_indicator == 0) {
             if (p*i*100 - floor(p*i*100) > 0.499999) && (p*i*100 - floor(p*i*100) < 0.5)
@@ -2408,20 +2256,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         shared_preferences.set((indexPath as NSIndexPath).row, forKey: "position"); shared_preferences.synchronize()
         CATransaction.commit()
         self.table_view.alpha = 0.0
-
-        /*UIView.animate(withDuration: 0.25, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-            UIView.setAnimationsEnabled(true)
-            self.table_view.frame = CGRect(x: self.table_view.frame.origin.x, y: self.table_view.frame.origin.y, width: self.table_view.frame.width, height: 0)
-            
-            /*self.bubble_label.alpha = 0.0
-             self.bubble_label_arrow.alpha = 0.0*/
-        }, completion: {
-            (finished: Bool) -> Void in
-            self.table_view.alpha = 0.0
-        })*/
-
     }
-    
     
     //instructions for down button
     @IBAction func Down_Start_Timer(_ sender: UIButton) {
@@ -2456,9 +2291,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         if (a == temp_before) {//} && !(a - Double(temp_down) == 0.0) {
                 minimum.isHidden = false
         }
-        /*else if (a == 0.01) && !(a - Double(temp_down) == 0.0) {
-            minimum.isHidden = false
-        }*/
         else {
             minimum.isHidden = true
         }
@@ -2478,9 +2310,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         //if apr.isOn {
         
             var temp = Double()
-            /*if (p*i*100 - floor(p*i*100) > 0.499999) && (p*i*100 - floor(p*i*100) < 0.5)
-                { temp = (round(p*i*100 + 1)+1)/100}
-            else { temp = (round(p*i*100)+1)/100 }*/
         if (tenyr_indicator == 0) {
             if (p*i*100 - floor(p*i*100) > 0.499999) && (p*i*100 - floor(p*i*100) < 0.5)
             { temp = (round(p*i*100 + 1) + 1)/100}
@@ -2544,75 +2373,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     //minimum.isHidden = true
                 }
             }
-        
-        
-        
-        
-        
-        
-        
-        
-            /*if (a - Double(temp_down) <= temp) {
-            //if (a - Double(temp_down) <= ceil(Double(Int(p*i*100)+1))/100) {
-                /*let temp = Int((p * i + 0.01) * 100)*/
-                //let temp = ceil(Double(Int(p*i*100)+1))/100
-
-                a = temp
-                a_reference = temp
-                pay_number.text = String(format: "%.2f", a)
-                /*minimum.isHidden = false*/
-                minimum.text = "Minimum"
-            }*/
-            /*else {
-                if (a == a_reference) {
-                    //if (a == temp) {
-                    //if (a - floor(a) > 0) && (a != 0.01) {
-                    a = floor(a)
-                    timer_count += 1
-                    pay_number.text = "\(numberFormatter.string(from: NSNumber(value: a))!)"
-                    /*minimum.isHidden = true*/
-                }
-                else {
-                    a -= Double(temp_down)
-                    timer_count += 1
-                    pay_number.text = "\(numberFormatter.string(from: NSNumber(value: a))!)"
-                    /*minimum.isHidden = true*/
-                }
-            }*/
-        //}
-        /*else {
-            //var temp = Double()
-            //if (p*i_reference*100 - floor(p*i_reference*100) > 0.99999) {
-                //temp = ceil(Double(Int(p*i_reference*100+1)+1))/100 }
-            //else { temp = ceil(Double(Int(p*i_reference*100)+1))/100 }
-        
-            if (a - Double(temp_down) <= 0.01) {
-                /*let temp = Int((p * i + 0.01) * 100)*/
-                let temp = ceil(Double(Int(p*i*100)+1))/100 //still okay, since i = 0
-         
-                a = temp
-                a_reference = temp
-                pay_number.text = String(format: "%.2f", a)
-                /*minimum.isHidden = false*/
-                minimum.text = "Minimum"
-            }
-            else {
-                if (a == a_reference) {
-                    //if (a == temp) {
-                    //if (a - floor(a) > 0) && (a != 0.01) {
-                    a = floor(a)
-                    timer_count += 1
-                    pay_number.text = "\(numberFormatter.string(from: NSNumber(value: a))!)"
-                    /*minimum.isHidden = true*/
-                }
-                else {
-                    a -= Double(temp_down)
-                    timer_count += 1
-                    pay_number.text = "\(numberFormatter.string(from: NSNumber(value: a))!)"
-                    /*minimum.isHidden = true*/
-                }
-            }
-        }*/
         Lengthsaving()
         shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
     }
@@ -2630,17 +2390,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         up_pressed.isHidden = true
         timer_count = 0
         minimum.isHidden = true
-        
-        //some of this may be redundant
-        /*if (a - Double(temp_up) <= ceil(Double(Int(p*i*100)+1))/100) && !(a - Double(temp_up) == 0.0) {
-            minimum.isHidden = false
-        }
-        else if (a - Double(temp_up) <= 0.01) && !(a - Double(temp_up) == 0.0) {
-            minimum.isHidden = false
-        }
-        else {
-            minimum.isHidden = true
-        }*/
     }
     @objc func Up() {
         minimum.isHidden = true
@@ -2693,11 +2442,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         if (a > p + temp_overpay) {
             minimum.text = "Overpaying!"
         }
-        /*minimum.isHidden = true*/
-        /*if (a >= 500) {
-            /*minimum.isHidden = false*/
-            /*minimum.text = "Awesome!"*/
-        }*/
         Lengthsaving()
         shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
         pay_number.text = "\(numberFormatter.string(from: NSNumber(value: a))!)"
@@ -2711,33 +2455,16 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         var remainingbalance = p
         var remainingbalance_repay_minimum = p
         
-        /*var temp_interest_amount = Double()
-        if (remainingbalance*i*100 - floor(remainingbalance*i*100) > 0.99999) {
-            temp_interest_amount = ceil(Double(Int(remainingbalance*i*100)+1))/100 }
-        else { temp_interest_amount = ceil(Double(Int(remainingbalance*i*100)))/100 }*/
-        
         var temp_interest_amount = Double()
         if (remainingbalance*i*100 - floor(remainingbalance*i*100) > 0.499999) && (remainingbalance*i*100 - floor(remainingbalance*i*100) < 0.5)
             { temp_interest_amount = (round(remainingbalance*i*100 + 1))/100}
         else { temp_interest_amount = (round(remainingbalance*i*100))/100 }
-
-        
-        /*var temp_interest_min = Double()
-        if (remainingbalance_repay_minimum*i*100 - floor(remainingbalance_repay_minimum*i*100) > 0.99999) {
-            temp_interest_min = ceil(Double(Int(remainingbalance_repay_minimum*i*100)+1))/100 }
-        else { temp_interest_min = ceil(Double(Int(remainingbalance_repay_minimum*i*100)))/100 }*/
         
         var temp_interest_min = Double()
         if (remainingbalance_repay_minimum*i*100 - floor(remainingbalance_repay_minimum*i*100) > 0.499999) && (remainingbalance_repay_minimum*i*100 - floor(remainingbalance_repay_minimum*i*100) < 0.5)
             { temp_interest_min = (round(remainingbalance_repay_minimum*i*100 + 1))/100}
         else { temp_interest_min = (round(remainingbalance_repay_minimum*i*100))/100 }
-
-        
-        /*var temp_pay = Double()
-        if (p*i*100 - floor(p*i*100) > 0.99999) {
-            temp_pay = ceil(Double(Int(p*i*100)+2))/100 }
-        else { temp_pay = ceil(Double(Int(p*i*100)+1))/100 }*/
-        
+       
         var temp_pay = Double()
         if (tenyr_indicator == 0) {
             if (p*i*100 - floor(p*i*100) > 0.499999) && (p*i*100 - floor(p*i*100) < 0.5)
@@ -2804,36 +2531,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 k += 1
             }
         
-            /*if (i != 0) {
-                /*while (remainingbalance + ceil(Double(Int(remainingbalance * i * 100))) / 100 > a) {
-                 remainingbalance = remainingbalance + ceil(Double(Int(remainingbalance * i * 100))) / 100 - a
-                 j += 1
-                 }*/
-                
-                
-                /*while (remainingbalance_repay_minimum + Double(Int(ceil(remainingbalance_repay_minimum * i * 100))) / 100 > Double(Int(ceil((p * i + 0.01) * 100))) / 100) {
-                 remainingbalance_repay_minimum = remainingbalance_repay_minimum + Double(Int(ceil(remainingbalance_repay_minimum * i * 100))) / 100 - Double(Int(ceil((p * i + 0.01) * 100))) / 100
-                 k += 1
-                 
-                 }*/
-            }*/
-        //}
-        /*else {
-            k = Int(p / 0.01 - 1)
-            remainingbalance_repay_minimum = 0.01
-        }*/
-        /*else {
-            if (ceil((p / a) - 1) - floor(ceil((p / a) - 1)) > 0.99999)
-                { j = Int(ceil((p / a) - 1) + 1) }
-            else { j = Int(ceil((p / a) - 1)) }
-
-            if (p / 0.01 - 1 - floor(p / 0.01 - 1) > 0.99999)
-            { k = Int(p / 0.01 - 1 + 1) }
-            else { k = Int(p / 0.01 - 1) }
-
-            remainingbalance = p - a * Double(j)
-            remainingbalance_repay_minimum = 0.01
-        }*/
         var temp = Int()
         
         if (Double((j + 1) / 12) - floor(Double((j + 1) / 12)) > 0.99999) //seems like too much
@@ -2844,8 +2541,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         //if (floor(Double((j + 1) / 12)) - floor(floor(Double((j + 1) / 12))) > 0.99999) //seems like too much
         //{ temp = Int(floor(Double((j + 1) / 12)) + 1) }
         //else { temp = Int(floor(Double((j + 1) / 12))) }
-        /*if (a == 0.01) { years.text = "😢" } else { years.text = String(temp) }*/
-        /*if (a == 0.01) { years.text = UIImageView(image: UIImage(named: "SadFace")) } else { years.text = String(temp) }*/
         years.text = numberFormatter.string(from: NSNumber(value: temp))!
         
         if (temp == 1) {years_text.text = "year"}
@@ -3115,25 +2810,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         up_outline.borderWidth = 0.25
         up_outline.cornerRadius = 5
         
-
-        
-        /*swipe_tab_shape_path.move(to: CGPoint(x: swiping.frame.width, y: swiping.frame.height/2))
-        swipe_tab_shape_path.addArc(withCenter: CGPoint(x: swiping.frame.width, y: swiping.frame.height/2), radius: CGFloat(swiping.frame.width*2), startAngle: CGFloat(1/2*Double.pi), endAngle: CGFloat(3/2*Double.pi), clockwise: true)
-        swipe_tab_shape_path_layer.path = swipe_tab_shape_path.cgPath
-        swipe_tab_shape_path_layer.fillColor = UIColor(red: 74.0/255, green: 82.0/255, blue: 86.0/255, alpha: 1.0).cgColor
-        swipe_tab_shape_path_layer.shadowColor = UIColor.black.cgColor*/
-
-        
-
-
-        /*swipe_stop_tab_shape_path.move(to: CGPoint(x: stop.frame.width, y: stop.frame.height/2))
-        swipe_stop_tab_shape_path.addArc(withCenter: CGPoint(x: stop.frame.width, y: stop.frame.height/2), radius: CGFloat(stop.frame.width*2), startAngle: CGFloat(1/2*Double.pi), endAngle: CGFloat(3/2*Double.pi), clockwise: true)
-        swipe_stop_tab_shape_path_layer.path = swipe_stop_tab_shape_path.cgPath
-        swipe_stop_tab_shape_path_layer.position = CGPoint(x: 0, y: 0)//
-        //swipe_stop_tab_shape_path_layer.fillColor = UIColor(red: 235/255.0, green: 235/255.0, blue: 235/255.0, alpha: 1.0).cgColor
-        stop.layer.addSublayer(swipe_stop_tab_shape_path_layer)*/
-
-
         increment_input_left_label.alpha = 0.0
         increment_input.alpha = 0.0
         increment_input_right_label.alpha = 0.0
@@ -3183,12 +2859,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         edit_pay_shape.layer.addSublayer(pay_outline)
         edit_pay_shape.layer.addSublayer(up_outline)
 
-        
-        /*edit_slider_shape.addSubview(increment_input_left_label)
-        edit_slider_shape.addSubview(increment_input)
-        edit_slider_shape.addSubview(increment_input_right_label)
-        edit_slider_shape.addSubview(input_number_of_increments)*/
-
         edit_apr_text_back.isHidden = true
 
         
@@ -3205,10 +2875,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         
         shared_preferences.set(p, forKey: "loaned"); shared_preferences.synchronize()
         shared_preferences.set(i * 12 * 100, forKey: "interest"); shared_preferences.synchronize()
-        /*let temp = Int((p * i + 0.01) * 100)*/
         var temp = Double()
-        /*if (p*i*100 - floor(p*i*100) > 0.499999) && (p*i*100 - floor(p*i*100) < 0.5) { temp = (round(p*i*100 + 1) + 1)/100}
-        else { temp = (round(p*i*100) + 1)/100 }*/
         if (tenyr_indicator == 0) {
             if (p*i*100 - floor(p*i*100) > 0.499999) && (p*i*100 - floor(p*i*100) < 0.5)
             { temp = (round(p*i*100 + 1) + 1)/100}
@@ -3238,13 +2905,9 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
         Lengthsaving()
 
-        /*arrow_pressed.isHidden = true
-        arrow_pressed_copy.isHidden = true
-        arrow_unpressed_copy.isHidden = true*/
         self.table_view.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         table_view.delegate = self
         table_view.dataSource = self
-        /*table_view.isHidden = true*/
         table_view.alpha = 0.0 //temp
         table_view.isScrollEnabled = false
         table_view.layoutMargins = UIEdgeInsets.zero
@@ -3257,82 +2920,11 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         invisible_back.isHidden = true
         self.navigationController!.navigationBar.isHidden = true
         loaned.setThumbImage(UIImage(named: "Thumb"), for: .normal)
-        
-        /*interest_rate_unpressed_copy.layer.shadowColor = UIColor.black.cgColor
-        interest_rate_unpressed_copy.layer.shadowOffset = CGSize(width: 0, height: 1)
-        interest_rate_unpressed_copy.layer.shadowOpacity = 0.125
-        interest_rate_unpressed_copy.layer.shadowRadius = 2*/
-        
-        /*interest_rate_pressed.layer.shadowColor = UIColor.black.cgColor
-        interest_rate_pressed.layer.shadowOffset = CGSize(width: 0, height: 1)
-        interest_rate_pressed.layer.shadowOpacity = 0.125
-        interest_rate_pressed.layer.shadowRadius = 1*/
-        
-        /*interest_rate_pressed_copy.layer.shadowColor = UIColor.black.cgColor
-        interest_rate_pressed_copy.layer.shadowOffset = CGSize(width: 0, height: 1)
-        interest_rate_pressed_copy.layer.shadowOpacity = 0.125
-        interest_rate_pressed_copy.layer.shadowRadius = 1*/
-        
-        /*arrow_unpressed.layer.shadowColor = UIColor.black.cgColor
-        arrow_unpressed.layer.shadowOffset = CGSize(width: 0, height: 1)
-        arrow_unpressed.layer.shadowOpacity = 0.125
-        arrow_unpressed.layer.shadowRadius = 2*/
-        
-        /*arrow_unpressed_copy.layer.shadowColor = UIColor.black.cgColor
-        arrow_unpressed_copy.layer.shadowOffset = CGSize(width: 0, height: 1)
-        arrow_unpressed_copy.layer.shadowOpacity = 0.125
-        arrow_unpressed_copy.layer.shadowRadius = 3*/
-
-        /*arrow_pressed.layer.shadowColor = UIColor.black.cgColor
-        arrow_pressed.layer.shadowOffset = CGSize(width: 0, height: 1)
-        arrow_pressed.layer.shadowOpacity = 0.125
-        arrow_pressed.layer.shadowRadius = 2*/
-        
-        /*arrow_pressed_copy.layer.shadowColor = UIColor.black.cgColor
-        arrow_pressed_copy.layer.shadowOffset = CGSize(width: 0, height: 1)
-        arrow_pressed_copy.layer.shadowOpacity = 0.125
-        arrow_pressed_copy.layer.shadowRadius = 2*/
-        
-        /*down_unpressed.layer.shadowColor = UIColor.black.cgColor
-        down_unpressed.layer.shadowOffset = CGSize(width: 0, height: 1)
-        down_unpressed.layer.shadowOpacity = 0.125
-        down_unpressed.layer.shadowRadius = 2*/
-
-        /*down_pressed.layer.shadowColor = UIColor.black.cgColor
-        down_pressed.layer.shadowOffset = CGSize(width: 0, height: 1)
-        down_pressed.layer.shadowOpacity = 0.125
-        down_pressed.layer.shadowRadius = 1*/
-        
-        /*up_unpressed.layer.shadowColor = UIColor.black.cgColor
-        up_unpressed.layer.shadowOffset = CGSize(width: 0, height: 1)
-        up_unpressed.layer.shadowOpacity = 0.125
-        up_unpressed.layer.shadowRadius = 2*/
-
-        /*up_pressed.layer.shadowColor = UIColor.black.cgColor
-        up_pressed.layer.shadowOffset = CGSize(width: 0, height: 1)
-        up_pressed.layer.shadowOpacity = 0.125
-        up_pressed.layer.shadowRadius = 1*/
-        
-        /*self.table_view.layer.shadowColor = UIColor.black.cgColor
-        self.table_view.layer.shadowOffset = CGSize(width: 0, height: 2) /* <-- maybe change others? */
-        self.table_view.layer.shadowOpacity = 0.125
-        self.table_view.layer.shadowRadius = 1
-        self.table_view.clipsToBounds = false*/
-        /* ---------------- need affect for pressing on dropdown menu  -------------- */
-        
-        /*pay_monthly_box.backgroundColor = UIColor(patternImage: UIImage(named: "payment_background.png")!)*/
-        
-        /*self.table_view.separatorStyle = UITableViewCellSeparatorStyle.none*/
         self.table_view.separatorColor = UIColor(red: 151.0/255, green: 156.0/255, blue: 158.0/255, alpha: 1.0)
-        
         apr.layer.cornerRadius = 16
-        
         interest_rate_disabled.isHidden = true
-        /*arrow_disabled.isHidden = true*/
-        
-        /*loaned.setMinimumTrackImage(UIImage(named: "mintrack.png")!.resizableImage(withCapInsets: .zero, resizingMode: .tile), for: .normal)*/
-        //stretch?
-        loaned.setMinimumTrackImage(UIImage(named: "MinTrack")!.resizableImage(withCapInsets: .zero, resizingMode: .tile), for: .normal) /*leave extra room around image that is background color, or else inset (though it should be zero) will be color of foreground*/
+        //leave extra room around image that is background color, or else inset (though it should be zero) will be color of foreground
+        loaned.setMinimumTrackImage(UIImage(named: "MinTrack")!.resizableImage(withCapInsets: .zero, resizingMode: .tile), for: .normal)
         loaned.setMaximumTrackImage(UIImage(named: "MaxTrack")!.resizableImage(withCapInsets: .zero, resizingMode: .tile), for: .normal)
         
         //view.addSubview(loaned)
@@ -3345,69 +2937,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             //loaned.isHidden = false
         }
         
-        
-        /*let mintrack_trianglePath = UIBezierPath()
-        mintrack_trianglePath.move(to: CGPoint(x: 309, y: 0))
-        mintrack_trianglePath.addLine(to: CGPoint(x: 309, y: 20))
-        mintrack_trianglePath.addLine(to: CGPoint(x: 0, y: 20))
-        mintrack_trianglePath.close()
-        
-        let mintrack_triangleLayer = CAShapeLayer()
-        mintrack_triangleLayer.path = mintrack_trianglePath.cgPath
-        mintrack_triangleLayer.frame = CGRect(x: 0, y: 0, width: 309, height: 20)
-        /*mintrack_triangleLayer.position = CGPoint(x: 0, y: 0)*/
-        mintrack_triangleLayer.fillColor = UIColor(red: 55.0/255, green: 218.0/255, blue: 101.0/255, alpha: 1.0).cgColor
-        /*let imageview = UIImageView()*/
-        view.layer.mask = mintrack_triangleLayer*/
-        /*loaned.layer.addSublayer(mintrack_triangleLayer)*/
-        /*let image = UIImage.shape*/
-        /*loaned.setMinimumTrackImage(UIImage(shapeImage), for: .normal)*/
-            /*.resizableImage(withCapInsets: .zero), for: .normal)*/
-        
-        
-        
-        
-        
-        
-            
-            
-            
-
- 
- 
-        /*let loaned_background = CALayer()*/
-        /*loaned_background.frame = CGRect(x: 0, y: 0, width: 309, height: 20)*/
-        /*loaned.layer.addSublayer(loaned_background)
-        loaned_background.contents = mintrack_triangleLayer*/
-        /*loaned_background.addSublayer(mintrack_triangleLayer)*/
-
-        
-        /*interest_rate_unpressed.backgroundColor = UIColor(red: 161.0/255, green: 166.0/255, blue: 168.0/255, alpha: 1.0)*/
-        /*interest_rate_unpressed.backgroundColor = UIColor(red: 64.0/255, green: 73.0/255, blue: 77.0/255, alpha: 1.0)*/
-        /*bubble_label.font = UIFont.boldSystemFont(ofSize: 17.0)
-        bubble_label.textAlignment = .center
-        bubble_label.layer.masksToBounds = true*/
-        /*interest_rate_unpressed.layer.cornerRadius = 5*/
-        /*self.interest_rate_unpressed.layer.shadowColor = UIColor.black.cgColor
-        self.interest_rate_unpressed.layer.shadowOffset = CGSize(width: 0, height: 3)
-        self.interest_rate_unpressed.layer.shadowOpacity = 0.125
-        self.interest_rate_unpressed.layer.shadowRadius = 2*/
-
         //interest_rate_unpressed
-        /*let interest_rate_unpressed_top = CAShapeLayer()
-        interest_rate_unpressed_top.bounds = interest_rate_unpressed.frame
-        interest_rate_unpressed_top.position = interest_rate_unpressed.center
-        interest_rate_unpressed_top.path = UIBezierPath(roundedRect: CGRect(x: 0, y: -0.25, width: interest_rate_unpressed.frame.width, height: interest_rate_unpressed.frame.height), byRoundingCorners: [.bottomLeft, .topLeft, .topRight, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        interest_rate_unpressed.layer.addSublayer(interest_rate_unpressed_top)
-        interest_rate_unpressed_top.fillColor = UIColor(red: 254.0/255, green: 254.0/255, blue: 254.0/255, alpha: 1.0).cgColor*/
-
-        /*let interest_rate_unpressed_bottom = CAShapeLayer()
-        interest_rate_unpressed_bottom.bounds = interest_rate_unpressed.frame
-        interest_rate_unpressed_bottom.position = interest_rate_unpressed.center
-        interest_rate_unpressed_bottom.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0.25, width: interest_rate_unpressed.frame.width, height: interest_rate_unpressed.frame.height), byRoundingCorners: [.bottomLeft, .topLeft, .topRight, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        interest_rate_unpressed.layer.addSublayer(interest_rate_unpressed_bottom)
-        interest_rate_unpressed_bottom.fillColor = UIColor.black.cgColor*/
-        
         let interest_rate_unpressed_center = CAShapeLayer()
         interest_rate_unpressed_center.bounds = interest_rate_unpressed.frame
         interest_rate_unpressed_center.position = interest_rate_unpressed.center
@@ -3427,20 +2957,20 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         interest_rate_unpressed_triangleLayer.fillColor = UIColor(red: 161.0/255, green: 166.0/255, blue: 168.0/255, alpha: 1.0).cgColor
         interest_rate_unpressed.layer.addSublayer(interest_rate_unpressed_triangleLayer)
 
-        interest_rate_unpressed.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.25*interest_rate_unpressed.frame.width, bottom: 0.0, right: 0.0) //*****
+        interest_rate_unpressed.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.25*interest_rate_unpressed.frame.width, bottom: 0.0, right: 0.0)
         
         interest_rate_unpressed.layer.shadowColor = UIColor.black.cgColor
         interest_rate_unpressed.layer.shadowOffset = CGSize(width: 0, height: 1)
         interest_rate_unpressed.layer.shadowOpacity = 0.25
         interest_rate_unpressed.layer.shadowRadius = 1
         
+        //interest_rate_pressed
         let interest_rate_pressed_center = CAShapeLayer()
         interest_rate_pressed_center.bounds = interest_rate_pressed.frame
         interest_rate_pressed_center.position = interest_rate_pressed.center
         interest_rate_pressed_center.path = UIBezierPath(roundedRect: interest_rate_pressed.bounds, byRoundingCorners: [.bottomLeft, .topLeft, .topRight, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
         interest_rate_pressed.layer.addSublayer(interest_rate_pressed_center)
         interest_rate_pressed_center.fillColor = UIColor(red: 68.0/255, green: 77.0/255, blue: 82.0/255, alpha: 1.0).cgColor
-        
         
         let arrow_pressed_trianglePath = UIBezierPath()
         arrow_pressed_trianglePath.move(to: CGPoint(x: 0, y: 0))
@@ -3454,11 +2984,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         arrow_pressed_triangleLayer.fillColor = UIColor(red: 161.0/255, green: 166.0/255, blue: 168.0/255, alpha: 1.0).cgColor
         interest_rate_pressed.layer.addSublayer(arrow_pressed_triangleLayer)
 
-        /*let arrow_pressed_label = CALayer()
-        arrow_pressed_label.frame = CGRect(x: 0.75*interest_rate_pressed.frame.width-UIImage(named: "down_arrow_button.png")!.size.width/2-1, y: interest_rate_pressed.frame.height/2-UIImage(named: "down_arrow_button.png")!.size.height/2, width: UIImage(named: "down_arrow_button.png")!.size.width-1, height: UIImage(named: "down_arrow_button.png")!.size.height)
-        arrow_pressed_label.contents = UIImage(named: "down_arrow_button.png")?.cgImage
-        interest_rate_pressed.layer.addSublayer(arrow_pressed_label)*/
-        
         interest_rate_pressed.titleEdgeInsets = UIEdgeInsets(top: 0, left: 0.25*interest_rate_pressed.frame.width, bottom: 0.0, right: 0.0)
         
         interest_rate_pressed.layer.shadowColor = UIColor.black.cgColor
@@ -3466,50 +2991,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         interest_rate_pressed.layer.shadowOpacity = 0.0625
         interest_rate_pressed.layer.shadowRadius = 0
         
-
-        //down_arrow_unpressed
-        /*let arrow_unpressed_top = CAShapeLayer()
-        arrow_unpressed_top.bounds = arrow_unpressed.frame
-        arrow_unpressed_top.position = arrow_unpressed.center
-        arrow_unpressed_top.path = UIBezierPath(roundedRect: CGRect(x: 0, y: -0.25, width: arrow_unpressed.frame.width, height: arrow_unpressed.frame.height), byRoundingCorners: [.bottomRight, .topRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        arrow_unpressed.layer.addSublayer(arrow_unpressed_top)
-        arrow_unpressed_top.fillColor = UIColor(red: 254.0/255, green: 254.0/255, blue: 254.0/255, alpha: 1.0).cgColor
-        
-        let arrow_unpressed_bottom = CAShapeLayer()
-        arrow_unpressed_bottom.bounds = arrow_unpressed.frame
-        arrow_unpressed_bottom.position = arrow_unpressed.center
-        arrow_unpressed_bottom.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0.25, width: arrow_unpressed.frame.width, height: arrow_unpressed.frame.height), byRoundingCorners: [.bottomRight, .topRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        arrow_unpressed.layer.addSublayer(arrow_unpressed_bottom)
-        arrow_unpressed_bottom.fillColor = UIColor.black.cgColor
-        
-        let arrow_unpressed_center = CAShapeLayer()
-        arrow_unpressed_center.bounds = arrow_unpressed.frame
-        arrow_unpressed_center.position = arrow_unpressed.center
-        arrow_unpressed_center.path = UIBezierPath(roundedRect: arrow_unpressed.bounds, byRoundingCorners: [.bottomRight, .topRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        arrow_unpressed.layer.addSublayer(arrow_unpressed_center)
-        arrow_unpressed_center.fillColor = UIColor(red: 74.0/255, green: 82.0/255, blue: 86.0/255, alpha: 1.0).cgColor
-        
-        let arrow_unpressed_center_label = CALayer()
-        arrow_unpressed_center_label.frame = CGRect(x: arrow_unpressed.frame.width/2-UIImage(named: "down_arrow_button.png")!.size.width/2, y: arrow_unpressed.frame.height/2-UIImage(named: "down_arrow_button.png")!.size.height/2, width: UIImage(named: "down_arrow_button.png")!.size.width, height: UIImage(named: "down_arrow_button.png")!.size.height)
-        arrow_unpressed_center_label.contents = UIImage(named: "down_arrow_button.png")?.cgImage
-        arrow_unpressed.layer.addSublayer(arrow_unpressed_center_label)*/
-        
         //interest_rate_unpressed_copy
-        /*let interest_rate_unpressed_copy_top = CAShapeLayer()
-        interest_rate_unpressed_copy_top.bounds = interest_rate_unpressed_copy.frame
-        interest_rate_unpressed_copy_top.position = interest_rate_unpressed_copy.center
-        interest_rate_unpressed_copy_top.path = UIBezierPath(roundedRect: CGRect(x: 0, y: -0.25, width: interest_rate_unpressed_copy.frame.width, height: interest_rate_unpressed_copy.frame.height), byRoundingCorners: [.topLeft, .bottomLeft], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        interest_rate_unpressed_copy.layer.addSublayer(interest_rate_unpressed_copy_top)
-        interest_rate_unpressed_copy_top.fillColor = UIColor(red: 254.0/255, green: 254.0/255, blue: 254.0/255, alpha: 1.0).cgColor
-        
-        let interest_rate_unpressed_copy_bottom = CAShapeLayer()
-        interest_rate_unpressed_copy_bottom.bounds = interest_rate_unpressed_copy.frame
-        interest_rate_unpressed_copy_bottom.position = interest_rate_unpressed_copy.center
-        interest_rate_unpressed_copy_bottom.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0.25, width: interest_rate_unpressed_copy.frame.width, height: interest_rate_unpressed_copy.frame.height), byRoundingCorners: [.bottomLeft, .topLeft], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        interest_rate_unpressed_copy.layer.addSublayer(interest_rate_unpressed_copy_bottom)
-        interest_rate_unpressed_copy_bottom.fillColor = UIColor.black.cgColor*/
-
-        
         let interest_rate_unpressed_copy_center = CAShapeLayer()
         interest_rate_unpressed_copy_center.bounds = interest_rate_unpressed_copy.frame
         interest_rate_unpressed_copy_center.position = interest_rate_unpressed_copy.center
@@ -3528,12 +3010,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         interest_rate_unpressed_copy_triangleLayer.position = CGPoint(x: 0.75*interest_rate_unpressed_copy.frame.width-8.5, y: interest_rate_unpressed_copy.frame.height/2-6)
         interest_rate_unpressed_copy_triangleLayer.fillColor = UIColor(red: 161.0/255, green: 166.0/255, blue: 168.0/255, alpha: 1.0).cgColor
         interest_rate_unpressed_copy.layer.addSublayer(interest_rate_unpressed_copy_triangleLayer)
-
-
-        /*let arrow_unpressed_copy_label = CALayer()
-        arrow_unpressed_copy_label.frame = CGRect(x: 0.75*interest_rate_unpressed_copy.frame.width-UIImage(named: "down_arrow_button_behind.png")!.size.width/2, y: interest_rate_unpressed_copy.frame.height/2-UIImage(named: "down_arrow_button_behind.png")!.size.height/2, width: UIImage(named: "down_arrow_button_behind.png")!.size.width-1, height: UIImage(named: "down_arrow_button_behind.png")!.size.height)
-        arrow_unpressed_copy_label.contents = UIImage(named: "down_arrow_button_behind.png")?.cgImage
-        interest_rate_unpressed_copy.layer.addSublayer(arrow_unpressed_copy_label)*/
         
         interest_rate_unpressed_copy.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.25*interest_rate_unpressed_copy.frame.width, bottom: 0.0, right: 0.0)
         
@@ -3542,6 +3018,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         interest_rate_unpressed_copy.layer.shadowOpacity = 0.25
         interest_rate_unpressed_copy.layer.shadowRadius = 1
         
+        //interest_rate_pressed_copy
         let interest_rate_pressed_copy_center = CAShapeLayer()
         interest_rate_pressed_copy_center.bounds = interest_rate_pressed_copy.frame
         interest_rate_pressed_copy_center.position = interest_rate_pressed_copy.center
@@ -3560,11 +3037,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         arrow_pressed_copy_triangleLayer.position = CGPoint(x: 0.75*interest_rate_pressed_copy.frame.width-8.5, y: interest_rate_pressed_copy.frame.height/2-6)
         arrow_pressed_copy_triangleLayer.fillColor = UIColor(red: 161.0/255, green: 166.0/255, blue: 168.0/255, alpha: 1.0).cgColor
         interest_rate_pressed_copy.layer.addSublayer(arrow_pressed_copy_triangleLayer)
-
-        /*let arrow_pressed_copy_label = CALayer()
-        arrow_pressed_copy_label.frame = CGRect(x: 0.75*interest_rate_pressed_copy.frame.width-UIImage(named: "down_arrow_button_behind.png")!.size.width/2-1, y: interest_rate_pressed_copy.frame.height/2-UIImage(named: "down_arrow_button_behind.png")!.size.height/2, width: UIImage(named: "down_arrow_button_behind.png")!.size.width-1, height: UIImage(named: "down_arrow_button_behind.png")!.size.height)
-        arrow_pressed_copy_label.contents = UIImage(named: "down_arrow_button_behind.png")?.cgImage
-        interest_rate_pressed_copy.layer.addSublayer(arrow_pressed_copy_label)*/
         
         interest_rate_pressed_copy.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.25*interest_rate_pressed_copy.frame.width, bottom: 0.0, right: 0.0)
         
@@ -3573,52 +3045,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         interest_rate_pressed_copy.layer.shadowOpacity = 0.0625
         interest_rate_pressed_copy.layer.shadowRadius = 0
 
-
-        
-        //down_arrow_unpressed_copy
-        /*let arrow_unpressed_copy_top = CAShapeLayer()
-        arrow_unpressed_copy_top.bounds = arrow_unpressed_copy.frame
-        arrow_unpressed_copy_top.position = arrow_unpressed_copy.center
-        arrow_unpressed_copy_top.path = UIBezierPath(roundedRect: CGRect(x: 0, y: -0.25, width: arrow_unpressed_copy.frame.width, height: arrow_unpressed_copy.frame.height), byRoundingCorners: [.topRight, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        arrow_unpressed_copy.layer.addSublayer(arrow_unpressed_copy_top)
-        arrow_unpressed_copy_top.fillColor = UIColor(red: 254.0/255, green: 254.0/255, blue: 254.0/255, alpha: 1.0).cgColor
-        
-        
-        let arrow_unpressed_copy_bottom = CAShapeLayer()
-        arrow_unpressed_copy_bottom.bounds = arrow_unpressed_copy.frame
-        arrow_unpressed_copy_bottom.position = arrow_unpressed_copy.center
-        arrow_unpressed_copy_bottom.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0.25, width: arrow_unpressed_copy.frame.width, height: arrow_unpressed_copy.frame.height), byRoundingCorners: [.topRight, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        arrow_unpressed_copy.layer.addSublayer(arrow_unpressed_copy_bottom)
-        arrow_unpressed_copy_bottom.fillColor = UIColor.black.cgColor
-
-        
-        let arrow_unpressed_copy_center = CAShapeLayer()
-        arrow_unpressed_copy_center.bounds = arrow_unpressed_copy.frame
-        arrow_unpressed_copy_center.position = arrow_unpressed_copy.center
-        arrow_unpressed_copy_center.path = UIBezierPath(roundedRect: arrow_unpressed_copy.bounds, byRoundingCorners: [.topRight, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        arrow_unpressed_copy.layer.addSublayer(arrow_unpressed_copy_center)
-        arrow_unpressed_copy_center.fillColor = UIColor(red: 74.0/255, green: 82.0/255, blue: 86.0/255, alpha: 1.0).cgColor
-        
-        let arrow_unpressed_copy_center_label = CALayer()
-        arrow_unpressed_copy_center_label.frame = CGRect(x: arrow_unpressed_copy.frame.width/2-UIImage(named: "down_arrow_button_behind.png")!.size.width/2, y: arrow_unpressed_copy.frame.height/2-UIImage(named: "down_arrow_button_behind.png")!.size.height/2, width: UIImage(named: "down_arrow_button_behind.png")!.size.width, height: UIImage(named: "down_arrow_button_behind.png")!.size.height)
-        arrow_unpressed_copy_center_label.contents = UIImage(named: "down_arrow_button_behind.png")?.cgImage
-        arrow_unpressed_copy.layer.addSublayer(arrow_unpressed_copy_center_label)*/
-        
         //interest_rate_disabled
-        /*let interest_rate_disabled_top = CAShapeLayer()
-        interest_rate_disabled_top.bounds = interest_rate_disabled.frame
-        interest_rate_disabled_top.position = interest_rate_disabled.center
-        interest_rate_disabled_top.path = UIBezierPath(roundedRect: CGRect(x: 0, y: -0.25, width: interest_rate_disabled.frame.width, height: interest_rate_disabled.frame.height), byRoundingCorners: [.bottomLeft, .topLeft], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        interest_rate_disabled.layer.addSublayer(interest_rate_disabled_top)
-        interest_rate_disabled_top.fillColor = UIColor(red: 254.0/255, green: 254.0/255, blue: 254.0/255, alpha: 1.0).cgColor
-        
-        let interest_rate_disabled_bottom = CAShapeLayer()
-        interest_rate_disabled_bottom.bounds = interest_rate_disabled.frame
-        interest_rate_disabled_bottom.position = interest_rate_disabled.center
-        interest_rate_disabled_bottom.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0.25, width: interest_rate_disabled.frame.width, height: interest_rate_disabled.frame.height), byRoundingCorners: [.bottomLeft, .topLeft], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        interest_rate_disabled.layer.addSublayer(interest_rate_disabled_bottom)
-        interest_rate_disabled_bottom.fillColor = UIColor.black.cgColor*/
-        
         let interest_rate_disabled_center = CAShapeLayer()
         interest_rate_disabled_center.bounds = interest_rate_disabled.frame
         interest_rate_disabled_center.position = interest_rate_disabled.center
@@ -3638,7 +3065,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         interest_rate_disabled_triangleLayer.fillColor = UIColor(red: 161.0/255, green: 166.0/255, blue: 168.0/255, alpha: 1.0).cgColor
         interest_rate_disabled.layer.addSublayer(interest_rate_disabled_triangleLayer)
 
-        
         interest_rate_disabled.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.25*interest_rate_disabled.frame.width, bottom: 0.0, right: 0.0)
         
         interest_rate_disabled.layer.shadowColor = UIColor.black.cgColor
@@ -3646,44 +3072,12 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         interest_rate_disabled.layer.shadowOpacity = 0.0625
         interest_rate_disabled.layer.shadowRadius = 1
         
-        //down_arrow_disabled
-        /*let arrow_disabled_top = CAShapeLayer()
-        arrow_disabled_top.bounds = arrow_disabled.frame
-        arrow_disabled_top.position = arrow_disabled.center
-        arrow_disabled_top.path = UIBezierPath(roundedRect: CGRect(x: 0, y: -0.25, width: arrow_disabled.frame.width, height: arrow_disabled.frame.height), byRoundingCorners: [.bottomRight, .topRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        arrow_disabled.layer.addSublayer(arrow_disabled_top)
-        arrow_disabled_top.fillColor = UIColor(red: 254.0/255, green: 254.0/255, blue: 254.0/255, alpha: 1.0).cgColor
-        
-        let arrow_disabled_bottom = CAShapeLayer()
-        arrow_disabled_bottom.bounds = arrow_disabled.frame
-        arrow_disabled_bottom.position = arrow_disabled.center
-        arrow_disabled_bottom.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0.25, width: arrow_disabled.frame.width, height: arrow_disabled.frame.height), byRoundingCorners: [.bottomRight, .topRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        arrow_disabled.layer.addSublayer(arrow_disabled_bottom)
-        arrow_disabled_bottom.fillColor = UIColor.black.cgColor
-        
-        let arrow_disabled_center = CAShapeLayer()
-        arrow_disabled_center.bounds = arrow_disabled.frame
-        arrow_disabled_center.position = arrow_disabled.center
-        arrow_disabled_center.path = UIBezierPath(roundedRect: arrow_disabled.bounds, byRoundingCorners: [.bottomRight, .topRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        arrow_disabled.layer.addSublayer(arrow_disabled_center)
-        arrow_disabled_center.fillColor = UIColor(red: 74.0/255, green: 82.0/255, blue: 86.0/255, alpha: 1.0).cgColor
-        
-        let arrow_disabled_center_label = CALayer()
-        arrow_disabled_center_label.frame = CGRect(x: arrow_disabled.frame.width/2-UIImage(named: "down_arrow_button.png")!.size.width/2, y: arrow_disabled.frame.height/2-UIImage(named: "down_arrow_button.png")!.size.height/2, width: UIImage(named: "down_arrow_button.png")!.size.width, height: UIImage(named: "down_arrow_button.png")!.size.height)
-        arrow_disabled_center_label.contents = UIImage(named: "down_arrow_button.png")?.cgImage
-        arrow_disabled.layer.addSublayer(arrow_disabled_center_label)*/
-        
         let down_unpressed_center = CAShapeLayer()
         down_unpressed_center.bounds = down_unpressed.frame
         down_unpressed_center.position = down_unpressed.center
         down_unpressed_center.path = UIBezierPath(roundedRect: down_unpressed.bounds, byRoundingCorners: [.bottomLeft, .topLeft, .topRight, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
         down_unpressed.layer.addSublayer(down_unpressed_center)
         down_unpressed_center.fillColor = UIColor(red: 68.0/255, green: 77.0/255, blue: 82.0/255, alpha: 1.0).cgColor
-        
-        /*let down_unpressed_label = CALayer()
-        down_unpressed_label.frame = CGRect(x: 0.5*down_unpressed.frame.width-UIImage(named: "down_arrow_button.png")!.size.width/2, y: down_unpressed.frame.height/2-UIImage(named: "down_arrow_button.png")!.size.height/2, width: UIImage(named: "down_arrow_button.png")!.size.width-1, height: UIImage(named: "down_arrow_button.png")!.size.height)
-        down_unpressed_label.contents = UIImage(named: "down_arrow_button.png")?.cgImage
-        down_unpressed.layer.addSublayer(down_unpressed_label)*/
         
         down_unpressed.layer.shadowColor = UIColor.black.cgColor
         down_unpressed.layer.shadowOffset = CGSize(width: 0, height: 1)
@@ -3697,17 +3091,10 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         down_pressed.layer.addSublayer(down_pressed_center)
         down_pressed_center.fillColor = UIColor(red: 68.0/255, green: 77.0/255, blue: 82.0/255, alpha: 1.0).cgColor
         
-        /*let down_pressed_label = CALayer()
-        down_pressed_label.frame = CGRect(x: 0.5*down_pressed.frame.width-UIImage(named: "down_arrow_button.png")!.size.width/2+0.5, y: down_pressed.frame.height/2-UIImage(named: "down_arrow_button.png")!.size.height/2, width: UIImage(named: "down_arrow_button.png")!.size.width-1, height: UIImage(named: "down_arrow_button.png")!.size.height)
-        down_pressed_label.contents = UIImage(named: "down_arrow_button.png")?.cgImage
-        down_pressed.layer.addSublayer(down_pressed_label)*/
-        
         down_pressed.layer.shadowColor = UIColor.black.cgColor
         down_pressed.layer.shadowOffset = CGSize(width: 0, height: 1)
         down_pressed.layer.shadowOpacity = 0.0625
         down_pressed.layer.shadowRadius = 1
-        
-
 
         let up_unpressed_center = CAShapeLayer()
         up_unpressed_center.bounds = up_unpressed.frame
@@ -3715,11 +3102,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         up_unpressed_center.path = UIBezierPath(roundedRect: up_unpressed.bounds, byRoundingCorners: [.bottomLeft, .topLeft, .topRight, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
         up_unpressed.layer.addSublayer(up_unpressed_center)
         up_unpressed_center.fillColor = UIColor(red: 68.0/255, green: 77.0/255, blue: 82.0/255, alpha: 1.0).cgColor
-        
-        /*let up_unpressed_label = CALayer()
-        up_unpressed_label.frame = CGRect(x: 0.5*up_unpressed.frame.width-UIImage(named: "down_arrow_button_behind.png")!.size.width/2, y: up_unpressed.frame.height/2-UIImage(named: "down_arrow_button_behind.png")!.size.height/2, width: UIImage(named: "down_arrow_button_behind.png")!.size.width-1, height: UIImage(named: "down_arrow_button_behind.png")!.size.height)
-        up_unpressed_label.contents = UIImage(named: "down_arrow_button_behind.png")?.cgImage
-        up_unpressed.layer.addSublayer(up_unpressed_label)*/
         
         up_unpressed.layer.shadowColor = UIColor.black.cgColor
         up_unpressed.layer.shadowOffset = CGSize(width: 0, height: 1)
@@ -3733,50 +3115,19 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         up_pressed.layer.addSublayer(up_pressed_center)
         up_pressed_center.fillColor = UIColor(red: 68.0/255, green: 77.0/255, blue: 82.0/255, alpha: 1.0).cgColor
         
-        /*let up_pressed_label = CALayer()
-        up_pressed_label.frame = CGRect(x: 0.5*up_pressed.frame.width-UIImage(named: "down_arrow_button_behind.png")!.size.width/2-0.5, y: up_pressed.frame.height/2-UIImage(named: "down_arrow_button_behind.png")!.size.height/2, width: UIImage(named: "down_arrow_button_behind.png")!.size.width-1, height: UIImage(named: "down_arrow_button_behind.png")!.size.height)
-        up_pressed_label.contents = UIImage(named: "down_arrow_button_behind.png")?.cgImage
-        up_pressed.layer.addSublayer(up_pressed_label)*/
-        
         up_pressed.layer.shadowColor = UIColor.black.cgColor
         up_pressed.layer.shadowOffset = CGSize(width: 0, height: 1)
         up_pressed.layer.shadowOpacity = 0.0625
         up_pressed.layer.shadowRadius = 1
         
-
-
-    
-        /*arrow_unpressed.isHidden = true*/
         shared_preferences.set(savings_reference, forKey: "savings_change_key"); shared_preferences.synchronize()
     
-        
         bubble_label.alpha = 0.0
         bubble_label_arrow.alpha = 0.0
         bubble_label.isHidden = true
         bubble_label_arrow.isHidden = true
         table_view.frame = CGRect(x: self.table_view.frame.origin.x, y: self.table_view.frame.origin.y, width: self.table_view.frame.width, height: 0)
 
-        
-        
-        /*UIImageView.animate(withDuration: 1.0, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-            self.bubble_label.alpha = 1.0
-            self.bubble_label_arrow.alpha = 1.0
-            
-        }, completion: {
-            (finished: Bool) -> Void in
-            /*self.test.text = "Hello"*/
-            
-            /*// Fade in
-             UIView.animate(withDuration: 1.0, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-             self.test.alpha = 1.0
-             }, completion: nil)*/
-        }
-        )*/
-        //step_2_background is unorthodox, so method is too
-        //step_2_background.frame = CGRect(x: step_2.frame.origin.x, y: step_2.frame.origin.y, width: step_2.frame.width, height: step_2.frame.height) //shifted a little
-
-        //no longer using iPhone 5/5s/SE, but keeping for nastalgic purposes
-        
         let messageVC = UIAlertController(title: "Caution", message: "Your device is incompatible!" , preferredStyle: .alert)
         let proceedAction = UIAlertAction(title:"Proceed", style: .default)
         messageVC.addAction(proceedAction)
@@ -3793,85 +3144,10 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             present(messageVC, animated: true)
         }
         
-        /*func Step_Main() {
-            timer_step = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(MyMainPage.Step_Instructions), userInfo: nil, repeats: false)
-        }*/
-
-        //step_2.backgroundColor = UIColor(patternImage: UIImage(named: "s1_b.png")!)
-        //step_3.backgroundColor = UIColor(patternImage: UIImage(named: "s1_c.png")!)
-
-        //dim splash screen steps at the beginning
-        
-        /*let step_dot = UIImageView()
-        step_dot.backgroundColor = UIColor(red: 0.0/255, green: 255.0/255, blue: 0.0/255, alpha: 0.75)
-        step_dot.frame = CGRect(x: step_2.frame.origin.x, y: step_2.frame.origin.y, width: step_2.frame.width, height: 1)
-        splash_screen.addSubview(step_dot)*/
-
-        
-        
-        
-        /*let place = URLSessionTask()
-        
-        place.getNameFromProfileUrl("http://www.cnn.com") { playerName in
-            // always update UI from the main thread
-            OperationQueue.mainQueue().addOperationWithBlock {
-                if let playerName = playerName {
-                    playerNameField.text = playerName
-                } else {
-                    playerNameField.text = "Player Not Found"
-                }
-            }
-        }*/
-
-        /*let url = URL(string: "http://www.stackoverflow.com")
-        
-        let task = URLSession.shared.dataTask(with: url! as URL) { data, response, error in
-            
-            guard let data = data, error == nil else { return }
-            
-        }
-        
-        task.resume()*/
-        
-        /*let fullName    = "First Last"
-        let fullNameArr = fullName.components(separatedBy: " ")
-        
-        let name    = fullNameArr[0]
-        let surname = fullNameArr[1]
-        */
-        
-        
-
-
-
-/*        let moreSimplifiedInput = simplifiedInput
- .replacingOccurrences(
- of: "\\QMyFirstHeading\\E",
- with: "",
- options: .regularExpression,
- range: nil
- )
-*/
-        //[>] pattern > replace with _
-        //[^>] pattern > replace what precedes them with _
-        //[^>]+ pattern > replace what precedes them with _ and merge
-        //<[^>]+ pattern > replace what precedes them with _ and merge but not text
-        //<[^>]+> pattern > replace what precedes them with _ and merge but not text
-        
         DispatchQueue.main.async
             {
                 self.performSegue(withIdentifier: "myAVPlayerViewController", sender: self)
             }
-        //performSegue(withIdentifier: "myAVPlayerViewController", sender: nil)
-        /*view.addSubview(pay_monthly_box)
-        view.addSubview(up_unpressed)
-        view.addSubview(up_pressed)
-        view.addSubview(down_unpressed)
-        view.addSubview(down_pressed)
-        view.bringSubviewToFront(up_unpressed)
-        view.bringSubviewToFront(up_pressed)
-        view.bringSubviewToFront(down_unpressed)
-        view.bringSubviewToFront(down_pressed)*/
     }
     
 }
