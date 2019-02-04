@@ -62,6 +62,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     @IBOutlet weak var loaned: UISlider!
     @IBOutlet weak var loaned_minimum: UILabel!
+    @IBOutlet weak var loaned_maximum: UILabel!
     @IBOutlet weak var loaned_min_input: UITextField!
     @IBOutlet weak var loaned_max_input: UITextField!
     @IBOutlet weak var stack_min: UIStackView!
@@ -112,7 +113,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     @IBOutlet weak var increment_input_right_label: UILabel!
     @IBOutlet weak var input_number_of_increments: UITextField!
     @IBOutlet weak var bare_track: UIImageView!
-    @IBOutlet weak var loaned_maximum: UILabel! //somehow got shifted down here
     @IBOutlet weak var apr_title: UILabel!
     @IBOutlet weak var apr: UISwitch!
     @IBOutlet weak var edit_slider: UIButton!
@@ -190,22 +190,21 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     var number_of_increments = 40.0 //20 is optimal
     var unlocked_indicator = 0 //1 if locked, 0 if not
     var tenyr_indicator = 0.0
-    lazy var increment = (max_value - min_value)/number_of_increments//that is, "increment size"
+    lazy var increment = (max_value - min_value)/number_of_increments //increment size
     lazy var progress = min_value
     
     internal lazy var p = min_value
     internal lazy var i = APR_DIRECT / 12 / 100 //need to convert to periodic rate in decimal form
-    //i is essentially espilon
+    //i is, essentially, espilon
     internal lazy var i_reference = APR_DIRECT / 12 / 100
     internal var savings_reference = 0.00
     internal lazy var a = min_value * APR_DIRECT / 12 / 100 + 0.01 //values are cast in viewDidLoad()
     internal lazy var a_reference = min_value * APR_DIRECT / 12 / 100 + 0.01 //brought back because of + - buttons
     internal var numberFormatter:NumberFormatter = NumberFormatter()
     let shared_preferences: UserDefaults = UserDefaults.standard
-    lazy var rates = [String(format: "%.2f",APR_DIRECT), String(format: "%.2f",APR_PERKINS)]//for apr_number and its back
-    lazy var rates_text = [String(format: "%.2f",APR_DIRECT) + "% - Direct Loan", String(format: "%.2f",APR_PERKINS) + "% - Perkins Loan"]//for table
-    lazy var rates_reference = [APR_DIRECT / 12 / 100, APR_PERKINS / 12 / 100, Double()] //rates_reference[2] will store custom rate
-    //let bubble_label = UILabel(frame: CGRect(x: -30, y: -5, width: 80, height: -32))
+    lazy var rates = [String(format: "%.2f",APR_DIRECT), String(format: "%.2f",APR_PERKINS)] //for apr_number and its number behind
+    lazy var rates_text = [String(format: "%.2f",APR_DIRECT) + "% - Direct Loan", String(format: "%.2f",APR_PERKINS) + "% - Perkins Loan"] //for table
+    lazy var rates_reference = [APR_DIRECT / 12 / 100, APR_PERKINS / 12 / 100, Double()] //rates_reference[2], the one cast as Double(), will store custom rate
     var bubble_label = UILabel(frame: CGRect(x: -30, y: -5, width: 80, height: -32))
     let bubble_label_arrow = UILabel(frame: CGRect(x: 4.5, y: -5, width: 14, height: 7))
     
@@ -232,20 +231,13 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     let pay_outline = CAShapeLayer()
     let up_outline = CAShapeLayer()
     
-    //let swipe_tab_shape_path = UIBezierPath()
-    //let swipe_tab_shape_path_layer = CAShapeLayer()
-    //let swipe_stop_tab_shape_path = UIBezierPath()
-    //let swipe_stop_tab_shape_path_layer = CAShapeLayer()
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "myAVPlayerViewController") {
             let destination = segue.destination as! AVPlayerViewController
-            let url = Bundle.main.url(forResource: "introduction", withExtension: ".mov")//, subdirectory: "Resources/\"How to Use App\" Video")
-            //let url = URL(string: "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4")
+            let url = Bundle.main.url(forResource: "introduction", withExtension: ".mov")
             if let movieURL = url {
                 destination.player = AVPlayer(url: movieURL as URL)
                 destination.player?.play()
-                //present(destination, animated: false, completion: { self.video.play() } )
             }
         }
         else {
@@ -263,7 +255,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         swipe_note.isHidden = true
         unlocked_indicator = 1
         abs_10yr.isHidden = false
-        swipe_blink.layer.removeAllAnimations() //in case someone clicks lock button before blinking animation stops
+        swipe_blink.layer.removeAllAnimations() //in case someone clicks unlocked button before blinking animation stops
         
         if (i == 0) {
             edit_apr.isHidden = true
@@ -318,28 +310,18 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                         self.savings_change.alpha = 0
                     },
                        completion: { (finished: Bool) -> Void in
-                        //UIView.animate(withDuration: 0.25,
-                                       //animations: {  },
-                                       //completion: { (finished: Bool) -> Void in
-                                        self.swipe_blink.isHidden = false
-                                        self.swipe_blink.text = "Relock for time and savings."
+                        self.swipe_blink.isHidden = false
+                        self.swipe_blink.text = "Relock for time and savings."
+                        self.swipe_blink.alpha = 0.0
+                        UIView.animate(withDuration: 0.5, delay: 0.5, options: [.repeat, .autoreverse, .curveEaseInOut],
+                                       animations: { UIView.setAnimationRepeatCount(3); self.swipe_blink.alpha = 1.0 },
+                                       completion: { (finished: Bool) -> Void in
                                         self.swipe_blink.alpha = 0.0
-                                        UIView.animate(withDuration: 0.5, delay: 0.5, options: [.repeat, .autoreverse, .curveEaseInOut],
-                                                       animations: { UIView.setAnimationRepeatCount(3); self.swipe_blink.alpha = 1.0 },
-                                                       completion: { (finished: Bool) -> Void in
-                                                        self.swipe_blink.alpha = 0.0
-                                                        self.swipe_blink.isHidden = true
-                                        }
-                                        )
-                        //}
-                        //)
-        }
+                                        self.swipe_blink.isHidden = true
+                        }
+                        )
+                    }
         )
-
-        
-
-
-        //a little more insight: blinking won't resume without this, unless blinking animation completes before lock button is clicked
     }
     
     @IBAction func Unlocked(_ sender: UIButton) {
@@ -355,22 +337,11 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         unlocked_indicator = 0
         abs_10yr.isHidden = true
         
-        //if user was editing slider, apr or pay, will close them, too
         if (i == 0) {
-            //apr_number.text = String(format: "%.2f", i * 12 * 100)
-            //apr_number_back.text = String(format: "%.2f", i * 12 * 100)
             interest_rate_unpressed.isHidden = true
             interest_rate_unpressed_copy.isHidden = true
             interest_rate_disabled.isHidden = false
-            //edit_apr.isHidden = true
-            //edit_apr_shape.isHidden = true
-            //edit_apr_shape.willRemoveSubview(edit_apr_text)
-            //view.addSubview(edit_apr_text)
-            //submit_changes_apr.isHidden = true
             apr_sign.alpha = 0.125
-            //apr_number.alpha = 0.125
-            //apr_number.isUserInteractionEnabled = false
-            //apr_number.font = UIFont(name: "HelveticaNeue", size: 17.0)
         }
         
         time_title.alpha = 1
@@ -381,7 +352,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         months_text.alpha = 1
         savings.alpha = 1
         savings_change.alpha = 1
-        swipe_blink.layer.removeAllAnimations() //in case someone clicks lock button before blinking animation stops
+        swipe_blink.layer.removeAllAnimations() //in case someone clicks locked button before blinking animation stops
 
     }
     
@@ -390,7 +361,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         stopped.isHidden = false
         swiping.isHidden = true
         swipe_note.text = "Swipe disabled."
-        swipe_blink.layer.removeAllAnimations() //in case someone clicks lock button before blinking animation stops
+        swipe_blink.layer.removeAllAnimations() //in case someone clicks unlocked button before blinking animation stops
     }
     
     @IBAction func Stopped(_ sender: UIButton) { //turns ON swiping
@@ -398,10 +369,9 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         swiping.isHidden = false
         stopped.isHidden = true
         swipe_note.text = "Swipe enabled."
-        swipe_blink.layer.removeAllAnimations() //in case someone clicks lock button before blinking animation stops
+        swipe_blink.layer.removeAllAnimations() //in case someone clicks unlocked button before blinking animation stops
 
-        
-        if swipe.isEnabled { //do i really need IF statement for this?
+        if swipe.isEnabled {
             
             UIView.animate(withDuration: 0.25,
                 animations: { self.swiping.transform = CGAffineTransform(scaleX: 1.125, y: 1.125) },
@@ -428,47 +398,25 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
     }
     
-    
-    //register what users input for their own numbers
     @IBAction func Loaned_Min_Input(_ sender: UITextField) {
-        //loaned.minimumValue = String(sender.text)
-        //let tempX = NSDecimalNumber(string: loaned_min_input.text!)
-        //let tempX = loaned_min_input.text!
-        //loaned.minimumValue = Float(truncating: removeFormat(string: tempX*0))
-        //loaned_max.text = String(describing: max_value)
-        //loaned.minimumValue = Float(truncating: tempX)
-
         min_value = Double(truncating: removeFormat(string: loaned_min_input.text!))
         if (min_value - floor(min_value) > 0.499999) && (min_value - floor(min_value) < 0.5)
             { min_value = round(min_value + 1) }
         else { min_value = round(min_value) }
         
         if (min_value < 0) {
-            //min_value = Double() //essentially, empty
             min_value = 0
-            //loaned.isEnabled = true
-            //loaned_min_input.text = ""
             loaned_min_input.text = String(format: "%.0f", min_value)
-            //suggest.isHidden = false
-            //suggest.text = "Minimum must be at least $0"
         }
-        //else if (min_value == max_value) {
-            
-          //  loaned.isEnabled = false
-        //}
         else if (min_value >= max_value) {
             min_value = max_value-1
             loaned_min_input.text = String(format: "%.0f", min_value)
-            //loaned.isEnabled = false
         }
         else {
-        //    loaned.isEnabled = true
         }
-        //max_value = min_value + Int(loaned.maximumValue)*increment//doesn't know increment size yet, until move slider
         increment = (max_value - min_value)/number_of_increments
         if (increment - floor(increment) == 0) {
             increment_input.text = String(format: "%.0f", increment)
-            //increment_input.font = UIFont(name: "HelveticaNeue", size: 17.0)
             increment_input.textColor = UIColor(red: 161/255.0, green: 166/255.0, blue: 168/255.0, alpha: 1.0)
             increment_input.alpha = 0.25
             increment_input.layer.removeAllAnimations()
@@ -485,7 +433,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             else {
                 increment_input.text = String(format: "%.5f", increment)
             }
-            //increment_input.font = UIFont(name: "HelveticaNeue", size: 17.0)
             increment_input.textColor = UIColor(red: 109/255.0, green: 129/255.0, blue: 158/255.0, alpha: 1.0)
             increment_input.alpha = 1.0
             UIView.animate(withDuration: 0.0625, delay: 0.0, options: [.repeat, .autoreverse, .curveEaseInOut], animations:
@@ -498,56 +445,40 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             })
             suggest.isHidden = false
         }
-        //loaned_min_input.text = String(format: "%.0f", min_value)
         var suggestions = [Int]()
         var tailored_suggestions = String()
-        //var suggestions = ""
         var suggestions_index = -1
         for testing_suggestions in 20...60 {
             let result = (max_value - min_value)/Double(testing_suggestions)
             if (result - floor(result) == 0) {
-                //suggestions += "\(testing_suggestions)   "
                 suggestions.append(testing_suggestions)
                 suggestions_index += 1
             }
         }
         if (suggestions == []) {
-        //if (suggestions == "") {
             suggest.text = "Even out the minimum or maximum, first."
         }
         else {
             if (suggestions_index == 0) {
-            //if (suggestions.count == 5) { //3 for two digits and 3 spaces, for only one suggestion
                 suggest.text = "Suggestion: \(suggestions[suggestions_index]) increments"
-                //suggest.text = "Suggestion:   \(suggestions) increments"
             }
-            else if (suggestions_index == 1) {//use "or"
+            else if (suggestions_index == 1) { //use "or"
                 suggest.text = "Suggestions: \(suggestions[suggestions_index-1]) or \(suggestions[suggestions_index]) increments"
             }
-            else {//use commas and "or" (e.g., "20, 25 or 40")
+            else { //use commas and "or" (e.g., "20, 25 or 40")
                 for tailoring_suggestions in 0...(suggestions_index-2) {
                     tailored_suggestions += "\(suggestions[tailoring_suggestions]), "
-                    //tailored_suggestions.append(suggestions[tailoring_suggestions])
                 }
                 suggest.text = "Suggestions: \(tailored_suggestions)\(suggestions[suggestions_index-1]) or \(suggestions[suggestions_index]) increments"
-                //suggest.text = "Suggestions:   \(suggestions) increments"
-                //suggest.text = "left out"
             }
         }
-
-
-        //progress = increment * progress + min_value
         
-        //if (progress != min_value) {
             if (min_value < progress) {
                 var value = (progress - min_value)/increment
                 if (value - floor(value) > 0.499999) && (value - floor(value) < 0.5)
                     { value = round(value + 1) }
                 else { value = round(value) }
-                
-                //let rounded_value = round(value)
                 self.loaned.setValue(Float(value), animated: true) //figure out where it will go
-                //increment * progress + min_value
             }
             else {
                 p = Double(min_value)
@@ -571,21 +502,19 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             }
         }
         
-
-
             if (temp >= a)
             {
                 a = temp
                 a_reference = temp
                 shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
                 if (a - floor(a) == 0) {
-                    pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"//
+                    pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"
                 }
                 else if ((a - floor(a))*100 < 9.99999) {
-                    pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)//
+                    pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)
                 }
                 else {
-                    pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)//
+                    pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)
                 }
 
                 minimum.isHidden = false
@@ -593,15 +522,10 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             }
             else
             {
-                //minimum.isHidden = true
                 minimum.isHidden = false
                 minimum.text = " "
             }
             Lengthsaving()
-
-        //} else {
-            //do nothing else
-        //}
     }
     
     @IBAction func Loaned_Max_Input(_ sender: UITextField) {
@@ -613,23 +537,15 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         if (max_value <= min_value) {
             max_value = min_value+1
             loaned_max_input.text = String(format: "%.0f", max_value)
-            //loaned.isEnabled = false
         }
-        //else if (max_value == min_value) {
-            //loaned.isEnabled = false
-        //}
         else {
-            //loaned.isEnabled = true
         }
         bubble_label = UILabel(frame: CGRect(x: -String(format: "%.0f", max_value).count*6+0, y: -5, width: String(format: "%.0f", max_value).count*12+20, height: -32))
-        //bubble_label = UILabel(frame: CGRect(x: -30, y: -5, width: 80, height: -32))
-
         
         increment = (max_value - min_value)/number_of_increments
         
         if (increment - floor(increment) == 0) {
             increment_input.text = String(format: "%.0f", increment)
-            //increment_input.font = UIFont(name: "HelveticaNeue", size: 17.0)
             increment_input.textColor = UIColor(red: 161/255.0, green: 166/255.0, blue: 168/255.0, alpha: 1.0)
             increment_input.alpha = 0.25
             increment_input.layer.removeAllAnimations()
@@ -646,7 +562,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             else {
                 increment_input.text = String(format: "%.5f", increment)
             }
-            //increment_input.font = UIFont(name: "HelveticaNeue", size: 17.0)
             increment_input.textColor = UIColor(red: 109/255.0, green: 129/255.0, blue: 158/255.0, alpha: 1.0)
             increment_input.alpha = 1.0
             UIView.animate(withDuration: 0.0625, delay: 0.0, options: [.repeat, .autoreverse, .curveEaseInOut], animations:
@@ -659,16 +574,13 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             })
             suggest.isHidden = false
         }
-        //loaned_max_input.text = String(format: "%.0f", max_value)
 
         var suggestions = [Int]()
         var tailored_suggestions = String()
-        //var suggestions = ""
         var suggestions_index = -1
         for testing_suggestions in 20...60 {
             let result = (max_value - min_value)/Double(testing_suggestions)
             if (result - floor(result) == 0) {
-                //suggestions += "\(testing_suggestions)   "
                 suggestions.append(testing_suggestions)
                 suggestions_index += 1
             }
@@ -680,10 +592,10 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             if (suggestions_index == 0) {
                 suggest.text = "Suggestion: \(suggestions[suggestions_index]) increments"
             }
-            else if (suggestions_index == 1) {//use "or"
+            else if (suggestions_index == 1) { //use "or"
                 suggest.text = "Suggestions: \(suggestions[suggestions_index-1]) or \(suggestions[suggestions_index]) increments"
             }
-            else {//use commas and "or" (e.g., "20, 25 or 40")
+            else { //use commas and "or" (e.g., "20, 25 or 40")
                 for tailoring_suggestions in 0...(suggestions_index-2) {
                     tailored_suggestions += "\(suggestions[tailoring_suggestions]), "
                 }
@@ -697,9 +609,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 { value = round(value + 1)}
             else { value = round(value) }
 
-            //let rounded_value = round(value)
             self.loaned.setValue(Float(value), animated: true)
-            //self.loaned.setValue(Float(value), animated: true)
         }
         else {
             p = Double(max_value)
@@ -722,8 +632,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 temp = ceil(p/120*100)/100
             }
         }
-        
-
 
         if (temp >= a)
         {
@@ -731,13 +639,13 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             a_reference = temp
             shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
             if (a - floor(a) == 0) {
-                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"//
+                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"
             }
             else if ((a - floor(a))*100 < 9.99999) {
-                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)//
+                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)
             }
             else {
-                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)//
+                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)
             }
 
             minimum.isHidden = false
@@ -758,11 +666,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         else { number_of_increments = round(number_of_increments) }
         
         if (number_of_increments < 0) {
-            //number_of_increments = Double() //essentially, empty
             number_of_increments = 0 //essentially, empty
             input_number_of_increments.text = String(format: "%.0f", number_of_increments)
-            //loaned.isEnabled = true
-            //input_number_of_increments.text = ""
         }
         
         increment = (max_value - min_value)/number_of_increments
@@ -799,16 +704,13 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             })
             suggest.isHidden = false
         }
-        //input_number_of_increments.text = String(format: "%.0f", number_of_increments)
         
         var suggestions = [Int]()
         var tailored_suggestions = String()
-        //var suggestions = ""
         var suggestions_index = -1
         for testing_suggestions in 20...60 {
             let result = (max_value - min_value)/Double(testing_suggestions)
             if (result - floor(result) == 0) {
-                //suggestions += "\(testing_suggestions)   "
                 suggestions.append(testing_suggestions)
                 suggestions_index += 1
             }
@@ -820,21 +722,19 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             if (suggestions_index == 0) {
                 suggest.text = "Suggestion: \(suggestions[suggestions_index]) increments"
             }
-            else if (suggestions_index == 1) {//use "or"
+            else if (suggestions_index == 1) { //use "or"
                 suggest.text = "Suggestions: \(suggestions[suggestions_index-1]) or \(suggestions[suggestions_index]) increments"
             }
-            else {//use commas and "or" (e.g., "20, 25 or 40")
+            else { //use commas and "or" (e.g., "20, 25 or 40")
                 for tailoring_suggestions in 0...(suggestions_index-2) {
                     tailored_suggestions += "\(suggestions[tailoring_suggestions]), "
                 }
                 suggest.text = "Suggestions: \(tailored_suggestions)\(suggestions[suggestions_index-1]) or \(suggestions[suggestions_index]) increments"
             }
         }
-        //input_number_of_increments.text = String(format: "%.0f", number_of_increments) //otherwise won't show real value
     }
     
     @IBAction func Apr_Number(_ sender: UITextField) {
-        //i = Double(truncating: removeFormat(string: input_number_of_increments.text!))
         i = Double(truncating: removeFormat(string: apr_number.text!))
         let temp_new = i*100 - floor(i*100)
         if (temp_new > 0.499999) && (temp_new < 0.5)
@@ -874,13 +774,13 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             a_reference = temp
             shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
             if (a - floor(a) == 0) {
-                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"//
+                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"
             }
             else if ((a - floor(a))*100 < 9.99999) {
-                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)//
+                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)
             }
             else {
-                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)//
+                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)
             }
 
             minimum.isHidden = false
@@ -913,7 +813,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         else {
             //keep going
         }
-        //down_number.text = numberFormatter.string(from: NSNumber(value: down_button_increment))!
     }
     
     @IBAction func Up_Number(_ sender: UITextField) {
@@ -937,8 +836,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     @IBAction func Pay_Number(_ sender: UITextField) {
-        //a = round(Double(truncating: removeFormat(string: pay_number.text!))*100)/100
-        
         a = Double(truncating: removeFormat(string: pay_number.text!))
         
         let temp_new2 = a*100 - floor(a*100)
@@ -964,9 +861,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 
 
         if (a <= temp) {
-        //if (a <= ceil(Double(Int(p*i*100)+1))/100) {
-            //let temp = ceil(Double(Int(p*i*100)+1))/100
-            
             a = temp
             a_reference = temp
             minimum.isHidden = false
@@ -1140,35 +1034,20 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
     }
 
-    
-    
-    
-    //---------------------------
-    
-    //do so by simply pressing the return key
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool { //register input by simply pressing the return key
         textField.resignFirstResponder()
         return true
     }
     
-    //if users input a comma, extract number from it
-    func removeFormat(string:String) -> NSNumber{
+    func removeFormat(string:String) -> NSNumber{ //if users input a comma, extract number from it
         let formatter = NumberFormatter()
-        // specify a locale where the decimalSeparator is a comma
         formatter.usesGroupingSeparator = true
         formatter.groupingSeparator = ","
         formatter.groupingSize = 3
         return formatter.number(from: string) ?? 0
     }
 
-
-
-
-
-    
-
-    @IBAction func Edit_Slider_Expand(_ sender: UIButton?) {//"?" is so i can call function without pressing button, if slider needs fixed when app opens
-        //easiest to start with whole numbers
+    @IBAction func Edit_Slider_Expand(_ sender: UIButton?) { //"?" only necessary for slider
         loaned_min_input.text = String(format: "%.0f", min_value)
         loaned_max_input.text = String(format: "%.0f", max_value)
         input_number_of_increments.text = String(format: "%.0f", number_of_increments)
@@ -1197,12 +1076,10 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
         var suggestions = [Int]()
         var tailored_suggestions = String()
-        //var suggestions = ""
         var suggestions_index = -1
         for testing_suggestions in 20...60 {
             let result = (max_value - min_value)/Double(testing_suggestions)
             if (result - floor(result) == 0) {
-                //suggestions += "\(testing_suggestions)   "
                 suggestions.append(testing_suggestions)
                 suggestions_index += 1
             }
@@ -1214,10 +1091,10 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             if (suggestions_index == 0) {
                 suggest.text = "Suggestion: \(suggestions[suggestions_index]) increments"
             }
-            else if (suggestions_index == 1) {//use "or"
+            else if (suggestions_index == 1) { //use "or"
                 suggest.text = "Suggestions: \(suggestions[suggestions_index-1]) or \(suggestions[suggestions_index]) increments"
             }
-            else {//use commas and "or" (e.g., "20, 25 or 40")
+            else { //use commas and "or" (e.g., "20, 25 or 40")
                 for tailoring_suggestions in 0...(suggestions_index-2) {
                     tailored_suggestions += "\(suggestions[tailoring_suggestions]), "
                 }
@@ -1227,7 +1104,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 
         
         edit_slider.isHidden = true
-        //loaned.isEnabled = false
         loaned_min_input.isUserInteractionEnabled = true
         loaned_max_input.isUserInteractionEnabled = true
         input_number_of_increments.isUserInteractionEnabled = true
@@ -1239,10 +1115,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         increment_input_right_label.isHidden = false
         input_number_of_increments.isHidden = false
         bare_track.isHidden = false
-        //loaned_min_input.isHidden = false
         
         view.addSubview(edit_slider_shape)
-        //edit_slider_shape.frame = CGRect(x: view.frame.origin.x+5, y: edit_slider_shape.frame.origin.y, width: view.frame.width-10, height: edit_slider_shape.frame.height)
         view.bringSubviewToFront(edit_slider_shape)
         
         view.willRemoveSubview(stack_min)
@@ -1252,51 +1126,24 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         edit_slider_shape.addSubview(stack_inputs)
         edit_slider_shape.addSubview(bare_track)
         edit_slider_shape.addSubview(even_out)
-        //view.willRemoveSubview(loaned)
-        //edit_slider_shape.addSubview(loaned)
-        //edit_slider_shape.addSubview(loaned_min_input)
-        //edit_slider_shape.addSubview(loaned_max_input)
         edit_slider_shape.addSubview(submit_changes)
         edit_slider_shape.bringSubviewToFront(stack_min)
         edit_slider_shape.bringSubviewToFront(stack_max)
         edit_slider_shape.bringSubviewToFront(even_out)
-        //edit_slider_shape.bringSubviewToFront(loaned_min_input)
-        //edit_slider_shape.bringSubviewToFront(loaned_max_input)
         edit_slider_shape.bringSubviewToFront(submit_changes)
-        //from old idea, now part of stack_inputs:
         edit_slider_shape.bringSubviewToFront(stack_inputs)
-        //edit_slider_shape.bringSubviewToFront(increment_input_left_label)
-        //edit_slider_shape.bringSubviewToFront(increment_input)
-        //edit_slider_shape.bringSubviewToFront(increment_input_right_label)
-        //edit_slider_shape.bringSubviewToFront(input_number_of_increments)
         edit_slider_shape.bringSubviewToFront(bare_track)
         
         edit_slider_shape.addSubview(loaned_title)
         edit_slider_shape.bringSubviewToFront(loaned_title)
         submit_changes.alpha = 0.0
         
-        
-        //changed mind on increment input
-
-
-        //edit_slider_shape.transform = CGAffineTransform(scaleX: 0.9375, y: 0.9375)
-        
         UIView.animate(withDuration: 0.0125, animations: {
-            //necessary????
-            //self.edit_slider_shape.transform = CGAffineTransform(scaleX: 0.9375, y: 0.9375)
-            //self.edit_slider_shape_tweak.fillColor = UIColor(red:74/255.0, green:82/255.0, blue:86/255.0, alpha: 0.75).cgColor
             self.edit_slider_shape_tweak.fillColor = UIColor(red:32/255.0, green:36/255.0, blue:38/255.0, alpha: 0.0).cgColor
-            //self.input_background.alpha = 0.0
-            //self.loaned.setThumbImage(UIImage(named: "Thumb"), for: .normal)
         },
                        completion: {
                         (finished: Bool) -> Void in
                         UIView.animate(withDuration: 0.25, animations: {
-                            
-                            
-                            
-                                       //) {//otherwise increment_input wouldn't blend
-                            //self.edit_slider_shape.transform = CGAffineTransform.identity
                         self.increment_input_left_label.alpha = 0.25
                         self.increment_input.alpha = 0.25
                         self.increment_input_right_label.alpha = 0.25
@@ -1306,14 +1153,10 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                             self.loaned_title.font = UIFont(name: "HelveticaNeue", size: 17.0)
                             self.input_number_of_increments.alpha = 1
                             self.bare_track.alpha = 0.5
-                            //self.increment_input.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
                             self.input_number_of_increments.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
                             self.loaned_min_input.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
                             self.loaned_max_input.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
-                            //self.edit_slider_shape_tweak.fillColor = UIColor(red:74/255.0, green:82/255.0, blue:86/255.0, alpha: 1.0).cgColor
                             self.edit_slider_shape_tweak.fillColor = UIColor(red:32/255.0, green:36/255.0, blue:38/255.0, alpha: 1.0).cgColor
-                            //self.loaned.setThumbImage(UIImage(), for: .normal)
-                            //self.input_background.alpha = 0.75
                             self.submit_changes.alpha = 1.0
                             self.loaned_min_input.backgroundColor = UIColor(red: 109/255.0, green: 129/255.0, blue: 158/255.0, alpha: 0.125)
                             self.loaned_max_input.backgroundColor = UIColor(red: 109/255.0, green: 129/255.0, blue: 158/255.0, alpha: 0.125)
@@ -1333,16 +1176,12 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                             }
                         }
                         )
-
-                        //}
         })
 
     }
     @IBAction func Edit_Slider_Close(_ sender: UIButton) {
-        //loaned.setThumbImage(UIImage(named: "Thumb"), for: .normal)
-        
         if (locked.isHidden == false) {
-            edit_slider.isHidden = true//else it'll show if correct slider on startup
+            edit_slider.isHidden = true
         }
         else {
             edit_slider.isHidden = false
@@ -1352,13 +1191,11 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         increment_input_right_label.isHidden = true
         input_number_of_increments.isHidden = true
         bare_track.isHidden = true
-        //loaned.isEnabled = true
         loaned_min_input.isUserInteractionEnabled = false
         loaned_max_input.isUserInteractionEnabled = false
         input_number_of_increments.isUserInteractionEnabled = false
         
         edit_slider_shape.isHidden = true
-        //edit_slider_shape_tweak.fillColor = UIColor(red:74/255.0, green:82/255.0, blue:86/255.0, alpha: 0.75).cgColor
         edit_slider_shape_tweak.fillColor = UIColor(red:32/255.0, green:36/255.0, blue:38/255.0, alpha: 0.0).cgColor
         increment_input_left_label.alpha = 0.0
         increment_input.alpha = 0.0
@@ -1514,8 +1351,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         apr_number.text = String(format: "%.2f", i * 12 * 100)
         apr_number_back.text = String(format: "%.2f", i * 12 * 100)
     }
-    
-    //-----------------------------
     
     @IBAction func Edit_Pay_Expand(_ sender: UIButton) {
         edit_pay.isHidden = true
@@ -1870,10 +1705,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 
     }
     
-    
-    //-----------------------------
-    
-    //instructions for slider
     @IBAction func Slider(_ sender: UISlider) {
         //increment = 200
         if (sender.value - floor(sender.value) > 0.99999)
