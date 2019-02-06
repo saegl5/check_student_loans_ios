@@ -1205,41 +1205,27 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         loaned_maximum.alpha = 1.0
         loaned_title.alpha = 1.0
         bare_track.alpha = 0.0
-        //increment_input.font = UIFont(name: "HelveticaNeue", size: 17.0)
         input_number_of_increments.font = UIFont(name: "HelveticaNeue", size: 17.0)
         loaned_min_input.font = UIFont(name: "HelveticaNeue", size: 17.0)
         loaned_max_input.font = UIFont(name: "HelveticaNeue", size: 17.0)
         loaned_title.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
         submit_changes.isHidden = true
-        //loaned_min_input.isHidden = false
         
-        //edit_slider_shape.willRemoveSubview(loaned_min_input)
-        //edit_slider_shape.willRemoveSubview(loaned_max_input)
         edit_slider_shape.willRemoveSubview(stack_min)
         edit_slider_shape.willRemoveSubview(stack_max)
         view.addSubview(stack_min)
         view.addSubview(stack_max)
-        //view.addSubview(loaned_min_input)
-        //view.addSubview(loaned_max_input)
         
         edit_slider_shape.willRemoveSubview(loaned_title)
-        //edit_slider_shape.willRemoveSubview(loaned)
         view.addSubview(loaned_title)
-        //view.addSubview(loaned)
-
         
-        //input_background.alpha = 0.0
-        
-        //to tidy up:
         loaned_min_input.text = numberFormatter.string(from: NSNumber(value: min_value))! //otherwise won't show real value
         loaned_max_input.text = numberFormatter.string(from: NSNumber(value: max_value))! //otherwise won't show real value
-        //input_number_of_increments.text = numberFormatter.string(from: NSNumber(value: number_of_increments))!
         loaned_min_input.backgroundColor = UIColor(red: 109/255.0, green: 129/255.0, blue: 158/255.0, alpha: 0)
         loaned_max_input.backgroundColor = UIColor(red: 109/255.0, green: 129/255.0, blue: 158/255.0, alpha: 0)
         input_number_of_increments.backgroundColor = UIColor(red: 109/255.0, green: 129/255.0, blue: 158/255.0, alpha: 0)
-        loaned.isHidden = false//show if it's hidden
+        loaned.isHidden = false
     }
-    
     
     @IBAction func Edit_Apr_Expand(_ sender: UIButton) {
         edit_apr.isHidden = true
@@ -1260,93 +1246,57 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         
         edit_apr_shape.addSubview(apr_title)
         edit_apr_shape.bringSubviewToFront(apr_title)
-        //edit_apr_shape.addSubview(apr)
-        //edit_apr_shape.bringSubviewToFront(apr)
-        //apr.isEnabled = false
-        //apr.alpha = 0.125
         submit_changes_apr.alpha = 0.0
-
-
         
         UIView.animate(withDuration: 0.0125, animations: {
             self.interest_rate_unpressed_outline.borderColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.0).cgColor
             self.edit_apr_shape_tweak_triangleLayer.strokeColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.0).cgColor
-            //self.edit_apr_shape_tweak.fillColor = UIColor(red:74/255.0, green:82/255.0, blue:86/255.0, alpha: 0.75).cgColor
             self.edit_apr_shape_tweak.fillColor = UIColor(red:32/255.0, green:36/255.0, blue:38/255.0, alpha: 0.0).cgColor
-            //self.table_view.alpha = 1.0
             self.switch_outline.borderColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.0).cgColor
             self.switch_thumb_outline.borderColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.0).cgColor
         },
                        completion: {
                         (finished: Bool) -> Void in
-                        UIView.animate(withDuration: 0.25) {//otherwise increment_input wouldn't blend
+                        UIView.animate(withDuration: 0.25) { //otherwise increment_input wouldn't blend
                             self.apr_sign.alpha = 0.125
                             self.interest_rate_unpressed_outline.borderColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.5).cgColor
                             self.edit_apr_shape_tweak_triangleLayer.strokeColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.125).cgColor
                             self.apr_number.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
-                            //self.edit_apr_shape_tweak.fillColor = UIColor(red:74/255.0, green:82/255.0, blue:86/255.0, alpha: 1.0).cgColor
                             self.edit_apr_shape_tweak.fillColor = UIColor(red:32/255.0, green:36/255.0, blue:38/255.0, alpha: 1.0).cgColor
-                            self.table_view.alpha = 0.0 //if it's open
+                            self.table_view.alpha = 0.0
                             self.switch_outline.borderColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.5).cgColor
                             self.switch_thumb_outline.borderColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.5).cgColor
                             self.apr_title.alpha = 0.125
                             self.apr_title.font = UIFont(name: "HelveticaNeue", size: 17.0)
                             self.submit_changes_apr.alpha = 1.0
                             self.apr_number.backgroundColor = UIColor(red: 109/255.0, green: 129/255.0, blue: 158/255.0, alpha: 0.125)
-
-
                         }
         })
         
     }
     @IBAction func Edit_Apr_Close(_ sender: UIButton) {
         edit_apr.isHidden = false
-        //increment_input_left_label.isHidden = true
-        //increment_input.isHidden = true
-        //increment_input_right_label.isHidden = true
-        //input_number_of_increments.isHidden = true
-        //loaned_min_input.isUserInteractionEnabled = false
-        //loaned_max_input.isUserInteractionEnabled = false
-        //input_number_of_increments.isUserInteractionEnabled = false
         apr_number.isUserInteractionEnabled = false
         
         edit_apr_shape.isHidden = true
-        //edit_apr_shape_tweak.fillColor = UIColor(red:74/255.0, green:82/255.0, blue:86/255.0, alpha: 0.75).cgColor
         edit_apr_shape_tweak.fillColor = UIColor(red:32/255.0, green:36/255.0, blue:38/255.0, alpha: 0.0).cgColor
-        //increment_input_left_label.alpha = 0.0
-        //increment_input.alpha = 0.0
-        //increment_input_right_label.alpha = 0.0
-        //input_number_of_increments.alpha = 0.0
-        //loaned_minimum.alpha = 1.0
-        //loaned_maximum.alpha = 1.0
         apr_sign.alpha = 1.0
         interest_rate_unpressed_outline.borderColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.0).cgColor
         edit_apr_shape_tweak_triangleLayer.strokeColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.0).cgColor
         switch_outline.borderColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.0).cgColor
         switch_thumb_outline.borderColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.0).cgColor
-        //input_number_of_increments.font = UIFont(name: "HelveticaNeue", size: 17.0)
-        //loaned_min_input.font = UIFont(name: "HelveticaNeue", size: 17.0)
-        //loaned_max_input.font = UIFont(name: "HelveticaNeue", size: 17.0)
         apr_number.font = UIFont(name: "HelveticaNeue", size: 17.0)
         submit_changes_apr.isHidden = true
         
         edit_apr_shape.willRemoveSubview(edit_apr_text)
-        //edit_apr_shape.willRemoveSubview(stack_max)
-        view.addSubview(edit_apr_text) //may need to put in front again???
-        //view.addSubview(stack_max)
+        view.addSubview(edit_apr_text)
         
         edit_apr_shape.willRemoveSubview(apr_title)
         view.addSubview(apr_title)
-        //edit_apr_shape.willRemoveSubview(apr)
-        //view.addSubview(apr)
-        //apr.isEnabled = true
-        //apr.alpha = 1.0
         apr_title.alpha = 1.0
         apr_title.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
         interest_rate_unpressed_copy.isHidden = true
-        //interest_rate_disabled.isHidden = false
         interest_rate_unpressed.isHidden = false
-        //interest_rate_disabled.isHidden = true
         apr_number.backgroundColor = UIColor(red: 109/255.0, green: 129/255.0, blue: 158/255.0, alpha: 0)
         apr_number.text = String(format: "%.2f", i * 12 * 100)
         apr_number_back.text = String(format: "%.2f", i * 12 * 100)
@@ -1385,7 +1335,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         up_number.isHidden = false
         stack_inputs_timers_down.isHidden = false
         stack_inputs_timers_up.isHidden = false
-        //abs_10yr.isHidden = true
 
         edit_pay_shape.isHidden = false
         submit_changes_pay.isHidden = false
@@ -1409,24 +1358,19 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         edit_pay_shape.addSubview(pay_monthly_title)
         edit_pay_shape.bringSubviewToFront(pay_monthly_title)
         
-        //edit_pay_shape.addSubview(minimum)
-        //edit_pay_shape.bringSubviewToFront(minimum)
         submit_changes_pay.alpha = 0.0
-
-
         
         UIView.animate(withDuration: 0.0125, animations: {
             self.down_outline.borderColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.0).cgColor
             self.pay_outline.borderColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.0).cgColor
             self.up_outline.borderColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.0).cgColor
-            //self.edit_pay_shape_tweak.fillColor = UIColor(red:74/255.0, green:82/255.0, blue:86/255.0, alpha: 0.75).cgColor
             self.edit_pay_shape_tweak.fillColor = UIColor(red:32/255.0, green:36/255.0, blue:38/255.0, alpha: 0.0).cgColor
             self.pay_monthly_title.alpha = 1.0
             self.minimum.textColor = UIColor(red:109/255.0, green:130/255.0, blue:159/255.0, alpha: 1.0)
         },
                        completion: {
                         (finished: Bool) -> Void in
-                        UIView.animate(withDuration: 0.25) {//otherwise increment_input wouldn't blend
+                        UIView.animate(withDuration: 0.25) { //otherwise increment_input wouldn't blend
                             self.pay_sign.alpha = 0.125
                             self.down_outline.borderColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.5).cgColor
                             self.pay_outline.borderColor = UIColor(red: 235.0/255, green: 235.0/255, blue: 255.0/255, alpha: 0.5).cgColor
@@ -1442,7 +1386,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                             self.up_timer2_seconds.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
                             self.up_timer1_increment.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
                             self.up_timer2_increment.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
-                            //self.edit_pay_shape_tweak.fillColor = UIColor(red:74/255.0, green:82/255.0, blue:86/255.0, alpha: 0.9).cgColor
                             self.edit_pay_shape_tweak.fillColor = UIColor(red:32/255.0, green:36/255.0, blue:38/255.0, alpha: 1.0).cgColor
                             self.down_sign.alpha = 0.25
                             self.down_number.alpha = 1.0
@@ -1495,7 +1438,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         up_number.isHidden = true
         stack_inputs_timers_down.isHidden = true
         stack_inputs_timers_up.isHidden = true
-        //abs_10yr.isHidden = false
         
         down_number.isUserInteractionEnabled = false
         pay_number.isUserInteractionEnabled = false
@@ -1511,7 +1453,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 
 
         edit_pay_shape.isHidden = true
-        //edit_pay_shape_tweak.fillColor = UIColor(red:74/255.0, green:82/255.0, blue:86/255.0, alpha: 0.75).cgColor
         edit_pay_shape_tweak.fillColor = UIColor(red:32/255.0, green:36/255.0, blue:38/255.0, alpha: 0.0).cgColor
         pay_sign.alpha = 1.0
         down_sign.alpha = 0.0
@@ -1555,13 +1496,11 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         submit_changes_pay.isHidden = true
         
         edit_pay_shape.willRemoveSubview(edit_pay_text)
-        view.addSubview(edit_pay_text) //may need to put in front again???
+        view.addSubview(edit_pay_text)
         
         edit_pay_shape.willRemoveSubview(pay_monthly_title)
         view.addSubview(pay_monthly_title)
-        view.bringSubviewToFront(table_view) //may be redundant
-        //edit_pay_shape.willRemoveSubview(minimum)
-        //view.addSubview(minimum)
+        view.bringSubviewToFront(table_view)
         pay_monthly_title.alpha = 1.0
         minimum.textColor = UIColor(red:109/255.0, green:130/255.0, blue:159/255.0, alpha: 1.0)
         pay_monthly_title.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
@@ -1579,13 +1518,13 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 
         down_number.text = numberFormatter.string(from: NSNumber(value: down_button_increment))!
         if (a - floor(a) == 0) {
-            pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"//
+            pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"
         }
         else if ((a - floor(a))*100 < 9.99999) {
-            pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)//
+            pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)
         }
         else {
-            pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)//
+            pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)
         }
         up_number.text = numberFormatter.string(from: NSNumber(value: up_button_increment))!
         down_timer1_seconds.text = numberFormatter.string(from: NSNumber(value: set_down_timer1_seconds))!
@@ -1625,13 +1564,13 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             a_reference = temp
             shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
             if (a - floor(a) == 0) {
-                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"//
+                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"
             }
             else if ((a - floor(a))*100 < 9.99999) {
-                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)//
+                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)
             }
             else {
-                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)//
+                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)
             }
 
             minimum.isHidden = false
@@ -1639,7 +1578,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
         else
         {
-            //minimum.isHidden = true
             minimum.isHidden = false
             minimum.text = " "
         }
@@ -1660,11 +1598,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         )
         tenyr_indicator = 1.0
         shared_preferences.set(tenyr_indicator, forKey: "tenyr"); shared_preferences.synchronize()
-        //let x = (-i*p*pow(1+i,120)) / (1 - pow(1+i,120))
-        //var temp = Double()
-        //if (x*100 - floor(x*100) > 0.499999) && (x*100 - floor(x*100) < 0.5)
-        //{ temp = (round(x*100 + 1) + 1)/100}
-        //else { temp = (round(x*100) + 1)/100 }
         var temp = Double()
             if (i != 0) {
                 temp = ceil((i*p*pow(1+i,120)) / (pow(1+i,120) - 1)*100)/100
@@ -1672,15 +1605,12 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             else {
                 temp = ceil(p/120*100)/100
             }
-
-        
         
         if (temp >= a)
         {
             a = temp
             a_reference = temp
             shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
-            //pay_number.text = String(format: "%.2f", a)
             if (a - floor(a) == 0) {
                 pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"//
             }
@@ -1697,7 +1627,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
         else
         {
-            //minimum.isHidden = true
             minimum.isHidden = false
             minimum.text = " "
         }
@@ -1706,22 +1635,11 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     @IBAction func Slider(_ sender: UISlider) {
-        //increment = 200
         if (sender.value - floor(sender.value) > 0.99999)
         { sender.value = roundf(sender.value + 1) }
         else { sender.value = roundf(sender.value) }
-        //sender.value = roundf(sender.value)
-
-        //sender.value = roundf(sender.value)
-        //sender.value = Double(sender.value)
-        //var progress:Int = Int(sender.value)
-        //progress = Int(sender.value)
-        //progress = increment * progress + 2000
         progress = increment * Double(sender.value) + min_value
 
-        //set up loaned_view
-        //view.addSubview(loaned_minimum)
-        //view.addSubview(loaned_maximum)
         view.addSubview(loaned)
         
         //subview slider thumb bubble, so it moves with thumb
@@ -1771,12 +1689,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     temp = ceil(p/120*100)/100
                 }
             }
-
-            //let x = (-i*p*pow(1+i,120)) / (1 - pow(1+i,120))
-            //var temp = Double()
-            //if (x*100 - floor(x*100) > 0.499999) && (x*100 - floor(x*100) < 0.5)
-            //{ temp = (round(x*100 + 1) + 1)/100}
-            //else { temp = (round(x*100) + 1)/100 }
             
         if (temp >= a)
         {
@@ -1784,13 +1696,13 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             a_reference = temp
             shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
             if (a - floor(a) == 0) {
-                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"//
+                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"
             }
             else if ((a - floor(a))*100 < 9.99999) {
-                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)//
+                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)
             }
             else {
-                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)//
+                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)
             }
 
             minimum.isHidden = false
@@ -1798,7 +1710,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
         else
         {
-            //minimum.isHidden = true
             minimum.isHidden = false
             minimum.text = " "
         }
@@ -1806,7 +1717,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         shared_preferences.set(p, forKey: "loaned"); shared_preferences.synchronize() //could place sooner because needless if !=p
             
         } else {
-            //do nothing?
+            //do nothing
         }
         view.willRemoveSubview(loaned)
 
@@ -1839,7 +1750,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     
-    //instructions for switch
     @IBAction func Switch(_ sender: UISwitch) {
         if apr.isOn {
             i = i_reference
@@ -1853,8 +1763,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             apr_sign.alpha = 1
             apr_number.alpha = 1
             invisible.isHidden = false
-            //invisible_back.isHidden = true
-            //apr_number.isUserInteractionEnabled = true
         }
         else {
             i_reference = rates_reference[shared_preferences.integer(forKey: "position")]
@@ -1877,7 +1785,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             apr_number.font = UIFont(name: "HelveticaNeue", size: 17.0)
             invisible.isHidden = true
             invisible_back.isHidden = true
-            self.table_view.alpha = 0.0 //need self?
+            self.table_view.alpha = 0.0
         }
 
         var temp = Double()
@@ -1902,13 +1810,13 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             a_reference = temp
             shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
             if (a - floor(a) == 0) {
-                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"//
+                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"
             }
             else if ((a - floor(a))*100 < 9.99999) {
-                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)//
+                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)
             }
             else {
-                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)//
+                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)
             }
             minimum.isHidden = false
             minimum.text = "Minimum"
@@ -1923,7 +1831,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         shared_preferences.set(i * 12 * 100, forKey: "interest"); shared_preferences.synchronize()
     }
     
-    //instructions for interest_rate and arrow
     @IBAction func Interest_Rate_Unpressed(_ sender: UIButton) {
         interest_rate_unpressed_copy.isHidden = false
         interest_rate_pressed.isHidden = true
@@ -1986,7 +1893,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         return rates.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell:UITableViewCell = self.table_view.dequeueReusableCell(withIdentifier: "cell") as! UITableViewCell!
         let cell:UITableViewCell! = self.table_view.dequeueReusableCell(withIdentifier: "cell")
         cell.textLabel!.text = self.rates_text[(indexPath as NSIndexPath).row]
         cell.textLabel!.font = UIFont(name: "HelveticaNeue-Bold", size: 17.0)
@@ -2018,15 +1924,14 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         view.bringSubviewToFront(edit_apr)//or else edit_apr_shape starts out behind interest_rate_unpressed
         view.bringSubviewToFront(invisible)
         view.bringSubviewToFront(invisible_back)
-        //view.bringSubviewToFront(videoController.view)
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         UIView.setAnimationsEnabled(false)
         CATransaction.begin()
-        CATransaction.setCompletionBlock { () -> Void in
+        CATransaction.setCompletionBlock { () -> Void in //didn't want text to blink when changed
             UIView.setAnimationsEnabled(true)
-        } //didn't want text to blink when changed
+        }
         table_view.reloadData() //fixes potential bug
         i = rates_reference[(indexPath as NSIndexPath).row]
         interest_rate_unpressed_copy.isHidden = true
@@ -2035,11 +1940,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         invisible_back.isHidden = true
         apr_number.text = String(rates[(indexPath as NSIndexPath).row])
         apr_number_back.text = String(rates[(indexPath as NSIndexPath).row])
-        //interest_rate_unpressed.setTitle(rates[(indexPath as NSIndexPath).row], for: UIControlState())
-        //interest_rate_unpressed_copy.setTitle(rates[(indexPath as NSIndexPath).row], for: UIControlState())
-        //interest_rate_pressed.setTitle(rates[(indexPath as NSIndexPath).row], for: UIControlState())
-        //interest_rate_pressed_copy.setTitle(rates[(indexPath as NSIndexPath).row], for: UIControlState())
-        //interest_rate_disabled.setTitle(rates[(indexPath as NSIndexPath).row], for: UIControlState())
         var temp = Double()
         if (tenyr_indicator == 0) {
             if (p*i*100 - floor(p*i*100) > 0.499999) && (p*i*100 - floor(p*i*100) < 0.5)
@@ -2062,22 +1962,20 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             a_reference = temp
             shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
             if (a - floor(a) == 0) {
-                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"//
+                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"
             }
             else if ((a - floor(a))*100 < 9.99999) {
-                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)//
+                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)
             }
             else {
-                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)//
+                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)
             }
-
             
             minimum.isHidden = false
             minimum.text = "Minimum"
         }
         else
         {
-            //minimum.isHidden = true
             minimum.isHidden = false
             minimum.text = " "
 
@@ -2089,7 +1987,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         self.table_view.alpha = 0.0
     }
     
-    //instructions for down button
     @IBAction func Down_Start_Timer(_ sender: UIButton) {
         timer1 = Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(MyMainPage.Down), userInfo: nil, repeats: false)
         timer1 = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(MyMainPage.Down), userInfo: nil, repeats: true)
@@ -2102,7 +1999,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         down_pressed.isHidden = true
         timer_count = 0
         
-        //some of this could be refined:
         var temp_before = Double()
         if (tenyr_indicator == 0) {
             if (p*i*100 - floor(p*i*100) > 0.499999) && (p*i*100 - floor(p*i*100) < 0.5)
@@ -2119,7 +2015,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
 
         
-        if (a == temp_before) {//} && !(a - Double(temp_down) == 0.0) {
+        if (a == temp_before) {
                 minimum.isHidden = false
         }
         else {
@@ -2128,18 +2024,12 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     @objc func Down() {
         temp_down = down_button_increment
-        if (timer_count < set_down_timer1_seconds*4) { //down_button_increment = 50
+        if (timer_count < set_down_timer1_seconds*4) {
             if (timer_count > 0) { minimum.text = "↓ \(numberFormatter.string(from: NSNumber(value: temp_down))!)"; minimum.isHidden = false}
         }
         else if (timer_count < set_down_timer2_seconds*4) { temp_down = set_down_timer1_increment; minimum.text = "↓ \(numberFormatter.string(from: NSNumber(value: temp_down))!)" }
         else { temp_down = set_down_timer2_increment; minimum.text = "↓ \(numberFormatter.string(from: NSNumber(value: temp_down))!)" }
 
-        
-        //else if (timer_count < 32) { temp_down = temp_down*2*10; minimum.text = "↓ \(numberFormatter.string(from: NSNumber(value: temp_down))!)" }
-        //else { temp_down = temp_down*2*10*10; minimum.text = "↓ \(numberFormatter.string(from: NSNumber(value: temp_down))!)" }
-        
-        //if apr.isOn {
-        
             var temp = Double()
         if (tenyr_indicator == 0) {
             if (p*i*100 - floor(p*i*100) > 0.499999) && (p*i*100 - floor(p*i*100) < 0.5)
@@ -2155,30 +2045,25 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             }
         }
 
-        if (a == a_reference) && (a - floor(a) > 0) { //latter condition is in case a has no remainder, or else will get stuck in loop; besides, what if someone manually inputs a
-                if (floor(a / down_button_increment)*down_button_increment <= temp) {//} || (a - Double(temp_down) <= temp)
+        if (a == a_reference) && (a - floor(a) > 0) { //latter condition is in case "a" has no remainder, or else will get stuck in loop
+                if (floor(a / down_button_increment)*down_button_increment <= temp) {
                     a = temp
                     a_reference = temp
                     if (a - floor(a) == 0) {
-                        pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"//
+                        pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"
                     }
                     else if ((a - floor(a))*100 < 9.99999) {
-                        pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)//
+                        pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)
                     }
                     else {
-                        pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)//
+                        pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)
                     }
-                    //minimum.isHidden = false
                     minimum.text = "Minimum"
                 }
                 else {
-                    //if (a == temp) {
-                    //if (a - floor(a) > 0) && (a != 0.01) {
-                    //a = floor(a) - down_button_increment
                     a = floor(a / down_button_increment)*down_button_increment
                     timer_count += 1
                     pay_number.text = "\(numberFormatter.string(from: NSNumber(value: a))!)"
-                    //minimum.isHidden = true
                 }
             }
             else {
@@ -2186,29 +2071,26 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     a = temp
                     a_reference = temp
                     if (a - floor(a) == 0) {
-                        pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"//
+                        pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"
                     }
                     else if ((a - floor(a))*100 < 9.99999) {
-                        pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)//
+                        pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)
                     }
                     else {
-                        pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)//
+                        pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)
                     }
-                    //minimum.isHidden = false
                     minimum.text = "Minimum"
                 }
                 else {
                     a -= temp_down
                     timer_count += 1
                     pay_number.text = "\(numberFormatter.string(from: NSNumber(value: a))!)"
-                    //minimum.isHidden = true
                 }
             }
         Lengthsaving()
         shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
     }
     
-    //instructions for up button
     @IBAction func Up_Start_Timer(_ sender: UIButton) {
         timer2 = Timer.scheduledTimer(timeInterval: 0, target: self, selector: #selector(MyMainPage.Up), userInfo: nil, repeats: false)
         timer2 = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(MyMainPage.Up), userInfo: nil, repeats: true)
@@ -2225,27 +2107,16 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     @objc func Up() {
         minimum.isHidden = true
         temp_up = up_button_increment
-        if (timer_count < set_up_timer1_seconds*4) { //up_button_increment = 50
+        if (timer_count < set_up_timer1_seconds*4) {
             if (timer_count > 0) { minimum.text = "↑ \(numberFormatter.string(from: NSNumber(value: temp_up))!)"; minimum.isHidden = false}
-            //if (timer_count > 0) { minimum.text = "↑ 50"; minimum.isHidden = false}
         }
         else if (timer_count < set_up_timer2_seconds*4) { temp_up = set_up_timer1_increment; minimum.text = "↑ \(numberFormatter.string(from: NSNumber(value: temp_up))!)"; minimum.isHidden = false }
-        //else if (timer_count < 16) { up_button_increment = 100; minimum.text = "↑ 100"; minimum.isHidden = false }
         else { temp_up = set_up_timer2_increment; minimum.text = "↑ \(numberFormatter.string(from: NSNumber(value: temp_up))!)"; minimum.isHidden = false }
-        //else { up_button_increment = 1000; minimum.text = "↑ 1,000"; minimum.isHidden = false }
 
-        if (a == a_reference) || (a - floor(a) > 0) {//later inequality is just in case someone manually inputs a
-        //if (a == ceil(Double(Int(p*i*100)+1))/100) || (a == ceil(Double(Int(p*i_reference*100)+1))/100) || (a - floor(a) > 0) { //won't catch every case
-        //if (a - floor(a) > 0) {//for minimum, I don't anticipate remainder will ever be zero, but...
-        //if (a == ceil(Double(Int(p*i*100)+1))/100) {
+        if (a == a_reference) || (a - floor(a) > 0) {
 
             if (up_button_increment < a) {
-                //if (a / up_button_increment - floor(a / up_button_increment) > 0.499999) && (a / up_button_increment - floor(a / up_button_increment) < 0.5)
-                //{ a = ceil(a / up_button_increment + 1)*up_button_increment }
-                //else { a = ceil(a / up_button_increment)*up_button_increment }
                 a = ceil(a / up_button_increment)*up_button_increment
-                //a = floor(a) + up_button_increment
-                //a = floor(a + 1)
                 timer_count += 1
             }
             else if (a < up_button_increment) {
@@ -2258,9 +2129,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             }
         }
         else {
-            //these wouldn't be rounded yet, so...
             a += temp_up
-            //a += Double(up_button_increment)
             timer_count += 1
         }
         
@@ -2282,7 +2151,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     func Lengthsaving() {
         var j = 0
         var k = 0
-        //p = p*(1+1.066/100) //includes loan fees
         var remainingbalance = p
         var remainingbalance_repay_minimum = p
         
@@ -2314,8 +2182,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 
         let temp_pay_first = temp_pay
         
-        //if (i != 0) {
-            
             while (remainingbalance + temp_interest_amount > a) {
                 
                 remainingbalance = remainingbalance + temp_interest_amount - a
@@ -2364,14 +2230,10 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         
         var temp = Int()
         
-        if (Double((j + 1) / 12) - floor(Double((j + 1) / 12)) > 0.99999) //seems like too much
+        if (Double((j + 1) / 12) - floor(Double((j + 1) / 12)) > 0.99999)
         { temp = Int(floor(Double((j + 1) / 12) + 1)) }
         else { temp = Int(floor(Double((j + 1) / 12))) }
 
-        
-        //if (floor(Double((j + 1) / 12)) - floor(floor(Double((j + 1) / 12))) > 0.99999) //seems like too much
-        //{ temp = Int(floor(Double((j + 1) / 12)) + 1) }
-        //else { temp = Int(floor(Double((j + 1) / 12))) }
         years.text = numberFormatter.string(from: NSNumber(value: temp))!
         
         if (temp == 1) {years_text.text = "year"}
@@ -2393,10 +2255,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         else { temp_interest_amount = (round(remainingbalance*i*100))/100 }
         let temp_interest_last_amount = temp_interest_amount
 
-        
-        //let total_repay_minimum_fromloop = Double(k) * ceil(Double(Int(p*i*100)+1))/100
-        //let total_repay_minimum_finalmonth = remainingbalance_repay_minimum + ceil(Double(Int(remainingbalance_repay_minimum*i*100)))/100
-        //let total_repay_minimum = total_repay_minimum_fromloop + total_repay_minimum_finalmonth
         let total = Double(j) * a + remainingbalance + temp_interest_last_amount
         var saved = total_repay_minimum - total
         savings_reference = shared_preferences.double(forKey: "savings_change_key")
@@ -2407,7 +2265,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         if (saved <= 0) {
             
             savings.text = "$" + numberFormatter.string(from: 0)!
-            if (0-savings_reference) < 0 {//rounding error is insignificant
+            if (0-savings_reference) < 0 { //rounding error is insignificant
                 savings_change.text = "↓ $" + numberFormatter.string(from: NSNumber(value: abs(0-savings_reference)))!
             }
             else if (0-savings_reference) == 0 {
@@ -2455,20 +2313,15 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         edit_apr_shape.frame = CGRect(x: view.frame.origin.x+5, y: edit_apr_shape.frame.origin.y, width: view.frame.width-10, height: edit_apr_shape.frame.height)
         edit_pay_shape.frame = CGRect(x: view.frame.origin.x+5, y: edit_pay_shape.frame.origin.y, width: view.frame.width-10, height: edit_pay_shape.frame.height)
 
-
-        //view.addSubview(videoController.view)
         view.addSubview(stack_min)
         view.addSubview(stack_max)
-        //view.addSubview(input_background)
-        //view.bringSubviewToFront(input_background)
-        //input_background.alpha = 0.0
         locked.isHidden = false
         swipe_note.isHidden = false
         swipe.isEnabled = false
         //keep the APR as is
         time_title.text =  "Time"
         savings_title.text = "Savings"
-            //don't change layout constraints
+        //don't change layout constraints
         unlocked.isHidden = true
         edit_slider.isHidden = true
         edit_apr.isHidden = true
@@ -2479,7 +2332,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         even_out.isHidden = true
         abs_10yr.isHidden = true
         suggest.isHidden = true
-        //swipe_note.isHidden = true
         swipe_note.text = "Swipe disabled."
         swipe_blink.isHidden = true
         loaned_min_input.delegate = self
@@ -2499,16 +2351,9 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         up_timer1_increment.delegate = self
         up_timer2_increment.delegate = self
 
-
-        //self.navigationController?.interactivePopGestureRecognizer?.delegate = self as? UIGestureRecognizerDelegate;
-        //view.gestureRecognizers?.removeAll()
-        //self.interactivePopGestureRecognizer.isEnabled = false;
-        //edit_slider_shape.backgroundColor = UIColor(red:74/255.0, green:82/255.0, blue:86/255.0, alpha: 0.9)
         edit_slider_shape.isHidden = true
         edit_apr_shape.isHidden = true
         edit_pay_shape.isHidden = true
-        //view.addSubview(edit_pay_shape)
-        //view.bringSubviewToFront(edit_pay_shape)
 
         submit_changes.isHidden = true
         submit_changes_apr.isHidden = true
@@ -2516,12 +2361,11 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         
         stack_inputs_timers_down.isHidden = true
         stack_inputs_timers_up.isHidden = true
-        //could probably have just hidden the stackview:
         increment_input_left_label.isHidden = true
         increment_input.isHidden = true
         increment_input_right_label.isHidden = true
         input_number_of_increments.isHidden = true
-        bare_track.isHidden = true //needed?
+        bare_track.isHidden = true
         down_sign.isHidden = true
         down_number.isHidden = true
         up_sign.isHidden = true
@@ -2536,7 +2380,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         pay_number.isUserInteractionEnabled = false
         down_number.isUserInteractionEnabled = false
         up_number.isUserInteractionEnabled = false
-        //no need to mention increment input, since hidden
         down_timer1_seconds.isUserInteractionEnabled = false
         down_timer2_seconds.isUserInteractionEnabled = false
         down_timer1_increment.isUserInteractionEnabled = false
@@ -2546,10 +2389,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         up_timer1_increment.isUserInteractionEnabled = false
         up_timer2_increment.isUserInteractionEnabled = false
 
-
-        //edit_slider.adjustsImageWhenHighlighted = false
-        //edit_apr.adjustsImageWhenHighlighted = false
-        //edit_pay.adjustsImageWhenHighlighted = false
         submit_changes.adjustsImageWhenHighlighted = false
         submit_changes_apr.adjustsImageWhenHighlighted = false
         submit_changes_pay.adjustsImageWhenHighlighted = false
@@ -2559,23 +2398,16 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         tenyr.adjustsImageWhenHighlighted = false
 
         //calayer has awkward behavior for plus models, had to tweak code
-        //view.addSubview(edit_slider_shape)
-        //edit_slider_shape.frame = CGRect(x: view.frame.origin.x+5, y: edit_slider_shape.frame.origin.y, width: view.frame.width-10, height: edit_slider_shape.frame.height)
 
         edit_slider_shape_tweak.bounds = edit_slider_shape.frame
         edit_slider_shape_tweak.position = edit_slider_shape.center
         edit_slider_shape_tweak.path = UIBezierPath(roundedRect: edit_slider_shape.bounds, byRoundingCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        //edit_slider_shape_tweak.fillColor = UIColor(red:74/255.0, green:82/255.0, blue:86/255.0, alpha: 0.75).cgColor
         edit_slider_shape_tweak.fillColor = UIColor(red:32/255.0, green:36/255.0, blue:38/255.0, alpha: 0.0).cgColor
         
-        //edit_apr_shape.frame = CGRectGetWidth(edit_apr_shape.frame, view.frame.width - 10)
         edit_apr_shape_tweak.bounds = edit_apr_shape.frame
         edit_apr_shape_tweak.position = edit_apr_shape.center
         edit_apr_shape_tweak.path = UIBezierPath(roundedRect: edit_apr_shape.bounds, byRoundingCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        //edit_apr_shape_tweak.fillColor = UIColor(red:74/255.0, green:82/255.0, blue:86/255.0, alpha: 0.75).cgColor
         edit_apr_shape_tweak.fillColor = UIColor(red:32/255.0, green:36/255.0, blue:38/255.0, alpha: 0.0).cgColor
-        //edit_slider_shape.layer.addSublayer(edit_slider_shape_tweak)
-
         
         edit_apr_shape_tweak_trianglePath.move(to: CGPoint(x: 0, y: 0))
         edit_apr_shape_tweak_trianglePath.addLine(to: CGPoint(x: 17, y: 0))
@@ -2588,22 +2420,13 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         edit_apr_shape_tweak_triangleLayer.position = CGPoint(x: CGPoint_xtemp, y: CGPoint_ytemp)//
         edit_apr_shape_tweak_triangleLayer.fillColor = UIColor.clear.cgColor
         edit_apr_shape_tweak_triangleLayer.borderWidth = 0.25
-        //edit_apr_shape_tweak_triangleLayer.cornerRadius = 0
-
         
         edit_pay_shape_tweak.bounds = edit_pay_shape.frame
         edit_pay_shape_tweak.position = edit_pay_shape.center
         edit_pay_shape_tweak.path = UIBezierPath(roundedRect: edit_pay_shape.bounds, byRoundingCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        //edit_pay_shape_tweak.fillColor = UIColor(red:74/255.0, green:82/255.0, blue:86/255.0, alpha: 0.75).cgColor
         edit_pay_shape_tweak.fillColor = UIColor(red:32/255.0, green:36/255.0, blue:38/255.0, alpha: 0.0).cgColor
-
         
         interest_rate_unpressed_outline.frame = CGRect(x: (edit_apr_shape.frame.width-interest_rate_unpressed.frame.width)/2, y: edit_apr_shape.frame.height-interest_rate_unpressed.frame.height-10, width: interest_rate_unpressed.frame.width, height: interest_rate_unpressed.frame.height)
-        //interest_rate_unpressed_outline.frame = CGRect(x: (edit_apr_shape.frame.width-interest_rate_unpressed.frame.width)+100, y: interest_rate_unpressed.frame.origin.y, width: interest_rate_unpressed.frame.width, height: interest_rate_unpressed.frame.height)
-        //interest_rate_unpressed_outline.bounds = interest_rate_unpressed.frame
-        //interest_rate_unpressed_outline.position = interest_rate_unpressed.center
-        //interest_rate_unpressed_outline.path = UIBezierPath(roundedRect: interest_rate_unpressed.bounds, byRoundingCorners: [.bottomLeft, .topLeft, .topRight, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        //interest_rate_unpressed.layer.addSublayer(interest_rate_unpressed_center)
         interest_rate_unpressed_outline.fillColor = UIColor.clear.cgColor
         interest_rate_unpressed_outline.borderWidth = 0.25
         interest_rate_unpressed_outline.cornerRadius = 5
@@ -2621,22 +2444,17 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         let CGRect_xtemp = (edit_pay_shape.frame.width)/2-down_unpressed.frame.width-(pay_monthly_box.frame.width)/2+5
         let CGRect_ytemp = edit_pay_shape.frame.height - 65 - down_unpressed.frame.height-1
         down_outline.frame = CGRect(x: CGRect_xtemp, y: CGRect_ytemp, width: down_unpressed.frame.width, height: down_unpressed.frame.height)
-        //down_outline.frame = CGRect(x: (edit_pay_shape.frame.width-down_unpressed.frame.width*2-pay_monthly_box.frame.width)/2+5, y: (edit_pay_shape.frame.height - down_unpressed.frame.height)/2-1, width: down_unpressed.frame.width, height: down_unpressed.frame.height)
         down_outline.fillColor = UIColor.clear.cgColor
         down_outline.borderWidth = 0.25
         down_outline.cornerRadius = 5
-        //(edit_pay_shape.frame.width-interest_rate_unpressed.frame.width*2-pay_monthly_box.frame.width)/2
         
         pay_outline.frame = CGRect(x: (edit_pay_shape.frame.width-down_unpressed.frame.width*2-pay_monthly_box.frame.width)/2+down_unpressed.frame.width, y: edit_pay_shape.frame.height - 65 - up_unpressed.frame.height, width: pay_monthly_box.frame.width, height: pay_monthly_box.frame.height)
-        //pay_outline.frame = CGRect(x: (edit_pay_shape.frame.width-down_unpressed.frame.width*2-pay_monthly_box.frame.width)/2+down_unpressed.frame.width, y: (edit_pay_shape.frame.height - down_unpressed.frame.height)/2+(down_unpressed.frame.height-pay_monthly_box.frame.height)/2, width: pay_monthly_box.frame.width, height: pay_monthly_box.frame.height)
         pay_outline.fillColor = UIColor.clear.cgColor
         pay_outline.borderWidth = 0.25
-        //pay_outline.cornerRadius = 5
         let CGRect_xtemp2pre = (edit_pay_shape.frame.width)/2-up_unpressed.frame.width-(pay_monthly_box.frame.width)/2
         let CGRect_xtemp2 = CGRect_xtemp2pre+down_unpressed.frame.width+pay_monthly_box.frame.width-5
         let CGRect_ytemp2 = edit_pay_shape.frame.height - 65 - up_unpressed.frame.height-1
         up_outline.frame = CGRect(x: CGRect_xtemp2, y: CGRect_ytemp2, width: up_unpressed.frame.width, height: up_unpressed.frame.height)
-        //up_outline.frame = CGRect(x: (edit_pay_shape.frame.width-up_unpressed.frame.width*2-pay_monthly_box.frame.width)/2+down_unpressed.frame.width+pay_monthly_box.frame.width-5, y: (edit_pay_shape.frame.height - up_unpressed.frame.height)/2-1, width: up_unpressed.frame.width, height: up_unpressed.frame.height)
         up_outline.fillColor = UIColor.clear.cgColor
         up_outline.borderWidth = 0.25
         up_outline.cornerRadius = 5
@@ -2692,9 +2510,6 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 
         edit_apr_text_back.isHidden = true
 
-        
-        //swipe.isEnabled = false //disable until opening is done
-        
         numberFormatter.usesGroupingSeparator = true
         numberFormatter.groupingSeparator = ","
         numberFormatter.groupingSize = 3
@@ -2726,20 +2541,20 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
         shared_preferences.set(tenyr_indicator, forKey: "tenyr"); shared_preferences.synchronize()
         if (a - floor(a) == 0) {
-            pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"//
+            pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"
         }
         else if ((a - floor(a))*100 < 9.99999) {
-            pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)//
+            pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)
         }
         else {
-            pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)//
+            pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)
         }
         Lengthsaving()
 
         self.table_view.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         table_view.delegate = self
         table_view.dataSource = self
-        table_view.alpha = 0.0 //temp
+        table_view.alpha = 0.0
         table_view.isScrollEnabled = false
         table_view.layoutMargins = UIEdgeInsets.zero
         table_view.separatorInset = UIEdgeInsets.zero
@@ -2758,14 +2573,11 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         loaned.setMinimumTrackImage(UIImage(named: "MinTrack")!.resizableImage(withCapInsets: .zero, resizingMode: .tile), for: .normal)
         loaned.setMaximumTrackImage(UIImage(named: "MaxTrack")!.resizableImage(withCapInsets: .zero, resizingMode: .tile), for: .normal)
         
-        //view.addSubview(loaned)
         if (increment - floor(increment) != 0) {
             loaned.isHidden = true
             Edit_Slider_Expand(nil)
         }
         else {
-            //Edit_Slider_Close(nil)
-            //loaned.isHidden = false
         }
         
         //interest_rate_unpressed
