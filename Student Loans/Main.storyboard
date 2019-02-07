@@ -48,9 +48,9 @@
                                 <color key="textColor" red="0.99607843137254903" green="0.99607843137254903" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izy-uY-v9E">
+                            <view alpha="0.125" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izy-uY-v9E">
                                 <rect key="frame" x="5" y="21" width="365" height="114"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8Q-hk-u1T">
                                 <rect key="frame" x="46" y="57" width="18.5" height="22"/>
@@ -211,15 +211,9 @@
                                     <action selector="Switch:" destination="BYZ-38-t0r" eventType="valueChanged" id="E1I-oh-0dA"/>
                                 </connections>
                             </switch>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIM-tk-aeU">
+                            <view alpha="0.125" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIM-tk-aeU">
                                 <rect key="frame" x="5" y="160.5" width="365" height="141"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Stitch" translatesAutoresizingMaskIntoConstraints="NO" id="WZu-Mo-ZIP">
-                                        <rect key="frame" x="62" y="6.5" width="240" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6EY-yT-SMY">
                                 <rect key="frame" x="120.5" y="244" width="75" height="25"/>
@@ -406,9 +400,9 @@
                                 <color key="textColor" red="0.99607843137254903" green="0.99607843137254903" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTo-iW-1cM">
+                            <view alpha="0.125" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UTo-iW-1cM">
                                 <rect key="frame" x="5" y="337.5" width="365" height="175.5"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYp-F6-pnu">
                                 <rect key="frame" x="118.5" y="380" width="138" height="68"/>
@@ -792,7 +786,7 @@
                                     <action selector="Edit_Pay_Close:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LG0-1k-LVJ"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="iSo-Wx-NDi">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="iSo-Wx-NDi" userLabel="Abs10yr">
                                 <rect key="frame" x="97.5" y="526.5" width="180" height="59"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8jC-Vd-yPS">
@@ -829,6 +823,7 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10-Year Minimum" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="046-Ep-MBA">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="24"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                 <color key="textColor" red="0.11372549019607843" green="0.12941176470588234" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -977,10 +972,30 @@
                                 <color key="textColor" red="0.1137254902" green="0.12941176469999999" blue="0.13725490200000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" alpha="0.125" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x4e-a4-pnO" userLabel="Abs10yr Stitch">
+                                <rect key="frame" x="97.5" y="526.5" width="180" height="59"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="Exq-cr-oON"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nOP-qS-AM2" userLabel="Abs10yr Shape">
+                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Stitch" translatesAutoresizingMaskIntoConstraints="NO" id="ik3-M7-nM3" userLabel="Swipe Stitch">
+                                <rect key="frame" x="45" y="637" width="150.5" height="16.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16.5" id="jo0-jP-B8B"/>
+                                    <constraint firstAttribute="width" constant="150.5" id="wdD-FE-gWI"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.25098039215686274" green="0.28627450980392155" blue="0.30196078431372547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="gZk-of-onr" firstAttribute="leading" secondItem="ik3-M7-nM3" secondAttribute="leading" id="29J-Ff-Wxx"/>
                             <constraint firstItem="tA3-A8-0gE" firstAttribute="centerY" secondItem="uFd-cj-0ub" secondAttribute="centerY" id="2SN-BO-tsE"/>
                             <constraint firstItem="Xp7-vD-pvo" firstAttribute="centerY" secondItem="tYC-9L-cFZ" secondAttribute="centerY" constant="2" id="2gy-tv-ZZf"/>
                             <constraint firstItem="m2e-Jy-uqV" firstAttribute="top" secondItem="DzJ-rB-AOv" secondAttribute="bottom" constant="10" id="2lf-0T-W5B"/>
@@ -1005,9 +1020,12 @@
                             <constraint firstItem="W6o-Pb-1Hv" firstAttribute="trailing" secondItem="OIM-tk-aeU" secondAttribute="trailing" constant="-5" id="Bak-8K-D3c"/>
                             <constraint firstItem="Xp7-vD-pvo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BgH-qa-xDn"/>
                             <constraint firstItem="FYp-F6-pnu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BjV-WD-vg7"/>
+                            <constraint firstItem="x4e-a4-pnO" firstAttribute="width" secondItem="iSo-Wx-NDi" secondAttribute="width" id="Bzq-0w-Nhq"/>
                             <constraint firstAttribute="trailing" secondItem="izy-uY-v9E" secondAttribute="trailing" constant="5" id="CHg-EU-7lT"/>
                             <constraint firstItem="qXR-T1-bze" firstAttribute="top" secondItem="izy-uY-v9E" secondAttribute="bottom" constant="5" id="Dcw-ql-oee"/>
                             <constraint firstItem="76d-yz-5cY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ENR-Sa-a5X"/>
+                            <constraint firstItem="gZk-of-onr" firstAttribute="bottom" secondItem="ik3-M7-nM3" secondAttribute="bottom" id="ET1-d0-TnE"/>
+                            <constraint firstItem="iSo-Wx-NDi" firstAttribute="centerY" secondItem="x4e-a4-pnO" secondAttribute="centerY" id="EZ2-Y7-z6R"/>
                             <constraint firstItem="76d-yz-5cY" firstAttribute="top" secondItem="tA3-A8-0gE" secondAttribute="bottom" constant="20" id="FZI-8g-f15"/>
                             <constraint firstItem="wmS-CJ-8pB" firstAttribute="leading" secondItem="9Kb-tT-wt7" secondAttribute="trailing" constant="5" id="Fcu-EY-eUB"/>
                             <constraint firstItem="OMw-LQ-puK" firstAttribute="centerY" secondItem="xhB-iu-IjT" secondAttribute="centerY" id="GKg-FW-itO"/>
@@ -1059,6 +1077,7 @@
                             <constraint firstItem="Xp7-vD-pvo" firstAttribute="leading" secondItem="tYC-9L-cFZ" secondAttribute="leading" id="aBT-tx-FDa"/>
                             <constraint firstItem="wuJ-xr-q4o" firstAttribute="leading" secondItem="ieO-7f-hiP" secondAttribute="leading" constant="55.25" id="aj1-Fp-zoR"/>
                             <constraint firstItem="xCx-i0-706" firstAttribute="top" secondItem="oIr-8K-wq4" secondAttribute="bottom" constant="20" id="ase-QO-ldl"/>
+                            <constraint firstItem="iSo-Wx-NDi" firstAttribute="centerX" secondItem="x4e-a4-pnO" secondAttribute="centerX" id="bfF-54-wYP"/>
                             <constraint firstItem="oIr-8K-wq4" firstAttribute="top" secondItem="hGu-rr-SgT" secondAttribute="bottom" id="bgm-ob-Ie6"/>
                             <constraint firstItem="UTo-iW-1cM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="bh2-xM-DBf"/>
                             <constraint firstItem="DzJ-rB-AOv" firstAttribute="centerY" secondItem="FYp-F6-pnu" secondAttribute="centerY" constant="-1" id="bhg-sW-6oL"/>
@@ -2005,7 +2024,7 @@ Later</string>
         <image name="Off" width="124.61538696289062" height="99.692306518554688"/>
         <image name="Plus" width="118.58823394775391" height="118.58823394775391"/>
         <image name="Shrink" width="112.69565582275391" height="112.69565582275391"/>
-        <image name="Stitch" width="463.92001342773438" height="207.83999633789062"/>
+        <image name="Stitch" width="1030.5882568359375" height="398.11764526367188"/>
         <image name="Submit" width="124.61538696289062" height="99.692306518554688"/>
         <image name="Timer1" width="82.285713195800781" height="92.571426391601562"/>
         <image name="Timer2" width="82.285713195800781" height="92.571426391601562"/>
