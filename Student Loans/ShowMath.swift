@@ -79,12 +79,8 @@ class ShowMath: UIViewController {
     
     var increment = Double()
     var max_percent_interest = 100.0
-    //var max_percent_interest = Double()
-    //var max_percent_interest_calculations = 100.0
     var progress = 100.0
     var percentage = Double()
-    //var percentage_calculations = Double()
-    //internal var progress = Int()
     var p = Double()
     var i = Double()
     var a = Double()
@@ -105,7 +101,6 @@ class ShowMath: UIViewController {
     let pay_insight_shape_label = UILabel()
     let pay_insight_header_shape = CAShapeLayer()
 
-    //var c = 1.0
     var insight = 0 //1 if insight bubble open, 0 if not
     var blinked = Int()
     
@@ -115,7 +110,6 @@ class ShowMath: UIViewController {
     
     @IBAction func Switch(_ sender: UISwitch) {
         if compound.isOn {
-            //c = 1.0
             i = pow(1 + i*12*100/365.25/100,365.25/12) - 1
             var temp = Double()
             if (tenyr_indicator == 0) {
@@ -125,7 +119,6 @@ class ShowMath: UIViewController {
             }
             else {
                 if (i != 0) {
-                    //temp = ceil((i*p*pow(1+i,120)) / (pow(1+i,120) - 1)*100)/100
                     temp = ceil((percentage/100*i*p*pow(1+percentage/100*i,120)) / (pow(1+percentage/100*i,120) - 1)*100)/100
                 }
                 else {
@@ -191,23 +184,15 @@ class ShowMath: UIViewController {
         pay_insight_header.frame = CGRect(x: 10, y: pay_insight_header.frame.origin.y, width: pay_insight_header.frame.width, height: pay_insight_header.frame.height)
         UIView.animate(withDuration: 0.25, animations: {
             self.equals_sign.isHidden = true
-            //self.pay_insight.transform = CGAffineTransform(scaleX: 1.0625, y: 1.0625)
-            //let translation = CGAffineTransform(translationX: CGFloat(0), y: CGFloat(-4))
-            //let scale = CGAffineTransform(scaleX: 1.0625, y: 1.0625)
-            //self.pay_insight_header.transform = translation.concatenating(scale)
             self.pay_insight_shape.fillColor = UIColor(red:207/255.0, green:209/255.0, blue:210/255.0, alpha: 0.95).cgColor
             self.pay_insight_header_shape.fillColor = UIColor(red:207/255.0, green:209/255.0, blue:210/255.0, alpha: 0.95).cgColor
             self.payment_header_shape.path = UIBezierPath(roundedRect: self.payment_header.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
             self.payment_shape.path = UIBezierPath(roundedRect: self.payment.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-            //self.pay_insight_header.frame = CGRect(x: self.pay_insight_header.frame.origin.x, y: self.pay_insight_header.frame.origin.y, width: self.pay_insight_header.frame.width, height: self.pay_insight_header.frame.height)
         },
         completion: {
             (finished: Bool) -> Void in
                 UIView.animate(withDuration: 0.25) {
                     self.equals_sign.isHidden = true
-                //self.pay_insight.transform = CGAffineTransform.identity
-                //self.pay_insight_header.transform = CGAffineTransform.identity
-                //self.pay_insight_header.frame = CGRect(x: self.pay_insight_header.frame.origin.x, y: self.pay_insight_header.frame.origin.y, width: self.pay_insight_header.frame.width, height: self.pay_insight_header.frame.height) //might be redundant, same in next function
                 self.pay_insight.frame = CGRect(x: 5, y: self.pay_insight.frame.origin.y, width: self.pay_insight.frame.width, height: self.pay_insight.frame.height)
                 self.pay_insight_header.frame = CGRect(x: 5, y: self.pay_insight_header.frame.origin.y, width: self.pay_insight_header.frame.width, height: self.pay_insight_header.frame.height)
                 self.pay_insight_shape.fillColor = UIColor(red:207/255.0, green:209/255.0, blue:210/255.0, alpha: 0.95).cgColor
@@ -224,40 +209,26 @@ class ShowMath: UIViewController {
         Variables()
         payment.isEnabled = false
         payment_header.isEnabled = false
-        //enlarge.isEnabled = false
-        //enlarge.setImage(UIImage(named: "Shrink"), for: .normal)
-        //enlarge_shrink.setImage(UIImage(named: "Enlarge"), for: .normal)
     }
     @IBAction func Payment_Insight_Bubble_Expand(_ sender: UIButton) {
         pay_insight.isHidden = false
         pay_insight_header.isHidden = false
         plus_sign.isHidden = true
         minus_sign.isHidden = true
-        //pay_insight.bounds = pay_insight.frame
-        //pay_insight.layer.addSublayer(pay_insight_shape)
-        //pay_insight_header.layer.addSublayer(pay_insight_header_shape)
         pay_insight_header.addSubview(shrink)
         pay_insight_header.bringSubviewToFront(shrink)
         pay_insight.frame = CGRect(x: 10, y: pay_insight.frame.origin.y, width: pay_insight.frame.width, height: pay_insight.frame.height)
         pay_insight_header.frame = CGRect(x: 10, y: pay_insight_header.frame.origin.y, width: pay_insight_header.frame.width, height: pay_insight_header.frame.height)
         UIView.animate(withDuration: 0.25, animations: {
-            //self.pay_insight.transform = CGAffineTransform(scaleX: 1.0625, y: 1.0625)
-            //let translation = CGAffineTransform(translationX: CGFloat(0), y: CGFloat(-4))
-            //let scale = CGAffineTransform(scaleX: 1.0625, y: 1.0625)
-            //self.pay_insight_header.transform = translation.concatenating(scale)
             self.pay_insight_shape.fillColor = UIColor(red:207/255.0, green:209/255.0, blue:210/255.0, alpha: 0.95).cgColor
             self.pay_insight_header_shape.fillColor = UIColor(red:207/255.0, green:209/255.0, blue:210/255.0, alpha: 0.95).cgColor
             self.payment_header_shape.path = UIBezierPath(roundedRect: self.payment_header.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
             self.payment_shape.path = UIBezierPath(roundedRect: self.payment.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-            //self.pay_insight_header.frame = CGRect(x: self.pay_insight_header.frame.origin.x, y: self.pay_insight_header.frame.origin.y, width: self.pay_insight_header.frame.width, height: self.pay_insight_header.frame.height)
         },
                        completion: {
                         (finished: Bool) -> Void in
                         UIView.animate(withDuration: 0.25) {
                             self.equals_sign.isHidden = true
-                            //self.pay_insight.transform = CGAffineTransform.identity
-                            //self.pay_insight_header.transform = CGAffineTransform.identity
-                            //self.pay_insight_header.frame = CGRect(x: self.pay_insight_header.frame.origin.x, y: self.pay_insight_header.frame.origin.y, width: self.pay_insight_header.frame.width, height: self.pay_insight_header.frame.height)
                             self.pay_insight.frame = CGRect(x: 5, y: self.pay_insight.frame.origin.y, width: self.pay_insight.frame.width, height: self.pay_insight.frame.height)
                             self.pay_insight_header.frame = CGRect(x: 5, y: self.pay_insight_header.frame.origin.y, width: self.pay_insight_header.frame.width, height: self.pay_insight_header.frame.height)
                             self.pay_insight_shape.fillColor = UIColor(red:207/255.0, green:209/255.0, blue:210/255.0, alpha: 0.95).cgColor
@@ -267,7 +238,6 @@ class ShowMath: UIViewController {
                             self.remaining.textColor = UIColor.lightGray.withAlphaComponent(0.5)
                         }
         })
-
         
         enlarge.isHidden = true
         shrink.isHidden = false
@@ -275,9 +245,6 @@ class ShowMath: UIViewController {
         Variables()
         payment.isEnabled = false
         payment_header.isEnabled = false
-        //enlarge.isEnabled = false
-        //enlarge.setImage(UIImage(named: "Shrink"), for: .normal)
-        //enlarge_shrink.setImage(UIImage(named: "Enlarge"), for: .normal)
     }
     
     @IBAction func Payment_Insight_Bubble_Header_Close(_ sender: UIButton) {
@@ -289,8 +256,6 @@ class ShowMath: UIViewController {
         pay_insight_header_shape.fillColor = UIColor(red:207/255.0, green:209/255.0, blue:210/255.0, alpha: 0.95).cgColor
         payment_header_shape.path = UIBezierPath(roundedRect: payment_header.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
         payment_shape.path = UIBezierPath(roundedRect: payment.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        //pay_insight.bounds = pay_insight.frame
-        //pay_insight_header.bounds = pay_insight_header.frame
         pay_insight.frame = CGRect(x: 10, y: pay_insight.frame.origin.y, width: pay_insight.frame.width, height: pay_insight.frame.height)
         pay_insight_header.frame = CGRect(x: 10, y: pay_insight_header.frame.origin.y, width: pay_insight_header.frame.width, height: pay_insight_header.frame.height)
         plus_sign.isHidden = false
@@ -301,7 +266,6 @@ class ShowMath: UIViewController {
         Variables()
         payment.isEnabled = true
         payment_header.isEnabled = true
-        //enlarge.isEnabled = true
     }
     
     @IBAction func Payment_Insight_Bubble_Close(_ sender: UIButton) {
@@ -313,8 +277,6 @@ class ShowMath: UIViewController {
         pay_insight_header_shape.fillColor = UIColor(red:207/255.0, green:209/255.0, blue:210/255.0, alpha: 0.95).cgColor
         payment_header_shape.path = UIBezierPath(roundedRect: payment_header.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
         payment_shape.path = UIBezierPath(roundedRect: payment.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        //pay_insight.bounds = pay_insight.frame
-        //pay_insight_header.bounds = pay_insight_header.frame
         pay_insight.frame = CGRect(x: 10, y: pay_insight.frame.origin.y, width: pay_insight.frame.width, height: pay_insight.frame.height)
         pay_insight_header.frame = CGRect(x: 10, y: pay_insight_header.frame.origin.y, width: pay_insight_header.frame.width, height: pay_insight_header.frame.height)
         plus_sign.isHidden = false
@@ -325,7 +287,6 @@ class ShowMath: UIViewController {
         Variables()
         payment.isEnabled = true
         payment_header.isEnabled = true
-        //enlarge.isEnabled = true
     }
     
     @IBAction func Payment_Insight_Bubble_Shrink(_ sender: UIButton) {
@@ -337,8 +298,6 @@ class ShowMath: UIViewController {
         pay_insight_header_shape.fillColor = UIColor(red:207/255.0, green:209/255.0, blue:210/255.0, alpha: 0.95).cgColor
         payment_header_shape.path = UIBezierPath(roundedRect: payment_header.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
         payment_shape.path = UIBezierPath(roundedRect: payment.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        //pay_insight.bounds = pay_insight.frame
-        //pay_insight_header.bounds = pay_insight_header.frame
         pay_insight.frame = CGRect(x: 10, y: pay_insight.frame.origin.y, width: pay_insight.frame.width, height: pay_insight.frame.height)
         pay_insight_header.frame = CGRect(x: 10, y: pay_insight_header.frame.origin.y, width: pay_insight_header.frame.width, height: pay_insight_header.frame.height)
         plus_sign.isHidden = false
@@ -349,12 +308,9 @@ class ShowMath: UIViewController {
         Variables()
         payment.isEnabled = true
         payment_header.isEnabled = true
-        //enlarge.isEnabled = true
     }
     @IBAction func Blink(_ sender: UISlider) {
-        //if compound.isOn && (insight == 0) && (progress < 100) && (blinked == 0) {
         if (insight == 0) && (progress < 100) && (blinked == 0) {
-            //enlarge.isHidden = false
             enlarge.alpha = 1.0
             UIView.animate(withDuration: 0.5, delay: 0.0, options: [.repeat, .autoreverse, .curveEaseInOut], animations:
                 {
@@ -367,31 +323,18 @@ class ShowMath: UIViewController {
             
         }
         else {
-            //enlarge.alpha = 0.0
         }
         blinked = 1 //don't blink again, unless you reswipe, reduces annoyance
     }
     
-    
     @IBAction func Proportion_Slider(_ sender: UISlider) {
-        //p = shared_preferences.double(forKey: "loaned")
-        //i = shared_preferences.double(forKey: "interest")
-        //a = shared_preferences.double(forKey: "pay_monthly")
-        //i = i / 12 / 100 //need to convert to periodic rate in decimal form
         increment = 1.0
         
         if (sender.value - floor(sender.value) > 0.99999)
         { sender.value = roundf(sender.value + 1) }
         else { sender.value = roundf(sender.value) }
-        //sender.value = roundf(sender.value)
-        
-        //progress = Int(sender.value)
-        //progress = Double(sender.value)
         progress = increment * Double(sender.value)
         
-        //might these have rounding issue, too?
-        //will show correctly, but since don't need extra penny when progress != 0, later on will adjust some more
-
         //m = (y2-y1)/(x2-x1)
         //= (0-max_percent_interest)/(100-0)
         //= -max_percent_interest/100
@@ -413,7 +356,6 @@ class ShowMath: UIViewController {
         }
         else {
             if (i != 0) {
-                //temp = ceil((i*p*pow(1+i,120)) / (pow(1+i,120) - 1)*100)/100
                 temp = ceil((percentage/100*i*p*pow(1+percentage/100*i,120)) / (pow(1+percentage/100*i,120) - 1)*100)/100
             }
             else {
@@ -430,7 +372,6 @@ class ShowMath: UIViewController {
         {
         }
         
-        //some of this may be redundant
         var attributedPercentInterestTitle = NSMutableAttributedString()
         attributedPercentInterestTitle = NSMutableAttributedString(string: "Interest", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedString.Key.foregroundColor: UIColor.black])
         let attributedPercentInterestSpace = NSMutableAttributedString(string: " \n", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 3.0)! ])
@@ -448,11 +389,6 @@ class ShowMath: UIViewController {
         attributedPercentBalance.append(attributedPercentBalanceSpace)
         attributedPercentBalance.append(attributedPercentBalanceTitle)
         percent_balance.attributedText = attributedPercentBalance
-        //balance_shape_label.adjustsFontSizeToFitWidth = true
-
-        //percent_balance.text = String(format: "%.2f",(ceil(Double(1))/100)/(ceil(Double(Int(p*i*100)+1))/100)*100) + "%\nBalance"
-        //var previous_subviews = balance.subviews
-        //previous_subviews.removeAll()
         
         Variables()
     }
@@ -470,36 +406,35 @@ class ShowMath: UIViewController {
         charged_interest.backgroundColor = UIColor.clear
         payment.backgroundColor = UIColor.clear
 
-        //may be redundant
-            compound.isHidden = false //redundant if compound_stack unhidden
-            titleof_compound.isHidden = false //redundant if compound_stack unhidden
-            percent_interest.isHidden = false
-            slider.isHidden = false
-            percent_balance.isHidden = false
-            time_label.text = "Time"
-            savings_label.text = "Savings"
-            line.isHidden = false
-            //no extra space
-            aprstack_width.isActive = true
-            //no extra width
-            compound_stack.isHidden = false
-            table_header.isHidden = false
-            enlarge.isHidden = false
-            //keep spacing as is
-            note_constraint.isActive = true
-            note_right.isHidden = false
-            //keep note where it is
-            plus_sign.isHidden = false
-            minus_sign.isHidden = false
-            equals_sign.isHidden = false
-            //leave constraint as is
-            //keep view color as is
-            //leave constraints as they are
+        compound.isHidden = false
+        titleof_compound.isHidden = false
+        percent_interest.isHidden = false
+        slider.isHidden = false
+        percent_balance.isHidden = false
+        time_label.text = "Time"
+        savings_label.text = "Savings"
+        line.isHidden = false
+        //no extra space
+        aprstack_width.isActive = true
+        //no extra width
+        compound_stack.isHidden = false
+        table_header.isHidden = false
+        enlarge.isHidden = false
+        //keep spacing as is
+        note_constraint.isActive = true
+        note_right.isHidden = false
+        //keep note where it is
+        plus_sign.isHidden = false
+        minus_sign.isHidden = false
+        equals_sign.isHidden = false
+        //leave constraint as is
+        //keep view color as is
+        //leave constraints as they are
         
         blinked = 0
-            numberFormatter.usesGroupingSeparator = true
-            numberFormatter.groupingSeparator = ","
-            numberFormatter.groupingSize = 3
+        numberFormatter.usesGroupingSeparator = true
+        numberFormatter.groupingSeparator = ","
+        numberFormatter.groupingSize = 3
         enlarge.adjustsImageWhenHighlighted = false
         shrink.adjustsImageWhenHighlighted = false
         
@@ -508,38 +443,18 @@ class ShowMath: UIViewController {
         compound.layer.cornerRadius = 16
         shrink.isHidden = true
         
-        
         view.addSubview(pay_insight)
         view.bringSubviewToFront(pay_insight)
-        //view.addSubview(pay_insight_header)
-        //view.bringSubviewToFront(pay_insight_header)
-
         
         pay_insight.frame = CGRect(x: 10, y: pay_insight.frame.origin.y, width: pay_insight.frame.width, height: pay_insight.frame.height)
         pay_insight_header.frame = CGRect(x: 10, y: pay_insight_header.frame.origin.y, width: pay_insight_header.frame.width, height: pay_insight_header.frame.height)
         pay_insight_shape.fillColor = UIColor(red:207/255.0, green:209/255.0, blue:210/255.0, alpha: 0.95).cgColor
         pay_insight_header_shape.fillColor = UIColor(red:207/255.0, green:209/255.0, blue:210/255.0, alpha: 0.95).cgColor
-        //pay_insight_shape.fillColor = UIColor(red:207/255.0, green:209/255.0, blue:210/255.0, alpha: 0.95).cgColor
-        //pay_insight_header_shape.fillColor = UIColor(red:207/255.0, green:209/255.0, blue:210/255.0, alpha: 0.95).cgColor
-
-
-        
-        //enlarge_shrink.sizeThatFits(CGSize(width: 2, height: 2))
         
         slider.setThumbImage(UIImage(named: "Thumb"), for: .normal)
-        slider.setMinimumTrackImage(UIImage(named: "Math_MinTrack")!.resizableImage(withCapInsets: .zero, resizingMode: .stretch), for: .normal)//reversed because liked reversed colors
+        slider.setMinimumTrackImage(UIImage(named: "Math_MinTrack")!.resizableImage(withCapInsets: .zero, resizingMode: .stretch), for: .normal)
         slider.setMaximumTrackImage(UIImage(named: "Math_MaxTrack")!.resizableImage(withCapInsets: .zero, resizingMode: .stretch), for: .normal)
 
-        //pay_insight.backgroundColor = UIColor.init(red:216/255.0, green:218/255.0, blue:218/255.0, alpha: 1.0)
-        //pay_insight.titleLabel?.lineBreakMode = .byWordWrapping
-        //pay_insight.titleLabel?.numberOfLines = 0
-        //pay_insight.titleEdgeInsets.right = 12
-        //pay_insight.titleEdgeInsets.top = 0
-        //pay_insight.titleEdgeInsets.left = 5
-        //pay_insight.titleEdgeInsets.bottom = 0
-
-
-        
         p = shared_preferences.double(forKey: "loaned")
         i = shared_preferences.double(forKey: "interest")
         a = shared_preferences.double(forKey: "pay_monthly")
@@ -567,11 +482,9 @@ class ShowMath: UIViewController {
         }
         
         if (i == 0) {
-            //attributedAPRSummary = NSMutableAttributedString(string: " 0%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
-            
-                attributedAPRSummary = NSMutableAttributedString(string: " " + String(format: "%.0f", i * 12 * 100) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
-                attributedAPRPeriodic = NSMutableAttributedString(string: "\n" + "÷ 12 = 0." + String(temp) + "00...% monthly", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
-                    attributedAPRDecimalEquivalent = NSMutableAttributedString(string: "\n" + "÷ 100 = 0.00" + String(temp) + "...", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
+            attributedAPRSummary = NSMutableAttributedString(string: " " + String(format: "%.0f", i * 12 * 100) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
+            attributedAPRPeriodic = NSMutableAttributedString(string: "\n" + "÷ 12 = 0." + String(temp) + "00...% monthly", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
+                attributedAPRDecimalEquivalent = NSMutableAttributedString(string: "\n" + "÷ 100 = 0.00" + String(temp) + "...", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)!, NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
         }
         else {
             attributedAPRSummary = NSMutableAttributedString(string: " " + String(format: "%.2f", i * 12 * 100) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 18.0)! ])
@@ -584,7 +497,6 @@ class ShowMath: UIViewController {
         nominal_rate.attributedText = attributedAPRTitle //"nominal_rate" should be renamed
         
         if (i == 0) {
-            //self.slider.value = 4
             compound.isEnabled = false
             titleof_compound.textColor = UIColor.lightGray.withAlphaComponent(0.5)
         }
@@ -685,7 +597,7 @@ class ShowMath: UIViewController {
         payment_header_shape.strokeColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.125).cgColor
         payment_header_shape.fillColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.25+0.125).cgColor
         payment_header_shape.lineWidth = 0
-        payment_shape.path = UIBezierPath(roundedRect: payment.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath //define here, or else - if alter switch with insight open - bottomleft edge will show
+        payment_shape.path = UIBezierPath(roundedRect: payment.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath //define here, or else - if alter switch with insight open - bottom-left edge will show
         
         let payment_header_shape_label = UILabel()
         payment_header_shape_label.frame = CGRect(x: 0, y: 0, width: payment_header.frame.width, height: payment_header.frame.height)
@@ -700,16 +612,8 @@ class ShowMath: UIViewController {
         payment_header.addSubview(payment_header_shape_label)
         
         //only show if click on pay
-        //pay_insight_header_shape.bounds = pay_insight_header.frame
-        //pay_insight_header_shape.position = pay_insight_header.center
-        //pay_insight_header_shape.path = UIBezierPath(roundedRect: pay_insight_header.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        //pay_insight_header_shape.path = UIBezierPath(roundedRect: pay_insight_header.bounds, byRoundingCorners: [.topLeft], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        //pay_insight_header_shape.path = UIBezierPath(roundedRect: pay_insight_header.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        //pay_insight_header_shape.fillColor = UIColor(red:216/255.0, green:218/255.0, blue:218/255.0, alpha: 0.9).cgColor <-- coloring earlier
-        //pay_insight_shape.borderColor = UIColor.black.cgColor
         pay_insight_shape.borderColor = UIColor(red:207/255.0, green:209/255.0, blue:210/255.0, alpha: 0.95).cgColor
         pay_insight_shape.borderWidth = 0
-        //table_header.layer.addSublayer(pay_insight_header_shape)
         pay_insight_header.layer.addSublayer(pay_insight_header_shape)
 
         //Proportion
@@ -717,7 +621,6 @@ class ShowMath: UIViewController {
         proportion_shape.bounds = proportion.frame
         proportion_shape.position = proportion.center
         proportion_shape.path = UIBezierPath(roundedRect: proportion.bounds, byRoundingCorners: [.topLeft, .topRight, .bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        //balance_header_shape.strokeColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.25).cgColor
         
         if (i == 0) {
             proportion_shape.fillColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.0).cgColor
@@ -732,7 +635,7 @@ class ShowMath: UIViewController {
         proportion.bringSubviewToFront(percent_balance)
         let scale = max_percent_interest/100
         percentage = max_percent_interest - scale*(max_percent_interest - Double(progress))
-        if (percentage - floor(percentage) > 0.499999) && (percentage - floor(percentage) < 0.5) //being consistant
+        if (percentage - floor(percentage) > 0.499999) && (percentage - floor(percentage) < 0.5)
         { percentage = round(percentage + 1) }
         else { percentage = round(percentage) }
 
@@ -751,15 +654,12 @@ class ShowMath: UIViewController {
         var attributedPercentInterest = NSMutableAttributedString()
         var attributedPercentBalance = NSMutableAttributedString()
         if (i == 0) {
-            //self.slider.value = 4
             slider.isEnabled = false
             attributedPercentInterest = NSMutableAttributedString(string: String(format: "%.0f", percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
-            //attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", max_percent_interest) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)! ])
             attributedPercentBalance = NSMutableAttributedString(string: String(format: "%.0f", 100 - percentage) + "%", attributes: [ NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!, NSAttributedString.Key.foregroundColor: UIColor.lightGray.withAlphaComponent(0.5) ])
         }
         else {
             slider.isEnabled = true
-            //for consistency: <-- because rounded interest down everywhere else
             let px = percentage*100
             if (px - floor(px) > 0.99999) {
                 percentage = Double(Int(percentage*100)+1)/100
@@ -816,21 +716,21 @@ class ShowMath: UIViewController {
         pay_insight.addSubview(pay_insight_shape_label)
         note.sizeToFit()
         
-        //allow users to magnify the table, if the table is too small
+        //allow users to magnify the table, if numbers within the table are too small
         balance.tintColor = .clear
-        balance.isEditable = true //bug, should be isSelectable, but isSelectable only highlights first line
+        balance.isEditable = true //potential bug: should be isSelectable, but isSelectable only highlights first line
         balance.inputView = UIView() //prevents keyboard
         if (i != 0) {
             charged_interest.tintColor = .clear
-            charged_interest.isEditable = true //bug, should be isSelectable, but isSelectable only highlights first line
-            charged_interest.inputView = UIView() //prevents keyboard
+            charged_interest.isEditable = true
+            charged_interest.inputView = UIView()
         }
         else {
             //don't
         }
         remaining.tintColor = .clear
-        remaining.isEditable = true //bug, should be isSelectable, but isSelectable only highlights first line
-        remaining.inputView = UIView() //prevents keyboard
+        remaining.isEditable = true
+        remaining.inputView = UIView()
 
         Variables()
 
