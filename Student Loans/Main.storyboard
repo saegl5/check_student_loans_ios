@@ -213,6 +213,12 @@
                             </switch>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIM-tk-aeU">
                                 <rect key="frame" x="5" y="160.5" width="365" height="141"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Stitch" translatesAutoresizingMaskIntoConstraints="NO" id="WZu-Mo-ZIP">
+                                        <rect key="frame" x="62" y="6.5" width="240" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6EY-yT-SMY">
@@ -1999,6 +2005,7 @@ Later</string>
         <image name="Off" width="124.61538696289062" height="99.692306518554688"/>
         <image name="Plus" width="118.58823394775391" height="118.58823394775391"/>
         <image name="Shrink" width="112.69565582275391" height="112.69565582275391"/>
+        <image name="Stitch" width="463.92001342773438" height="207.83999633789062"/>
         <image name="Submit" width="124.61538696289062" height="99.692306518554688"/>
         <image name="Timer1" width="82.285713195800781" height="92.571426391601562"/>
         <image name="Timer2" width="82.285713195800781" height="92.571426391601562"/>

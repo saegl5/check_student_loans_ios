@@ -335,18 +335,21 @@ class ShowMath: UIViewController {
         else { sender.value = roundf(sender.value) }
         progress = increment * Double(sender.value)
         
-        //m = (y2-y1)/(x2-x1)
-        //= (0-max_percent_interest)/(100-0)
-        //= -max_percent_interest/100
-        //y = y1 + m(x-x1)
-        //= max_percent_interest + -max_percent_interest/100(x-0)
-        //= max_percent_interest - max_percent_interest/100(x)
+        /*
+        m = (y2-y1)/(x2-x1)
+          = (0-max_percent_interest)/(100-0)
+          = -max_percent_interest/100
+        y = y1 + m(x-x1)
+          = max_percent_interest + -max_percent_interest/100(x-0)
+          = max_percent_interest - max_percent_interest/100(x)
+        */
         let scale = max_percent_interest/100
-        //y = max_percent_interest - scale(x)
-        //progress = x
+        /*
+        y = max_percent_interest - scale(x)
+        percentage = y
+        max_percent_interest - progress = x
+        */
         percentage = max_percent_interest - scale*(max_percent_interest - progress)
-        //percentage = max_percent_interest - scale*Double(progress)
-        //percentage_calculations = max_percent_interest_calculations - Double(progress)
 
         var temp = Double()
         if (tenyr_indicator == 0) {
@@ -735,48 +738,29 @@ class ShowMath: UIViewController {
         Variables()
 
         payment_shape.path = UIBezierPath(roundedRect: payment.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-        //table_header.layer.borderWidth = 0
-        //table.layer.borderWidth = 0
-        
-        //give slightly creamy (i.e., blurry) background, tried below but got warnings so did it visually, doesn't like alpha
-        
-        //let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
-        //let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        //blurEffectView.frame = view.bounds
-        //blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        //view.addSubview(blurEffectView)
-        //blurEffectView.alpha = 0.125
     }
 
     func Variables() {
         if (i == 0) {
             payment.isEnabled = false
-            //pay_insight.isEnabled = false
-            //pay_insight_header.isEnabled = false
             payment_header.isEnabled = false
             enlarge.isHidden = true
         }
         else {
             payment.isEnabled = true
             payment_header.isEnabled = true
-            //enlarge.isHidden = false
         }
 
-        var j = 0 //defined here in order to simplify the rest too
-        var remainingbalance = p //defined here in order to simplify the rest
-        //let c = 0.0 //set to 0.0, if do not compound
-        //var pre_outstandingbalance = 0.00
+        var j = 0 //defined here in order to simplify the rest
+        var remainingbalance = p //defined here in order to simplify the rest too
         var outstandingbalance = 0.00
-        //if (i != 0) {
         
             var interest = Double()
             if (remainingbalance*i*100 - floor(remainingbalance*i*100) > 0.499999) && (remainingbalance*i*100 - floor(remainingbalance*i*100) < 0.5)
             { interest = round(remainingbalance*i*100 + 1)/100}
             else { interest = round(remainingbalance*i*100)/100 }
 
-          //var interest_pay = round(round(percentage)/100*remainingbalance*i*100)/100
             var interest_pay = Double()
-            //var x = percentage/100*interest
             var x = percentage/100*remainingbalance*i
             if (x*100 - floor(x*100) > 0.499999) && (x*100 - floor(x*100) < 0.5)
             { interest_pay = round(x*100 + 1)/100}
@@ -790,35 +774,27 @@ class ShowMath: UIViewController {
             var principal_pay = Double()
             if (a == tempx) {
                 if (progress == 100) { principal_pay = a - interest_pay }
-                else { principal_pay = a - interest_pay } //won't need 0.01, if interest not compounded
+                else { principal_pay = a - interest_pay }
             }
             else { principal_pay = a - interest_pay }
 
         while (remainingbalance - principal_pay > 0) {
-            //while (remainingbalance + c*interest > c*interest_pay + principal_pay) {// >= because if c=0 and not paying interest yet, then final month will merge with interest owed
-            //while (remainingbalance + c*interest >= c*interest_pay + principal_pay) {// >= because if c=0 and not paying interest yet, then final month will merge with interest owed
-                //remainingbalance = remainingbalance + c*interest - (c*interest_pay + principal_pay)
                 remainingbalance = remainingbalance - principal_pay
 
                 if (remainingbalance*100 - floor(remainingbalance*100) > 0.499999) && (remainingbalance*100 - floor(remainingbalance*100) < 0.5)
                 { remainingbalance = round(remainingbalance*100 + 1)/100}
                 else { remainingbalance = round(remainingbalance*100)/100 }
 
-                //outstandingbalance = outstandingbalance + (1.0-c)*interest - (1.0-c)*interest_pay
                 outstandingbalance = outstandingbalance + interest - interest_pay
             
                 if (outstandingbalance*100 - floor(outstandingbalance*100) > 0.499999) && (outstandingbalance*100 - floor(outstandingbalance*100) < 0.5)
                 { outstandingbalance = round(outstandingbalance*100 + 1)/100}
                 else { outstandingbalance = round(outstandingbalance*100)/100 }
 
-                //outstandingbalance = round(outstandingbalance*100)/100 //or else it starts collecting errors
-                //recompute
                 if (remainingbalance*i*100 - floor(remainingbalance*i*100) > 0.499999) && (remainingbalance*i*100 - floor(remainingbalance*i*100) < 0.5)
                 { interest = round(remainingbalance*i*100 + 1)/100}
                 else { interest = round(remainingbalance*i*100)/100 }
-                //interest_pay = round(round(percentage)/100*remainingbalance*i*100)/100
-                
-                //x = percentage/100*interest
+            
                 x = percentage/100*remainingbalance*i
                 if (x*100 - floor(x*100) > 0.499999) && (x*100 - floor(x*100) < 0.5)
                 { interest_pay = round(x*100 + 1)/100}
@@ -830,23 +806,13 @@ class ShowMath: UIViewController {
 
                 if (a == tempx) {
                     if (progress == 100) { principal_pay = a - interest_pay }
-                    else { principal_pay = a - interest_pay } //won't need 0.01, if interest not compounded
+                    else { principal_pay = a - interest_pay }
                 }
-                else { principal_pay = a - interest_pay } //may lose some precision
+                else { principal_pay = a - interest_pay }
                 
                 j += 1
                 
-                }
-
-                //let interest_temp = round(percentage)/100*ceil(Double(Int(p*i*100)))/100
-                //let payment_temp = (100-round(percentage))/100*(a-0.01)
-                //rounding interest consistently downward, so rounding payment upward
-                //let round_interest = ceil(Double(Int(interest_temp*100)))/100
-                //et round_payment = ceil(payment_temp*100)/100
-                
-                //could probably simplify this
-            //breaking it up like this may not matter for months 1-4 part, but did so anyway to be consistent
-            //originally, a = interest + 0.01, now we assume interest doesn't compound, and extra penny is not necessary - BASED ON FIRST MONTH!!!!!! and am not considering larger cases, yet
+            }
         
         //redo pay title
         var tempx_x = Double()
@@ -884,10 +850,8 @@ class ShowMath: UIViewController {
         attributedPayTitle.append(attributedPaySummary)
         pay_monthly.attributedText = attributedPayTitle
         
-        //remaining frame or remaining label shifts after pressing switch or moving thumb, non issue if set constraints visually
+        //remaining frame or remaining label shifts after pressing switch or moving thumb, not an issue if set constraints visually
         if (j > 4) {
-            //NSLayoutConstraint.deactivate([table.heightAnchor.constraint(equalToConstant: CGFloat(22*(j+1)))])
-            //NSLayoutConstraint.activate([table.heightAnchor.constraint(equalToConstant: 132)])
             table_height.constant = CGFloat(132)
             balance.frame = CGRect(x: Int(balance.frame.origin.x), y: 0, width: Int(balance.frame.width), height: 132)
             add.frame = CGRect(x: Int(add.frame.origin.x), y: 0, width: Int(add.frame.width), height: 132)
@@ -896,13 +860,10 @@ class ShowMath: UIViewController {
             payment.frame = CGRect(x: Int(payment.frame.origin.x), y: 0, width: Int(payment.frame.width), height: 132)
             equals.frame = CGRect(x: Int(equals.frame.origin.x), y: 0, width: Int(equals.frame.width), height: 132)
             remaining.frame = CGRect(x: Int(remaining.frame.origin.x), y: 0, width: Int(table.frame.width-balance.frame.width-add.frame.width-charged_interest.frame.width)-Int(subtract.frame.width+payment.frame.width+equals.frame.width), height: 132)
-            //remaining.frame = CGRect(x: Int(remaining.frame.origin.x), y: 0, width: Int(table.frame.width-balance.frame.width-add.frame.width-charged_interest.frame.width-subtract.frame.width-payment.frame.width-equals.frame.width), height: 132)
             pay_insight.frame = CGRect(x: 10, y: 0, width: Int(pay_insight.frame.width), height: 132)
 
         }
         else {
-            //NSLayoutConstraint.deactivate([table.heightAnchor.constraint(equalToConstant: 132)])
-            //NSLayoutConstraint.activate([table.heightAnchor.constraint(equalToConstant: CGFloat(22*(j+1)))])
             table_height.constant = CGFloat(22*(j+1))
             table.heightAnchor.constraint(equalToConstant: CGFloat(22*(j+1)))
             balance.frame = CGRect(x: Int(balance.frame.origin.x), y: 0, width: Int(balance.frame.width), height: 22*(j+1))
@@ -913,13 +874,9 @@ class ShowMath: UIViewController {
             equals.frame = CGRect(x: Int(equals.frame.origin.x), y: 0, width: Int(equals.frame.width), height: 22*(j+1))
             let CGRect_widthtemp = Int(table.frame.width-balance.frame.width-add.frame.width-charged_interest.frame.width)-Int(subtract.frame.width+payment.frame.width+equals.frame.width)
             remaining.frame = CGRect(x: Int(remaining.frame.origin.x), y: 0, width: CGRect_widthtemp, height: 22*(j+1))
-            //remaining.frame = CGRect(x: Int(remaining.frame.origin.x), y: 0, width: Int(table.frame.width-balance.frame.width-add.frame.width-charged_interest.frame.width-subtract.frame.width-payment.frame.width-equals.frame.width), height: 132)
 
             pay_insight.frame = CGRect(x: 10, y: 0, width: Int(pay_insight.frame.width), height: 22*(j+1))
         }
-        //remaining_label.frame = CGRect(x: 0, y: 0, width: remaining.frame.width, height: remaining.frame.height)
-
-        //remaining.backgroundColor = UIColor.red
 
         //Shape of balance body---------------------
         balance_shape.bounds = balance.frame
@@ -946,26 +903,21 @@ class ShowMath: UIViewController {
         //Shape of payment body---------------------
         payment_shape.bounds = payment.frame
         payment_shape.position = payment.center
-        //define in viewdidload BUT after Variables(): (or else will change path if switch or slider move)
-        //payment_shape.path = UIBezierPath(roundedRect: payment.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
-            payment_shape.strokeColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.125).cgColor
-            payment_shape.fillColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.25+0.125).cgColor
+        //define in viewdidload BUT after Variables(): (or else will change path if switch or slider altered)
+        payment_shape.strokeColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.125).cgColor
+        payment_shape.fillColor = UIColor(red:161/255.0, green:166/255.0, blue:168/255.0, alpha: 0.25+0.125).cgColor
         payment_shape.lineWidth = 0
         
         if (insight == 1) {
-            //payment_header_shape.path = UIBezierPath(roundedRect: payment_header.bounds, byRoundingCorners: [.topRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
             payment_shape.path = UIBezierPath(roundedRect: payment.bounds, byRoundingCorners: [.bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
         }
         else {
-            //payment_header_shape.path = UIBezierPath(roundedRect: payment_header.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
             payment_shape.path = UIBezierPath(roundedRect: payment.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
         }
-
         
         pay_insight.frame = CGRect(x: 10, y: pay_insight.frame.origin.y, width: pay_insight.frame.width, height: pay_insight.frame.height)
         pay_insight_header.frame = CGRect(x: 10, y: pay_insight_header.frame.origin.y, width: pay_insight_header.frame.width, height: pay_insight_header.frame.height)
 
-        
         var temp1 = Double()
         var temp2 = Double()
         var temp3 = Double()
@@ -992,7 +944,7 @@ class ShowMath: UIViewController {
         
         if (a == tempxx) {
             if (progress == 100) { principal_pay1 = a - interest_pay1 }
-            else { principal_pay1 = a - interest_pay1 } //won't need 0.01, if interest not compounded
+            else { principal_pay1 = a - interest_pay1 }
         }
         else { principal_pay1 = a - interest_pay1 }
         
@@ -1006,7 +958,7 @@ class ShowMath: UIViewController {
 
         if (a == tempxx) {
             if (progress == 100) { principal_pay2 = a - interest_pay2 }
-            else { principal_pay2 = a - interest_pay2 } //won't need 0.01, if interest not compounded
+            else { principal_pay2 = a - interest_pay2 }
         }
         else { principal_pay2 = a - interest_pay2 }
 
@@ -1020,7 +972,7 @@ class ShowMath: UIViewController {
 
         if (a == tempxx) {
             if (progress == 100) { principal_pay3 = a - interest_pay3 }
-            else { principal_pay3 = a - interest_pay3 } //won't need 0.01, if interest not compounded
+            else { principal_pay3 = a - interest_pay3 }
         }
         else { principal_pay3 = a - interest_pay3 }
         
@@ -1034,16 +986,13 @@ class ShowMath: UIViewController {
 
         if (a == tempxx) {
             if (progress == 100) { principal_pay4 = a - interest_pay4 }
-            else { principal_pay4 = a - interest_pay4 } //won't need 0.01, if interest not compounded
+            else { principal_pay4 = a - interest_pay4 }
         }
         else { principal_pay4 = a - interest_pay4 }
 
         temp4 = temp3 - principal_pay4
 
-            //breaking it up like this may not matter for months 1-4 part, but did so anyway to be consistent
-            //originally, a = interest + 0.01, now we assume interest doesn't compound, and extra penny is not necessary - BASED ON FIRST MONTH!!!!!! and am not considering larger cases, yet
-
-        if (i == 0) { //<--- old code
+        if (i == 0) {
             note_view.isHidden = true
         }
         else {
@@ -1051,13 +1000,6 @@ class ShowMath: UIViewController {
         }
         
         //Text of balance body------------------------------
-        
-        //let textRect = CGRect(x: 0.2*balance.frame.width, y: 0, width: balance.frame.width-2*0.2*balance.frame.width, height: balance.frame.height)
-        //let textRect_balance = CGRect(x: 0, y: 0, width: balance.frame.width, height: balance.frame.height)
-        //let insets_balance = UIEdgeInsets(top: 0, left: 0.03*balance.frame.width, bottom: 0, right: 2*0.05*balance.frame.width)
-        //balance_shape_label.frame = CGRect.inset(by:)(textRect_balance, insets_balance)
-        //titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.25, bottom: 0.0, right: 0.0)
-        //let array = [String(format: "%.2f", p), String(format: "%.2f", temp1), String(format: "%.2f", temp2), String(format: "%.2f", temp3), String(format: "%.2f", remainingbalance)]
         if (j > 0) {
             refund.isHidden = true
             coffee_cup.isHidden = true
@@ -1067,12 +1009,7 @@ class ShowMath: UIViewController {
             coffee_cup.isHidden = false
         }
         
-        
         if (j > 4) {
-            //let paragraph_principal = NSMutableParagraphStyle()
-            //paragraph_principal.alignment = .right
-            //let paragraph_principal_ellipse = NSMutableParagraphStyle()
-            //paragraph_principal_ellipse.alignment = .center
             let balance_shape_label_jg4 = NSMutableAttributedString(string: String(format: "%.2f", p) + "\n" +
                 String(format: "%.2f", temp1) + "\n" +
                 String(format: "%.2f", temp2) + "\n" +
@@ -1092,40 +1029,30 @@ class ShowMath: UIViewController {
                 String(format: "%.2f", temp2) + "\n" +
                 String(format: "%.2f", temp3) + "\n" +
                 String(format: "%.2f", remainingbalance)
-            //balance_shape_label.textAlignment = .right
         }
         else if (j == 3) {
             balance_shape_label.text = String(format: "%.2f", p) + "\n" +
                 String(format: "%.2f", temp1) + "\n" +
                 String(format: "%.2f", temp2) + "\n" +
                 String(format: "%.2f", remainingbalance)
-            //balance_shape_label.textAlignment = .right
         }
         else if (j == 2) {
             balance_shape_label.text = String(format: "%.2f", p) + "\n" +
                 String(format: "%.2f", temp1) + "\n" +
                 String(format: "%.2f", remainingbalance)
-            //balance_shape_label.textAlignment = .right
         }
         else if (j == 1) {
             balance_shape_label.text = String(format: "%.2f", p) + "\n" +
                 String(format: "%.2f", remainingbalance)
-            //balance_shape_label.textAlignment = .right
         }
         else {
             balance_shape_label.text = String(format: "%.2f", remainingbalance)
-            //balance_shape_label.textAlignment = .right
         }
             balance_shape_label.textAlignment = .center
         balance_shape_label.numberOfLines = 0
-        //balance_shape_label.textColor = UIColor.white
         balance_shape_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
         balance_shape_label.adjustsFontSizeToFitWidth = true
 
-        
-        //balance.textAlignment = .right
-        //balance.text = "hello\nagain"
-        
         //Text of interest body----------------------
         
         var temp = Int() //don't want it rounding, unless remainder has repeated 9s
@@ -1233,7 +1160,6 @@ class ShowMath: UIViewController {
                 charged_interest_max_string_count = (String(format: "%.2f", remainingbalance) + " · 0.00" + String(temp) + "...").count //used for right inset
             }
         charged_interest_shape_label.numberOfLines = 0
-        //charged_interest_shape_label = UIColor.white
         charged_interest_shape_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
         charged_interest_shape_label.adjustsFontSizeToFitWidth = true
         
@@ -1289,8 +1215,6 @@ class ShowMath: UIViewController {
             payment_shape_label_jg4.append(etc)
             payment_shape_label_jg4.append(remains)
             payment_shape_label.attributedText = payment_shape_label_jg4
-            //CALCULATIONS//
-            
         }
         else if (j == 4) {
             if (a == tempx) {
@@ -1302,7 +1226,7 @@ class ShowMath: UIViewController {
                         String(format: "%.2f", remainingbalance + remaining_interest + outstandingbalance)
                 }
                 else {
-                    payment_shape_label.text = String(format: "%.2f", a) + "\n" + //won't need 0.01, if interest not compounded
+                    payment_shape_label.text = String(format: "%.2f", a) + "\n" +
                         String(format: "%.2f", a) + "\n" +
                         String(format: "%.2f", a) + "\n" +
                         String(format: "%.2f", a) + "\n" +
@@ -1326,7 +1250,7 @@ class ShowMath: UIViewController {
                         String(format: "%.2f", remainingbalance + remaining_interest + outstandingbalance)
                 }
                 else {
-                    payment_shape_label.text = String(format: "%.2f", a) + "\n" + //won't need 0.01, if interest not compounded
+                    payment_shape_label.text = String(format: "%.2f", a) + "\n" +
                         String(format: "%.2f", a) + "\n" +
                         String(format: "%.2f", a) + "\n" +
                         String(format: "%.2f", remainingbalance + remaining_interest + outstandingbalance)
@@ -1347,7 +1271,7 @@ class ShowMath: UIViewController {
                         String(format: "%.2f", remainingbalance + remaining_interest + outstandingbalance)
                 }
                 else {
-                    payment_shape_label.text = String(format: "%.2f", a) + "\n" + //won't need 0.01, if interest not compounded
+                    payment_shape_label.text = String(format: "%.2f", a) + "\n" +
                         String(format: "%.2f", a) + "\n" +
                         String(format: "%.2f", remainingbalance + remaining_interest + outstandingbalance)
                 }
@@ -1365,7 +1289,7 @@ class ShowMath: UIViewController {
                         String(format: "%.2f", remainingbalance + remaining_interest + outstandingbalance)
                 }
                 else {
-                    payment_shape_label.text = String(format: "%.2f", a) + "\n" + //won't need 0.01, if interest not compounded
+                    payment_shape_label.text = String(format: "%.2f", a) + "\n" +
                         String(format: "%.2f", remainingbalance + remaining_interest + outstandingbalance)
                 }
             }
@@ -1377,14 +1301,8 @@ class ShowMath: UIViewController {
         else {
             payment_shape_label.text = String(format: "%.2f", remainingbalance + remaining_interest + outstandingbalance)
         }
-        //if (decision == false) {
             payment_shape_label.textAlignment = .center
-        //}
-        //else {
-        //    payment_shape_label.textAlignment = .left
-        //}
         payment_shape_label.numberOfLines = 0
-        //payment_shape_label.textColor = UIColor.white
         payment_shape_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
         payment_shape_label.adjustsFontSizeToFitWidth = true
         
@@ -1414,8 +1332,6 @@ class ShowMath: UIViewController {
             remaining_label_jg4.append(etc)
             remaining_label_jg4.append(remains)
             remaining_label.attributedText = remaining_label_jg4
-            //remaining_label.frame = CGRect(x: remaining.frame.origin.x+10, y: 5, width: remaining.frame.width, height: remaining.frame.height)
-
         }
         else if (j == 4) {
             remaining_label.text = String(format: "%.2f", temp1) + "\n" +
@@ -1429,8 +1345,6 @@ class ShowMath: UIViewController {
             else {
                 remaining_label.textColor = UIColor.black
             }
-
-            //remaining_label.frame = CGRect(x: remaining.frame.origin.x+10, y: 4, width: remaining.frame.width, height: remaining.frame.height)
         }
         else if (j == 3) {
             remaining_label.text = String(format: "%.2f", temp1) + "\n" +
@@ -1443,8 +1357,6 @@ class ShowMath: UIViewController {
             else {
                 remaining_label.textColor = UIColor.black
             }
-
-            //remaining_label.frame = CGRect(x: remaining.frame.origin.x+10, y: 3, width: remaining.frame.width, height: remaining.frame.height)
         }
         else if (j == 2) {
             remaining_label.text = String(format: "%.2f", temp1) + "\n" +
@@ -1456,8 +1368,6 @@ class ShowMath: UIViewController {
             else {
                 remaining_label.textColor = UIColor.black
             }
-
-            //remaining_label.frame = CGRect(x: remaining.frame.origin.x+10, y: 2, width: remaining.frame.width, height: remaining.frame.height)
         }
         else if (j == 1) {
             remaining_label.text = String(format: "%.2f", temp1) + "\n" +
@@ -1468,8 +1378,6 @@ class ShowMath: UIViewController {
             else {
                 remaining_label.textColor = UIColor.black
             }
-
-            //remaining_label.frame = CGRect(x: remaining.frame.origin.x+10, y: 1, width: remaining.frame.width, height: remaining.frame.height)
         }
         else {
             remaining_label.text = "0.00"
@@ -1479,26 +1387,12 @@ class ShowMath: UIViewController {
             else {
                 remaining_label.textColor = UIColor.black
             }
-            //remaining_label.frame = CGRect(x: remaining.frame.origin.x+10, y: 0, width: remaining.frame.width, height: remaining.frame.height)
         }
             remaining_label.textAlignment = .center
         remaining_label.numberOfLines = 0
-        //remaining_label.sizeToFit()
-        //remaining_label.layoutMargins = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 0)
 
         remaining_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
         remaining_label.adjustsFontSizeToFitWidth = true
-        
-            
-        //remaining.layer.addSublayer(remaining_shape)
-        
-        
-        
-        
-        
-        //payment_header.layer.addSublayer(payment_header_shape)
-
-
         
         //Text of payment_insight--------------------------------------------
         
@@ -1514,8 +1408,6 @@ class ShowMath: UIViewController {
             var etc = NSMutableAttributedString()
             var remains = NSMutableAttributedString()
             
-            //if (a == ceil(Double(Int(p*i*100)+1))/100) {
-                //if (progress == 100) {
                     payment_insight_shape_label_jg4 = NSMutableAttributedString(string: String(format: "%.2f", principal_pay1) + " Prin.  + " + String(format: "%.2f", interest_pay1) + " Int. =\n" +
                         String(format: "%.2f", principal_pay2) + " Prin.  + " + String(format: "%.2f", interest_pay2) + " Int. =\n" +
                         String(format: "%.2f", principal_pay3) + " Prin.  + " + String(format: "%.2f", interest_pay3) + " Int. =\n" +
@@ -1576,89 +1468,56 @@ class ShowMath: UIViewController {
             pay_insight_max_string_count_2 = (String(format: "%.2f", remainingbalance) + " Prin.  + " + String(format: "%.2f", remaining_interest + outstandingbalance) + " Int. =").count //used for right inset
         }
         
-        //if (insight == 1) && (compound.isOn == false) {
         if (insight == 1) {
             note.text = "Last Month Charged Interest: " + String(format: "%.2f", remaining_interest) + "\n" +
                 "Outstanding Interest: " + String(format: "%.2f", outstandingbalance)
         }
         else {
-                //note_overlap.text = ""
                 note.text = ""
         }
-        //outstanding.backgroundColor = UIColor.blue
         let pay_insight_max_string_count = max(pay_insight_max_string_count_1,pay_insight_max_string_count_2)
-        //outstanding.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        //outstanding.isLayoutMarginsRelativeArrangement = true
-        //payment_shape_label.textAlignment = .center
-        //payment_shape_label.numberOfLines = 0
-        //payment_shape_label.textColor = UIColor.white
-        //payment_shape_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
-        //payment_shape_label.adjustsFontSizeToFitWidth = true
-        //balance_shape_label.frame = CGRect(x: 0, y: 0, width: balance.frame.width, height: balance.frame.height)
         let textRect_balance_shape_label = CGRect(x: 0, y: 0, width: balance.frame.width, height: balance.frame.height)
-        //let insets_balance_shape_label = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 2)
         let insets_balance_shape_label = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         balance_shape_label.frame = textRect_balance_shape_label.inset(by: insets_balance_shape_label)
         balance_shape_label.bounds = balance.frame
         add_label.frame = CGRect(x: 0, y: 0, width: add.frame.width, height: add.frame.height)
         add_label.bounds = add.frame
         
-        let character_length = charged_interest.frame.width/23 //reference, counted them myself, approximate
+        let character_length = charged_interest.frame.width/23 //reference, counted 23 spaces myself
         let textRect_charged_interest = CGRect(x: 0, y: 0, width: charged_interest.frame.width, height: charged_interest.frame.height)
         let insets_charged_interest = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: (charged_interest.frame.width - CGFloat(charged_interest_max_string_count)*character_length)/2)
-        //let insets_charged_interest = UIEdgeInsets(top: 0, left: 0.02*charged_interest.frame.width, bottom: 0, right: 2*0.02*charged_interest.frame.width)
         charged_interest_shape_label.frame = textRect_charged_interest.inset(by: insets_charged_interest)
         charged_interest_shape_label.bounds = charged_interest.frame
-        //charged_interest_shape_label.backgroundColor = UIColor.red
         
         subtract_label.frame = CGRect(x: 0, y: 0, width: subtract.frame.width, height: subtract.frame.height)
         subtract_label.bounds = subtract.frame
         payment_shape_label.frame = CGRect(x: 0, y: 0, width: payment.frame.width, height: payment.frame.height)
         payment_shape_label.bounds = payment.frame
-        //payment_shape.path = UIBezierPath(roundedRect: payment.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
         equals_label.frame = CGRect(x: 0, y: 0, width: equals.frame.width, height: equals.frame.height)
         equals_label.bounds = equals.frame
-        //remaining_label.frame = CGRect(x: remaining.frame.origin.x, y: 0, width: remaining.frame.width, height: remaining.frame.height)
-        //remaining_label.frame = CGRect(x: 0, y: 0, width: remaining.frame.width, height: remaining.frame.height)
-        //remaining_label.center.x = remaining.center.x
         let textRect_remaining_label = CGRect(x: 0, y: 0, width: remaining.frame.width, height: remaining.frame.height)
-        //let insets_remaining_label = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 0)
         let insets_remaining_label = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         remaining_label.frame = textRect_remaining_label.inset(by: insets_remaining_label)
         remaining_label.bounds = remaining.frame
-        //remaining_label.backgroundColor = UIColor.green
-        //remaining.backgroundColor = UIColor.red
         pay_insight_shape.bounds = pay_insight.frame
         pay_insight_shape.position = pay_insight.center
-        //pay_insight_shape.path = UIBezierPath(roundedRect: pay_insight.bounds, byRoundingCorners: [.bottomLeft, .bottomRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
         pay_insight_shape.path = UIBezierPath(roundedRect: pay_insight.bounds, byRoundingCorners: [.bottomLeft], cornerRadii: CGSize(width: 5, height: 5)).cgPath
         
         pay_insight_header_shape.bounds = pay_insight_header.frame
         pay_insight_header_shape.position = pay_insight_header.center
-        //pay_insight_header_shape.path = UIBezierPath(roundedRect: pay_insight_header.bounds, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 5, height: 5)).cgPath
         pay_insight_header_shape.path = UIBezierPath(roundedRect: pay_insight_header.bounds, byRoundingCorners: [.topLeft], cornerRadii: CGSize(width: 5, height: 5)).cgPath
 
-        //pay_insight_shape.fillColor = UIColor(red:216/255.0, green:218/255.0, blue:218/255.0, alpha: 0.9).cgColor <-- coloring earlier
-        //pay_insight_shape.borderColor = UIColor.black.cgColor
         pay_insight_shape.borderColor = UIColor(red:207/255.0, green:209/255.0, blue:210/255.0, alpha: 0.95).cgColor
         pay_insight_shape.borderWidth = 0
         
-        //let character_length = charged_interest.frame.width/23 //reference, counted them myself, approximate
         let textRect_pay_insight = CGRect(x: 0, y: 0, width: pay_insight.frame.width, height: pay_insight.frame.height)
         let insets_pay_insight = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: ((balance.frame.width+add.frame.width+charged_interest.frame.width+subtract.frame.width) - CGFloat(pay_insight_max_string_count)*character_length)/2)
-        //let insets_pay_insight = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        //let insets_pay_insight = UIEdgeInsets(top: 0, left: 0.02*pay_insight.frame.width, bottom: 0, right: 2*2*0.02*pay_insight.frame.width)
         pay_insight_shape_label.frame = textRect_pay_insight.inset(by: insets_pay_insight)
         pay_insight_shape_label.bounds = pay_insight.frame
-        //pay_insight_shape_label.text = "Pay"
-        //pay_insight_shape_label.textAlignment = .center
         pay_insight_shape_label.numberOfLines = 0
-        //pay_insight_shape_label.textColor = UIColor.white
         pay_insight_shape_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
         
         if (j == 0) && (a - (remainingbalance + remaining_interest + outstandingbalance) != 0) {
-            
-            //refund.text =  + String(format: "%.2f", )
             
             var pt1 = Double()
             
@@ -1673,8 +1532,7 @@ class ShowMath: UIViewController {
                     refund.isHidden = false
             }
             
-            
-            if (pt1*100 - floor(pt1*100) > 0.499999) && (pt1*100 - floor(pt1*100) < 0.5) //just in case, and to be consistant
+            if (pt1*100 - floor(pt1*100) > 0.499999) && (pt1*100 - floor(pt1*100) < 0.5)
             { pt1 = round(pt1*100 + 1)/100 }
             else { pt1 = round(pt1*100)/100 }
             
@@ -1700,11 +1558,9 @@ class ShowMath: UIViewController {
                 refund_amount_decimal_part = NSMutableAttributedString(string:
                     "", attributes: [ :])
             }
-            //if (decision == false) {
             refund_string.append(refund_amount)
             refund_string.append(refund_amount_decimal_part)
             refund.attributedText = refund_string
-            //}
             if (floor(pt1) >= 5) && (a - (remainingbalance + remaining_interest + outstandingbalance) > 0) { //arbitrary
                 coffee_cup.text = "☕︎"
             }
@@ -1718,10 +1574,6 @@ class ShowMath: UIViewController {
             coffee_cup.text = ""
         }
 
-        
-        //xcode will be unable to satisfy constraints for any text hidden, especially the refund, but won't ruin functionality
-        //fix this later
-        //UserDefaults.standard.setValue(false, forKey:"_UIConstraintBasedLayoutLogUnsatisfiable")
         UserDefaults.standard.setValue(true, forKey:"_UIConstraintBasedLayoutLogUnsatisfiable")
         
         var temp5 = Int()
@@ -1729,11 +1581,6 @@ class ShowMath: UIViewController {
         { temp5 = Int(floor(Double((j + 1) / 12) + 1)) }
         else { temp5 = Int(floor(Double((j + 1) / 12))) }
 
-        //if (floor(Double((j + 1) / 12)) - floor(floor(Double((j + 1) / 12))) > 0.99999)
-        //{ temp5 = Int(floor(Double((j + 1) / 12)) + 1) }
-        //else { temp5 = Int(floor(Double((j + 1) / 12))) }
-
-        
         let t1 = (Double(j) + 1) / 12
         let t2 = t1 - floor(t1)
         let t3 = t2*1000
@@ -1792,7 +1639,6 @@ class ShowMath: UIViewController {
                 months.text! += String((j + 1) - temp5 * 12) +
                 " months";
             }
-        //overrided by:
             if (temp5 == 0) {
                 years.text = "0 years"
                 if (j + 1 == 1) {
@@ -1828,7 +1674,7 @@ class ShowMath: UIViewController {
             }
             else {
                 ppt1 = Double(j) * (a) + remainingbalance + remaining_interest + outstandingbalance //total
-            } //won't need 0.01, if interest not compounded
+            }
         }
         else {
             ppt1 = Double(j) * a + remainingbalance + remaining_interest + outstandingbalance //total
@@ -1859,7 +1705,7 @@ class ShowMath: UIViewController {
                     " · " + String(format: "%.2f", a) +
                     ") + " + String(format: "%.2f", remainingbalance + remaining_interest + outstandingbalance) +
                     " = ", attributes: [ :])
-            } //won't need 0.01, if interest not compounded
+            }
         }
         else {
             total_paid_expression = NSMutableAttributedString(string: "(" + numberFormatter.string(from: NSNumber(value: j))! +
@@ -1897,8 +1743,8 @@ class ShowMath: UIViewController {
         total_paid_string.append(total_paid_amount_decimal_part_label)
         total_paid.attributedText = total_paid_string
         
-        var k = 0 //defined here in order to simplify the rest too
-        var remainingbalance_repay_minimum = p //defined here in order to simplify the rest
+        var k = 0 //defined here in order to simplify the rest
+        var remainingbalance_repay_minimum = p //defined here in order to simplify the rest too
         
         var outstandingbalance_min = 0.00
         
@@ -1908,10 +1754,7 @@ class ShowMath: UIViewController {
         { temp_interest_min = round(remainingbalance_repay_minimum*i*100 + 1)/100}
         else { temp_interest_min = round(remainingbalance_repay_minimum*i*100)/100 }
         
-        //let temp_interest1 = temp_interest
-        
         var interest_pay_min = Double()
-        //var xxx = percentage/100*temp_interest_min
         var xxx = percentage/100*remainingbalance_repay_minimum*i
         if (xxx*100 - floor(xxx*100) > 0.499999) && (xxx*100 - floor(xxx*100) < 0.5)
         { interest_pay_min = round(xxx*100 + 1)/100}
@@ -1922,10 +1765,9 @@ class ShowMath: UIViewController {
 
         if (tenyr_indicator == 0) {
                 if (p*i*100 - floor(p*i*100) > 0.499999) && (p*i*100 - floor(p*i*100) < 0.5)
-                { temp_pay = (round(p*i*100 + 1))/100 }//; temp_pay_first = (round(p*i*100 + 1) + 1)/100 }
-                else { temp_pay = (round(p*i*100))/100 }//; temp_pay_first = (round(p*i*100) + 1)/100 }
+                { temp_pay = (round(p*i*100 + 1))/100 }
+                else { temp_pay = (round(p*i*100))/100 }
 
-                //let xx = percentage/100*temp_pay
                 let xx = percentage/100*p*i
                 if (xx*100 - floor(xx*100) > 0.499999) && (xx*100 - floor(xx*100) < 0.5)
                 {
@@ -1937,39 +1779,21 @@ class ShowMath: UIViewController {
                     temp_pay_first = (round(xx*100) + 1)/100
                 }
                 
-                //so annoying, okay...
                 if (temp_pay*100 - floor(temp_pay*100) > 0.499999) && (temp_pay*100 - floor(temp_pay*100) < 0.5)
                 { temp_pay = round(temp_pay*100 + 1)/100}
                 else { temp_pay = round(temp_pay*100)/100 }
         }
         else {
             if (i != 0) {
-                //if (c == 0) && (progress != 0) {
                 if (progress != 0) {
                     temp_pay = ceil((percentage/100*i*p*pow(1+percentage/100*i,120)) / (pow(1+percentage/100*i,120) - 1)*100)/100
                     temp_pay_first = temp_pay
                     temp_pay = temp_pay - interest_pay_min
 
-
-
-                    //let xx = percentage/100*temp_pay
-                    //if (xx*100 - floor(xx*100) > 0.499999) && (xx*100 - floor(xx*100) < 0.5)
-                    //{
-                        //temp_pay = round(xx*100 + 1)/100 - interest_pay_min
-                        //temp_pay_first = round(xx*100 + 1)/100
-                    
-                    //}
-                    //else {
-                        //temp_pay = round(xx*100)/100 - interest_pay_min
-                        //temp_pay_first = round(xx*100)/100
-                    //}
-                    
-                    //so annoying, okay...
                     if (temp_pay*100 - floor(temp_pay*100) > 0.499999) && (temp_pay*100 - floor(temp_pay*100) < 0.5)
                     { temp_pay = round(temp_pay*100 + 1)/100}
                     else { temp_pay = round(temp_pay*100)/100 }
                 }
-                //else if (c == 0) && (progress == 0)  {
                 else {
                     temp_pay = ceil(p/120*100)/100
                     temp_pay_first = temp_pay
@@ -1981,27 +1805,19 @@ class ShowMath: UIViewController {
             }
         }
         
-        //if (i != 0) {
-            //for _ in 0...4 {
         while (remainingbalance_repay_minimum - temp_pay > 0) {
-        //while (remainingbalance_repay_minimum + temp_interest_min > temp_pay) {
-            //while (remainingbalance_repay_minimum + c*temp_interest_min > temp_pay) {
-
-                //remainingbalance_repay_minimum = remainingbalance_repay_minimum + c*temp_interest_min - temp_pay
                 remainingbalance_repay_minimum = remainingbalance_repay_minimum - temp_pay
             
                 if (remainingbalance_repay_minimum*100 - floor(remainingbalance_repay_minimum*100) > 0.499999) && (remainingbalance_repay_minimum*100 - floor(remainingbalance_repay_minimum*100) < 0.5)
                 { remainingbalance_repay_minimum = round(remainingbalance_repay_minimum*100 + 1)/100}
                 else { remainingbalance_repay_minimum = round(remainingbalance_repay_minimum*100)/100 }
                 
-                //outstandingbalance_min = outstandingbalance_min + (1.0-c)*temp_interest_min - (1.0-c)*interest_pay_min
                 outstandingbalance_min = outstandingbalance_min + temp_interest_min - interest_pay_min
             
                 if (remainingbalance_repay_minimum*i*100 - floor(remainingbalance_repay_minimum*i*100) > 0.499999) && (remainingbalance_repay_minimum*i*100 - floor(remainingbalance_repay_minimum*i*100) < 0.5)
                 { temp_interest_min = round(remainingbalance_repay_minimum*i*100 + 1)/100}
                 else { temp_interest_min = round(remainingbalance_repay_minimum*i*100)/100 }
                 
-                //xxx = percentage/100*temp_interest_min
                 xxx = percentage/100*remainingbalance_repay_minimum*i
                 if (xxx*100 - floor(xxx*100) > 0.499999) && (xxx*100 - floor(xxx*100) < 0.5)
                 { interest_pay_min = round(xxx*100 + 1)/100}
@@ -2012,30 +1828,25 @@ class ShowMath: UIViewController {
                         { temp_pay = (round(p*i*100 + 1))/100}
                         else { temp_pay = (round(p*i*100))/100 }
                         
-                        //let xx = percentage/100*temp_pay
                         let xx = percentage/100*p*i
                         if (xx*100 - floor(xx*100) > 0.499999) && (xx*100 - floor(xx*100) < 0.5)
                         { temp_pay = (round(xx*100 + 1)+1)/100 - interest_pay_min}
                         else { temp_pay = (round(xx*100) + 1)/100 - interest_pay_min}
                         
-                        //so annoying, okay...
                         if (temp_pay*100 - floor(temp_pay*100) > 0.499999) && (temp_pay*100 - floor(temp_pay*100) < 0.5)
                         { temp_pay = round(temp_pay*100 + 1)/100}
                         else { temp_pay = round(temp_pay*100)/100 }
                 }
                 else {
                     if (i != 0) {
-                        //if (c == 0) && (progress != 0) {
                         if (progress != 0) {
                             temp_pay = ceil((percentage/100*i*p*pow(1+percentage/100*i,120)) / (pow(1+percentage/100*i,120) - 1)*100)/100
                             temp_pay = temp_pay - interest_pay_min
                             
-                            //so annoying, okay...
                             if (temp_pay*100 - floor(temp_pay*100) > 0.499999) && (temp_pay*100 - floor(temp_pay*100) < 0.5)
                             { temp_pay = round(temp_pay*100 + 1)/100}
                             else { temp_pay = round(temp_pay*100)/100 }
                         }
-                        //else if (c == 0) && (progress == 0)  {
                         else {
                             temp_pay = ceil(p/120*100)/100
                             temp_pay_first = temp_pay
@@ -2048,7 +1859,6 @@ class ShowMath: UIViewController {
 
                 k += 1
             }
-        //}
         if (remainingbalance_repay_minimum*i*100 - floor(remainingbalance_repay_minimum*i*100) > 0.499999) && (remainingbalance_repay_minimum*i*100 - floor(remainingbalance_repay_minimum*i*100) < 0.5)
         { temp_interest_min = round(remainingbalance_repay_minimum*i*100 + 1)/100}
         else { temp_interest_min = round(remainingbalance_repay_minimum*i*100)/100 }
@@ -2060,18 +1870,16 @@ class ShowMath: UIViewController {
         
         //appended to total paid
         var pppt1 = total_repay_minimum
-        if (pppt1*100 - floor(pppt1*100) > 0.499999) && (pppt1*100 - floor(pppt1*100) < 0.5) //just in case, and to be consistant
+        if (pppt1*100 - floor(pppt1*100) > 0.499999) && (pppt1*100 - floor(pppt1*100) < 0.5)
         { pppt1 = round(pppt1*100 + 1)/100 }
         else { pppt1 = round(pppt1*100)/100 }
 
-        //pppt1 = round(pppt1*100)/100 //just in case, and to be consistant
         let pppt2 = pppt1 - floor(pppt1)
         let pppt3 = pppt2*100
         var pppt4 = Int()
         if (pppt3 - floor(pppt3) > 0.99999)
         { pppt4 = Int(pppt3 + 1) }
         else { pppt4 = Int(pppt3) }
-        //let pppt4 = Int(round(pppt3))
         
         let total_paid_string_if_min = NSMutableAttributedString()
         var total_paid_expression_if_min = NSMutableAttributedString()
@@ -2112,20 +1920,17 @@ class ShowMath: UIViewController {
             total_paid_min.isHidden = false
         
         var ppppt1 = total_repay_minimum-total
-        if (ppppt1*100 - floor(ppppt1*100) > 0.499999) && (ppppt1*100 - floor(ppppt1*100) < 0.5) //just in case, and to be consistant, probably not necessary
+        if (ppppt1*100 - floor(ppppt1*100) > 0.499999) && (ppppt1*100 - floor(ppppt1*100) < 0.5)
         { ppppt1 = round(ppppt1*100 + 1)/100 }
         else { ppppt1 = round(ppppt1*100)/100 }
 
-        //ppppt1 = round((total_repay_minimum-total)*100)/100 //just in case, and to be consistant, probably not necessary
         let ppppt2 = ppppt1 - floor(ppppt1)
         let ppppt3 = ppppt2*100
         var ppppt4 = Int()
         if (ppppt3 - floor(ppppt3) > 0.99999)
         { ppppt4 = Int(ppppt3 + 1) }
         else { ppppt4 = Int(ppppt3) }
-        //let ppppt4 = Int(round(ppppt3))
         
-        //let total = Double(j) * a + remainingbalance + ceil(Double(Int(remainingbalance*i*100)))/100
         let saved = ppppt1
         let savings_string = NSMutableAttributedString()
         var savings_string_subtract = NSMutableAttributedString()
@@ -2151,8 +1956,6 @@ class ShowMath: UIViewController {
                     savings_string_equals_amount_decimal_part = NSMutableAttributedString(string:
                         "", attributes: [ :])
                 }
-            
-            //savings_string_equals_amount = NSMutableAttributedString(string: String(saved), attributes: [ :])
             
         }
         savings_string.append(total_paid_amount_if_min)
