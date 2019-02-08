@@ -22,43 +22,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     //  Loan Types: Perkins Loans
         internal var APR_PERKINS = 5.00 //%
     //------------------------------------------
-    //  Notes:
-    //
-    //  (1) Theoretically, to round an amount to the nearest cent, use round(amount*100)/100.
-    //      However, iOS sometimes rounds the remainder .##4999... down (e.g., 2.454999... to 2.45).
-    //      So, test the remainder: (let amount be "a")
-    //
-    //          if (a*100 - floor(a*100) > 0.499999) && (a*100 - floor(a*100) < 0.5)
-    //              { a = round(a*100 + 1)/100 }
-    //          else { a = round(a*100)/100 }
-    //
-    //      Using 2.454999... as an example:
-    //
-    //          2.454999...*100 = 245.4999...
-    //          floor(245.4999...) = 245
-    //          So, 245.4999... - 245 = 0.4999...
-    //          Meaning, 0.4999... > 0.499999 && 0.4999... < 0.5 are true
-    //
-    //          Therefore, a = round(245.4999... + 1)/100
-    //          = round(246.4999...)/100
-    //          = 256/100 = 2.56
-    //
-    //  (2) If one casts a Double as an Integer, iOS will simply truncate the decimal part of a number.
-    //      For example, Int(38.999...) = 38, even though 38.999... = 39. So, test the remainder:
-    //
-    //          if (a - floor(a) > 0.99999)
-    //              { a = Int(a + 1) }
-    //          else { a = Int(a) }
-    //
-    //      Using 38.999... as an example:
-    //
-    //          floor(38.999...) = 38
-    //          So, 38.999... - 38 = 0.999...
-    //          Meaning, 0.999... > 0.99999 is true
-    //
-    //          Therefore, a = Int(38.999... + 1)
-    //          = Int(39.999...) = 39
-
+    
     @IBOutlet weak var loaned_title: UILabel!
     
     @IBOutlet weak var loaned: UISlider!
