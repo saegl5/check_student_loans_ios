@@ -23,6 +23,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         internal var APR_PERKINS = 5.00 //%
     //------------------------------------------
     //  Notes:
+    //
     //  (1) Theoretically, to round an amount to the nearest cent, use round(amount*100)/100.
     //      However, iOS sometimes rounds the remainder .##4999... down (e.g., 2.454999... to 2.45).
     //      So, test the remainder: (let amount be "a")
@@ -216,8 +217,11 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     var temp_up = 50.0
     var timer_count = 0.0
     
+    //dark area behind slider
     @IBOutlet weak var edit_slider_shape: UIView!
     let edit_slider_shape_tweak = CAShapeLayer()
+    //slider_outline is "bare_track" (see above)
+    //dark area behind APR
     @IBOutlet weak var edit_apr_shape: UIView!
     let edit_apr_shape_tweak = CAShapeLayer()
     let edit_apr_shape_tweak_trianglePath = UIBezierPath()
@@ -225,12 +229,13 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     let switch_outline = CAShapeLayer()
     let switch_thumb_outline = CAShapeLayer()
     let interest_rate_unpressed_outline = CAShapeLayer()
+    //dark area behind pay_monthly
     @IBOutlet weak var edit_pay_shape: UIView!
     let edit_pay_shape_tweak = CAShapeLayer()
     let down_outline = CAShapeLayer()
     let pay_outline = CAShapeLayer()
     let up_outline = CAShapeLayer()
-    
+    //dark areas at bottom
     @IBOutlet weak var abs10yr_shape: UIView!
     @IBOutlet weak var swipe_shape: UIView!
     
@@ -317,7 +322,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                         self.swipe_blink.text = "Relock for time and savings."
                         self.swipe_blink.alpha = 0.0
                         UIView.animate(withDuration: 0.5, delay: 0.5, options: [.repeat, .autoreverse, .curveEaseInOut],
-                                       animations: { UIView.setAnimationRepeatCount(3); self.swipe_blink.alpha = 1.0 },
+                                       animations: { UIView.setAnimationRepeatCount(3)
+                                        self.swipe_blink.alpha = 1.0 },
                                        completion: { (finished: Bool) -> Void in
                                         self.swipe_blink.alpha = 0.0
                                         self.swipe_blink.isHidden = true
@@ -358,8 +364,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         swipe_blink.layer.removeAllAnimations() //in case someone clicks locked button before blinking animation stops
 
     }
-    
-    @IBAction func Swiping(_ sender: UIButton) { //turns OFF swiping
+    //turns OFF swiping
+    @IBAction func Swiping(_ sender: UIButton) {
         swipe.isEnabled = false
         stopped.isHidden = false
         swiping.isHidden = true
@@ -367,7 +373,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         swipe_blink.layer.removeAllAnimations() //in case someone clicks unlocked button before blinking animation stops
     }
     
-    @IBAction func Stopped(_ sender: UIButton) { //turns ON swiping
+    //turns ON swiping
+    @IBAction func Stopped(_ sender: UIButton) {
         swipe.isEnabled = true
         swiping.isHidden = false
         stopped.isHidden = true
@@ -386,7 +393,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                             self.swipe_blink.text = "Swipe left."
                             self.swipe_blink.alpha = 0.0
                                 UIView.animate(withDuration: 0.5, delay: 0.5, options: [.repeat, .autoreverse, .curveEaseInOut],
-                                    animations: { UIView.setAnimationRepeatCount(3); self.swipe_blink.alpha = 1.0 },
+                                    animations: { UIView.setAnimationRepeatCount(3)
+                                        self.swipe_blink.alpha = 1.0 },
                                     completion: { (finished: Bool) -> Void in
                                         self.swipe_blink.alpha = 0.0
                                     }
@@ -485,7 +493,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             }
             else {
                 p = Double(min_value)
-                shared_preferences.set(p, forKey: "loaned"); shared_preferences.synchronize()
+                shared_preferences.set(p, forKey: "loaned")
+                shared_preferences.synchronize()
                 let value = 0
                 self.loaned.setValue(Float(value), animated: true)
                 progress = increment * Double(self.loaned.value) + min_value
@@ -509,7 +518,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             {
                 a = temp
                 a_reference = temp
-                shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
+                shared_preferences.set(a, forKey: "pay_monthly")
+                shared_preferences.synchronize()
                 if (a - floor(a) == 0) {
                     pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"
                 }
@@ -616,7 +626,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
         else {
             p = Double(max_value)
-            shared_preferences.set(p, forKey: "loaned"); shared_preferences.synchronize()
+            shared_preferences.set(p, forKey: "loaned")
+            shared_preferences.synchronize()
             let value = number_of_increments
             self.loaned.setValue(Float(value), animated: true)
             progress = increment * Double(self.loaned.value) + min_value
@@ -640,7 +651,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         {
             a = temp
             a_reference = temp
-            shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
+            shared_preferences.set(a, forKey: "pay_monthly")
+            shared_preferences.synchronize()
             if (a - floor(a) == 0) {
                 pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"
             }
@@ -753,8 +765,9 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             //keep going
         }
         rates_reference[2] = i
-        shared_preferences.set(2, forKey: "position"); shared_preferences.synchronize()
-        shared_preferences.set(i * 12 * 100, forKey: "interest"); shared_preferences.synchronize()
+        shared_preferences.set(2, forKey: "position")
+        shared_preferences.set(i * 12 * 100, forKey: "interest")
+        shared_preferences.synchronize()
         
         var temp = Double()
         if (tenyr_indicator == 0) {
@@ -775,7 +788,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         {
             a = temp
             a_reference = temp
-            shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
+            shared_preferences.set(a, forKey: "pay_monthly")
+            shared_preferences.synchronize()
             if (a - floor(a) == 0) {
                 pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"
             }
@@ -874,7 +888,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             minimum.isHidden = false
             minimum.text = " "
         }
-        shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
+        shared_preferences.set(a, forKey: "pay_monthly")
+        shared_preferences.synchronize()
         Lengthsaving()
     }
     
@@ -1037,12 +1052,14 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
     }
 
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool { //register input by simply pressing the return key
+    //register input by simply pressing the return key
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-    func removeFormat(string:String) -> NSNumber{ //if users input a comma, extract number from it
+    //if users input a comma, extract number from it
+    func removeFormat(string:String) -> NSNumber{
         let formatter = NumberFormatter()
         formatter.usesGroupingSeparator = true
         formatter.groupingSeparator = ","
@@ -1555,7 +1572,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             }
         )
         tenyr_indicator = 0.0
-        shared_preferences.set(tenyr_indicator, forKey: "tenyr"); shared_preferences.synchronize()
+        shared_preferences.set(tenyr_indicator, forKey: "tenyr")
+        shared_preferences.synchronize()
 
         var temp = Double()
         if (p*i*100 - floor(p*i*100) > 0.499999) && (p*i*100 - floor(p*i*100) < 0.5)
@@ -1565,7 +1583,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         {
             a = temp
             a_reference = temp
-            shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
+            shared_preferences.set(a, forKey: "pay_monthly")
+            shared_preferences.synchronize()
             if (a - floor(a) == 0) {
                 pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"
             }
@@ -1600,7 +1619,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             }
         )
         tenyr_indicator = 1.0
-        shared_preferences.set(tenyr_indicator, forKey: "tenyr"); shared_preferences.synchronize()
+        shared_preferences.set(tenyr_indicator, forKey: "tenyr")
+        shared_preferences.synchronize()
         var temp = Double()
             if (i != 0) {
                 temp = ceil((i*p*pow(1+i,120)) / (pow(1+i,120) - 1)*100)/100
@@ -1613,15 +1633,16 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         {
             a = temp
             a_reference = temp
-            shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
+            shared_preferences.set(a, forKey: "pay_monthly")
+            shared_preferences.synchronize()
             if (a - floor(a) == 0) {
-                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"//
+                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"
             }
             else if ((a - floor(a))*100 < 9.99999) {
-                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)//
+                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".0" + String(format: "%.0f", (a - floor(a))*100)
             }
             else {
-                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)//
+                pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + "." + String(format: "%.0f", (a - floor(a))*100)
             }
 
             
@@ -1697,7 +1718,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         {
             a = temp
             a_reference = temp
-            shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
+            shared_preferences.set(a, forKey: "pay_monthly")
+            shared_preferences.synchronize()
             if (a - floor(a) == 0) {
                 pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"
             }
@@ -1717,7 +1739,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             minimum.text = " "
         }
         Lengthsaving()
-        shared_preferences.set(p, forKey: "loaned"); shared_preferences.synchronize() //could place sooner because needless if !=p
+        shared_preferences.set(p, forKey: "loaned")
+        shared_preferences.synchronize()
             
         } else {
             //do nothing
@@ -1811,7 +1834,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         {
             a = temp
             a_reference = temp
-            shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
+            shared_preferences.set(a, forKey: "pay_monthly")
+            shared_preferences.synchronize()
             if (a - floor(a) == 0) {
                 pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"
             }
@@ -1826,12 +1850,12 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
         else
         {
-            //minimum.isHidden = true
             minimum.isHidden = false
             minimum.text = " "
         }
         Lengthsaving()
-        shared_preferences.set(i * 12 * 100, forKey: "interest"); shared_preferences.synchronize()
+        shared_preferences.set(i * 12 * 100, forKey: "interest")
+        shared_preferences.synchronize()
     }
     
     @IBAction func Interest_Rate_Unpressed(_ sender: UIButton) {
@@ -1924,7 +1948,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         view.bringSubviewToFront(edit_apr_text_back)
         view.bringSubviewToFront(edit_apr_text)
         view.bringSubviewToFront(edit_apr_shape)
-        view.bringSubviewToFront(edit_apr)//or else edit_apr_shape starts out behind interest_rate_unpressed
+        view.bringSubviewToFront(edit_apr) //or else edit_apr_shape starts out behind interest_rate_unpressed
         view.bringSubviewToFront(invisible)
         view.bringSubviewToFront(invisible_back)
         return cell
@@ -1963,7 +1987,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         {
             a = temp
             a_reference = temp
-            shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
+            shared_preferences.set(a, forKey: "pay_monthly")
+            shared_preferences.synchronize()
             if (a - floor(a) == 0) {
                 pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"
             }
@@ -1984,8 +2009,9 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 
         }
         Lengthsaving()
-        shared_preferences.set(i * 12 * 100, forKey: "interest"); shared_preferences.synchronize()
-        shared_preferences.set((indexPath as NSIndexPath).row, forKey: "position"); shared_preferences.synchronize()
+        shared_preferences.set(i * 12 * 100, forKey: "interest")
+        shared_preferences.set((indexPath as NSIndexPath).row, forKey: "position")
+        shared_preferences.synchronize()
         CATransaction.commit()
         self.table_view.alpha = 0.0
     }
@@ -2028,10 +2054,19 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     @objc func Down() {
         temp_down = down_button_increment
         if (timer_count < set_down_timer1_seconds*4) {
-            if (timer_count > 0) { minimum.text = "↓ \(numberFormatter.string(from: NSNumber(value: temp_down))!)"; minimum.isHidden = false}
+            if (timer_count > 0) {
+                minimum.text = "↓ \(numberFormatter.string(from: NSNumber(value: temp_down))!)"
+                minimum.isHidden = false
+            }
         }
-        else if (timer_count < set_down_timer2_seconds*4) { temp_down = set_down_timer1_increment; minimum.text = "↓ \(numberFormatter.string(from: NSNumber(value: temp_down))!)" }
-        else { temp_down = set_down_timer2_increment; minimum.text = "↓ \(numberFormatter.string(from: NSNumber(value: temp_down))!)" }
+        else if (timer_count < set_down_timer2_seconds*4) {
+            temp_down = set_down_timer1_increment
+            minimum.text = "↓ \(numberFormatter.string(from: NSNumber(value: temp_down))!)"
+        }
+        else {
+            temp_down = set_down_timer2_increment
+            minimum.text = "↓ \(numberFormatter.string(from: NSNumber(value: temp_down))!)"
+        }
 
             var temp = Double()
         if (tenyr_indicator == 0) {
@@ -2091,7 +2126,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 }
             }
         Lengthsaving()
-        shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
+        shared_preferences.set(a, forKey: "pay_monthly")
+        shared_preferences.synchronize()
     }
     
     @IBAction func Up_Start_Timer(_ sender: UIButton) {
@@ -2111,10 +2147,21 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         minimum.isHidden = true
         temp_up = up_button_increment
         if (timer_count < set_up_timer1_seconds*4) {
-            if (timer_count > 0) { minimum.text = "↑ \(numberFormatter.string(from: NSNumber(value: temp_up))!)"; minimum.isHidden = false}
+            if (timer_count > 0) {
+                minimum.text = "↑ \(numberFormatter.string(from: NSNumber(value: temp_up))!)"
+                minimum.isHidden = false
+            }
         }
-        else if (timer_count < set_up_timer2_seconds*4) { temp_up = set_up_timer1_increment; minimum.text = "↑ \(numberFormatter.string(from: NSNumber(value: temp_up))!)"; minimum.isHidden = false }
-        else { temp_up = set_up_timer2_increment; minimum.text = "↑ \(numberFormatter.string(from: NSNumber(value: temp_up))!)"; minimum.isHidden = false }
+        else if (timer_count < set_up_timer2_seconds*4) {
+            temp_up = set_up_timer1_increment
+            minimum.text = "↑ \(numberFormatter.string(from: NSNumber(value: temp_up))!)"
+            minimum.isHidden = false
+        }
+        else {
+            temp_up = set_up_timer2_increment
+            minimum.text = "↑ \(numberFormatter.string(from: NSNumber(value: temp_up))!)"
+            minimum.isHidden = false
+        }
 
         if (a == a_reference) || (a - floor(a) > 0) {
 
@@ -2146,7 +2193,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             minimum.text = "Overpaying!"
         }
         Lengthsaving()
-        shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
+        shared_preferences.set(a, forKey: "pay_monthly")
+        shared_preferences.synchronize()
         pay_number.text = "\(numberFormatter.string(from: NSNumber(value: a))!)"
     }
     
@@ -2251,7 +2299,9 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         else { temp_interest_min = (round(remainingbalance_repay_minimum*i*100))/100 }
         let temp_interest_last_min = temp_interest_min
         
-        let total_repay_minimum_fromloop = Double(k) * temp_pay_first;        let total_repay_minimum_finalmonth = remainingbalance_repay_minimum + temp_interest_last_min;                                         let total_repay_minimum = total_repay_minimum_fromloop + total_repay_minimum_finalmonth
+        let total_repay_minimum_fromloop = Double(k) * temp_pay_first
+        let total_repay_minimum_finalmonth = remainingbalance_repay_minimum + temp_interest_last_min
+        let total_repay_minimum = total_repay_minimum_fromloop + total_repay_minimum_finalmonth
         
         if (remainingbalance*i*100 - floor(remainingbalance*i*100) > 0.499999) && (remainingbalance*i*100 - floor(remainingbalance*i*100) < 0.5)
         { temp_interest_amount = (round(remainingbalance*i*100 + 1))/100}
@@ -2294,8 +2344,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     savings_change.text = "↑ $" + numberFormatter.string(from: NSNumber(value: saved-savings_reference))!
                 }
         }
-        shared_preferences.set(saved, forKey: "savings_change_key"); shared_preferences.synchronize()
-
+        shared_preferences.set(saved, forKey: "savings_change_key")
+        shared_preferences.synchronize()
     }
     
     override func viewDidLoad() {
@@ -2312,10 +2362,13 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         years.alpha = 1.0
         months.alpha = 1.0
         minimum.alpha = 1.0
-        edit_slider_shape.alpha = 1.0 //
-        edit_apr_shape.alpha = 1.0 //
-        edit_pay_shape.alpha = 1.0 //
-        
+        edit_slider_shape.alpha = 1.0
+        edit_slider_shape.backgroundColor = UIColor.clear
+        edit_apr_shape.alpha = 1.0
+        edit_apr_shape.backgroundColor = UIColor.clear
+        edit_pay_shape.alpha = 1.0
+        edit_pay_shape.backgroundColor = UIColor.clear
+
         //reset frames, or else calayers won't conform to them
         edit_slider_shape.frame = CGRect(x: view.frame.origin.x+5, y: edit_slider_shape.frame.origin.y, width: view.frame.width-10, height: edit_slider_shape.frame.height)
         edit_apr_shape.frame = CGRect(x: view.frame.origin.x+5, y: edit_apr_shape.frame.origin.y, width: view.frame.width-10, height: edit_apr_shape.frame.height)
@@ -2425,7 +2478,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         edit_apr_shape_tweak_triangleLayer.path = edit_apr_shape_tweak_trianglePath.cgPath
         let CGPoint_xtemp = ((edit_apr_shape.frame.width-interest_rate_unpressed.frame.width)/2)+(0.75*interest_rate_unpressed.frame.width-8.5)
         let CGPoint_ytemp = edit_apr_shape.frame.height-interest_rate_unpressed.frame.height-10+interest_rate_unpressed.frame.height/2-6
-        edit_apr_shape_tweak_triangleLayer.position = CGPoint(x: CGPoint_xtemp, y: CGPoint_ytemp)//
+        edit_apr_shape_tweak_triangleLayer.position = CGPoint(x: CGPoint_xtemp, y: CGPoint_ytemp)
         edit_apr_shape_tweak_triangleLayer.fillColor = UIColor.clear.cgColor
         edit_apr_shape_tweak_triangleLayer.borderWidth = 0.25
         
@@ -2527,8 +2580,9 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         apr_number.text = String(format: "%.2f", i * 12 * 100)
         apr_number_back.text = String(format: "%.2f", i * 12 * 100)
         
-        shared_preferences.set(p, forKey: "loaned"); shared_preferences.synchronize()
-        shared_preferences.set(i * 12 * 100, forKey: "interest"); shared_preferences.synchronize()
+        shared_preferences.set(p, forKey: "loaned")
+        shared_preferences.set(i * 12 * 100, forKey: "interest")
+        shared_preferences.synchronize()
         var temp = Double()
         if (tenyr_indicator == 0) {
             if (p*i*100 - floor(p*i*100) > 0.499999) && (p*i*100 - floor(p*i*100) < 0.5)
@@ -2546,8 +2600,9 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 
         a = temp
         a_reference = temp
-        shared_preferences.set(a, forKey: "pay_monthly"); shared_preferences.synchronize()
-        shared_preferences.set(tenyr_indicator, forKey: "tenyr"); shared_preferences.synchronize()
+        shared_preferences.set(a, forKey: "pay_monthly")
+        shared_preferences.set(tenyr_indicator, forKey: "tenyr")
+        shared_preferences.synchronize()
         if (a - floor(a) == 0) {
             pay_number.text = numberFormatter.string(from: NSNumber(value: Int(a)))! + ".00"
         }
@@ -2771,7 +2826,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         up_pressed.layer.shadowOpacity = 0.0625
         up_pressed.layer.shadowRadius = 1
         
-        shared_preferences.set(savings_reference, forKey: "savings_change_key"); shared_preferences.synchronize()
+        shared_preferences.set(savings_reference, forKey: "savings_change_key")
+        shared_preferences.synchronize()
     
         bubble_label.alpha = 0.0
         bubble_label_arrow.alpha = 0.0

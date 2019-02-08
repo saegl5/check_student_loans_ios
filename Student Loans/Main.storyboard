@@ -1944,6 +1944,7 @@ Later</string>
                         <outlet property="equals_sign" destination="COq-rT-PYU" id="xV3-xC-nWQ"/>
                         <outlet property="equals_width" destination="P7e-Y3-RU7" id="LD5-5h-Ic2"/>
                         <outlet property="headers" destination="P5p-hg-XgY" id="sdr-Xt-all"/>
+                        <outlet property="insight_shape" destination="n46-eZ-IwZ" id="haf-HV-JHD"/>
                         <outlet property="interest_header" destination="cPH-3y-beC" id="1Rv-QR-Rr6"/>
                         <outlet property="line" destination="B1s-QJ-ik0" id="1YJ-Iv-ILe"/>
                         <outlet property="loaned" destination="Qme-Ei-jOp" id="iZW-nV-UGX"/>

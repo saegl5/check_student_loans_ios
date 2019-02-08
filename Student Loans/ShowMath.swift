@@ -100,7 +100,10 @@ class ShowMath: UIViewController {
     let pay_insight_shape = CAShapeLayer()
     let pay_insight_shape_label = UILabel()
     let pay_insight_header_shape = CAShapeLayer()
-
+    
+    //dark area behind monthly balance table
+    @IBOutlet weak var insight_shape: UIView!
+    
     var insight = 0 //1 if insight bubble open, 0 if not
     var blinked = Int()
     
@@ -398,6 +401,7 @@ class ShowMath: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        insight_shape.isHidden = true
         enlarge.alpha = 1.0
         shrink.alpha = 1.0
         charged_interest.text = ""
@@ -1633,19 +1637,19 @@ class ShowMath: UIViewController {
             ") = "
             if ((j + 1) - temp5 * 12 == 1) {
                 months.text! += String((j + 1) - temp5 * 12) +
-                " month";
+                " month"
             }
             else {
                 months.text! += String((j + 1) - temp5 * 12) +
-                " months";
+                " months"
             }
             if (temp5 == 0) {
                 years.text = "0 years"
                 if (j + 1 == 1) {
-                    months.text = String(j + 1) + " month";
+                    months.text = String(j + 1) + " month"
                 }
                 else {
-                    months.text = String(j + 1) + " months";
+                    months.text = String(j + 1) + " months"
                 }
             }
             else {
