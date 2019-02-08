@@ -231,6 +231,9 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     let pay_outline = CAShapeLayer()
     let up_outline = CAShapeLayer()
     
+    @IBOutlet weak var abs10yr_shape: UIView!
+    @IBOutlet weak var swipe_shape: UIView!
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "myAVPlayerViewController") {
             let destination = segue.destination as! AVPlayerViewController
@@ -2297,6 +2300,8 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        abs10yr_shape.isHidden = true
+        swipe_shape.isHidden = true
         delta.isHidden = true
         unlocked.alpha = 1.0
         absmin.alpha = 1.0
@@ -2307,6 +2312,9 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         years.alpha = 1.0
         months.alpha = 1.0
         minimum.alpha = 1.0
+        edit_slider_shape.alpha = 1.0 //
+        edit_apr_shape.alpha = 1.0 //
+        edit_pay_shape.alpha = 1.0 //
         
         //reset frames, or else calayers won't conform to them
         edit_slider_shape.frame = CGRect(x: view.frame.origin.x+5, y: edit_slider_shape.frame.origin.y, width: view.frame.width-10, height: edit_slider_shape.frame.height)
