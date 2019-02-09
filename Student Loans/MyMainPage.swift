@@ -2120,8 +2120,9 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         shared_preferences.synchronize()
     }
     
-    override func viewDidLoad() {
+    override func viewDidLoad() { //what users see first, when app loads
         super.viewDidLoad()
+        //miscellaneous
         abs10yr_shape.isHidden = true
         swipe_shape.isHidden = true
         delta.isHidden = true
@@ -2492,6 +2493,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         interest_rate_disabled.layer.shadowOffset = CGSize(width: 0, height: 1)
         interest_rate_disabled.layer.shadowOpacity = 0.0625
         interest_rate_disabled.layer.shadowRadius = 1
+        //pay
         let down_unpressed_center = CAShapeLayer()
         down_unpressed_center.bounds = down_unpressed.frame
         down_unpressed_center.position = down_unpressed.center
@@ -2539,6 +2541,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         bubble_label.isHidden = true
         bubble_label_arrow.isHidden = true
         table_view.frame = CGRect(x: self.table_view.frame.origin.x, y: self.table_view.frame.origin.y, width: self.table_view.frame.width, height: 0)
+        //check compatibility
         let messageVC = UIAlertController(title: "Caution", message: "Your device is incompatible!" , preferredStyle: .alert)
         let proceedAction = UIAlertAction(title:"Proceed", style: .default)
         messageVC.addAction(proceedAction)
@@ -2553,6 +2556,7 @@ class MyMainPage: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         else {
             present(messageVC, animated: true)
         }
+        //myAVPlayerViewController
         DispatchQueue.main.async
             {
                 self.performSegue(withIdentifier: "myAVPlayerViewController", sender: self)

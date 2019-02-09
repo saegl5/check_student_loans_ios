@@ -372,7 +372,7 @@ class ShowMath: UIViewController {
         Variables()
     }
     
-    override func viewDidLoad() {
+    override func viewDidLoad() { //what users see first, when they swipe leftward
         super.viewDidLoad()
         insight_shape.isHidden = true
         enlarge.alpha = 1.0
@@ -770,6 +770,8 @@ class ShowMath: UIViewController {
         }
         attributedPayTitle.append(attributedPaySummary)
         pay_monthly.attributedText = attributedPayTitle
+        
+        /* ------------------ MONTHLY BALANCE TABLE ------------------ */
         //remaining frame or remaining label shifts after pressing switch or moving thumb, not an issue if set constraints visually
         if (j > 4) {
             table_height.constant = CGFloat(132)
@@ -1382,6 +1384,8 @@ class ShowMath: UIViewController {
         pay_insight_shape_label.bounds = pay_insight.frame
         pay_insight_shape_label.numberOfLines = 0
         pay_insight_shape_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
+        /* ------------------ END OF MONTHLY BALANCE TABLE ------------------ */
+
         if (j == 0) && (a - (remainingbalance + remaining_interest + outstandingbalance) != 0) {
             var pt1 = Double()
             var refund_string = NSMutableAttributedString()
