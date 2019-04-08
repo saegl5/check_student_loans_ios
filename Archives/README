@@ -1,10 +1,21 @@
 Install each application package using iTunes or Apple Configurator on iPhone devices.
 
-RECOMMENDATION: Unzip, then verify, each iOS application package.
+RECOMMENDATION: Unzip each iOS application package in Finder, then verify each of their sums and fingerprints in Terminal.
 
-Do so by opening a terminal application and typing, for example:
+Verify the sum:
+$ shasum -a 256 panel_discussion.ipa
+ace2008e882942ece20cc21ea0f0a1fd85abb3797e05c9d37baaa53f2119fb7c  panel_discussion.ipa
+
+Verify the fingerprint:
+$ codesign -d --extract-certificates panel_discussion.ipa && \
+openssl x509 -noout -fingerprint -sha1 -inform DER -in codesign0
+SHA1 Fingerprint=6A:D3:D7:62:17:DD:C0:41:54:E5:71:97:80:A3:B0:9A:D4:F0:92:36
+
+Verify the sum:
+$ shasum -a 256 latest-2.5.2.ipa
+af3fc1ecab65b73021480b11d4eb8a4b61f712a65a7f8e060146efbd2e7c259e  latest-2.5.2.ipa
+
+Verify the fingerprint:
 $ codesign -d --extract-certificates latest-2.5.2.ipa && \
 openssl x509 -noout -fingerprint -sha1 -inform DER -in codesign0
-
-Check the fingerprint:
-6A:D3:D7:62:17:DD:C0:41:54:E5:71:97:80:A3:B0:9A:D4:F0:92:36
+SHA1 Fingerprint=6A:D3:D7:62:17:DD:C0:41:54:E5:71:97:80:A3:B0:9A:D4:F0:92:36
