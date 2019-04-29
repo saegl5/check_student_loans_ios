@@ -670,6 +670,8 @@ class ShowMath: UIViewController {
   override func viewDidLoad() {
     //what users see first, when they swipe leftward
     super.viewDidLoad()
+    
+    // Do any additional setup after loading the view.
     insight_shape.isHidden = true
     enlarge.alpha = 1.0
     shrink.alpha = 1.0
@@ -1358,6 +1360,7 @@ class ShowMath: UIViewController {
         byRoundingCorners: [.bottomLeft, .bottomRight],
         cornerRadii: CGSize(width: 5, height: 5)
       ).cgPath
+    
   }
 
   func Variables() {
@@ -3383,6 +3386,7 @@ class ShowMath: UIViewController {
     savings.attributedText = savings_string
     savings.adjustsFontSizeToFitWidth = true
   }
+    
 }
 
 //disable copy, paste, delete, etc.

@@ -9,7 +9,9 @@
 import AVKit
 
 class AVPlayerNoStatusBar: AVPlayerViewController {
+    
   override var prefersStatusBarHidden: Bool {
     return true
   }
+    
 }

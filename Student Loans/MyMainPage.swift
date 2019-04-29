@@ -223,6 +223,15 @@ class MyMainPage:
   @IBOutlet weak  var abs10yr_shape: UIView!
   @IBOutlet weak  var swipe_shape: UIView!
 
+  /*
+  // MARK: - Navigation
+  
+  // In a storyboard-based application, you will often want to do a little preparation before navigation
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+  // Get the new view controller using segue.destination.
+  // Pass the selected object to the new view controller.
+  }
+  */
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if (segue.identifier == "myAVPlayerViewController") {
       let destination = segue.destination as! AVPlayerViewController
@@ -238,6 +247,7 @@ class MyMainPage:
       return
     }
   }
+  //segue to and from ShowMath.swift is constructed in the storyboard directly
 
   @IBAction func Locked(_ sender: UIButton) {
     unlocked.isHidden = false
@@ -2860,7 +2870,8 @@ class MyMainPage:
   override func viewDidLoad() {
     //what users see first, when app loads
     super.viewDidLoad()
-    //miscellaneous
+    
+    // Do any additional setup after loading the view.
     abs10yr_shape.isHidden = true
     swipe_shape.isHidden = true
     delta.isHidden = true
@@ -3610,5 +3621,7 @@ class MyMainPage:
         sender: self
       )
     }
+    
   }
+    
 }
