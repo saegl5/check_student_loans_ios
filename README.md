@@ -20,7 +20,7 @@ Designed for iPhone 7. Compatible with iPhone 6/6+, 6s/6s+, 7+, 8/8+ or later. I
 Not designed for iPad devices.<p>
 
 [![Alt](/badge.png "Download on the App Store.")](https://itunes.apple.com/us/app/student-loans/id1260436932?mt=8)<br>
-(Version 2.3.1)<p>
+~~(Version 2.3.1)~~ Removed on March 24, 2019<p>
 
 Alternative downloads:<br>
 [Version 2.2.2 for Panel Discussion](/Archives/panel_discussion.ipa.zip "Click here to access the download link.")[^1]<br>
