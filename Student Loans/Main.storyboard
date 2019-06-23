@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Iza-fr-1Y3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Iza-fr-1Y3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -1279,62 +1279,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7Lo-Rk-IPT">
-                                <rect key="frame" x="20" y="18.5" width="335" height="129.5"/>
+                                <rect key="frame" x="20" y="25.5" width="335" height="122.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qme-Ei-jOp">
-                                        <rect key="frame" x="127.5" y="0.0" width="80.5" height="18"/>
+                                        <rect key="frame" x="130" y="0.0" width="75.5" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="hLc-R7-VCG"/>
                                         </constraints>
                                         <attributedString key="attributedText">
-                                            <fragment content="Loaned">
+                                            <fragment content="Loaned $">
                                                 <attributes>
-                                                    <font key="NSFont" size="18" name="CMUSerif-Bold"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
-                                                        <tabStops>
-                                                            <textTab alignment="left" location="36">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="72">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="108">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="144">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="180">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="216">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="252">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="288">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="324">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="360">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="396">
-                                                                <options/>
-                                                            </textTab>
-                                                            <textTab alignment="left" location="432">
-                                                                <options/>
-                                                            </textTab>
-                                                        </tabStops>
-                                                    </paragraphStyle>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content=" $">
-                                                <attributes>
-                                                    <font key="NSFont" size="18" name="CMUSerif-Roman"/>
+                                                    <font key="NSFont" metaFont="system" size="18"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                         <tabStops>
                                                             <textTab alignment="left" location="36">
@@ -1384,49 +1339,41 @@
                                         <rect key="frame" x="0.0" y="23" width="335" height="1"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="PTw-qV-8Gm">
-                                        <rect key="frame" x="5" y="29" width="325" height="71.5"/>
+                                        <rect key="frame" x="5" y="29" width="325" height="64.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="irC-zH-heZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="225" height="71.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="225" height="64.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzv-Te-GRp">
-                                                        <rect key="frame" x="0.5" y="0.0" width="224.5" height="71.5"/>
+                                                        <rect key="frame" x="2" y="0.0" width="221" height="64.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <attributedString key="attributedText">
-                                                            <fragment content="APR">
+                                                            <fragment content="APR %">
                                                                 <attributes>
                                                                     <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <font key="NSFont" size="18" name="CMUSerif-Bold"/>
-                                                                    <font key="NSOriginalFont" size="18" name="CMUSerif-Bold"/>
-                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                                </attributes>
-                                                            </fragment>
-                                                            <fragment content=" %">
-                                                                <attributes>
-                                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <font key="NSFont" size="18" name="CMUSerif-Roman"/>
-                                                                    <font key="NSOriginalFont" size="18" name="CMUSerif-Roman"/>
+                                                                    <font key="NSFont" metaFont="system" size="18"/>
+                                                                    <font key="NSOriginalFont" metaFont="system" size="18"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
                                                             <fragment content=" % monthly">
                                                                 <attributes>
                                                                     <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <font key="NSFont" size="18" name="CMUSerif-Roman"/>
+                                                                    <font key="NSFont" metaFont="system" size="18"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
                                                             <fragment content="............................">
                                                                 <attributes>
                                                                     <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <font key="NSFont" size="18" name="CMUSerif-Roman"/>
+                                                                    <font key="NSFont" metaFont="system" size="18"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
                                                             <fragment content=" (monthly)">
                                                                 <attributes>
                                                                     <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <font key="NSFont" size="18" name="CMUSerif-Roman"/>
+                                                                    <font key="NSFont" metaFont="system" size="18"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
@@ -1465,10 +1412,10 @@
                                         </subviews>
                                     </stackView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LineshorterAsset" translatesAutoresizingMaskIntoConstraints="NO" id="mcf-4p-FYM">
-                                        <rect key="frame" x="0.0" y="105.5" width="335" height="1"/>
+                                        <rect key="frame" x="0.0" y="98.5" width="335" height="1"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JD9-pN-80J">
-                                        <rect key="frame" x="101" y="111.5" width="133" height="18"/>
+                                        <rect key="frame" x="110" y="104.5" width="115.5" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="wX4-qc-h4n"/>
                                         </constraints>
@@ -1476,14 +1423,14 @@
                                             <fragment content="Pay Monthly">
                                                 <attributes>
                                                     <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" size="18" name="CMUSerif-Bold"/>
+                                                    <font key="NSFont" metaFont="system" size="18"/>
                                                 </attributes>
                                             </fragment>
                                             <fragment content=" $">
                                                 <attributes>
                                                     <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" size="18" name="CMUSerif-Roman"/>
-                                                    <font key="NSOriginalFont" size="18" name="CMUSerif-Roman"/>
+                                                    <font key="NSFont" metaFont="system" size="18"/>
+                                                    <font key="NSOriginalFont" metaFont="system" size="18"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
@@ -1744,14 +1691,14 @@ Later</string>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPQ-ly-VO3" userLabel="Enlarge">
-                                <rect key="frame" x="227" y="197" width="120" height="120"/>
+                                <rect key="frame" x="282" y="246" width="10" height="22"/>
                                 <state key="normal" image="Info"/>
                                 <connections>
                                     <action selector="Payment_Insight_Bubble_Expand:" destination="f33-sF-ZiB" eventType="touchUpInside" id="Uu3-lY-50l"/>
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qgm-B8-GjJ" userLabel="Shrink">
-                                <rect key="frame" x="8" y="248" width="112" height="112"/>
+                                <rect key="frame" x="8" y="248" width="18" height="22"/>
                                 <state key="normal" image="Shrink"/>
                                 <connections>
                                     <action selector="Payment_Insight_Bubble_Shrink:" destination="f33-sF-ZiB" eventType="touchUpInside" id="RIG-yz-tAh"/>
@@ -2020,20 +1967,20 @@ Later</string>
         </scene>
     </scenes>
     <resources>
-        <image name="BareTrack" width="296.70330810546875" height="34.813186645507812"/>
-        <image name="Edit" width="124.36363983154297" height="117.81818389892578"/>
-        <image name="Equals" width="118.58823394775391" height="118.58823394775391"/>
-        <image name="Info" width="120" height="120"/>
-        <image name="LineAsset" width="411" height="0.75"/>
-        <image name="LineshorterAsset" width="206.25" height="0.75"/>
-        <image name="Locked" width="55.168830871582031" height="67.324676513671875"/>
-        <image name="Minus" width="118.58823394775391" height="118.58823394775391"/>
-        <image name="Off" width="124.61538696289062" height="99.692306518554688"/>
-        <image name="Plus" width="118.58823394775391" height="118.58823394775391"/>
-        <image name="Shrink" width="112.69565582275391" height="112.69565582275391"/>
-        <image name="Submit" width="124.61538696289062" height="99.692306518554688"/>
-        <image name="Timer1" width="82.285713195800781" height="92.571426391601562"/>
-        <image name="Timer2" width="82.285713195800781" height="92.571426391601562"/>
-        <image name="Unlocked" width="78.545455932617188" height="67.324676513671875"/>
+        <image name="BareTrack" width="187.5" height="22"/>
+        <image name="Edit" width="38" height="36"/>
+        <image name="Equals" width="14" height="14"/>
+        <image name="Info" width="10" height="10"/>
+        <image name="LineAsset" width="548" height="1"/>
+        <image name="LineshorterAsset" width="275" height="1"/>
+        <image name="Locked" width="29.5" height="36"/>
+        <image name="Minus" width="14" height="14"/>
+        <image name="Off" width="45" height="36"/>
+        <image name="Plus" width="14" height="14"/>
+        <image name="Shrink" width="18" height="18"/>
+        <image name="Submit" width="45" height="36"/>
+        <image name="Timer1" width="16" height="18"/>
+        <image name="Timer2" width="16" height="18"/>
+        <image name="Unlocked" width="42" height="36"/>
     </resources>
 </document>
