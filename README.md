@@ -6,15 +6,16 @@
 Check your student loans' length of repayment and amount of savings.<p>
 
 This project is a native iOS app that is one of two parts of an experimental study&mdash;the other part being [course material](/Resources/course_material.docx "Click here to view the course material."), and it is designed to supplement the course material.
-The combination of both parts is dubbed an *instructional app*. Users select an estimated cost, select the interest rate of their loan(s), and select a monthly payment. 
+The combination of both parts is dubbed an _instructional app_. Users select an estimated cost, select the interest rate of their loan(s), and select a monthly payment.
 The app will estimate how long repayments will take and how much users can save by paying more than the minimum.
 (This app will not tell you how much money you have loaned. Contact your school's bursar office for that information. Once you have that information, use this app.)<p>
 
 Features:
-* Automatic estimation
-* Customization
-* Swipe leftward (if enabled) to view how estimates were calculated
-* Swipe leftward (if enabled) to examine how estimates would vary, depending if interest compounded and on the percentage of interest users paid monthly
+
+- Automatic estimation
+- Customization
+- Swipe leftward (if enabled) to view how estimates were calculated
+- Swipe leftward (if enabled) to examine how estimates would vary, depending if interest compounded and on the percentage of interest users paid monthly
 
 Designed for iPhone 7. Compatible with iPhone 6/6+, 6s/6s+, 7+, 8/8+ or later. Incompatible with iPhone SE or below.<br>
 Not designed for iPad devices.<p>
@@ -33,15 +34,18 @@ Install alternative downloads using iTunes or Apple Configurator on iPhone devic
 Get [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12 "Click here to visit the App Store.") from the App Store, and install it.<p>
 
 Clone the project:
+
 <pre>
 https://gitlab.com/saegl5/check_student_loans_app_iOS.git
 </pre>
 
 (Recommended) Open the Terminal, and verify the project's integrity:
+
 <pre>
 $ cd /path/to/check_student_loans_app_iOS
 $ git show-ref --heads --hash
 </pre>
+
 Check that the hash matches the commit SHA.<p>
 
 Latest version is 2.5.2. Known to work on macOS Mojave 10.14.3, in Xcode 10.1
@@ -70,7 +74,6 @@ Return to GitLab.com, and submit a merge request.<br>
 For any issues, submit a new issue.<p>
 
 (For instructions on how to export a new video introduction, consult the README in [this directory](/Resources/"How to Use App" Video "Click here to access the directory.").)
-
 
 ## History
 
