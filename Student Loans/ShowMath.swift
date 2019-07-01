@@ -590,6 +590,12 @@ class ShowMath: UIViewController {
          max_percent_interest - progress = x
          */
     percentage = max_percent_interest - scale*(max_percent_interest - progress)
+    if (percentage - floor(percentage) > 0.499999)
+        && (percentage - floor(percentage) < 0.5) {
+        percentage = round(percentage + 1)
+    } else {
+        percentage = round(percentage)
+    }
     var temp = Double()
     if (tenyr_indicator == 0) {
       if (percentage/100*p*i*100 - floor(percentage/100*p*i*100) > 0.499999)
@@ -3125,12 +3131,12 @@ class ShowMath: UIViewController {
         temp_pay = (round(xx*100) + 1)/100 - interest_pay_min
         temp_pay_first = (round(xx*100) + 1)/100
       }
-      if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
-          && (temp_pay*100 - floor(temp_pay*100) < 0.5) {
-        temp_pay = round(temp_pay*100 + 1)/100
-      } else {
-        temp_pay = round(temp_pay*100)/100
-      }
+//      if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
+//          && (temp_pay*100 - floor(temp_pay*100) < 0.5) {
+//        temp_pay = round(temp_pay*100 + 1)/100
+//      } else {
+//        temp_pay = round(temp_pay*100)/100
+//      }
     } else {
       if (i != 0) {
         if (progress != 0) {
@@ -3140,12 +3146,12 @@ class ShowMath: UIViewController {
             )/100
           temp_pay_first = temp_pay
           temp_pay = temp_pay - interest_pay_min
-          if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
-              && (temp_pay*100 - floor(temp_pay*100) < 0.5) {
-            temp_pay = round(temp_pay*100 + 1)/100
-          } else {
-            temp_pay = round(temp_pay*100)/100
-          }
+//          if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
+//              && (temp_pay*100 - floor(temp_pay*100) < 0.5) {
+//            temp_pay = round(temp_pay*100 + 1)/100
+//          } else {
+//            temp_pay = round(temp_pay*100)/100
+//          }
         } else {
           temp_pay = ceil(p/120*100)/100
           temp_pay_first = temp_pay
@@ -3174,6 +3180,12 @@ class ShowMath: UIViewController {
       outstandingbalance_min = outstandingbalance_min
         + temp_interest_min
         - interest_pay_min
+      if (outstandingbalance_min*100 - floor(outstandingbalance_min*100) > 0.499999)
+          && (outstandingbalance_min*100 - floor(outstandingbalance_min*100) < 0.5) {
+          outstandingbalance_min = round(outstandingbalance_min*100 + 1)/100
+      } else {
+          outstandingbalance_min = round(outstandingbalance_min*100)/100
+      }
       if (remainingbalance_repay_minimum*i*100
             - floor(remainingbalance_repay_minimum*i*100)
             > 0.499999)
@@ -3205,12 +3217,12 @@ class ShowMath: UIViewController {
         } else {
           temp_pay = (round(xx*100) + 1)/100 - interest_pay_min
         }
-        if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
-            && (temp_pay*100 - floor(temp_pay*100) < 0.5) {
-          temp_pay = round(temp_pay*100 + 1)/100
-        } else {
-          temp_pay = round(temp_pay*100)/100
-        }
+//        if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
+//            && (temp_pay*100 - floor(temp_pay*100) < 0.5) {
+//          temp_pay = round(temp_pay*100 + 1)/100
+//        } else {
+//          temp_pay = round(temp_pay*100)/100
+//        }
       } else {
         if (i != 0) {
           if (progress != 0) {
@@ -3219,12 +3231,12 @@ class ShowMath: UIViewController {
                   / (pow(1+percentage/100*i, 120) - 1)*100
               )/100
             temp_pay = temp_pay - interest_pay_min
-            if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
-                && (temp_pay*100 - floor(temp_pay*100) < 0.5) {
-              temp_pay = round(temp_pay*100 + 1)/100
-            } else {
-              temp_pay = round(temp_pay*100)/100
-            }
+//            if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
+//                && (temp_pay*100 - floor(temp_pay*100) < 0.5) {
+//              temp_pay = round(temp_pay*100 + 1)/100
+//            } else {
+//              temp_pay = round(temp_pay*100)/100
+//            }
           } else {
             temp_pay = ceil(p/120*100)/100
             temp_pay_first = temp_pay
