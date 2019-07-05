@@ -471,7 +471,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Rgl-cy-kNR">
-                                <rect key="frame" x="13.5" y="458" width="130" height="47"/>
+                                <rect key="frame" x="13.5" y="458" width="130" height="62"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1jQ-PT-kcv">
                                         <rect key="frame" x="0.0" y="0.0" width="130" height="18"/>
@@ -522,11 +522,11 @@
                                         </subviews>
                                     </stackView>
                                     <imageView userInteractionEnabled="NO" alpha="0.0625" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LineshorterAsset" translatesAutoresizingMaskIntoConstraints="NO" id="S9l-dT-Kut">
-                                        <rect key="frame" x="0.0" y="23" width="130" height="1"/>
+                                        <rect key="frame" x="0.0" y="23" width="130" height="16"/>
                                         <color key="backgroundColor" red="0.31764705882352939" green="0.33725490196078434" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="flV-M9-uur">
-                                        <rect key="frame" x="0.0" y="29" width="130" height="18"/>
+                                        <rect key="frame" x="0.0" y="44" width="130" height="18"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Timer2" translatesAutoresizingMaskIntoConstraints="NO" id="XqP-Bd-5Jd">
                                                 <rect key="frame" x="0.0" y="0.0" width="16" height="18"/>
@@ -655,7 +655,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="m2e-Jy-uqV">
-                                <rect key="frame" x="231.5" y="458" width="130" height="47"/>
+                                <rect key="frame" x="231.5" y="458" width="130" height="62"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R6Z-7e-JsA">
                                         <rect key="frame" x="0.0" y="0.0" width="130" height="18"/>
@@ -706,11 +706,11 @@
                                         </subviews>
                                     </stackView>
                                     <imageView userInteractionEnabled="NO" alpha="0.0625" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LineshorterAsset" translatesAutoresizingMaskIntoConstraints="NO" id="BO2-oM-3YG">
-                                        <rect key="frame" x="0.0" y="23" width="130" height="1"/>
+                                        <rect key="frame" x="0.0" y="23" width="130" height="16"/>
                                         <color key="backgroundColor" red="0.31764705882352939" green="0.33725490196078434" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Rf-y4-Nip">
-                                        <rect key="frame" x="0.0" y="29" width="130" height="18"/>
+                                        <rect key="frame" x="0.0" y="44" width="130" height="18"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Timer2" translatesAutoresizingMaskIntoConstraints="NO" id="GqM-hK-OvT">
                                                 <rect key="frame" x="0.0" y="0.0" width="16" height="18"/>
@@ -787,7 +787,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" alpha="0.125" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="iSo-Wx-NDi" userLabel="Abs10yr">
-                                <rect key="frame" x="97.5" y="526.5" width="180" height="59"/>
+                                <rect key="frame" x="97.5" y="519" width="180" height="74"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8jC-Vd-yPS">
                                         <rect key="frame" x="0.0" y="0.0" width="180" height="24"/>
@@ -816,10 +816,10 @@
                                         </subviews>
                                     </stackView>
                                     <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LineAsset" translatesAutoresizingMaskIntoConstraints="NO" id="XtX-Zh-xRq">
-                                        <rect key="frame" x="0.0" y="29" width="180" height="1"/>
+                                        <rect key="frame" x="0.0" y="29" width="180" height="16"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YwP-YT-5u8">
-                                        <rect key="frame" x="0.0" y="35" width="180" height="24"/>
+                                        <rect key="frame" x="0.0" y="50" width="180" height="24"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10-Year Minimum" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="046-Ep-MBA">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="24"/>
@@ -1279,17 +1279,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="7Lo-Rk-IPT">
-                                <rect key="frame" x="20" y="25.5" width="335" height="122.5"/>
+                                <rect key="frame" x="20" y="18.5" width="335" height="129.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qme-Ei-jOp">
-                                        <rect key="frame" x="130" y="0.0" width="75.5" height="18"/>
+                                        <rect key="frame" x="126" y="0.0" width="83" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="hLc-R7-VCG"/>
                                         </constraints>
                                         <attributedString key="attributedText">
                                             <fragment content="Loaned $">
                                                 <attributes>
-                                                    <font key="NSFont" metaFont="system" size="18"/>
+                                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <font key="NSFont" size="18" name="CMUSerif-Bold"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                         <tabStops>
                                                             <textTab alignment="left" location="36">
@@ -1339,19 +1340,27 @@
                                         <rect key="frame" x="0.0" y="23" width="335" height="1"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="PTw-qV-8Gm">
-                                        <rect key="frame" x="5" y="29" width="325" height="64.5"/>
+                                        <rect key="frame" x="5" y="29" width="325" height="71.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="irC-zH-heZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="225" height="64.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="225" height="71.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzv-Te-GRp">
-                                                        <rect key="frame" x="2" y="0.0" width="221" height="64.5"/>
+                                                        <rect key="frame" x="0.5" y="0.0" width="224.5" height="71.5"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <attributedString key="attributedText">
-                                                            <fragment content="APR %">
+                                                            <fragment content="APR">
                                                                 <attributes>
                                                                     <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <font key="NSFont" metaFont="system" size="18"/>
+                                                                    <font key="NSFont" size="18" name="CMUSerif-Bold"/>
+                                                                    <font key="NSOriginalFont" size="18" name="CMUSerif-Bold"/>
+                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                                </attributes>
+                                                            </fragment>
+                                                            <fragment content=" %">
+                                                                <attributes>
+                                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <font key="NSFont" size="18" name="CMUSerif-Roman"/>
                                                                     <font key="NSOriginalFont" metaFont="system" size="18"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
@@ -1359,21 +1368,21 @@
                                                             <fragment content=" % monthly">
                                                                 <attributes>
                                                                     <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <font key="NSFont" metaFont="system" size="18"/>
+                                                                    <font key="NSFont" size="18" name="CMUSerif-Roman"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
                                                             <fragment content="............................">
                                                                 <attributes>
                                                                     <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <font key="NSFont" metaFont="system" size="18"/>
+                                                                    <font key="NSFont" size="18" name="CMUSerif-Roman"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
                                                             <fragment content=" (monthly)">
                                                                 <attributes>
                                                                     <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                    <font key="NSFont" metaFont="system" size="18"/>
+                                                                    <font key="NSFont" size="18" name="CMUSerif-Roman"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                                 </attributes>
                                                             </fragment>
@@ -1412,25 +1421,19 @@
                                         </subviews>
                                     </stackView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LineshorterAsset" translatesAutoresizingMaskIntoConstraints="NO" id="mcf-4p-FYM">
-                                        <rect key="frame" x="0.0" y="98.5" width="335" height="1"/>
+                                        <rect key="frame" x="0.0" y="105.5" width="335" height="1"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JD9-pN-80J">
-                                        <rect key="frame" x="110" y="104.5" width="115.5" height="18"/>
+                                        <rect key="frame" x="100" y="111.5" width="135.5" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="wX4-qc-h4n"/>
                                         </constraints>
                                         <attributedString key="attributedText">
-                                            <fragment content="Pay Monthly">
+                                            <fragment content="Pay Monthly $">
                                                 <attributes>
                                                     <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" metaFont="system" size="18"/>
-                                                </attributes>
-                                            </fragment>
-                                            <fragment content=" $">
-                                                <attributes>
-                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" metaFont="system" size="18"/>
-                                                    <font key="NSOriginalFont" metaFont="system" size="18"/>
+                                                    <font key="NSFont" size="18" name="CMUSerif-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
                                         </attributedString>
@@ -1501,7 +1504,7 @@ Later</string>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="23" id="5Sn-PZ-fvE"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="CMUSerif-Bold" family="CMU Serif" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="CMUSerif-Bold" family="CMU Serif" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -1597,7 +1600,7 @@ Later</string>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="154" id="LDP-p5-tvS"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="CMUSerif-Roman" family="CMU Serif" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkE-SL-FEk" userLabel="-">
@@ -1938,7 +1941,7 @@ Later</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E1t-WS-Xtr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2147.1014492753625" y="306.929347826087"/>
+            <point key="canvasLocation" x="2146.4000000000001" y="306.29685157421289"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9fT-15-W1a">
