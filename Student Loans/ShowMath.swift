@@ -793,13 +793,19 @@ class ShowMath: UIViewController {
       ]
     )
     var attributedAPRSummary = NSMutableAttributedString()
-    var attributedAPRPeriodic = NSMutableAttributedString()
     var attributedAPRDecimalEquivalent = NSMutableAttributedString()
-    var temp = Int() //don't want it rounding, unless remainder has repeated 9s
-    if (i*100*1000 - floor(i*100*1000) > 0.99999) {
-      temp = Int(i*100*1000)+1
+    var attributedAPRPeriodic = NSMutableAttributedString()
+    var temp_dec = Int() //don't want it rounding, unless remainder has repeated 9s
+    if (i*12*10000 - floor(i*12*10000) > 0.99999) {
+        temp_dec = Int(i*12*10000)+1
     } else {
-      temp = Int(i*100*1000)
+        temp_dec = Int(i*12*10000)
+    }
+    var temp_peri = Int()
+    if (i*100*1000 - floor(i*100*1000) > 0.99999) {
+        temp_peri = Int(i*100*1000)+1
+    } else {
+        temp_peri = Int(i*100*1000)
     }
     if (i == 0) {
       attributedAPRSummary = NSMutableAttributedString(
@@ -811,8 +817,8 @@ class ShowMath: UIViewController {
           )!
         ]
       )
-      attributedAPRPeriodic = NSMutableAttributedString(
-        string: "\n" + "÷ 12 = 0." + String(temp) + "00...% monthly",
+      attributedAPRDecimalEquivalent = NSMutableAttributedString(
+        string: "\n" + "÷ 100 = 0.0" + String(temp_dec) + "...",
         attributes: [
           NSAttributedString.Key.font: UIFont(
             name: "CMUSerif-Roman",
@@ -823,8 +829,8 @@ class ShowMath: UIViewController {
           )
         ]
       )
-      attributedAPRDecimalEquivalent = NSMutableAttributedString(
-        string: "\n" + "÷ 100 = 0.00" + String(temp) + "...",
+      attributedAPRPeriodic = NSMutableAttributedString(
+        string: "\n" + "÷ 12 = 0.00" + String(temp_peri) + "00...% monthly",
         attributes: [
           NSAttributedString.Key.font: UIFont(
             name: "CMUSerif-Roman",
@@ -845,8 +851,8 @@ class ShowMath: UIViewController {
           )!
         ]
       )
-      attributedAPRPeriodic = NSMutableAttributedString(
-        string: "\n" + "÷ 12 = 0." + String(temp) + "...% monthly",
+      attributedAPRDecimalEquivalent = NSMutableAttributedString(
+        string: "\n" + "÷ 100 = 0.0" + String(temp_dec) + "...",
         attributes: [
           NSAttributedString.Key.font: UIFont(
             name: "CMUSerif-Roman",
@@ -854,8 +860,8 @@ class ShowMath: UIViewController {
           )!
         ]
       )
-      attributedAPRDecimalEquivalent = NSMutableAttributedString(
-        string: "\n" + "÷ 100 = 0.00" + String(temp) + "...",
+      attributedAPRPeriodic = NSMutableAttributedString(
+        string: "\n" + "÷ 12 = 0.00" + String(temp_peri) + "...% monthly",
         attributes: [
           NSAttributedString.Key.font: UIFont(
             name: "CMUSerif-Roman",
@@ -865,8 +871,8 @@ class ShowMath: UIViewController {
       )
     }
     attributedAPRTitle.append(attributedAPRSummary)
-    attributedAPRTitle.append(attributedAPRPeriodic)
     attributedAPRTitle.append(attributedAPRDecimalEquivalent)
+    attributedAPRTitle.append(attributedAPRPeriodic)
     nominal_rate.attributedText = attributedAPRTitle //"nominal_rate" should be renamed
     if (i == 0) {
       compound.isEnabled = false
