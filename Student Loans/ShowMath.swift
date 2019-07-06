@@ -830,7 +830,7 @@ class ShowMath: UIViewController {
         ]
       )
       attributedAPRPeriodic = NSMutableAttributedString(
-        string: "\n" + "÷ 12 = 0.00" + String(temp_peri) + "00...% monthly",
+        string: "\n" + "÷ 12 = 0.00" + String(temp_peri) + "00... monthly",
         attributes: [
           NSAttributedString.Key.font: UIFont(
             name: "CMUSerif-Roman",
@@ -861,7 +861,7 @@ class ShowMath: UIViewController {
         ]
       )
       attributedAPRPeriodic = NSMutableAttributedString(
-        string: "\n" + "÷ 12 = 0.00" + String(temp_peri) + "...% monthly",
+        string: "\n" + "÷ 12 = 0.00" + String(temp_peri) + "... monthly",
         attributes: [
           NSAttributedString.Key.font: UIFont(
             name: "CMUSerif-Roman",
