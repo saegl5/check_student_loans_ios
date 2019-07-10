@@ -14,11 +14,11 @@ Features:
 
 - Automatic estimation
 - Customization
-- Swipe leftward (if enabled) to view how estimates were calculated
-- Swipe leftward (if enabled) to examine how estimates would vary, depending if interest compounded and on the percentage of interest users paid monthly
+- Swipe leftward (if enabled) to view how estimates were calculated.
+- Swipe leftward (if enabled) to examine how estimates would vary, depending if interest compounded and on the percentage of interest users paid monthly.
 
-Designed for iPhone 7. Compatible with iPhone 6/6+, 6s/6s+, 7+, 8/8+ or later. Incompatible with iPhone SE or below.<br>
-Not designed for iPad devices.<p>
+It is designed for iPhone 7. Compatible with iPhone 6/6+, 6s/6s+, 7+, 8/8+ or later, but not iPhone SE or below<br>
+Not designed for iPad devices<p>
 
 [![Alt](/badge-unavailable.png "Download on the App Store.")](https://itunes.apple.com/us/app/student-loans/id1260436932?mt=8)<br>
 ~~(Version 2.3.1)~~ Removed on March 24, 2019<p>
@@ -48,7 +48,7 @@ $ git show-ref --heads --hash
 
 Check that the hash matches the commit SHA.<p>
 
-Latest version is 2.5.2. Known to work on macOS Mojave 10.14.5, in Xcode 10.2.1
+The latest version is 2.5.2. Known to work on macOS Mojave 10.14.5, in Xcode 10.2.1
 
 ## Usage
 
@@ -65,7 +65,7 @@ After editing them or enabling swiping, relock.<p>
 
 ## Contributing
 
-Sign in to GitLab.com, to fork the project.<p>
+Sign into GitLab.com, to fork the project.<p>
 
 Modify the source code.<br>
 Under Source Control, select Commit, and Push the changes.<p>
@@ -79,7 +79,7 @@ For any issues, submit a new issue.<p>
 
 Feb 9, 2019 &middot; Version 2.5.2: cleaned entire project, source code is 50% leaner, fixed issue where outstanding totals would not disappear if insight is closed, fixed issue where keyboard displayed after clicking on monthly balance boxes, fixed issue where users could paste text into monthly balances<br>
 Jan 16, 2019 &middot; Version 2.5.1: upgraded codebase, fixed video introduction close button, hid status bar when video introduction controls are displayed, fixed edit pay monthly box from dropping to bottom of view controller, displayed alert if device is incompatible with app, addressed warnings<br>
-Oct 1, 2018 &middot; Version 2.4: permitting users to revert developments, fixed issue where coffee cup displays even though users must pay extra, fixed issue where text in remaining balance column is misaligned for greater monthly payments, fixed issue where text colors in remaining balance did not return after closing breakdown of pay, fixed text color of dots for remaining balance<br>
+Oct 1, 2018 &middot; Version 2.4: permitted users to revert developments, fixed issue where coffee cup displays even though users must pay extra, fixed issue where text in remaining balance column is misaligned for greater monthly payments, fixed issue where text colors in remaining balance did not return after closing breakdown of pay, fixed text color of dots for remaining balance<br>
 May 27, 2018 &middot; Version 2.3.2: corrected maturity rating, fulfilled conditions of SIL Open Font License<br>
 Mar 24, 2018 &middot; Version 2.3.1: added key to Info.plist, added license<br>
 Mar 17, 2018 &middot; Version 2.3: initial commit
@@ -87,7 +87,7 @@ Mar 17, 2018 &middot; Version 2.3: initial commit
 ## Known Issues
 
 Video introduction does not render correctly, if installed from the App Store.
-Potential Xcode bug: unlike for plain text, for attributed text the interface builder draws custom fonts from Font Book.
+Potential Xcode bug: Unlike for plain text, for attributed text the interface builder draws custom fonts from Font Book.
 
 ## License
 
@@ -113,7 +113,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-[^1]: Exceptions: rounding and interest computations are corrected, and the monthly balance table is restructured.
+[^1]: Exceptions: Rounding and interest computations are corrected, and the monthly balance table is restructured.
 [^2]: If you have more than one type of loan or you have multiple loans, select the rate for the biggest one. If you are unsure about your rate, choose 4.45% since Direct Loans are more popular.<br>
 [^3]: Interest Rates and Fees. (n.d.). Retrieved from [https://studentaid.ed.gov/sa/types/loans/interest-rates](https://studentaid.ed.gov/sa/types/loans/interest-rates "Click here to visit the office of Federal Student Aid.")
 
