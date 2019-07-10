@@ -2,6 +2,20 @@ Install each application package using iTunes or Apple Configurator on iPhone de
 
 RECOMMENDATION: Unzip each iOS application package in Finder, then verify each of their sums and fingerprints in Terminal.
 
+--------------------------------------------------------------------------------------------------
+Optional
+
+To verify the authenticity of iOS application package:
+$ gpg --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 0x4191f431
+$ gpg --verify SHA1SUMS.gpg SHA1SUMS (example)
+
+To verify the integrity of iOS application package:
+Linux/macOS terminal: $ sha1sum latest-2.5.2.ipa.zip (example)
+Windows 10 PowerShell: $ Get-FileHash latest-2.5.2.ipa.zip -Algorithm SHA1 (example)
+
+--------------------------------------------------------------------------------------------------
+
+
 Verify the sum:
 $ shasum -a 256 panel_discussion.ipa
 ace2008e882942ece20cc21ea0f0a1fd85abb3797e05c9d37baaa53f2119fb7c  panel_discussion.ipa
