@@ -873,7 +873,7 @@ class ShowMath: UIViewController {
     attributedAPRTitle.append(attributedAPRSummary)
     attributedAPRTitle.append(attributedAPRDecimalEquivalent)
     attributedAPRTitle.append(attributedAPRPeriodic)
-    nominal_rate.attributedText = attributedAPRTitle //"nominal_rate" should be renamed
+    nominal_rate.attributedText = attributedAPRTitle //``nominal_rate'' should be renamed
     if (i == 0) {
       compound.isEnabled = false
       titleof_compound.textColor = UIColor.lightGray.withAlphaComponent(0.5)

@@ -114,7 +114,7 @@ class MyMainPage:
   @IBOutlet weak  var locked: UIButton!
   @IBOutlet weak  var unlocked: UIButton!
   @IBOutlet weak  var swipe_label: UILabel! //indicates if swipe is enabled or not
-  @IBOutlet weak  var swipe_note: UILabel! //just says, "swipe"
+  @IBOutlet weak  var swipe_note: UILabel! //just says, ``swipe''
   @IBOutlet weak  var swiping: UIButton!
   @IBOutlet weak  var stopped: UIButton!
   @IBOutlet weak  var swipe_blink: UILabel!
@@ -181,7 +181,7 @@ class MyMainPage:
   internal lazy var p = min_value
   internal lazy var i = APR_DIRECT
     / 12
-    / 100 //need to convert to periodic rate in decimal form; "i" is essentially espilon
+    / 100 //need to convert to periodic rate in decimal form
   internal lazy var i_reference = APR_DIRECT / 12 / 100
   internal lazy var a = min_value
     * APR_DIRECT
@@ -204,7 +204,7 @@ class MyMainPage:
   //dark area behind slider
   @IBOutlet weak  var edit_slider_shape: UIView!
   let edit_slider_shape_tweak = CAShapeLayer()
-  //slider_outline is "bare_track" (see above)
+  //slider_outline is ``bare_track'' (see above)
   //dark area behind APR
   @IBOutlet weak  var edit_apr_shape: UIView!
   let edit_apr_shape_tweak = CAShapeLayer()
@@ -481,10 +481,10 @@ class MyMainPage:
       if (suggestions_index == 0) {
         suggest.text = "Suggestion: \(suggestions[suggestions_index]) increments"
       } else if (suggestions_index == 1) {
-        //use "or"
+        //use ``or''
         suggest.text = "Suggestions: \(suggestions[suggestions_index-1]) or \(suggestions[suggestions_index]) increments"
       } else {
-        //use commas and "or" (e.g., "20, 25 or 40")
+        //use commas and ``or'' (e.g., ``20, 25 or 40'')
         for tailoring_suggestions in 0...(suggestions_index-2) {
           tailored_suggestions += "\(suggestions[tailoring_suggestions]), "
         }
@@ -625,10 +625,10 @@ class MyMainPage:
       if (suggestions_index == 0) {
         suggest.text = "Suggestion: \(suggestions[suggestions_index]) increments"
       } else if (suggestions_index == 1) {
-        //use "or"
+        //use ``or''
         suggest.text = "Suggestions: \(suggestions[suggestions_index-1]) or \(suggestions[suggestions_index]) increments"
       } else {
-        //use commas and "or" (e.g., "20, 25 or 40")
+        //use commas and ``or'' (e.g., ``20, 25 or 40'')
         for tailoring_suggestions in 0...(suggestions_index-2) {
           tailored_suggestions += "\(suggestions[tailoring_suggestions]), "
         }
@@ -769,10 +769,10 @@ class MyMainPage:
       if (suggestions_index == 0) {
         suggest.text = "Suggestion: \(suggestions[suggestions_index]) increments"
       } else if (suggestions_index == 1) {
-        //use "or"
+        //use ``or''
         suggest.text = "Suggestions: \(suggestions[suggestions_index-1]) or \(suggestions[suggestions_index]) increments"
       } else {
-        //use commas and "or" (e.g., "20, 25 or 40")
+        //use commas and ``or'' (e.g., ``20, 25 or 40'')
         for tailoring_suggestions in 0...(suggestions_index-2) {
           tailored_suggestions += "\(suggestions[tailoring_suggestions]), "
         }
@@ -1084,7 +1084,7 @@ class MyMainPage:
   }
 
   @IBAction func Edit_Slider_Expand(_ sender: UIButton?) {
-    //"?" only necessary for slider
+    //``?'' only necessary for slider
     loaned_min_input.text = String(format: "%.0f", min_value)
     loaned_max_input.text = String(format: "%.0f", max_value)
     input_number_of_increments.text = String(
@@ -1136,10 +1136,10 @@ class MyMainPage:
       if (suggestions_index == 0) {
         suggest.text = "Suggestion: \(suggestions[suggestions_index]) increments"
       } else if (suggestions_index == 1) {
-        //use "or"
+        //use ``or''
         suggest.text = "Suggestions: \(suggestions[suggestions_index-1]) or \(suggestions[suggestions_index]) increments"
       } else {
-        //use commas and "or" (e.g., "20, 25 or 40")
+        //use commas and ``or'' (e.g., ``20, 25 or 40'')
         for tailoring_suggestions in 0...(suggestions_index-2) {
           tailored_suggestions += "\(suggestions[tailoring_suggestions]), "
         }
@@ -2540,7 +2540,7 @@ class MyMainPage:
       }
     }
     if (a == a_reference) && (a - floor(a) > 0) {
-      //latter condition is in case "a" has no remainder, or else will get stuck in loop
+      //latter condition is in case ``a'' has no remainder, or else will get stuck in loop
       if (floor(a / down_button_increment)*down_button_increment <= temp) {
         a = temp
         a_reference = temp
