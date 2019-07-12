@@ -5,13 +5,13 @@ RECOMMENDATION: Unzip each iOS application package in Finder, then verify each o
 --------------------------------------------------------------------------------------------------
 Optional
 
-To verify the authenticity of iOS application package:
+To verify the authenticity of the application packages:
 $ gpg --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 0x4191f431
 $ gpg --verify SHA1SUMS.gpg SHA1SUMS (example)
 
-To verify the integrity of iOS application package:
-Linux/macOS terminal: $ sha1sum latest-2.5.2.ipa.zip (example)
-Windows 10 PowerShell: $ Get-FileHash latest-2.5.2.ipa.zip -Algorithm SHA1 (example)
+To verify the integrity of the application packages:
+Linux/macOS terminal: $ sha1sum latest-2.5.2.ipa (example)
+Windows 10 PowerShell: $ Get-FileHash latest-2.5.2.ipa -Algorithm SHA1 (example)
 
 --------------------------------------------------------------------------------------------------
 
