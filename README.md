@@ -86,7 +86,7 @@ Mar 17, 2018 &middot; Version 2.3: initial commit
 
 ## Known Issues
 
-Video introduction does not render correctly, if installed from the App Store.
+Video introduction does not render correctly, if installed from the App Store.<br>
 Potential Xcode bug: Unlike for plain text, for attributed text the interface builder draws custom fonts from Font Book.
 
 ## License
