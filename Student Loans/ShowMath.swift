@@ -132,7 +132,7 @@ class ShowMath: UIViewController {
       i = i
         / 12
         / 100 //need to convert to periodic rate in decimal form
-      a = shared_preferences.double(forKey: "pay_monthly")
+//      a = shared_preferences.double(forKey: "pay_monthly")
     }
     var attributedPercentInterestTitle = NSMutableAttributedString()
     attributedPercentInterestTitle = NSMutableAttributedString(
@@ -212,6 +212,43 @@ class ShowMath: UIViewController {
     }
     Variables()
   }
+    
+    @IBAction func pay_monthly_minimize(_ sender: UIButton) {
+        var temp = Double()
+        i = shared_preferences.double(forKey: "interest")
+        if compound.isOn {
+            i = pow(1 + i/365.25/100, 365.25/12) - 1
+        } else {
+            i = i
+                / 12
+                / 100 //need to convert to periodic rate in decimal form
+        }
+            if (tenyr_indicator == 0) {
+                if (percentage/100*p*i*100 - floor(percentage/100*p*i*100) > 0.499999)
+                    && (percentage/100*p*i*100 - floor(percentage/100*p*i*100) < 0.5) {
+                    temp = (round(percentage/100*p*i*100 + 1) + 1)/100
+                } else {
+                    temp = (round(percentage/100*p*i*100) + 1)/100
+                }
+            } else {
+                if (i != 0) {
+                    temp = ceil(
+                        (percentage/100*i*p*pow(1+percentage/100*i, 120))
+                            / (pow(1+percentage/100*i, 120) - 1)*100
+                        )/100
+                } else {
+                    temp = ceil(p/120*100)/100
+                }
+            }
+//            if (temp >= a) {
+//                a = temp
+//            } else { }
+        a = temp
+        print(i)
+        print(a)
+        Variables()
+    }
+    
 
   @IBAction func Payment_Insight_Bubble(_ sender: UIButton) {
     pay_insight.isHidden = false

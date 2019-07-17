@@ -1423,22 +1423,41 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LineshorterAsset" translatesAutoresizingMaskIntoConstraints="NO" id="mcf-4p-FYM">
                                         <rect key="frame" x="0.0" y="105.5" width="335" height="1"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JD9-pN-80J">
-                                        <rect key="frame" x="100" y="111.5" width="135.5" height="18"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="18" id="wX4-qc-h4n"/>
-                                        </constraints>
-                                        <attributedString key="attributedText">
-                                            <fragment content="Pay Monthly $">
-                                                <attributes>
-                                                    <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" size="18" name="CMUSerif-Bold"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Heo-CV-pEu" userLabel="Pay monthly">
+                                        <rect key="frame" x="64.5" y="111.5" width="206.5" height="18"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JD9-pN-80J">
+                                                <rect key="frame" x="0.0" y="0.0" width="135.5" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="18" id="wX4-qc-h4n"/>
+                                                </constraints>
+                                                <attributedString key="attributedText">
+                                                    <fragment content="Pay Monthly $">
+                                                        <attributes>
+                                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <font key="NSFont" size="18" name="CMUSerif-Bold"/>
+                                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                        </attributes>
+                                                    </fragment>
+                                                </attributedString>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0N1-K8-mkW" userLabel="Empty space">
+                                                <rect key="frame" x="135.5" y="0.0" width="10" height="18"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="10" id="oVD-hc-JAu"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxf-cG-0Gh">
+                                                <rect key="frame" x="145.5" y="0.0" width="61" height="18"/>
+                                                <state key="normal" title="Minimize"/>
+                                                <connections>
+                                                    <action selector="pay_monthly_minimize:" destination="f33-sF-ZiB" eventType="touchUpInside" id="5pG-1c-Hbh"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="tintColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1446,7 +1465,6 @@
                                     <constraint firstAttribute="trailing" secondItem="mcf-4p-FYM" secondAttribute="trailing" id="Kdj-Jx-DbX"/>
                                     <constraint firstItem="DuC-fr-c5j" firstAttribute="leading" secondItem="7Lo-Rk-IPT" secondAttribute="leading" id="P1s-eo-3nH"/>
                                     <constraint firstAttribute="trailing" secondItem="DuC-fr-c5j" secondAttribute="trailing" id="eLs-w9-S1l"/>
-                                    <constraint firstItem="JD9-pN-80J" firstAttribute="top" secondItem="mcf-4p-FYM" secondAttribute="bottom" constant="5" id="nXa-B8-6jB"/>
                                     <constraint firstItem="mcf-4p-FYM" firstAttribute="leading" secondItem="7Lo-Rk-IPT" secondAttribute="leading" id="oPW-UT-80W"/>
                                 </constraints>
                             </stackView>
