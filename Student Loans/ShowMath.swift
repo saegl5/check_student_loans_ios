@@ -240,12 +240,7 @@ class ShowMath: UIViewController {
                     temp = ceil(p/120*100)/100
                 }
             }
-//            if (temp >= a) {
-//                a = temp
-//            } else { }
         a = temp
-        print(i)
-        print(a)
         Variables()
     }
     
