@@ -1424,7 +1424,7 @@
                                         <rect key="frame" x="0.0" y="105.5" width="335" height="1"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Heo-CV-pEu" userLabel="Pay monthly">
-                                        <rect key="frame" x="64.5" y="111.5" width="206.5" height="18"/>
+                                        <rect key="frame" x="89" y="111.5" width="157.5" height="18"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JD9-pN-80J">
                                                 <rect key="frame" x="0.0" y="0.0" width="135.5" height="18"/>
@@ -1449,9 +1449,9 @@
                                                     <constraint firstAttribute="width" constant="10" id="oVD-hc-JAu"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxf-cG-0Gh">
-                                                <rect key="frame" x="145.5" y="0.0" width="61" height="18"/>
-                                                <state key="normal" title="Minimize"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxf-cG-0Gh">
+                                                <rect key="frame" x="145.5" y="0.0" width="12" height="18"/>
+                                                <state key="normal" image="Minimize"/>
                                                 <connections>
                                                     <action selector="pay_monthly_minimize:" destination="f33-sF-ZiB" eventType="touchUpInside" id="5pG-1c-Hbh"/>
                                                 </connections>
@@ -1995,6 +1995,7 @@ Later</string>
         <image name="LineAsset" width="548" height="1"/>
         <image name="LineshorterAsset" width="275" height="1"/>
         <image name="Locked" width="29.5" height="36"/>
+        <image name="Minimize" width="12" height="12"/>
         <image name="Minus" width="14" height="14"/>
         <image name="Off" width="45" height="36"/>
         <image name="Plus" width="14" height="14"/>
