@@ -25,7 +25,7 @@ Not designed for iPad devices<p>
 
 Alternative downloads:<br>
 [Version 2.2.2 for Panel Discussion](/Archives/panel_discussion.ipa "Click here to access the download link.")[^1]<br>
-[Version 2.5.2 - Latest](/Archives/latest-2_5_2.ipa "Click here to access the download link.")<p>
+[Version 2.6.0 - Latest](/Archives/latest-2_6_0.ipa "Click here to access the download link.") (Updated: July 18, 2019)<p>
 
 Install alternative downloads using iTunes or Apple Configurator on iPhone devices.
 
@@ -48,7 +48,7 @@ $ git show-ref --heads --hash
 
 Check that the hash matches the commit SHA.<p>
 
-The latest version is 2.5.2. Known to work on macOS Mojave 10.14.5, in Xcode 10.2.1
+The latest version is 2.6.0. Known to work on macOS Mojave 10.14.5, in Xcode 10.2.1
 
 ## Usage
 
@@ -77,6 +77,7 @@ For any issues, submit a new issue.<p>
 
 ## History
 
+July 18, 2019 &middot; Version 2.6.0: added button to mathematics screen for minimizing monthly payment amount for any percentage of interest payment, revised video introduction
 Feb 9, 2019 &middot; Version 2.5.2: cleaned entire project, source code is 50% leaner, fixed issue where outstanding totals would not disappear if insight is closed, fixed issue where keyboard displayed after clicking on monthly balance boxes, fixed issue where users could paste text into monthly balances<br>
 Jan 16, 2019 &middot; Version 2.5.1: upgraded codebase, fixed video introduction close button, hid status bar when video introduction controls are displayed, fixed edit pay monthly box from dropping to bottom of view controller, displayed alert if device is incompatible with app, addressed warnings<br>
 Oct 1, 2018 &middot; Version 2.4: permitted users to revert developments, fixed issue where coffee cup displays even though users must pay extra, fixed issue where text in remaining balance column is misaligned for greater monthly payments, fixed issue where text colors in remaining balance did not return after closing breakdown of pay, fixed text color of dots for remaining balance<br>
