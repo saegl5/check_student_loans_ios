@@ -48,7 +48,7 @@ $ git show-ref --heads --hash
 
 Check that the hash matches the commit SHA.<p>
 
-The latest version is 2.6.0. Known to work on macOS Mojave 10.14.5, in Xcode 10.2.1
+The latest version is 2.6.0. Known to work on macOS Mojave 10.14.6, in Xcode 10.3, using Swift 4.2
 
 ## Usage
 
