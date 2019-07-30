@@ -410,7 +410,7 @@ class MyMainPage:
   @IBAction func Loaned_Min_Input(_ sender: UITextField) {
     min_value = Double(truncating: removeFormat(string: loaned_min_input.text!))
     if (min_value - floor(min_value) > 0.499999)
-        && (min_value - floor(min_value) < 0.5) {
+        && (min_value - floor(min_value) < 0.500001) {
       min_value = round(min_value + 1)
     } else {
       min_value = round(min_value)
@@ -493,7 +493,7 @@ class MyMainPage:
     }
     if (min_value < progress) {
       var value = (progress - min_value)/increment
-      if (value - floor(value) > 0.499999) && (value - floor(value) < 0.5) {
+      if (value - floor(value) > 0.499999) && (value - floor(value) < 0.500001) {
         value = round(value + 1)
       } else {
         value = round(value)
@@ -510,7 +510,7 @@ class MyMainPage:
     var temp = Double()
     if (tenyr_indicator == 0) {
       if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
+          && (p*i*100 - floor(p*i*100) < 0.500001) {
         temp = (round(p*i*100 + 1) + 1)/100
       } else {
         temp = (round(p*i*100) + 1)/100
@@ -551,7 +551,7 @@ class MyMainPage:
   @IBAction func Loaned_Max_Input(_ sender: UITextField) {
     max_value = Double(truncating: removeFormat(string: loaned_max_input.text!))
     if (max_value - floor(max_value) > 0.499999)
-        && (max_value - floor(max_value) < 0.5) {
+        && (max_value - floor(max_value) < 0.500001) {
       max_value = round(max_value + 1)
     } else {
       max_value = round(max_value)
@@ -637,7 +637,7 @@ class MyMainPage:
     }
     if (max_value > progress) {
       var value = (progress - min_value)/increment
-      if (value - floor(value) > 0.499999) && (value - floor(value) < 0.5) {
+      if (value - floor(value) > 0.499999) && (value - floor(value) < 0.500001) {
         value = round(value + 1)
       } else {
         value = round(value)
@@ -654,7 +654,7 @@ class MyMainPage:
     var temp = Double()
     if (tenyr_indicator == 0) {
       if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
+          && (p*i*100 - floor(p*i*100) < 0.500001) {
         temp = (round(p*i*100 + 1) + 1)/100
       } else {
         temp = (round(p*i*100) + 1)/100
@@ -697,7 +697,7 @@ class MyMainPage:
       string: input_number_of_increments.text!
     ))
     if (number_of_increments - floor(number_of_increments) > 0.499999)
-        && (number_of_increments - floor(number_of_increments) < 0.5) {
+        && (number_of_increments - floor(number_of_increments) < 0.500001) {
       number_of_increments = round(number_of_increments + 1)
     } else {
       number_of_increments = round(number_of_increments)
@@ -784,7 +784,7 @@ class MyMainPage:
   @IBAction func Apr_Number(_ sender: UITextField) {
     i = Double(truncating: removeFormat(string: apr_number.text!))
     let temp_new = i*100 - floor(i*100)
-    if (temp_new > 0.499999) && (temp_new < 0.5) {
+    if (temp_new > 0.499999) && (temp_new < 0.500001) {
       i = round(i*100 + 1)/100 / 12 / 100
     } else {
       i = round(i*100)/100 / 12 / 100
@@ -801,7 +801,7 @@ class MyMainPage:
     var temp = Double()
     if (tenyr_indicator == 0) {
       if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
+          && (p*i*100 - floor(p*i*100) < 0.500001) {
         temp = (round(p*i*100 + 1) + 1)/100
       } else {
         temp = (round(p*i*100) + 1)/100
@@ -844,7 +844,7 @@ class MyMainPage:
       string: down_number.text!
     ))
     if (down_button_increment - floor(down_button_increment) > 0.499999)
-        && (down_button_increment - floor(down_button_increment) < 0.5) {
+        && (down_button_increment - floor(down_button_increment) < 0.500001) {
       down_button_increment = round(down_button_increment + 1)
     } else {
       down_button_increment = round(down_button_increment)
@@ -863,7 +863,7 @@ class MyMainPage:
       string: up_number.text!
     ))
     if (up_button_increment - floor(up_button_increment) > 0.499999)
-        && (up_button_increment - floor(up_button_increment) < 0.5) {
+        && (up_button_increment - floor(up_button_increment) < 0.500001) {
       up_button_increment = round(up_button_increment + 1)
     } else {
       up_button_increment = round(up_button_increment)
@@ -880,7 +880,7 @@ class MyMainPage:
   @IBAction func Pay_Number(_ sender: UITextField) {
     a = Double(truncating: removeFormat(string: pay_number.text!))
     let temp_new2 = a*100 - floor(a*100)
-    if (temp_new2 > 0.499999) && (temp_new2 < 0.5) {
+    if (temp_new2 > 0.499999) && (temp_new2 < 0.500001) {
       a = round(a*100 + 1)/100
     } else {
       a = round(a*100)/100
@@ -888,7 +888,7 @@ class MyMainPage:
     var temp = Double()
     if (tenyr_indicator == 0) {
       if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
+          && (p*i*100 - floor(p*i*100) < 0.500001) {
         temp = (round(p*i*100 + 1) + 1)/100
       } else {
         temp = (round(p*i*100) + 1)/100
@@ -920,7 +920,7 @@ class MyMainPage:
       string: down_timer1_seconds.text!
     ))
     if (set_down_timer1_seconds - floor(set_down_timer1_seconds) > 0.499999)
-        && (set_down_timer1_seconds - floor(set_down_timer1_seconds) < 0.5) {
+        && (set_down_timer1_seconds - floor(set_down_timer1_seconds) < 0.500001) {
       set_down_timer1_seconds = round(set_down_timer1_seconds + 1)
     } else {
       set_down_timer1_seconds = round(set_down_timer1_seconds)
@@ -939,7 +939,7 @@ class MyMainPage:
       string: down_timer2_seconds.text!
     ))
     if (set_down_timer2_seconds - floor(set_down_timer2_seconds) > 0.499999)
-        && (set_down_timer2_seconds - floor(set_down_timer2_seconds) < 0.5) {
+        && (set_down_timer2_seconds - floor(set_down_timer2_seconds) < 0.500001) {
       set_down_timer2_seconds = round(set_down_timer2_seconds + 1)
     } else {
       set_down_timer2_seconds = round(set_down_timer2_seconds)
@@ -955,7 +955,7 @@ class MyMainPage:
       string: up_timer1_seconds.text!
     ))
     if (set_up_timer1_seconds - floor(set_up_timer1_seconds) > 0.499999)
-        && (set_up_timer1_seconds - floor(set_up_timer1_seconds) < 0.5) {
+        && (set_up_timer1_seconds - floor(set_up_timer1_seconds) < 0.500001) {
       set_up_timer1_seconds = round(set_up_timer1_seconds + 1)
     } else {
       set_up_timer1_seconds = round(set_up_timer1_seconds)
@@ -974,7 +974,7 @@ class MyMainPage:
       string: up_timer2_seconds.text!
     ))
     if (set_up_timer2_seconds - floor(set_up_timer2_seconds) > 0.499999)
-        && (set_up_timer2_seconds - floor(set_up_timer2_seconds) < 0.5) {
+        && (set_up_timer2_seconds - floor(set_up_timer2_seconds) < 0.500001) {
       set_up_timer2_seconds = round(set_up_timer2_seconds + 1)
     } else {
       set_up_timer2_seconds = round(set_up_timer2_seconds)
@@ -992,7 +992,7 @@ class MyMainPage:
     if (set_down_timer1_increment - floor(set_down_timer1_increment) > 0.499999)
         && (set_down_timer1_increment
           - floor(set_down_timer1_increment)
-          < 0.5) {
+          < 0.500001) {
       set_down_timer1_increment = round(set_down_timer1_increment + 1)
     } else {
       set_down_timer1_increment = round(set_down_timer1_increment)
@@ -1019,7 +1019,7 @@ class MyMainPage:
     if (set_down_timer2_increment - floor(set_down_timer2_increment) > 0.499999)
         && (set_down_timer2_increment
           - floor(set_down_timer2_increment)
-          < 0.5) {
+          < 0.500001) {
       set_down_timer2_increment = round(set_down_timer2_increment + 1)
     } else {
       set_down_timer2_increment = round(set_down_timer2_increment)
@@ -1038,7 +1038,7 @@ class MyMainPage:
       string: up_timer1_increment.text!
     ))
     if (set_up_timer1_increment - floor(set_up_timer1_increment) > 0.499999)
-        && (set_up_timer1_increment - floor(set_up_timer1_increment) < 0.5) {
+        && (set_up_timer1_increment - floor(set_up_timer1_increment) < 0.500001) {
       set_up_timer1_increment = round(set_up_timer1_increment + 1)
     } else {
       set_up_timer1_increment = round(set_up_timer1_increment)
@@ -1057,7 +1057,7 @@ class MyMainPage:
       string: up_timer2_increment.text!
     ))
     if (set_up_timer2_increment - floor(set_up_timer2_increment) > 0.499999)
-        && (set_up_timer2_increment - floor(set_up_timer2_increment) < 0.5) {
+        && (set_up_timer2_increment - floor(set_up_timer2_increment) < 0.500001) {
       set_up_timer2_increment = round(set_up_timer2_increment + 1)
     } else {
       set_up_timer2_increment = round(set_up_timer2_increment)
@@ -1959,7 +1959,7 @@ class MyMainPage:
     shared_preferences.synchronize()
     var temp = Double()
     if (p*i*100 - floor(p*i*100) > 0.499999)
-        && (p*i*100 - floor(p*i*100) < 0.5) {
+        && (p*i*100 - floor(p*i*100) < 0.500001) {
       temp = (round(p*i*100 + 1) + 1)/100
     } else {
       temp = (round(p*i*100) + 1)/100
@@ -2095,7 +2095,7 @@ class MyMainPage:
       var temp = Double()
       if (tenyr_indicator == 0) {
         if (p*i*100 - floor(p*i*100) > 0.499999)
-            && (p*i*100 - floor(p*i*100) < 0.5) {
+            && (p*i*100 - floor(p*i*100) < 0.500001) {
           temp = (round(p*i*100 + 1) + 1)/100
         } else {
           temp = (round(p*i*100) + 1)/100
@@ -2214,7 +2214,7 @@ class MyMainPage:
     var temp = Double()
     if (tenyr_indicator == 0) {
       if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
+          && (p*i*100 - floor(p*i*100) < 0.500001) {
         temp = (round(p*i*100 + 1) + 1)/100
       } else {
         temp = (round(p*i*100) + 1)/100
@@ -2288,7 +2288,7 @@ class MyMainPage:
     var temp = Double()
     if (tenyr_indicator == 0) {
       if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
+          && (p*i*100 - floor(p*i*100) < 0.500001) {
         temp = (round(p*i*100 + 1) + 1)/100
       } else {
         temp = (round(p*i*100) + 1)/100
@@ -2419,7 +2419,7 @@ class MyMainPage:
     var temp = Double()
     if (tenyr_indicator == 0) {
       if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
+          && (p*i*100 - floor(p*i*100) < 0.500001) {
         temp = (round(p*i*100 + 1) + 1)/100
       } else {
         temp = (round(p*i*100) + 1)/100
@@ -2491,7 +2491,7 @@ class MyMainPage:
     var temp_before = Double()
     if (tenyr_indicator == 0) {
       if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
+          && (p*i*100 - floor(p*i*100) < 0.500001) {
         temp_before = (round(p*i*100 + 1) + 1)/100
       } else {
         temp_before = (round(p*i*100) + 1)/100
@@ -2527,7 +2527,7 @@ class MyMainPage:
     var temp = Double()
     if (tenyr_indicator == 0) {
       if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
+          && (p*i*100 - floor(p*i*100) < 0.500001) {
         temp = (round(p*i*100 + 1) + 1)/100
       } else {
         temp = (round(p*i*100) + 1)/100
@@ -2665,7 +2665,7 @@ class MyMainPage:
     }
     var temp_overpay = Double() //for interest, not pay
     if (p*i*100 - floor(p*i*100) > 0.499999)
-        && (p*i*100 - floor(p*i*100) < 0.5) {
+        && (p*i*100 - floor(p*i*100) < 0.500001) {
       temp_overpay = (round(p*i*100 + 1))/100
     } else {
       temp_overpay = (round(p*i*100))/100
@@ -2687,7 +2687,7 @@ class MyMainPage:
     var remainingbalance_repay_minimum = p
     var temp_interest_amount = Double()
     if (remainingbalance*i*100 - floor(remainingbalance*i*100) > 0.499999)
-        && (remainingbalance*i*100 - floor(remainingbalance*i*100) < 0.5) {
+        && (remainingbalance*i*100 - floor(remainingbalance*i*100) < 0.500001) {
       temp_interest_amount = (round(remainingbalance*i*100 + 1))/100
     } else {
       temp_interest_amount = (round(remainingbalance*i*100))/100
@@ -2698,7 +2698,7 @@ class MyMainPage:
           > 0.499999)
         && (remainingbalance_repay_minimum*i*100
           - floor(remainingbalance_repay_minimum*i*100)
-          < 0.5) {
+          < 0.500001) {
       temp_interest_min = (round(remainingbalance_repay_minimum*i*100 + 1))/100
     } else {
       temp_interest_min = (round(remainingbalance_repay_minimum*i*100))/100
@@ -2706,7 +2706,7 @@ class MyMainPage:
     var temp_pay = Double()
     if (tenyr_indicator == 0) {
       if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
+          && (p*i*100 - floor(p*i*100) < 0.500001) {
         temp_pay = (round(p*i*100 + 1) + 1)/100
       } else {
         temp_pay = (round(p*i*100) + 1)/100
@@ -2722,13 +2722,13 @@ class MyMainPage:
     while (remainingbalance + temp_interest_amount > a) {
       remainingbalance = remainingbalance + temp_interest_amount - a
       let temp_new3 = remainingbalance*100 - floor(remainingbalance*100)
-      if (temp_new3 > 0.499999) && (temp_new3 < 0.5) {
+      if (temp_new3 > 0.499999) && (temp_new3 < 0.500001) {
         remainingbalance = round(remainingbalance*100 + 1)/100
       } else {
         remainingbalance = round(remainingbalance*100)/100
       }
       if (remainingbalance*i*100 - floor(remainingbalance*i*100) > 0.499999)
-          && (remainingbalance*i*100 - floor(remainingbalance*i*100) < 0.5) {
+          && (remainingbalance*i*100 - floor(remainingbalance*i*100) < 0.500001) {
         temp_interest_amount = (round(remainingbalance*i*100 + 1))/100
       } else {
         temp_interest_amount = (round(remainingbalance*i*100))/100
@@ -2741,7 +2741,7 @@ class MyMainPage:
         - temp_pay
       let temp_new4 = remainingbalance_repay_minimum*100
         - floor(remainingbalance_repay_minimum*100)
-      if (temp_new4 > 0.499999) && (temp_new4 < 0.5) {
+      if (temp_new4 > 0.499999) && (temp_new4 < 0.500001) {
         remainingbalance_repay_minimum = round(
             remainingbalance_repay_minimum*100 + 1
           )/100
@@ -2755,7 +2755,7 @@ class MyMainPage:
             > 0.499999)
           && (remainingbalance_repay_minimum*i*100
             - floor(remainingbalance_repay_minimum*i*100)
-            < 0.5) {
+            < 0.500001) {
         temp_interest_min = (round(
             remainingbalance_repay_minimum*i*100 + 1
           ))/100
@@ -2764,7 +2764,7 @@ class MyMainPage:
       }
       if (tenyr_indicator == 0) {
         if (p*i*100 - floor(p*i*100) > 0.499999)
-            && (p*i*100 - floor(p*i*100) < 0.5) {
+            && (p*i*100 - floor(p*i*100) < 0.500001) {
           temp_pay = (round(p*i*100 + 1) + 1)/100
         } else {
           temp_pay = (round(p*i*100) + 1)/100
@@ -2801,7 +2801,7 @@ class MyMainPage:
           > 0.499999)
         && (remainingbalance_repay_minimum*i*100
           - floor(remainingbalance_repay_minimum*i*100)
-          < 0.5) {
+          < 0.500001) {
       temp_interest_min = (round(remainingbalance_repay_minimum*i*100 + 1))/100
     } else {
       temp_interest_min = (round(remainingbalance_repay_minimum*i*100))/100
@@ -2813,7 +2813,7 @@ class MyMainPage:
     let total_repay_minimum = total_repay_minimum_fromloop
       + total_repay_minimum_finalmonth
     if (remainingbalance*i*100 - floor(remainingbalance*i*100) > 0.499999)
-        && (remainingbalance*i*100 - floor(remainingbalance*i*100) < 0.5) {
+        && (remainingbalance*i*100 - floor(remainingbalance*i*100) < 0.500001) {
       temp_interest_amount = (round(remainingbalance*i*100 + 1))/100
     } else {
       temp_interest_amount = (round(remainingbalance*i*100))/100
@@ -2823,7 +2823,7 @@ class MyMainPage:
     var saved = total_repay_minimum - total
     savings_reference = shared_preferences.double(forKey: "savings_change_key")
     if (savings_reference - floor(savings_reference) > 0.499999)
-        && (savings_reference - floor(savings_reference) < 0.5) {
+        && (savings_reference - floor(savings_reference) < 0.500001) {
       savings_reference = (round(savings_reference + 1))/100
     } else {
       savings_reference = round(savings_reference)
@@ -2843,7 +2843,7 @@ class MyMainPage:
           + numberFormatter.string(from: NSNumber(value: 0-savings_reference))!
       }
     } else {
-      if (saved - floor(saved) > 0.499999) && (saved - floor(saved) < 0.5) {
+      if (saved - floor(saved) > 0.499999) && (saved - floor(saved) < 0.500001) {
         saved = (round(saved + 1))/100
       } else {
         saved = round(saved)
@@ -3197,7 +3197,7 @@ class MyMainPage:
     var temp = Double()
     if (tenyr_indicator == 0) {
       if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
+          && (p*i*100 - floor(p*i*100) < 0.500001) {
         temp = (round(p*i*100 + 1) + 1)/100
       } else {
         temp = (round(p*i*100) + 1)/100
