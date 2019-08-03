@@ -200,6 +200,8 @@ class MyMainPage:
     width: 14,
     height: 7
   ))
+  internal var test_array = [Double]()
+  internal var against_array = [Double]()
 
   //dark area behind slider
   @IBOutlet weak  var edit_slider_shape: UIView!
@@ -518,6 +520,7 @@ class MyMainPage:
     } else {
       if (i != 0) {
         temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        Error_Check()
       } else {
         temp = ceil(p/120*100)/100
       }
@@ -547,6 +550,19 @@ class MyMainPage:
     }
     Lengthsaving()
   }
+    
+  //instructions for checking ten-year minimum payment if in error
+  func Error_Check() {
+    test_array.removeAll() //reset array
+    against_array.removeAll() //reset array
+    test_array.append(remainingbalance_repay_minimum)
+    against_array.append(remainingbalance_repay_minimum)
+    test_array.append(remainingbalance_repay_minimum)
+    test_array.append(0)
+    print(test_array)
+    print(test_array.count-1)
+  }
+
 
   @IBAction func Loaned_Max_Input(_ sender: UITextField) {
     max_value = Double(truncating: removeFormat(string: loaned_max_input.text!))
@@ -2678,7 +2694,7 @@ class MyMainPage:
     shared_preferences.synchronize()
     pay_number.text = "\(numberFormatter.string(from: NSNumber(value: a))!)"
   }
-
+    
   //instructions for calculating time and savings
   func Lengthsaving() {
     var j = 0
