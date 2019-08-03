@@ -555,9 +555,9 @@ class MyMainPage:
   func Error_Check() {
     test_array.removeAll() //reset array
     against_array.removeAll() //reset array
-    test_array.append(remainingbalance_repay_minimum)
-    against_array.append(remainingbalance_repay_minimum)
-    test_array.append(remainingbalance_repay_minimum)
+//    test_array.append(remainingbalance_repay_minimum)
+//    against_array.append(remainingbalance_repay_minimum)
+//    test_array.append(remainingbalance_repay_minimum)
     test_array.append(0)
     print(test_array)
     print(test_array.count-1)
