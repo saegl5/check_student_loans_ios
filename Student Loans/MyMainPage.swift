@@ -519,8 +519,8 @@ class MyMainPage:
       }
     } else {
       if (i != 0) {
-        temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
-        Error_Check()
+//        temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+//        Error_Check()
       } else {
         temp = ceil(p/120*100)/100
       }
@@ -551,16 +551,35 @@ class MyMainPage:
     Lengthsaving()
   }
     
+  //instructions for checking and rounding
+  func CR(x:Double) -> Double {
+    if (x*100 - floor(x*100) > 0.499999)
+        && (x*100 - floor(x*100) < 0.5) {
+        return (round(x*100 + 1))/100
+    }
+    else {
+        return (round(x*100))/100
+    }
+  }
+    
   //instructions for checking ten-year minimum payment if in error
-  func Error_Check() {
+  func Error_Check(c:Int) -> [Double] {
     test_array.removeAll() //reset array
     against_array.removeAll() //reset array
-//    test_array.append(remainingbalance_repay_minimum)
+    test_array.append(p)
 //    against_array.append(remainingbalance_repay_minimum)
 //    test_array.append(remainingbalance_repay_minimum)
+    var k = 0
+    var temp_pay = ceil((i*test_array[0]*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+    temp_pay += 0.01*Double(c)
+    while (test_array[k] - (temp_pay - CR(x: test_array[k]*i)) > 0) {
+        test_array.append( CR(x: test_array[k] - ( temp_pay - CR(x: test_array[k]*i) )) )
+        k += 1
+    }
     test_array.append(0)
-    print(test_array)
-    print(test_array.count-1)
+//    print(test_array)
+//    print(test_array.count-1)
+    return test_array
   }
 
 
@@ -3637,7 +3656,7 @@ class MyMainPage:
         sender: self
       )
     }
-    
+    print(Error_Check(c: -1))
   }
     
 }
