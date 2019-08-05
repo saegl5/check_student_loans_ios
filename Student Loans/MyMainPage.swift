@@ -200,8 +200,6 @@ class MyMainPage:
     width: 14,
     height: 7
   ))
-  internal var test_array = [Double]()
-  internal var against_array = [Double]()
 
   //dark area behind slider
   @IBOutlet weak  var edit_slider_shape: UIView!
@@ -224,6 +222,8 @@ class MyMainPage:
   //dark areas at bottom
   @IBOutlet weak  var abs10yr_shape: UIView!
   @IBOutlet weak  var swipe_shape: UIView!
+    
+  internal var test_array = [Double]()
 
   /*
   // MARK: - Navigation
@@ -519,8 +519,8 @@ class MyMainPage:
       }
     } else {
       if (i != 0) {
-//        temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
-//        Error_Check()
+        temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp += CT()
       } else {
         temp = ceil(p/120*100)/100
       }
@@ -551,7 +551,7 @@ class MyMainPage:
     Lengthsaving()
   }
     
-  //instructions for checking and rounding
+  //instructions for checking and rounding quantities
   func CR(x:Double) -> Double {
     if (x*100 - floor(x*100) > 0.499999)
         && (x*100 - floor(x*100) < 0.5) {
@@ -562,26 +562,38 @@ class MyMainPage:
     }
   }
     
-  //instructions for checking ten-year minimum payment if in error
-  func Error_Check(c:Int) -> [Double] {
+  //instructions for building test_arrays
+  func BT(c:Int) -> [Double] {
     test_array.removeAll() //reset array
-    against_array.removeAll() //reset array
     test_array.append(p)
-//    against_array.append(remainingbalance_repay_minimum)
-//    test_array.append(remainingbalance_repay_minimum)
     var k = 0
     var temp_pay = ceil((i*test_array[0]*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
     temp_pay += 0.01*Double(c)
-    while (test_array[k] - (temp_pay - CR(x: test_array[k]*i)) > 0) {
+    while ( test_array[k] - (temp_pay - CR(x: test_array[k]*i)) > 0 )
+        && ( CR(x: temp_pay) != CR(x: test_array[0]*i) ) {
         test_array.append( CR(x: test_array[k] - ( temp_pay - CR(x: test_array[k]*i) )) )
         k += 1
     }
     test_array.append(0)
-//    print(test_array)
-//    print(test_array.count-1)
+    if ( CR(x: temp_pay) == CR(x: test_array[0]*i) ) {
+        test_array.removeAll()
+    }
     return test_array
   }
 
+  //instructions for checking test_arrays
+  func CT() -> Double {
+    if ( BT(c: -1).count-1 <= 120 ) {
+        return -1.0/100
+    }
+    else if ( BT(c: 0).count-1 <= 120 ) {
+        return 0.0/100
+    }
+    else if ( BT(c: 1).count-1 <= 120 ) {
+        return 1.0/100
+    }
+    return 0.0/100
+  }
 
   @IBAction func Loaned_Max_Input(_ sender: UITextField) {
     max_value = Double(truncating: removeFormat(string: loaned_max_input.text!))
@@ -697,6 +709,7 @@ class MyMainPage:
     } else {
       if (i != 0) {
         temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp += CT()
       } else {
         temp = ceil(p/120*100)/100
       }
@@ -844,6 +857,7 @@ class MyMainPage:
     } else {
       if (i != 0) {
         temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp += CT()
       } else {
         temp = ceil(p/120*100)/100
       }
@@ -931,6 +945,7 @@ class MyMainPage:
     } else {
       if (i != 0) {
         temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp += CT()
       } else {
         temp = ceil(p/120*100)/100
       }
@@ -2047,6 +2062,7 @@ class MyMainPage:
     var temp = Double()
     if (i != 0) {
       temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+      temp += CT()
     } else {
       temp = ceil(p/120*100)/100
     }
@@ -2138,6 +2154,7 @@ class MyMainPage:
       } else {
         if (i != 0) {
           temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+          temp += CT()
         } else {
           temp = ceil(p/120*100)/100
         }
@@ -2257,6 +2274,7 @@ class MyMainPage:
     } else {
       if (i != 0) {
         temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp += CT()
       } else {
         temp = ceil(p/120*100)/100
       }
@@ -2331,6 +2349,7 @@ class MyMainPage:
     } else {
       if (i != 0) {
         temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp += CT()
       } else {
         temp = ceil(p/120*100)/100
       }
@@ -2462,6 +2481,7 @@ class MyMainPage:
     } else {
       if (i != 0) {
         temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp += CT()
       } else {
         temp = ceil(p/120*100)/100
       }
@@ -2534,6 +2554,7 @@ class MyMainPage:
     } else {
       if (i != 0) {
         temp_before = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp_before += CT()
       } else {
         temp_before = ceil(p/120*100)/100
       }
@@ -2570,6 +2591,7 @@ class MyMainPage:
     } else {
       if (i != 0) {
         temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp += CT()
       } else {
         temp = ceil(p/120*100)/100
       }
@@ -2749,6 +2771,7 @@ class MyMainPage:
     } else {
       if (i != 0) {
         temp_pay = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp_pay += CT()
       } else {
         temp_pay = ceil(p/120*100)/100
       }
@@ -2807,6 +2830,7 @@ class MyMainPage:
       } else {
         if (i != 0) {
           temp_pay = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+          temp_pay += CT()
         } else {
           temp_pay = ceil(p/120*100)/100
         }
@@ -3240,6 +3264,7 @@ class MyMainPage:
     } else {
       if (i != 0) {
         temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp += CT()
       } else {
         temp = ceil(p/120*100)/100
       }
@@ -3656,7 +3681,7 @@ class MyMainPage:
         sender: self
       )
     }
-    print(Error_Check(c: -1))
+    
   }
     
 }
