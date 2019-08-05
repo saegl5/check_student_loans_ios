@@ -102,6 +102,8 @@ class ShowMath: UIViewController {
 
   //dark area behind monthly balance table
   @IBOutlet weak  var insight_shape: UIView!
+    
+  internal var test_array = [Double]()
 
   @IBAction func Switch(_ sender: UISwitch) {
     if compound.isOn {
@@ -120,6 +122,7 @@ class ShowMath: UIViewController {
               (percentage/100*i*p*pow(1+percentage/100*i, 120))
                 / (pow(1+percentage/100*i, 120) - 1)*100
             )/100
+          temp += CT()
         } else {
           temp = ceil(p/120*100)/100
         }
@@ -213,6 +216,50 @@ class ShowMath: UIViewController {
     Variables()
   }
     
+    //instructions for checking and rounding quantities
+    func CR(x:Double) -> Double {
+        if (x*100 - floor(x*100) > 0.499999)
+            && (x*100 - floor(x*100) < 0.5) {
+            return (round(x*100 + 1))/100
+        }
+        else {
+            return (round(x*100))/100
+        }
+    }
+    
+    //instructions for building test_arrays
+    func BT(c:Int) -> [Double] {
+        test_array.removeAll() //reset array
+        test_array.append(p)
+        var k = 0
+        var temp_pay = ceil((percentage/100*i*test_array[0]*pow(1+percentage/100*i, 120)) / (pow(1+percentage/100*i, 120) - 1)*100)/100
+        temp_pay += 0.01*Double(c)
+        while ( test_array[k] - (temp_pay - CR(x: percentage/100*test_array[k]*i)) > 0 )
+            && ( CR(x: temp_pay) != CR(x: percentage/100*test_array[0]*i) ) {
+                test_array.append( CR(x: test_array[k] - ( temp_pay - CR(x: percentage/100*test_array[k]*i) )) )
+                k += 1
+        }
+        test_array.append(0)
+        if ( CR(x: temp_pay) == CR(x: percentage/100*test_array[0]*i) ) {
+            test_array.removeAll()
+        }
+        return test_array
+    }
+    
+    //instructions for checking test_arrays
+    func CT() -> Double {
+        if ( BT(c: -1).count-1 <= 120 ) {
+            return -1.0/100
+        }
+        else if ( BT(c: 0).count-1 <= 120 ) {
+            return 0.0/100
+        }
+        else if ( BT(c: 1).count-1 <= 120 ) {
+            return 1.0/100
+        }
+        return 0.0/100
+    }
+    
     @IBAction func pay_monthly_minimize(_ sender: UIButton) {
         var temp = Double()
         i = shared_preferences.double(forKey: "interest")
@@ -236,6 +283,7 @@ class ShowMath: UIViewController {
                         (percentage/100*i*p*pow(1+percentage/100*i, 120))
                             / (pow(1+percentage/100*i, 120) - 1)*100
                         )/100
+                    temp += CT()
                 } else {
                     temp = ceil(p/120*100)/100
                 }
@@ -642,6 +690,7 @@ class ShowMath: UIViewController {
             (percentage/100*i*p*pow(1+percentage/100*i, 120))
               / (pow(1+percentage/100*i, 120) - 1)*100
           )/100
+        temp += CT()
       } else {
         temp = ceil(p/120*100)/100
       }
@@ -3182,6 +3231,7 @@ class ShowMath: UIViewController {
               (percentage/100*i*p*pow(1+percentage/100*i, 120))
                 / (pow(1+percentage/100*i, 120) - 1)*100
             )/100
+          temp_pay += CT()
           temp_pay_first = temp_pay
           temp_pay = temp_pay - interest_pay_min
 //          if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
@@ -3268,6 +3318,7 @@ class ShowMath: UIViewController {
                 (percentage/100*i*p*pow(1+percentage/100*i, 120))
                   / (pow(1+percentage/100*i, 120) - 1)*100
               )/100
+            temp_pay += CT()
             temp_pay = temp_pay - interest_pay_min
 //            if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
 //                && (temp_pay*100 - floor(temp_pay*100) < 0.5) {
