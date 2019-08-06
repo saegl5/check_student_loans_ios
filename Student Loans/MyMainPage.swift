@@ -2820,21 +2820,21 @@ class MyMainPage:
       } else {
         temp_interest_min = (round(remainingbalance_repay_minimum*i*100))/100
       }
-      if (tenyr_indicator == 0) {
-        if (p*i*100 - floor(p*i*100) > 0.499999)
-            && (p*i*100 - floor(p*i*100) < 0.5) {
-          temp_pay = (round(p*i*100 + 1) + 1)/100
-        } else {
-          temp_pay = (round(p*i*100) + 1)/100
-        }
-      } else {
-        if (i != 0) {
-          temp_pay = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
-          temp_pay += CT()
-        } else {
-          temp_pay = ceil(p/120*100)/100
-        }
-      }
+//      if (tenyr_indicator == 0) {
+//        if (p*i*100 - floor(p*i*100) > 0.499999)
+//            && (p*i*100 - floor(p*i*100) < 0.5) {
+//          temp_pay = (round(p*i*100 + 1) + 1)/100
+//        } else {
+//          temp_pay = (round(p*i*100) + 1)/100
+//        }
+//      } else {
+//        if (i != 0) {
+//          temp_pay = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+//          temp_pay += CT()
+//        } else {
+//          temp_pay = ceil(p/120*100)/100
+//        }
+//      }
       k += 1
     }
     var temp = Int()
