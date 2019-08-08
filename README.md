@@ -117,7 +117,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 [^1]: Exceptions: Rounding and interest computations are corrected, and the monthly balance table is restructured.
-[^2]: If you have more than one type of loan or you have multiple loans, select the rate for the biggest one. If you are unsure about your rate, choose 4.45% since Direct Loans are more popular.<br>
+[^2]: If you have more than one type of loan or you have multiple loans, select the rate for the biggest one. If you are unsure about your rate, choose 4.45% since Direct Loans are more popular.
 [^3]: Interest Rates and Fees. (n.d.). Retrieved from [https://studentaid.ed.gov/sa/types/loans/interest-rates](https://studentaid.ed.gov/sa/types/loans/interest-rates "Click here to visit the office of Federal Student Aid.")
 [^4]: Purged commit history dating up to October 12, 2018, meaning that the displayed number of commits is inaccurate
 
