@@ -1,7 +1,11 @@
+macOS only!
+
 Install each application package using iTunes or Apple Configurator on iPhone devices.
 
 --------------------------------------------------------------------------------------------------
 Optional
+
+Prerequisites: gnupg (https://www.gnupg.org/)
 
 To verify the authenticity of the application packages in Terminal:
 $ gpg --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 0x4191f431
