@@ -172,26 +172,24 @@ class MyMainPage:
     String(format: "%.2f", APR_PERKINS) + "% - Perkins Loan"
   ] //for table
   lazy var rates_reference = [
-    APR_DIRECT / 12 / 100,
-    APR_PERKINS / 12 / 100,
+    APR_DIRECT / 100 / 12,
+    APR_PERKINS / 100 / 12,
     Double()
   ] //rates_reference[2], the one cast as Double(), will store custom rate
   internal var savings_reference = 0.00
   internal var numberFormatter: NumberFormatter = NumberFormatter()
   internal lazy var p = min_value
-  internal lazy var i = APR_DIRECT
-    / 12
-    / 100 //need to convert to periodic rate in decimal form
-  internal lazy var i_reference = APR_DIRECT / 12 / 100
+  internal lazy var r = APR_DIRECT/100
+  internal lazy var i = r
+    / 12 //need to convert to periodic rate in decimal form
+  internal lazy var i_reference = r / 12
   internal lazy var a = min_value
-    * APR_DIRECT
+    * r
     / 12
-    / 100
     + 0.01 //values are cast in viewDidLoad()
   internal lazy var a_reference = min_value
-    * APR_DIRECT
+    * r
     / 12
-    / 100
     + 0.01 //brought back because of + - buttons
   let shared_preferences: UserDefaults = UserDefaults.standard
   let bubble_label_arrow = UILabel(frame: CGRect(
@@ -833,12 +831,12 @@ class MyMainPage:
     i = Double(truncating: removeFormat(string: apr_number.text!))
     let temp_new = i*100 - floor(i*100)
     if (temp_new > 0.499999) && (temp_new < 0.5) {
-      i = round(i*100 + 1)/100 / 12 / 100
+      i = round(i*100 + 1)/100 / 100 / 12
     } else {
-      i = round(i*100)/100 / 12 / 100
+      i = round(i*100)/100 / 100 / 12
     }
     if (i <= 0) {
-      i = 0.01 / 12 / 100
+      i = 0.01 / 100 / 12
       apr_number.text = String(format: "%.2f", i * 12 * 100)
       apr_number_back.text = String(format: "%.2f", i * 12 * 100)
     } else { }

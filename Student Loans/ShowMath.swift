@@ -75,6 +75,7 @@ class ShowMath: UIViewController {
   var progress = 100.0
   var percentage = Double()
   var p = Double()
+  var r = Double()
   var i = Double()
   var a = Double()
   var tenyr_indicator = Double()
@@ -107,7 +108,8 @@ class ShowMath: UIViewController {
 
   @IBAction func Switch(_ sender: UISwitch) {
     if compound.isOn {
-      i = pow(1 + i*12*100/365.25/100, 365.25/12) - 1
+      r = i*12*100/100 // i*12*100 is for reverting to APR(%)
+      i = pow(1 + r/365.25, 365.25/12) - 1
       var temp = Double()
       if (tenyr_indicator == 0) {
         if (percentage/100*p*i*100 - floor(percentage/100*p*i*100) > 0.499999)
@@ -131,10 +133,9 @@ class ShowMath: UIViewController {
         a = temp
       } else { }
     } else {
-      i = shared_preferences.double(forKey: "interest")
-      i = i
-        / 12
-        / 100 //need to convert to periodic rate in decimal form
+      r = shared_preferences.double(forKey: "interest")/100
+      i = r
+        / 12 //need to convert to periodic rate in decimal form
 //      a = shared_preferences.double(forKey: "pay_monthly")
     }
     var attributedPercentInterestTitle = NSMutableAttributedString()
@@ -262,13 +263,12 @@ class ShowMath: UIViewController {
     
     @IBAction func pay_monthly_minimize(_ sender: UIButton) {
         var temp = Double()
-        i = shared_preferences.double(forKey: "interest")
+        r = shared_preferences.double(forKey: "interest")/100
         if compound.isOn {
-            i = pow(1 + i/365.25/100, 365.25/12) - 1
+            i = pow(1 + r/365.25, 365.25/12) - 1
         } else {
-            i = i
-                / 12
-                / 100 //need to convert to periodic rate in decimal form
+            i = r
+                / 12 //need to convert to periodic rate in decimal form
         }
             if (tenyr_indicator == 0) {
                 if (percentage/100*p*i*100 - floor(percentage/100*p*i*100) > 0.499999)
@@ -846,12 +846,11 @@ class ShowMath: UIViewController {
       for: .normal
     )
     p = shared_preferences.double(forKey: "loaned")
-    i = shared_preferences.double(forKey: "interest")
+    r = shared_preferences.double(forKey: "interest")/100
     a = shared_preferences.double(forKey: "pay_monthly")
     tenyr_indicator = shared_preferences.double(forKey: "tenyr")
-    i = i
-      / 12
-      / 100 //need to convert to periodic rate in decimal form
+    i = r
+      / 12 //need to convert to periodic rate in decimal form
     let attributedLoanedTitle = NSMutableAttributedString(
       string: "Loaned",
       attributes: [
