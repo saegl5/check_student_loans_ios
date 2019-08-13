@@ -233,15 +233,15 @@ class ShowMath: UIViewController {
         test_array.removeAll() //reset array
         test_array.append(p)
         var m_min = 1
-        var temp_pay = ceil((percentage/100*i*test_array[0]*pow(1+percentage/100*i, 120)) / (pow(1+percentage/100*i, 120) - 1)*100)/100
-        temp_pay += 0.01*Double(c)
-        while ( test_array[m_min-1] - (temp_pay - CR(x: percentage/100*test_array[m_min-1]*i)) > 0 )
-            && ( CR(x: temp_pay) != CR(x: percentage/100*test_array[0]*i) ) {
-                test_array.append( CR(x: test_array[m_min-1] - ( temp_pay - CR(x: percentage/100*test_array[m_min-1]*i) )) )
+        var a_min = ceil((percentage/100*i*test_array[0]*pow(1+percentage/100*i, 120)) / (pow(1+percentage/100*i, 120) - 1)*100)/100
+        a_min += 0.01*Double(c)
+        while ( test_array[m_min-1] - (a_min - CR(x: percentage/100*test_array[m_min-1]*i)) > 0 )
+            && ( CR(x: a_min) != CR(x: percentage/100*test_array[0]*i) ) {
+                test_array.append( CR(x: test_array[m_min-1] - ( a_min - CR(x: percentage/100*test_array[m_min-1]*i) )) )
                 m_min += 1
         }
         test_array.append(0)
-        if ( CR(x: temp_pay) == CR(x: percentage/100*test_array[0]*i) ) {
+        if ( CR(x: a_min) == CR(x: percentage/100*test_array[0]*i) ) {
             test_array.removeAll()
         }
         return test_array
@@ -3072,20 +3072,20 @@ class ShowMath: UIViewController {
           * a
           + remainingbalance
           + remaining_interest
-          + outstandingbalance //total
+          + outstandingbalance //T
       } else {
         ppt1 = Double(n-1)
-          * (a)
+          * a
           + remainingbalance
           + remaining_interest
-          + outstandingbalance //total
+          + outstandingbalance //T
       }
     } else {
       ppt1 = Double(n-1)
         * a
         + remainingbalance
         + remaining_interest
-        + outstandingbalance //total
+        + outstandingbalance //T
     }
     if (ppt1*100 - floor(ppt1*100) > 0.499999)
         && (ppt1*100 - floor(ppt1*100) < 0.5) {
@@ -3203,23 +3203,22 @@ class ShowMath: UIViewController {
     } else {
       interest_pay_min = round(xxx*100)/100
     }
+    var a_min = Double()
     var temp_pay = Double()
-    var temp_pay_first = Double()
     if (tenyr_indicator == 0) {
-      if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
-        temp_pay = (round(p*i*100 + 1))/100
-      } else {
-        temp_pay = (round(p*i*100))/100
-      }
+      // if (p*i*100 - floor(p*i*100) > 0.499999)
+      //     && (p*i*100 - floor(p*i*100) < 0.5) {
+      //   temp_pay = (round(p*i*100 + 1))/100
+      // } else {
+      //   temp_pay = (round(p*i*100))/100
+      // }
       let xx = percentage/100*p*i
       if (xx*100 - floor(xx*100) > 0.499999) && (xx*100 - floor(xx*100) < 0.5) {
-        temp_pay = (round(xx*100 + 1)+1)/100 - interest_pay_min
-        temp_pay_first = (round(xx*100 + 1)+1)/100
+        a_min = (round(xx*100 + 1)+1)/100
       } else {
-        temp_pay = (round(xx*100) + 1)/100 - interest_pay_min
-        temp_pay_first = (round(xx*100) + 1)/100
+        a_min = (round(xx*100) + 1)/100
       }
+      temp_pay = a_min - interest_pay_min
 //      if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
 //          && (temp_pay*100 - floor(temp_pay*100) < 0.5) {
 //        temp_pay = round(temp_pay*100 + 1)/100
@@ -3229,13 +3228,13 @@ class ShowMath: UIViewController {
     } else {
       if (i != 0) {
         if (progress != 0) {
-          temp_pay = ceil(
+          a_min = ceil(
               (percentage/100*i*p*pow(1+percentage/100*i, 120))
                 / (pow(1+percentage/100*i, 120) - 1)*100
             )/100
-          temp_pay += CT()
-          temp_pay_first = temp_pay
-          temp_pay = temp_pay - interest_pay_min
+          a_min += CT()
+          // a_min = temp_pay
+          temp_pay = a_min - interest_pay_min
 //          if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
 //              && (temp_pay*100 - floor(temp_pay*100) < 0.5) {
 //            temp_pay = round(temp_pay*100 + 1)/100
@@ -3243,12 +3242,12 @@ class ShowMath: UIViewController {
 //            temp_pay = round(temp_pay*100)/100
 //          }
         } else {
-          temp_pay = ceil(p/120*100)/100
-          temp_pay_first = temp_pay
+          a_min = ceil(p/120*100)/100
+          temp_pay = a_min
         }
       } else {
-        temp_pay = ceil(p/120*100)/100
-        temp_pay_first = temp_pay
+        a_min = ceil(p/120*100)/100
+        temp_pay = a_min
       }
     }
     while (remainingbalance_repay_minimum - temp_pay > 0) {
@@ -3294,34 +3293,35 @@ class ShowMath: UIViewController {
         interest_pay_min = round(xxx*100)/100
       }
       if (tenyr_indicator == 0) {
-        if (p*i*100 - floor(p*i*100) > 0.499999)
-            && (p*i*100 - floor(p*i*100) < 0.5) {
-          temp_pay = (round(p*i*100 + 1))/100
-        } else {
-          temp_pay = (round(p*i*100))/100
-        }
-        let xx = percentage/100*p*i
-        if (xx*100 - floor(xx*100) > 0.499999)
-            && (xx*100 - floor(xx*100) < 0.5) {
-          temp_pay = (round(xx*100 + 1)+1)/100 - interest_pay_min
-        } else {
-          temp_pay = (round(xx*100) + 1)/100 - interest_pay_min
-        }
-//        if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
-//            && (temp_pay*100 - floor(temp_pay*100) < 0.5) {
-//          temp_pay = round(temp_pay*100 + 1)/100
-//        } else {
-//          temp_pay = round(temp_pay*100)/100
-//        }
+        // if (p*i*100 - floor(p*i*100) > 0.499999)
+        //     && (p*i*100 - floor(p*i*100) < 0.5) {
+        //   temp_pay = (round(p*i*100 + 1))/100
+        // } else {
+        //   temp_pay = (round(p*i*100))/100
+        // }
+        // let xx = percentage/100*p*i
+        // if (xx*100 - floor(xx*100) > 0.499999)
+        //     && (xx*100 - floor(xx*100) < 0.5) {
+        //   temp_pay = (round(xx*100 + 1)+1)/100 - interest_pay_min
+        // } else {
+        //   temp_pay = (round(xx*100) + 1)/100 - interest_pay_min
+        // }
+        temp_pay = a_min - interest_pay_min
+      //  if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
+      //      && (temp_pay*100 - floor(temp_pay*100) < 0.5) {
+      //    temp_pay = round(temp_pay*100 + 1)/100
+      //  } else {
+      //    temp_pay = round(temp_pay*100)/100
+      //  }
       } else {
         if (i != 0) {
           if (progress != 0) {
-            temp_pay = ceil(
-                (percentage/100*i*p*pow(1+percentage/100*i, 120))
-                  / (pow(1+percentage/100*i, 120) - 1)*100
-              )/100
-            temp_pay += CT()
-            temp_pay = temp_pay - interest_pay_min
+            // a_min = ceil(
+            //     (percentage/100*i*p*pow(1+percentage/100*i, 120))
+            //       / (pow(1+percentage/100*i, 120) - 1)*100
+            //   )/100
+            // a_min += CT()
+            temp_pay = a_min - interest_pay_min
 //            if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
 //                && (temp_pay*100 - floor(temp_pay*100) < 0.5) {
 //              temp_pay = round(temp_pay*100 + 1)/100
@@ -3329,11 +3329,13 @@ class ShowMath: UIViewController {
 //              temp_pay = round(temp_pay*100)/100
 //            }
           } else {
-            temp_pay = ceil(p/120*100)/100
-            temp_pay_first = temp_pay
+            // temp_pay = ceil(p/120*100)/100
+            temp_pay = a_min
+            // temp_pay_first = temp_pay
           }
         } else {
-          temp_pay = ceil(p/120*100)/100
+          // temp_pay = ceil(p/120*100)/100
+          temp_pay = a_min
         }
       }
       m_min += 1
@@ -3350,14 +3352,16 @@ class ShowMath: UIViewController {
       temp_interest_min = round(remainingbalance_repay_minimum*i*100)/100
     }
     let temp_interest_last_min = temp_interest_min
-    let total_repay_minimum_fromloop = Double(n_min-1) * temp_pay_first
-    let total_repay_minimum_finalmonth = remainingbalance_repay_minimum
+    // let total_repay_minimum_fromloop = Double(n_min-1) * a_min
+    // let total_repay_minimum_finalmonth = remainingbalance_repay_minimum
+    //   + temp_interest_last_min
+    //   + outstandingbalance_min
+    let T_max = Double(n_min-1)*a_min
+      + remainingbalance_repay_minimum
       + temp_interest_last_min
       + outstandingbalance_min
-    let total_repay_minimum = total_repay_minimum_fromloop
-      + total_repay_minimum_finalmonth
     //appended to total paid
-    var pppt1 = total_repay_minimum
+    var pppt1 = T_max
     if (pppt1*100 - floor(pppt1*100) > 0.499999)
         && (pppt1*100 - floor(pppt1*100) < 0.5) {
       pppt1 = round(pppt1*100 + 1)/100
@@ -3374,9 +3378,9 @@ class ShowMath: UIViewController {
     }
     let total_paid_string_if_min = NSMutableAttributedString()
     var total_paid_expression_if_min = NSMutableAttributedString()
-    let total = ppt1
-    if (round(total_repay_minimum-total) == 0.0) {
-      //bizzare that cannot use total_repay_minimum-total <= 0.0
+    let T = ppt1
+    if (round(T_max-T) == 0.0) {
+      //bizzare that cannot use T_max-T <= 0.0
       total_paid_expression_if_min = NSMutableAttributedString(
         string: "",
         attributes: [:]
@@ -3386,9 +3390,9 @@ class ShowMath: UIViewController {
         string: "("
           + numberFormatter.string(from: NSNumber(value: n_min-1))!
           + " · "
-          + String(format: "%.2f", temp_pay_first)
+          + String(format: "%.2f", a_min)
           + ") + "
-          + String(format: "%.2f", total_repay_minimum_finalmonth)
+          + String(format: "%.2f", remainingbalance_repay_minimum + temp_interest_last_min + outstandingbalance_min)
           + " = ",
         attributes: [:]
       )
@@ -3424,7 +3428,7 @@ class ShowMath: UIViewController {
     total_paid_string_if_min.append(total_paid_amount_if_min_label)
     total_paid_min.attributedText = total_paid_string_if_min
     total_paid_min.isHidden = false
-    var ppppt1 = total_repay_minimum-total
+    var ppppt1 = T_max-T
     if (ppppt1*100 - floor(ppppt1*100) > 0.499999)
         && (ppppt1*100 - floor(ppppt1*100) < 0.5) {
       ppppt1 = round(ppppt1*100 + 1)/100

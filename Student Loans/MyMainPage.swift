@@ -566,15 +566,15 @@ class MyMainPage:
     test_array.removeAll() //reset array
     test_array.append(p)
     var m_min = 1
-    var temp_pay = ceil((i*test_array[0]*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
-    temp_pay += 0.01*Double(c)
-    while ( test_array[m_min-1] - (temp_pay - CR(x: test_array[m_min-1]*i)) > 0 )
-        && ( CR(x: temp_pay) != CR(x: test_array[0]*i) ) {
-        test_array.append( CR(x: test_array[m_min-1] - ( temp_pay - CR(x: test_array[m_min-1]*i) )) )
+    var a_min = ceil((i*test_array[0]*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+    a_min += 0.01*Double(c)
+    while ( test_array[m_min-1] - (a_min - CR(x: test_array[m_min-1]*i)) > 0 )
+        && ( CR(x: a_min) != CR(x: test_array[0]*i) ) {
+        test_array.append( CR(x: test_array[m_min-1] - ( a_min - CR(x: test_array[m_min-1]*i) )) )
         m_min += 1
     }
     test_array.append(0)
-    if ( CR(x: temp_pay) == CR(x: test_array[0]*i) ) {
+    if ( CR(x: a_min) == CR(x: test_array[0]*i) ) {
         test_array.removeAll()
     }
     return test_array
@@ -2762,23 +2762,23 @@ class MyMainPage:
     } else {
       temp_interest_min = (round(remainingbalance_repay_minimum*i*100))/100
     }
-    var temp_pay = Double()
+    var a_min = Double()
     if (tenyr_indicator == 0) {
       if (p*i*100 - floor(p*i*100) > 0.499999)
           && (p*i*100 - floor(p*i*100) < 0.5) {
-        temp_pay = (round(p*i*100 + 1) + 1)/100
+        a_min = (round(p*i*100 + 1) + 1)/100
       } else {
-        temp_pay = (round(p*i*100) + 1)/100
+        a_min = (round(p*i*100) + 1)/100
       }
     } else {
       if (i != 0) {
-        temp_pay = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
-        temp_pay += CT()
+        a_min = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        a_min += CT()
       } else {
-        temp_pay = ceil(p/120*100)/100
+        a_min = ceil(p/120*100)/100
       }
     }
-    let temp_pay_first = temp_pay
+    // let temp_pay_first = temp_pay
     while (remainingbalance + temp_interest_amount > a) {
       remainingbalance = remainingbalance + temp_interest_amount - a
       let temp_new3 = remainingbalance*100 - floor(remainingbalance*100)
@@ -2796,10 +2796,10 @@ class MyMainPage:
       m += 1
     }
     n = m
-    while (remainingbalance_repay_minimum + temp_interest_min > temp_pay) {
+    while (remainingbalance_repay_minimum + temp_interest_min > a_min) {
       remainingbalance_repay_minimum = remainingbalance_repay_minimum
         + temp_interest_min
-        - temp_pay
+        - a_min
       let temp_new4 = remainingbalance_repay_minimum*100
         - floor(remainingbalance_repay_minimum*100)
       if (temp_new4 > 0.499999) && (temp_new4 < 0.5) {
@@ -2826,16 +2826,16 @@ class MyMainPage:
 //      if (tenyr_indicator == 0) {
 //        if (p*i*100 - floor(p*i*100) > 0.499999)
 //            && (p*i*100 - floor(p*i*100) < 0.5) {
-//          temp_pay = (round(p*i*100 + 1) + 1)/100
+//          a_min = (round(p*i*100 + 1) + 1)/100
 //        } else {
-//          temp_pay = (round(p*i*100) + 1)/100
+//          a_min = (round(p*i*100) + 1)/100
 //        }
 //      } else {
 //        if (i != 0) {
-//          temp_pay = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
-//          temp_pay += CT()
+//          a_min = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+//          a_min += CT()
 //        } else {
-//          temp_pay = ceil(p/120*100)/100
+//          a_min = ceil(p/120*100)/100
 //        }
 //      }
       m_min += 1
@@ -2870,11 +2870,12 @@ class MyMainPage:
       temp_interest_min = (round(remainingbalance_repay_minimum*i*100))/100
     }
     let temp_interest_last_min = temp_interest_min
-    let total_repay_minimum_fromloop = Double(n_min-1) * temp_pay_first
-    let total_repay_minimum_finalmonth = remainingbalance_repay_minimum
+    // let total_repay_minimum_fromloop = Double(n_min-1) * a_min
+    // let total_repay_minimum_finalmonth = remainingbalance_repay_minimum
+    //   + temp_interest_last_min
+    let T_max = Double(n_min-1)*a_min
+      + remainingbalance_repay_minimum
       + temp_interest_last_min
-    let total_repay_minimum = total_repay_minimum_fromloop
-      + total_repay_minimum_finalmonth
     if (remainingbalance*i*100 - floor(remainingbalance*i*100) > 0.499999)
         && (remainingbalance*i*100 - floor(remainingbalance*i*100) < 0.5) {
       temp_interest_amount = (round(remainingbalance*i*100 + 1))/100
@@ -2882,8 +2883,8 @@ class MyMainPage:
       temp_interest_amount = (round(remainingbalance*i*100))/100
     }
     let temp_interest_last_amount = temp_interest_amount
-    let total = Double(n-1) * a + remainingbalance + temp_interest_last_amount
-    var saved = total_repay_minimum - total
+    let T = Double(n-1) * a + remainingbalance + temp_interest_last_amount
+    var saved = T_max - T
     savings_reference = shared_preferences.double(forKey: "savings_change_key")
     if (savings_reference - floor(savings_reference) > 0.499999)
         && (savings_reference - floor(savings_reference) < 0.5) {
