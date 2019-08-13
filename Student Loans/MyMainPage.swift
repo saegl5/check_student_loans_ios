@@ -565,12 +565,12 @@ class MyMainPage:
   func BT(c:Int) -> [Double] {
     test_array.removeAll() //reset array
     test_array.append(p)
-    var k = 0
+    var k = 1
     var temp_pay = ceil((i*test_array[0]*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
     temp_pay += 0.01*Double(c)
-    while ( test_array[k] - (temp_pay - CR(x: test_array[k]*i)) > 0 )
+    while ( test_array[k-1] - (temp_pay - CR(x: test_array[k-1]*i)) > 0 )
         && ( CR(x: temp_pay) != CR(x: test_array[0]*i) ) {
-        test_array.append( CR(x: test_array[k] - ( temp_pay - CR(x: test_array[k]*i) )) )
+        test_array.append( CR(x: test_array[k-1] - ( temp_pay - CR(x: test_array[k-1]*i) )) )
         k += 1
     }
     test_array.append(0)
@@ -2737,8 +2737,10 @@ class MyMainPage:
     
   //instructions for calculating time and savings
   func Lengthsaving() {
-    var j = 0
-    var k = 0
+    var j = 1
+    var k = 1
+    var n_j = Int()
+    var n_k = Int()
     var remainingbalance = p //monthly principal balance
     //by default, all interest is paid, so there is no monthly outstanding interest
     var remainingbalance_repay_minimum = p
@@ -2793,6 +2795,7 @@ class MyMainPage:
       }
       j += 1
     }
+    n_j = j
     while (remainingbalance_repay_minimum + temp_interest_min > temp_pay) {
       remainingbalance_repay_minimum = remainingbalance_repay_minimum
         + temp_interest_min
@@ -2837,11 +2840,12 @@ class MyMainPage:
 //      }
       k += 1
     }
+    n_k = k
     var temp = Int()
-    if (Double((j + 1) / 12) - floor(Double((j + 1) / 12)) > 0.99999) {
-      temp = Int(floor(Double((j + 1) / 12) + 1))
+    if (Double(n_j / 12) - floor(Double(n_j / 12)) > 0.99999) {
+      temp = Int(floor(Double(n_j / 12) + 1))
     } else {
-      temp = Int(floor(Double((j + 1) / 12)))
+      temp = Int(floor(Double(n_j / 12)))
     }
     years.text = numberFormatter.string(from: NSNumber(value: temp))!
     if (temp == 1) {
@@ -2849,8 +2853,8 @@ class MyMainPage:
     } else {
       years_text.text = "years"
     }
-    months.text = String((j + 1) - temp * 12)
-    if ((j + 1) - temp * 12 == 1) {
+    months.text = String(n_j - temp * 12)
+    if (n_j - temp * 12 == 1) {
       months_text.text = "month"
     } else {
       months_text.text = "months"
@@ -2866,7 +2870,7 @@ class MyMainPage:
       temp_interest_min = (round(remainingbalance_repay_minimum*i*100))/100
     }
     let temp_interest_last_min = temp_interest_min
-    let total_repay_minimum_fromloop = Double(k) * temp_pay_first
+    let total_repay_minimum_fromloop = Double(n_k-1) * temp_pay_first
     let total_repay_minimum_finalmonth = remainingbalance_repay_minimum
       + temp_interest_last_min
     let total_repay_minimum = total_repay_minimum_fromloop
@@ -2878,7 +2882,7 @@ class MyMainPage:
       temp_interest_amount = (round(remainingbalance*i*100))/100
     }
     let temp_interest_last_amount = temp_interest_amount
-    let total = Double(j) * a + remainingbalance + temp_interest_last_amount
+    let total = Double(n_j-1) * a + remainingbalance + temp_interest_last_amount
     var saved = total_repay_minimum - total
     savings_reference = shared_preferences.double(forKey: "savings_change_key")
     if (savings_reference - floor(savings_reference) > 0.499999)
