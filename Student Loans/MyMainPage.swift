@@ -182,6 +182,7 @@ class MyMainPage:
   internal lazy var r = APR_DIRECT/100
   internal lazy var i = r
     / 12 //need to convert to periodic rate in decimal form
+  // by default, interest is not compounded
   internal lazy var i_reference = r / 12
   internal lazy var a = min_value
     * r
@@ -2738,7 +2739,8 @@ class MyMainPage:
   func Lengthsaving() {
     var j = 0
     var k = 0
-    var remainingbalance = p
+    var remainingbalance = p //monthly principal balance
+    //by default, all interest is paid, so there is no monthly outstanding interest
     var remainingbalance_repay_minimum = p
     var temp_interest_amount = Double()
     if (remainingbalance*i*100 - floor(remainingbalance*i*100) > 0.499999)

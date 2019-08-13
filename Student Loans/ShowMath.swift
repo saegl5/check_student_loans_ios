@@ -109,7 +109,7 @@ class ShowMath: UIViewController {
   @IBAction func Switch(_ sender: UISwitch) {
     if compound.isOn {
       r = i*12*100/100 // i*12*100 is for reverting to APR(%)
-      i = pow(1 + r/365.25, 365.25/12) - 1
+      i = pow(1 + r/365.25, 365.25/12) - 1 //approximate
       var temp = Double()
       if (tenyr_indicator == 0) {
         if (percentage/100*p*i*100 - floor(percentage/100*p*i*100) > 0.499999)
@@ -265,7 +265,7 @@ class ShowMath: UIViewController {
         var temp = Double()
         r = shared_preferences.double(forKey: "interest")/100
         if compound.isOn {
-            i = pow(1 + r/365.25, 365.25/12) - 1
+            i = pow(1 + r/365.25, 365.25/12) - 1 //approximate
         } else {
             i = r
                 / 12 //need to convert to periodic rate in decimal form
@@ -953,7 +953,7 @@ class ShowMath: UIViewController {
     attributedAPRTitle.append(attributedAPRSummary)
     attributedAPRTitle.append(attributedAPRDecimalEquivalent)
     attributedAPRTitle.append(attributedAPRPeriodic)
-    nominal_rate.attributedText = attributedAPRTitle //``nominal_rate'' should be renamed
+    nominal_rate.attributedText = attributedAPRTitle
     if (i == 0) {
       compound.isEnabled = false
       titleof_compound.textColor = UIColor.lightGray.withAlphaComponent(0.5)
@@ -1465,8 +1465,8 @@ class ShowMath: UIViewController {
       payment_header.isEnabled = true
     }
     var j = 0 //defined here in order to simplify the rest
-    var remainingbalance = p //defined here in order to simplify the rest too
-    var outstandingbalance = 0.00
+    var remainingbalance = p //monthly principal balance, defined here in order to simplify the rest too
+    var outstandingbalance = 0.00 //monthly outstanding interest
     var interest = Double()
     if (remainingbalance*i*100 - floor(remainingbalance*i*100) > 0.499999)
         && (remainingbalance*i*100 - floor(remainingbalance*i*100) < 0.5) {
