@@ -2913,18 +2913,18 @@ class MyMainPage:
         s_2 = round(s_2)
       }
       savings.text = "$" + numberFormatter.string(from: NSNumber(value: s_2))!
-      let delta_s = s_2-s_1
-      if (delta_s) < 0 {
+      let Δs = s_2-s_1
+      if (Δs) < 0 {
         savings_change.text = "↓ $"
           + numberFormatter.string(from: NSNumber(value: abs(
-            delta_s
+            Δs
           )))!
-      } else if (delta_s) == 0 {
+      } else if (Δs) == 0 {
         savings_change.text = "no change"
       } else {
         savings_change.text = "↑ $"
           + numberFormatter.string(from: NSNumber(
-            value: delta_s
+            value: Δs
           ))!
       }
     }
