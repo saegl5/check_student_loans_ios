@@ -2225,17 +2225,17 @@ class ShowMath: UIViewController {
     } else {
       remaining_interest = round(remainingbalance*i*100)/100
     }
+    var tempx = Double()
+    if (p*i*100 - floor(p*i*100) > 0.499999)
+        && (p*i*100 - floor(p*i*100) < 0.5) {
+      tempx = (round(p*i*100 + 1)+1)/100
+    } else {
+      tempx = (round(p*i*100)+1)/100
+    }
     if (n-1 > 4) {
       var payment_shape_label_jg4 = NSMutableAttributedString()
       var etc = NSMutableAttributedString()
       var remains = NSMutableAttributedString()
-      var tempx = Double()
-      if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
-        tempx = (round(p*i*100 + 1)+1)/100
-      } else {
-        tempx = (round(p*i*100)+1)/100
-      }
       if (a == tempx) {
         if (progress == 100) {
           payment_shape_label_jg4 = NSMutableAttributedString(
