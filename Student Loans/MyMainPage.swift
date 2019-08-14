@@ -2913,7 +2913,7 @@ class MyMainPage:
         s_2 = round(s_2)
       }
       savings.text = "$" + numberFormatter.string(from: NSNumber(value: s_2))!
-      var delta_s = s_2-s_1
+      let delta_s = s_2-s_1
       if (delta_s) < 0 {
         savings_change.text = "↓ $"
           + numberFormatter.string(from: NSNumber(value: abs(
