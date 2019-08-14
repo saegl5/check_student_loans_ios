@@ -3356,7 +3356,7 @@ class ShowMath: UIViewController {
     // let total_repay_minimum_finalmonth = remainingbalance_repay_minimum
     //   + temp_interest_last_min
     //   + outstandingbalance_min
-    let T_max = Double(n_min-1)*a_min
+    var T_max = Double(n_min-1)*a_min
       + remainingbalance_repay_minimum
       + temp_interest_last_min
       + outstandingbalance_min
