@@ -3058,7 +3058,7 @@ class ShowMath: UIViewController {
     }
     years.adjustsFontSizeToFitWidth = true
     months.adjustsFontSizeToFitWidth = true
-    var ppt1 = Double()
+    var T = Double() //T(a)
     var tempxxx = Double()
     if (p*i*100 - floor(p*i*100) > 0.499999)
         && (p*i*100 - floor(p*i*100) < 0.5) {
@@ -3068,32 +3068,32 @@ class ShowMath: UIViewController {
     }
     if (a == tempxxx) {
       if (progress == 100) {
-        ppt1 = Double(n-1)
+        T = Double(n-1)
           * a
           + remainingbalance
           + remaining_interest
-          + outstandingbalance //T
+          + outstandingbalance
       } else {
-        ppt1 = Double(n-1)
+        T = Double(n-1)
           * a
           + remainingbalance
           + remaining_interest
-          + outstandingbalance //T
+          + outstandingbalance
       }
     } else {
-      ppt1 = Double(n-1)
+      T = Double(n-1)
         * a
         + remainingbalance
         + remaining_interest
-        + outstandingbalance //T
+        + outstandingbalance
     }
-    if (ppt1*100 - floor(ppt1*100) > 0.499999)
-        && (ppt1*100 - floor(ppt1*100) < 0.5) {
-      ppt1 = round(ppt1*100 + 1)/100
+    if (T*100 - floor(T*100) > 0.499999)
+        && (T*100 - floor(T*100) < 0.5) {
+      T = round(T*100 + 1)/100
     } else {
-      ppt1 = round(ppt1*100)/100
+      T = round(T*100)/100
     }
-    let ppt2 = ppt1 - floor(ppt1)
+    let ppt2 = T - floor(T)
     let ppt3 = ppt2*100
     var ppt4 = Int()
     if (ppt3 - floor(ppt3) > 0.99999) {
@@ -3149,7 +3149,7 @@ class ShowMath: UIViewController {
       )
     }
     let total_paid_amount = NSMutableAttributedString(
-      string: numberFormatter.string(from: NSNumber(value: floor(ppt1)))!
+      string: numberFormatter.string(from: NSNumber(value: floor(T)))!
     )
     var total_paid_amount_decimal_part = NSMutableAttributedString()
     if (ppt3 < 100) && (ppt3 >= 10) {
@@ -3361,14 +3361,14 @@ class ShowMath: UIViewController {
       + temp_interest_last_min
       + outstandingbalance_min
     //appended to total paid
-    var pppt1 = T_max
-    if (pppt1*100 - floor(pppt1*100) > 0.499999)
-        && (pppt1*100 - floor(pppt1*100) < 0.5) {
-      pppt1 = round(pppt1*100 + 1)/100
+    // var pppt1 = T_max
+    if (T_max*100 - floor(T_max*100) > 0.499999)
+        && (T_max*100 - floor(T_max*100) < 0.5) {
+      T_max = round(T_max*100 + 1)/100
     } else {
-      pppt1 = round(pppt1*100)/100
+      T_max = round(T_max*100)/100
     }
-    let pppt2 = pppt1 - floor(pppt1)
+    let pppt2 = T_max - floor(T_max)
     let pppt3 = pppt2*100
     var pppt4 = Int()
     if (pppt3 - floor(pppt3) > 0.99999) {
@@ -3378,7 +3378,7 @@ class ShowMath: UIViewController {
     }
     let total_paid_string_if_min = NSMutableAttributedString()
     var total_paid_expression_if_min = NSMutableAttributedString()
-    let T = ppt1
+    // let T = ppt1
     if (round(T_max-T) == 0.0) {
       //bizzare that cannot use T_max-T <= 0.0
       total_paid_expression_if_min = NSMutableAttributedString(
@@ -3399,7 +3399,7 @@ class ShowMath: UIViewController {
     }
     var total_paid_amount_if_min = NSMutableAttributedString()
     total_paid_amount_if_min = NSMutableAttributedString(
-      string: "$" + numberFormatter.string(from: NSNumber(value: floor(pppt1)))!
+      string: "$" + numberFormatter.string(from: NSNumber(value: floor(T_max)))!
     )
     var total_paid_amount_decimal_part_if_min = NSMutableAttributedString()
     if (pppt3 < 100) && (pppt3 >= 10) {
@@ -3428,14 +3428,14 @@ class ShowMath: UIViewController {
     total_paid_string_if_min.append(total_paid_amount_if_min_label)
     total_paid_min.attributedText = total_paid_string_if_min
     total_paid_min.isHidden = false
-    var ppppt1 = T_max-T
-    if (ppppt1*100 - floor(ppppt1*100) > 0.499999)
-        && (ppppt1*100 - floor(ppppt1*100) < 0.5) {
-      ppppt1 = round(ppppt1*100 + 1)/100
+    var s = T_max-T //T_max - T(a)
+    if (s*100 - floor(s*100) > 0.499999)
+        && (s*100 - floor(s*100) < 0.5) {
+      s = round(s*100 + 1)/100
     } else {
-      ppppt1 = round(ppppt1*100)/100
+      s = round(s*100)/100
     }
-    let ppppt2 = ppppt1 - floor(ppppt1)
+    let ppppt2 = s - floor(s)
     let ppppt3 = ppppt2*100
     var ppppt4 = Int()
     if (ppppt3 - floor(ppppt3) > 0.99999) {
@@ -3443,7 +3443,7 @@ class ShowMath: UIViewController {
     } else {
       ppppt4 = Int(ppppt3)
     }
-    let saved = ppppt1
+    // let saved = ppppt1
     let savings_string = NSMutableAttributedString()
     var savings_string_subtract = NSMutableAttributedString()
     savings_string_subtract = NSMutableAttributedString(
@@ -3456,14 +3456,14 @@ class ShowMath: UIViewController {
     )
     var savings_string_equals_amount = NSMutableAttributedString()
     var savings_string_equals_amount_decimal_part = NSMutableAttributedString()
-    if (saved <= 0) {
+    if (s <= 0) {
       savings_string_equals_amount = NSMutableAttributedString(string: "0")
       savings_string_equals_amount_decimal_part = NSMutableAttributedString(
         string: ""
       )
     } else {
       savings_string_equals_amount = NSMutableAttributedString(
-        string: numberFormatter.string(from: NSNumber(value: floor(ppppt1)))!
+        string: numberFormatter.string(from: NSNumber(value: floor(s)))!
       )
       if (ppppt3 < 100) && (ppppt3 >= 10) {
         savings_string_equals_amount_decimal_part = NSMutableAttributedString(

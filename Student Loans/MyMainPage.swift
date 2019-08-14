@@ -176,7 +176,7 @@ class MyMainPage:
     APR_PERKINS / 100 / 12,
     Double()
   ] //rates_reference[2], the one cast as Double(), will store custom rate
-  internal var savings_reference = 0.00
+  // internal var s_1 = 0.00
   internal var numberFormatter: NumberFormatter = NumberFormatter()
   internal lazy var p = min_value
   internal lazy var r = APR_DIRECT/100
@@ -2883,51 +2883,52 @@ class MyMainPage:
       temp_interest_amount = (round(remainingbalance*i*100))/100
     }
     let temp_interest_last_amount = temp_interest_amount
-    let T = Double(n-1) * a + remainingbalance + temp_interest_last_amount
-    var saved = T_max - T
-    savings_reference = shared_preferences.double(forKey: "savings_change_key")
-    if (savings_reference - floor(savings_reference) > 0.499999)
-        && (savings_reference - floor(savings_reference) < 0.5) {
-      savings_reference = (round(savings_reference + 1))/100
+    let T = Double(n-1) * a + remainingbalance + temp_interest_last_amount //T(a)
+    var s_2 = T_max - T //T_max - T(a_2)
+    var s_1 = shared_preferences.double(forKey: "savings_change_key") //T_max - T(a_1)
+    if (s_1 - floor(s_1) > 0.499999)
+        && (s_1 - floor(s_1) < 0.5) {
+      s_1 = (round(s_1 + 1))/100
     } else {
-      savings_reference = round(savings_reference)
+      s_1 = round(s_1)
     }
-    if (saved <= 0) {
+    if (s_2 <= 0) {
       savings.text = "$" + numberFormatter.string(from: 0)!
-      if (0-savings_reference) < 0 {
+      if (0-s_1) < 0 {
         //rounding error is insignificant
         savings_change.text = "↓ $"
           + numberFormatter.string(from: NSNumber(value: abs(
-            0-savings_reference
+            0-s_1
           )))!
-      } else if (0-savings_reference) == 0 {
+      } else if (0-s_1) == 0 {
         savings_change.text = "no change"
       } else {
         savings_change.text = "↑ $"
-          + numberFormatter.string(from: NSNumber(value: 0-savings_reference))!
+          + numberFormatter.string(from: NSNumber(value: 0-s_1))!
       }
     } else {
-      if (saved - floor(saved) > 0.499999) && (saved - floor(saved) < 0.5) {
-        saved = (round(saved + 1))/100
+      if (s_2 - floor(s_2) > 0.499999) && (s_2 - floor(s_2) < 0.5) {
+        s_2 = (round(s_2 + 1))/100
       } else {
-        saved = round(saved)
+        s_2 = round(s_2)
       }
-      savings.text = "$" + numberFormatter.string(from: NSNumber(value: saved))!
-      if (saved-savings_reference) < 0 {
+      savings.text = "$" + numberFormatter.string(from: NSNumber(value: s_2))!
+      var delta_s = s_2-s_1
+      if (delta_s) < 0 {
         savings_change.text = "↓ $"
           + numberFormatter.string(from: NSNumber(value: abs(
-            saved-savings_reference
+            delta_s
           )))!
-      } else if (saved-savings_reference) == 0 {
+      } else if (delta_s) == 0 {
         savings_change.text = "no change"
       } else {
         savings_change.text = "↑ $"
           + numberFormatter.string(from: NSNumber(
-            value: saved-savings_reference
+            value: delta_s
           ))!
       }
     }
-    shared_preferences.set(saved, forKey: "savings_change_key")
+    shared_preferences.set(s_2, forKey: "savings_change_key") // s_2 will become s_1
     shared_preferences.synchronize()
   }
 
@@ -3652,7 +3653,7 @@ class MyMainPage:
     up_pressed.layer.shadowOffset = CGSize(width: 0, height: 1)
     up_pressed.layer.shadowOpacity = 0.0625
     up_pressed.layer.shadowRadius = 1
-    shared_preferences.set(savings_reference, forKey: "savings_change_key")
+    shared_preferences.set(0.00, forKey: "savings_change_key")
     shared_preferences.synchronize()
     bubble_label.alpha = 0.0
     bubble_label_arrow.alpha = 0.0
