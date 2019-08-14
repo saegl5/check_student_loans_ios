@@ -1466,17 +1466,17 @@ class ShowMath: UIViewController {
     }
     var m = 1 //defined here in order to simplify the rest
     var n = Int()
-    var remainingbalance = p //monthly principal balance, defined here in order to simplify the rest too
+    var B = p //monthly principal balance, defined here in order to simplify the rest too
     var outstandingbalance = 0.00 //monthly outstanding interest
     var interest = Double()
-    if (remainingbalance*i*100 - floor(remainingbalance*i*100) > 0.499999)
-        && (remainingbalance*i*100 - floor(remainingbalance*i*100) < 0.5) {
-      interest = round(remainingbalance*i*100 + 1)/100
+    if (B*i*100 - floor(B*i*100) > 0.499999)
+        && (B*i*100 - floor(B*i*100) < 0.5) {
+      interest = round(B*i*100 + 1)/100
     } else {
-      interest = round(remainingbalance*i*100)/100
+      interest = round(B*i*100)/100
     }
     var interest_pay = Double()
-    var x = α*(remainingbalance*i)
+    var x = α*(B*i)
     if (x*100 - floor(x*100) > 0.499999) && (x*100 - floor(x*100) < 0.5) {
       interest_pay = round(x*100 + 1)/100
     } else {
@@ -1500,13 +1500,13 @@ class ShowMath: UIViewController {
     //   principal_pay = a - interest_pay
     // }
     // principal_pay = a - interest_pay
-    while (remainingbalance - (a - interest_pay) > 0) {
-      remainingbalance = remainingbalance - (a - interest_pay)
-      if (remainingbalance*100 - floor(remainingbalance*100) > 0.499999)
-          && (remainingbalance*100 - floor(remainingbalance*100) < 0.5) {
-        remainingbalance = round(remainingbalance*100 + 1)/100
+    while (B - (a - interest_pay) > 0) {
+      B = B - (a - interest_pay)
+      if (B*100 - floor(B*100) > 0.499999)
+          && (B*100 - floor(B*100) < 0.5) {
+        B = round(B*100 + 1)/100
       } else {
-        remainingbalance = round(remainingbalance*100)/100
+        B = round(B*100)/100
       }
       outstandingbalance = outstandingbalance + (interest - interest_pay)
       if (outstandingbalance*100 - floor(outstandingbalance*100) > 0.499999)
@@ -1515,13 +1515,13 @@ class ShowMath: UIViewController {
       } else {
         outstandingbalance = round(outstandingbalance*100)/100
       }
-      if (remainingbalance*i*100 - floor(remainingbalance*i*100) > 0.499999)
-          && (remainingbalance*i*100 - floor(remainingbalance*i*100) < 0.5) {
-        interest = round(remainingbalance*i*100 + 1)/100
+      if (B*i*100 - floor(B*i*100) > 0.499999)
+          && (B*i*100 - floor(B*i*100) < 0.5) {
+        interest = round(B*i*100 + 1)/100
       } else {
-        interest = round(remainingbalance*i*100)/100
+        interest = round(B*i*100)/100
       }
-      x = α*(remainingbalance*i)
+      x = α*(B*i)
       if (x*100 - floor(x*100) > 0.499999) && (x*100 - floor(x*100) < 0.5) {
         interest_pay = round(x*100 + 1)/100
       } else {
@@ -1958,7 +1958,7 @@ class ShowMath: UIViewController {
         attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
       )
       let remains = NSMutableAttributedString(
-        string: String(format: "%.2f", remainingbalance),
+        string: String(format: "%.2f", B),
         attributes: [:]
       )
       balance_shape_label_jg4.append(etc)
@@ -1973,7 +1973,7 @@ class ShowMath: UIViewController {
         + "\n"
         + String(format: "%.2f", temp3)
         + "\n"
-        + String(format: "%.2f", remainingbalance)
+        + String(format: "%.2f", B)
     } else if (n-1 == 3) {
       balance_shape_label.text = String(format: "%.2f", p)
         + "\n"
@@ -1981,19 +1981,19 @@ class ShowMath: UIViewController {
         + "\n"
         + String(format: "%.2f", temp2)
         + "\n"
-        + String(format: "%.2f", remainingbalance)
+        + String(format: "%.2f", B)
     } else if (n-1 == 2) {
       balance_shape_label.text = String(format: "%.2f", p)
         + "\n"
         + String(format: "%.2f", temp1)
         + "\n"
-        + String(format: "%.2f", remainingbalance)
+        + String(format: "%.2f", B)
     } else if (n-1 == 1) {
       balance_shape_label.text = String(format: "%.2f", p)
         + "\n"
-        + String(format: "%.2f", remainingbalance)
+        + String(format: "%.2f", B)
     } else {
-      balance_shape_label.text = String(format: "%.2f", remainingbalance)
+      balance_shape_label.text = String(format: "%.2f", B)
     }
     balance_shape_label.textAlignment = .center
     balance_shape_label.numberOfLines = 0
@@ -2042,7 +2042,7 @@ class ShowMath: UIViewController {
         ]
       )
       let remains = NSMutableAttributedString(
-        string: String(format: "%.2f", remainingbalance)
+        string: String(format: "%.2f", B)
           + " · 0.00"
           + String(temp)
           + "...",
@@ -2106,7 +2106,7 @@ class ShowMath: UIViewController {
         + " · 0.00"
         + String(temp)
         + "...\n"
-        + String(format: "%.2f", remainingbalance)
+        + String(format: "%.2f", B)
         + " · 0.00"
         + String(temp)
         + "..."
@@ -2133,7 +2133,7 @@ class ShowMath: UIViewController {
         + " · 0.00"
         + String(temp)
         + "...\n"
-        + String(format: "%.2f", remainingbalance)
+        + String(format: "%.2f", B)
         + " · 0.00"
         + String(temp)
         + "..."
@@ -2156,7 +2156,7 @@ class ShowMath: UIViewController {
         + " · 0.00"
         + String(temp)
         + "...\n"
-        + String(format: "%.2f", remainingbalance)
+        + String(format: "%.2f", B)
         + " · 0.00"
         + String(temp)
         + "..."
@@ -2175,7 +2175,7 @@ class ShowMath: UIViewController {
         + " · 0.00"
         + String(temp)
         + "...\n"
-        + String(format: "%.2f", remainingbalance)
+        + String(format: "%.2f", B)
         + " · 0.00"
         + String(temp)
         + "..."
@@ -2192,7 +2192,7 @@ class ShowMath: UIViewController {
     } else {
       charged_interest_shape_label.text = String(
           format: "%.2f",
-          remainingbalance
+          B
         )
         + " · 0.00"
         + String(temp)
@@ -2205,7 +2205,7 @@ class ShowMath: UIViewController {
       } else { }
       charged_interest_max_string_count = (String(
             format: "%.2f",
-            remainingbalance
+            B
           )
           + " · 0.00"
           + String(temp)
@@ -2219,11 +2219,11 @@ class ShowMath: UIViewController {
     charged_interest_shape_label.adjustsFontSizeToFitWidth = true
     //Text of payment body--------------------------------------------
     var remaining_interest = Double()
-    if (remainingbalance*i*100 - floor(remainingbalance*i*100) > 0.499999)
-        && (remainingbalance*i*100 - floor(remainingbalance*i*100) < 0.5) {
-      remaining_interest = round(remainingbalance*i*100 + 1)/100
+    if (B*i*100 - floor(B*i*100) > 0.499999)
+        && (B*i*100 - floor(B*i*100) < 0.5) {
+      remaining_interest = round(B*i*100 + 1)/100
     } else {
-      remaining_interest = round(remainingbalance*i*100)/100
+      remaining_interest = round(B*i*100)/100
     }
     var tempx = Double()
     if (p*i*100 - floor(p*i*100) > 0.499999)
@@ -2258,7 +2258,7 @@ class ShowMath: UIViewController {
           remains = NSMutableAttributedString(
             string: String(
               format: "%.2f",
-              remainingbalance + remaining_interest + outstandingbalance
+              B + remaining_interest + outstandingbalance
             ),
             attributes: [:]
           )
@@ -2283,7 +2283,7 @@ class ShowMath: UIViewController {
           remains = NSMutableAttributedString(
             string: String(
               format: "%.2f",
-              remainingbalance + remaining_interest + outstandingbalance
+              B + remaining_interest + outstandingbalance
             ),
             attributes: [:]
           )
@@ -2309,7 +2309,7 @@ class ShowMath: UIViewController {
         remains = NSMutableAttributedString(
           string: String(
             format: "%.2f",
-            remainingbalance + remaining_interest + outstandingbalance
+            B + remaining_interest + outstandingbalance
           ),
           attributes: [:]
         )
@@ -2330,7 +2330,7 @@ class ShowMath: UIViewController {
             + "\n"
             + String(
               format: "%.2f",
-              remainingbalance + remaining_interest + outstandingbalance
+              B + remaining_interest + outstandingbalance
             )
         } else {
           payment_shape_label.text = String(format: "%.2f", a)
@@ -2343,7 +2343,7 @@ class ShowMath: UIViewController {
             + "\n"
             + String(
               format: "%.2f",
-              remainingbalance + remaining_interest + outstandingbalance
+              B + remaining_interest + outstandingbalance
             )
         }
       } else {
@@ -2357,7 +2357,7 @@ class ShowMath: UIViewController {
           + "\n"
           + String(
             format: "%.2f",
-            remainingbalance + remaining_interest + outstandingbalance
+            B + remaining_interest + outstandingbalance
           )
       }
     } else if (n-1 == 3) {
@@ -2371,7 +2371,7 @@ class ShowMath: UIViewController {
             + "\n"
             + String(
               format: "%.2f",
-              remainingbalance + remaining_interest + outstandingbalance
+              B + remaining_interest + outstandingbalance
             )
         } else {
           payment_shape_label.text = String(format: "%.2f", a)
@@ -2382,7 +2382,7 @@ class ShowMath: UIViewController {
             + "\n"
             + String(
               format: "%.2f",
-              remainingbalance + remaining_interest + outstandingbalance
+              B + remaining_interest + outstandingbalance
             )
         }
       } else {
@@ -2394,7 +2394,7 @@ class ShowMath: UIViewController {
           + "\n"
           + String(
             format: "%.2f",
-            remainingbalance + remaining_interest + outstandingbalance
+            B + remaining_interest + outstandingbalance
           )
       }
     } else if (n-1 == 2) {
@@ -2406,7 +2406,7 @@ class ShowMath: UIViewController {
             + "\n"
             + String(
               format: "%.2f",
-              remainingbalance + remaining_interest + outstandingbalance
+              B + remaining_interest + outstandingbalance
             )
         } else {
           payment_shape_label.text = String(format: "%.2f", a)
@@ -2415,7 +2415,7 @@ class ShowMath: UIViewController {
             + "\n"
             + String(
               format: "%.2f",
-              remainingbalance + remaining_interest + outstandingbalance
+              B + remaining_interest + outstandingbalance
             )
         }
       } else {
@@ -2425,7 +2425,7 @@ class ShowMath: UIViewController {
           + "\n"
           + String(
             format: "%.2f",
-            remainingbalance + remaining_interest + outstandingbalance
+            B + remaining_interest + outstandingbalance
           )
       }
     } else if (n-1 == 1) {
@@ -2435,14 +2435,14 @@ class ShowMath: UIViewController {
             + "\n"
             + String(
               format: "%.2f",
-              remainingbalance + remaining_interest + outstandingbalance
+              B + remaining_interest + outstandingbalance
             )
         } else {
           payment_shape_label.text = String(format: "%.2f", a)
             + "\n"
             + String(
               format: "%.2f",
-              remainingbalance + remaining_interest + outstandingbalance
+              B + remaining_interest + outstandingbalance
             )
         }
       } else {
@@ -2450,13 +2450,13 @@ class ShowMath: UIViewController {
           + "\n"
           + String(
             format: "%.2f",
-            remainingbalance + remaining_interest + outstandingbalance
+            B + remaining_interest + outstandingbalance
           )
       }
     } else {
       payment_shape_label.text = String(
         format: "%.2f",
-        remainingbalance + remaining_interest + outstandingbalance
+        B + remaining_interest + outstandingbalance
       )
     }
     payment_shape_label.textAlignment = .center
@@ -2622,7 +2622,7 @@ class ShowMath: UIViewController {
         ]
       )
       remains = NSMutableAttributedString(
-        string: String(format: "%.2f", remainingbalance)
+        string: String(format: "%.2f", B)
           + " Prin.  + "
           + String(format: "%.2f", remaining_interest + outstandingbalance)
           + " Int. =",
@@ -2637,7 +2637,7 @@ class ShowMath: UIViewController {
           + " Prin.  + "
           + String(format: "%.2f", interest_pay)
           + " Int. =").count //used for right inset
-      pay_insight_max_string_count_2 = (String(format: "%.2f", remainingbalance)
+      pay_insight_max_string_count_2 = (String(format: "%.2f", B)
           + " Prin.  + "
           + String(format: "%.2f", remaining_interest + outstandingbalance)
           + " Int. =").count //used for right inset
@@ -2658,7 +2658,7 @@ class ShowMath: UIViewController {
         + " Prin.  + "
         + String(format: "%.2f", interest_pay4)
         + " Int. =\n"
-        + String(format: "%.2f", remainingbalance)
+        + String(format: "%.2f", B)
         + " Prin.  + "
         + String(format: "%.2f", remaining_interest + outstandingbalance)
         + " Int. ="
@@ -2667,7 +2667,7 @@ class ShowMath: UIViewController {
           + " Prin.  + "
           + String(format: "%.2f", interest_pay)
           + " Int. =").count //used for right inset
-      pay_insight_max_string_count_2 = (String(format: "%.2f", remainingbalance)
+      pay_insight_max_string_count_2 = (String(format: "%.2f", B)
           + " Prin.  + "
           + String(format: "%.2f", remaining_interest + outstandingbalance)
           + " Int. =").count //used for right inset
@@ -2684,7 +2684,7 @@ class ShowMath: UIViewController {
         + " Prin.  + "
         + String(format: "%.2f", interest_pay3)
         + " Int. =\n"
-        + String(format: "%.2f", remainingbalance)
+        + String(format: "%.2f", B)
         + " Prin.  + "
         + String(format: "%.2f", remaining_interest + outstandingbalance)
         + " Int. ="
@@ -2693,7 +2693,7 @@ class ShowMath: UIViewController {
           + " Prin.  + "
           + String(format: "%.2f", interest_pay)
           + " Int. =").count //used for right inset
-      pay_insight_max_string_count_2 = (String(format: "%.2f", remainingbalance)
+      pay_insight_max_string_count_2 = (String(format: "%.2f", B)
           + " Prin.  + "
           + String(format: "%.2f", remaining_interest + outstandingbalance)
           + " Int. =").count //used for right inset
@@ -2706,7 +2706,7 @@ class ShowMath: UIViewController {
         + " Prin.  + "
         + String(format: "%.2f", interest_pay2)
         + " Int. =\n"
-        + String(format: "%.2f", remainingbalance)
+        + String(format: "%.2f", B)
         + " Prin.  + "
         + String(format: "%.2f", remaining_interest + outstandingbalance)
         + " Int. ="
@@ -2715,7 +2715,7 @@ class ShowMath: UIViewController {
           + " Prin.  + "
           + String(format: "%.2f", interest_pay)
           + " Int. =").count //used for right inset
-      pay_insight_max_string_count_2 = (String(format: "%.2f", remainingbalance)
+      pay_insight_max_string_count_2 = (String(format: "%.2f", B)
           + " Prin.  + "
           + String(format: "%.2f", remaining_interest + outstandingbalance)
           + " Int. =").count //used for right inset
@@ -2724,7 +2724,7 @@ class ShowMath: UIViewController {
         + " Prin.  + "
         + String(format: "%.2f", interest_pay1)
         + " Int. =\n"
-        + String(format: "%.2f", remainingbalance)
+        + String(format: "%.2f", B)
         + " Prin.  + "
         + String(format: "%.2f", remaining_interest + outstandingbalance)
         + " Int. ="
@@ -2733,18 +2733,18 @@ class ShowMath: UIViewController {
           + " Prin.  + "
           + String(format: "%.2f", interest_pay)
           + " Int. =").count //used for right inset
-      pay_insight_max_string_count_2 = (String(format: "%.2f", remainingbalance)
+      pay_insight_max_string_count_2 = (String(format: "%.2f", B)
           + " Prin.  + "
           + String(format: "%.2f", remaining_interest + outstandingbalance)
           + " Int. =").count //used for right inset
     } else {
-      pay_insight_shape_label.text = String(format: "%.2f", remainingbalance)
+      pay_insight_shape_label.text = String(format: "%.2f", B)
         + " Prin.  + "
         + String(format: "%.2f", remaining_interest + outstandingbalance)
         + " Int. ="
       pay_insight_shape_label.textAlignment = .right
       pay_insight_max_string_count_1 = 0 //used for right inset
-      pay_insight_max_string_count_2 = (String(format: "%.2f", remainingbalance)
+      pay_insight_max_string_count_2 = (String(format: "%.2f", B)
           + " Prin.  + "
           + String(format: "%.2f", remaining_interest + outstandingbalance)
           + " Int. =").count //used for right inset
@@ -2884,24 +2884,24 @@ class ShowMath: UIViewController {
 
     if (n-1 == 0)
         && (a
-          - (remainingbalance + remaining_interest + outstandingbalance) != 0) {
+          - (B + remaining_interest + outstandingbalance) != 0) {
       var pt1 = Double()
       var refund_string = NSMutableAttributedString()
       if (a
-          - (remainingbalance + remaining_interest + outstandingbalance)
+          - (B + remaining_interest + outstandingbalance)
           > 0) {
         refund_string = NSMutableAttributedString(
           string: "Refunded $",
           attributes: [:]
         )
-        pt1 = a - (remainingbalance + remaining_interest + outstandingbalance)
+        pt1 = a - (B + remaining_interest + outstandingbalance)
       } else {
         refund_string = NSMutableAttributedString(
           string: "Pay Extra $",
           attributes: [:]
         )
         pt1 = abs(
-          a - (remainingbalance + remaining_interest + outstandingbalance)
+          a - (B + remaining_interest + outstandingbalance)
         )
         refund.isHidden = false
       }
@@ -2944,7 +2944,7 @@ class ShowMath: UIViewController {
       refund.attributedText = refund_string
       if (floor(pt1) >= 5)
           && (a
-            - (remainingbalance + remaining_interest + outstandingbalance)
+            - (B + remaining_interest + outstandingbalance)
             > 0) {
         //arbitrary
         coffee_cup.text = "☕︎"
@@ -3072,20 +3072,20 @@ class ShowMath: UIViewController {
       if (progress == 100) {
         T = Double(n-1)
           * a
-          + remainingbalance
+          + B
           + remaining_interest
           + outstandingbalance
       } else {
         T = Double(n-1)
           * a
-          + remainingbalance
+          + B
           + remaining_interest
           + outstandingbalance
       }
     } else {
       T = Double(n-1)
         * a
-        + remainingbalance
+        + B
         + remaining_interest
         + outstandingbalance
     }
@@ -3115,7 +3115,7 @@ class ShowMath: UIViewController {
             + ") + "
             + String(
               format: "%.2f",
-              remainingbalance + remaining_interest + outstandingbalance
+              B + remaining_interest + outstandingbalance
             )
             + " = ",
           attributes: [:]
@@ -3129,7 +3129,7 @@ class ShowMath: UIViewController {
             + ") + "
             + String(
               format: "%.2f",
-              remainingbalance + remaining_interest + outstandingbalance
+              B + remaining_interest + outstandingbalance
             )
             + " = ",
           attributes: [:]
@@ -3144,7 +3144,7 @@ class ShowMath: UIViewController {
           + ") + "
           + String(
             format: "%.2f",
-            remainingbalance + remaining_interest + outstandingbalance
+            B + remaining_interest + outstandingbalance
           )
           + " = ",
         attributes: [:]

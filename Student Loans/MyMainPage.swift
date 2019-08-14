@@ -143,9 +143,9 @@ class MyMainPage:
   var set_up_timer2_seconds = 4.0 //4*4=16 quarter seconds
   var set_up_timer1_increment = 100.0
   var set_up_timer2_increment = 1000.0
-  var min_value = 2000.0
-  var max_value = 10000.0
-  var number_of_increments = 40.0 //20 is optimal
+  var p_min = 2000.0
+  var p_max = 10000.0
+  var N = 40.0 //20 is optimal
   var unlocked_indicator = 0 //1 if locked, 0 if not
   var tenyr_indicator = 0.0
   var timer1 = Timer()
@@ -161,8 +161,8 @@ class MyMainPage:
     width: 80,
     height: -32
   ))
-  lazy var ΔN = (max_value - min_value)/number_of_increments
-  lazy var progress = min_value
+  lazy var ΔN = (p_max - p_min)/N
+  lazy var progress = p_min
   lazy var rates = [
     String(format: "%.2f", APR_DIRECT),
     String(format: "%.2f", APR_PERKINS)
@@ -178,17 +178,17 @@ class MyMainPage:
   ] //rates_reference[2], the one cast as Double(), will store custom rate
   // internal var s_1 = 0.00
   internal var numberFormatter: NumberFormatter = NumberFormatter()
-  internal lazy var p = min_value
+  internal lazy var p = p_min
   internal lazy var r = APR_DIRECT/100
   internal lazy var i = r
     / 12 //need to convert to periodic rate in decimal form
   // by default, interest is not compounded
   internal lazy var i_reference = r / 12
-  internal lazy var a = min_value
+  internal lazy var a = p_min
     * r
     / 12
     + 0.01 //values are cast in viewDidLoad()
-  internal lazy var a_reference = min_value
+  internal lazy var a_reference = p_min
     * r
     / 12
     + 0.01 //brought back because of + - buttons
@@ -409,21 +409,21 @@ class MyMainPage:
   }
 
   @IBAction func Loaned_Min_Input(_ sender: UITextField) {
-    min_value = Double(truncating: removeFormat(string: loaned_min_input.text!))
-    if (min_value - floor(min_value) > 0.499999)
-        && (min_value - floor(min_value) < 0.5) {
-      min_value = round(min_value + 1)
+    p_min = Double(truncating: removeFormat(string: loaned_min_input.text!))
+    if (p_min - floor(p_min) > 0.499999)
+        && (p_min - floor(p_min) < 0.5) {
+      p_min = round(p_min + 1)
     } else {
-      min_value = round(min_value)
+      p_min = round(p_min)
     }
-    if (min_value < 0) {
-      min_value = 0
-      loaned_min_input.text = String(format: "%.0f", min_value)
-    } else if (min_value >= max_value) {
-      min_value = max_value-1
-      loaned_min_input.text = String(format: "%.0f", min_value)
+    if (p_min < 0) {
+      p_min = 0
+      loaned_min_input.text = String(format: "%.0f", p_min)
+    } else if (p_min >= p_max) {
+      p_min = p_max-1
+      loaned_min_input.text = String(format: "%.0f", p_min)
     } else { }
-    ΔN = (max_value - min_value)/number_of_increments
+    ΔN = (p_max - p_min)/N
     if (ΔN - floor(ΔN) == 0) {
       increment_input.text = String(format: "%.0f", ΔN)
       increment_input.textColor = UIColor(
@@ -440,7 +440,7 @@ class MyMainPage:
     } else {
       even_out.isHidden = false
       submit_changes.isEnabled = false
-      if (number_of_increments == 0) {
+      if (N == 0) {
         increment_input.text = "∞"
       } else {
         increment_input.text = String(format: "%.5f", ΔN)
@@ -469,10 +469,10 @@ class MyMainPage:
     var suggestions = [Int]()
     var tailored_suggestions = String()
     var suggestions_index = -1
-    for testing_suggestions in 20...60 {
-      let result = (max_value - min_value)/Double(testing_suggestions)
-      if (result - floor(result) == 0) {
-        suggestions.append(testing_suggestions)
+    for N_suggest in 20...60 {
+      let ΔN_result = (p_max - p_min)/Double(N_suggest)
+      if (ΔN_result - floor(ΔN_result) == 0) {
+        suggestions.append(N_suggest)
         suggestions_index += 1
       }
     }
@@ -492,8 +492,8 @@ class MyMainPage:
         suggest.text = "Suggestions: \(tailored_suggestions)\(suggestions[suggestions_index-1]) or \(suggestions[suggestions_index]) increments"
       }
     }
-    if (min_value < progress) {
-      var value = (progress - min_value)/ΔN
+    if (p_min < progress) {
+      var value = (progress - p_min)/ΔN
       if (value - floor(value) > 0.499999) && (value - floor(value) < 0.5) {
         value = round(value + 1)
       } else {
@@ -501,12 +501,12 @@ class MyMainPage:
       }
       self.loaned.setValue(Float(value), animated: true) //figure out where it will go
     } else {
-      p = Double(min_value)
+      p = Double(p_min)
       shared_preferences.set(p, forKey: "loaned")
       shared_preferences.synchronize()
       let value = 0
       self.loaned.setValue(Float(value), animated: true)
-      progress = ΔN * Double(self.loaned.value) + min_value
+      progress = ΔN * Double(self.loaned.value) + p_min
     }
     var temp = Double()
     if (tenyr_indicator == 0) {
@@ -595,24 +595,24 @@ class MyMainPage:
   }
 
   @IBAction func Loaned_Max_Input(_ sender: UITextField) {
-    max_value = Double(truncating: removeFormat(string: loaned_max_input.text!))
-    if (max_value - floor(max_value) > 0.499999)
-        && (max_value - floor(max_value) < 0.5) {
-      max_value = round(max_value + 1)
+    p_max = Double(truncating: removeFormat(string: loaned_max_input.text!))
+    if (p_max - floor(p_max) > 0.499999)
+        && (p_max - floor(p_max) < 0.5) {
+      p_max = round(p_max + 1)
     } else {
-      max_value = round(max_value)
+      p_max = round(p_max)
     }
-    if (max_value <= min_value) {
-      max_value = min_value+1
-      loaned_max_input.text = String(format: "%.0f", max_value)
+    if (p_max <= p_min) {
+      p_max = p_min+1
+      loaned_max_input.text = String(format: "%.0f", p_max)
     } else { }
     bubble_label = UILabel(frame: CGRect(
-      x: -String(format: "%.0f", max_value).count*6+0,
+      x: -String(format: "%.0f", p_max).count*6+0,
       y: -5,
-      width: String(format: "%.0f", max_value).count*12+20,
+      width: String(format: "%.0f", p_max).count*12+20,
       height: -32
     ))
-    ΔN = (max_value - min_value)/number_of_increments
+    ΔN = (p_max - p_min)/N
     if (ΔN - floor(ΔN) == 0) {
       increment_input.text = String(format: "%.0f", ΔN)
       increment_input.textColor = UIColor(
@@ -629,7 +629,7 @@ class MyMainPage:
     } else {
       even_out.isHidden = false
       submit_changes.isEnabled = false
-      if (number_of_increments == 0) {
+      if (N == 0) {
         increment_input.text = "∞"
       } else {
         increment_input.text = String(format: "%.5f", ΔN)
@@ -658,10 +658,10 @@ class MyMainPage:
     var suggestions = [Int]()
     var tailored_suggestions = String()
     var suggestions_index = -1
-    for testing_suggestions in 20...60 {
-      let result = (max_value - min_value)/Double(testing_suggestions)
-      if (result - floor(result) == 0) {
-        suggestions.append(testing_suggestions)
+    for N_suggest in 20...60 {
+      let ΔN_result = (p_max - p_min)/Double(N_suggest)
+      if (ΔN_result - floor(ΔN_result) == 0) {
+        suggestions.append(N_suggest)
         suggestions_index += 1
       }
     }
@@ -681,8 +681,8 @@ class MyMainPage:
         suggest.text = "Suggestions: \(tailored_suggestions)\(suggestions[suggestions_index-1]) or \(suggestions[suggestions_index]) increments"
       }
     }
-    if (max_value > progress) {
-      var value = (progress - min_value)/ΔN
+    if (p_max > progress) {
+      var value = (progress - p_min)/ΔN
       if (value - floor(value) > 0.499999) && (value - floor(value) < 0.5) {
         value = round(value + 1)
       } else {
@@ -690,12 +690,12 @@ class MyMainPage:
       }
       self.loaned.setValue(Float(value), animated: true)
     } else {
-      p = Double(max_value)
+      p = Double(p_max)
       shared_preferences.set(p, forKey: "loaned")
       shared_preferences.synchronize()
-      let value = number_of_increments
+      let value = N
       self.loaned.setValue(Float(value), animated: true)
-      progress = ΔN * Double(self.loaned.value) + min_value
+      progress = ΔN * Double(self.loaned.value) + p_min
     }
     var temp = Double()
     if (tenyr_indicator == 0) {
@@ -740,24 +740,24 @@ class MyMainPage:
   }
 
   @IBAction func Input_Number_of_Increments(_ sender: UITextField) {
-    number_of_increments = Double(truncating: removeFormat(
+    N = Double(truncating: removeFormat(
       string: input_number_of_increments.text!
     ))
-    if (number_of_increments - floor(number_of_increments) > 0.499999)
-        && (number_of_increments - floor(number_of_increments) < 0.5) {
-      number_of_increments = round(number_of_increments + 1)
+    if (N - floor(N) > 0.499999)
+        && (N - floor(N) < 0.5) {
+      N = round(N + 1)
     } else {
-      number_of_increments = round(number_of_increments)
+      N = round(N)
     }
-    if (number_of_increments < 0) {
-      number_of_increments = 0 //essentially, empty
+    if (N < 0) {
+      N = 0
       input_number_of_increments.text = String(
         format: "%.0f",
-        number_of_increments
+        N
       )
     }
-    ΔN = (max_value - min_value)/number_of_increments
-    self.loaned.maximumValue = Float(number_of_increments)
+    ΔN = (p_max - p_min)/N
+    self.loaned.maximumValue = Float(N)
     if (ΔN - floor(ΔN) == 0) {
       increment_input.text = String(format: "%.0f", ΔN)
       increment_input.textColor = UIColor(
@@ -774,7 +774,7 @@ class MyMainPage:
     } else {
       even_out.isHidden = false
       submit_changes.isEnabled = false
-      if (number_of_increments == 0) {
+      if (N == 0) {
         increment_input.text = "∞"
       } else {
         increment_input.text = String(format: "%.5f", ΔN)
@@ -803,10 +803,10 @@ class MyMainPage:
     var suggestions = [Int]()
     var tailored_suggestions = String()
     var suggestions_index = -1
-    for testing_suggestions in 20...60 {
-      let result = (max_value - min_value)/Double(testing_suggestions)
-      if (result - floor(result) == 0) {
-        suggestions.append(testing_suggestions)
+    for N_suggest in 20...60 {
+      let ΔN_result = (p_max - p_min)/Double(N_suggest)
+      if (ΔN_result - floor(ΔN_result) == 0) {
+        suggestions.append(N_suggest)
         suggestions_index += 1
       }
     }
@@ -1134,11 +1134,11 @@ class MyMainPage:
 
   @IBAction func Edit_Slider_Expand(_ sender: UIButton?) {
     //``?'' only necessary for slider
-    loaned_min_input.text = String(format: "%.0f", min_value)
-    loaned_max_input.text = String(format: "%.0f", max_value)
+    loaned_min_input.text = String(format: "%.0f", p_min)
+    loaned_max_input.text = String(format: "%.0f", p_max)
     input_number_of_increments.text = String(
       format: "%.0f",
-      number_of_increments
+      N
     )
     if (ΔN - floor(ΔN) == 0) {
       increment_input.text = String(format: "%.0f", ΔN)
@@ -1156,7 +1156,7 @@ class MyMainPage:
     } else {
       even_out.isHidden = false
       submit_changes.isEnabled = false
-      if (number_of_increments == 0) {
+      if (N == 0) {
         increment_input.text = "∞"
       } else {
         increment_input.text = String(format: "%.5f", ΔN)
@@ -1172,10 +1172,10 @@ class MyMainPage:
     var suggestions = [Int]()
     var tailored_suggestions = String()
     var suggestions_index = -1
-    for testing_suggestions in 20...60 {
-      let result = (max_value - min_value)/Double(testing_suggestions)
-      if (result - floor(result) == 0) {
-        suggestions.append(testing_suggestions)
+    for N_suggest in 20...60 {
+      let ΔN_result = (p_max - p_min)/Double(N_suggest)
+      if (ΔN_result - floor(ΔN_result) == 0) {
+        suggestions.append(N_suggest)
         suggestions_index += 1
       }
     }
@@ -1349,10 +1349,10 @@ class MyMainPage:
     edit_slider_shape.willRemoveSubview(loaned_title)
     view.addSubview(loaned_title)
     loaned_min_input.text = numberFormatter.string(from: NSNumber(
-        value: min_value
+        value: p_min
       ))! //otherwise won't show real value
     loaned_max_input.text = numberFormatter.string(from: NSNumber(
-        value: max_value
+        value: p_max
       ))! //otherwise won't show real value
     loaned_min_input.backgroundColor = UIColor(
       red: 109/255.0,
@@ -2097,7 +2097,7 @@ class MyMainPage:
     } else {
       sender.value = roundf(sender.value)
     }
-    progress = ΔN * Double(sender.value) + min_value
+    progress = ΔN * Double(sender.value) + p_min
     view.addSubview(loaned)
     //subview slider thumb bubble, so it moves with thumb
     if let thumb_bubble = loaned.subviews.last as? UIImageView {
@@ -2741,15 +2741,15 @@ class MyMainPage:
     var m_min = 1
     var n = Int()
     var n_min = Int()
-    var remainingbalance = p //monthly principal balance
+    var B = p //monthly principal balance
     //by default, all interest is paid, so there is no monthly outstanding interest
     var remainingbalance_repay_minimum = p
-    var temp_interest_amount = Double()
-    if (remainingbalance*i*100 - floor(remainingbalance*i*100) > 0.499999)
-        && (remainingbalance*i*100 - floor(remainingbalance*i*100) < 0.5) {
-      temp_interest_amount = (round(remainingbalance*i*100 + 1))/100
+    var interest_owed = Double() //by default, interest_paid = interest_owed
+    if (B*i*100 - floor(B*i*100) > 0.499999)
+        && (B*i*100 - floor(B*i*100) < 0.5) {
+      interest_owed = (round(B*i*100 + 1))/100
     } else {
-      temp_interest_amount = (round(remainingbalance*i*100))/100
+      interest_owed = (round(B*i*100))/100
     }
     var temp_interest_min = Double()
     if (remainingbalance_repay_minimum*i*100
@@ -2779,19 +2779,19 @@ class MyMainPage:
       }
     }
     // let temp_pay_first = temp_pay
-    while (remainingbalance - (a - temp_interest_amount) > 0) {
-      remainingbalance = remainingbalance - (a - temp_interest_amount)
-      let temp_new3 = remainingbalance*100 - floor(remainingbalance*100)
+    while (B - (a - interest_owed) > 0) { //again, by default interest_paid = interest_owed
+      B = B - (a - interest_owed)
+      let temp_new3 = B*100 - floor(B*100)
       if (temp_new3 > 0.499999) && (temp_new3 < 0.5) {
-        remainingbalance = round(remainingbalance*100 + 1)/100
+        B = round(B*100 + 1)/100
       } else {
-        remainingbalance = round(remainingbalance*100)/100
+        B = round(B*100)/100
       }
-      if (remainingbalance*i*100 - floor(remainingbalance*i*100) > 0.499999)
-          && (remainingbalance*i*100 - floor(remainingbalance*i*100) < 0.5) {
-        temp_interest_amount = (round(remainingbalance*i*100 + 1))/100
+      if (B*i*100 - floor(B*i*100) > 0.499999)
+          && (B*i*100 - floor(B*i*100) < 0.5) {
+        interest_owed = (round(B*i*100 + 1))/100
       } else {
-        temp_interest_amount = (round(remainingbalance*i*100))/100
+        interest_owed = (round(B*i*100))/100
       }
       m += 1
     }
@@ -2874,14 +2874,14 @@ class MyMainPage:
     let T_max = Double(n_min-1)*a_min
       + remainingbalance_repay_minimum
       + temp_interest_last_min
-    if (remainingbalance*i*100 - floor(remainingbalance*i*100) > 0.499999)
-        && (remainingbalance*i*100 - floor(remainingbalance*i*100) < 0.5) {
-      temp_interest_amount = (round(remainingbalance*i*100 + 1))/100
+    if (B*i*100 - floor(B*i*100) > 0.499999)
+        && (B*i*100 - floor(B*i*100) < 0.5) {
+      interest_owed = (round(B*i*100 + 1))/100
     } else {
-      temp_interest_amount = (round(remainingbalance*i*100))/100
+      interest_owed = (round(B*i*100))/100
     }
-    let temp_interest_last_amount = temp_interest_amount
-    let T = Double(n-1) * a + remainingbalance + temp_interest_last_amount //T(a)
+    let temp_interest_last_amount = interest_owed
+    let T = Double(n-1) * a + B + temp_interest_last_amount //T(a)
     var s_2 = T_max - T //T_max - T(a_2)
     var s_1 = shared_preferences.double(forKey: "savings_change_key") //T_max - T(a_1)
     if (s_1 - floor(s_1) > 0.499999)
@@ -3247,10 +3247,10 @@ class MyMainPage:
     numberFormatter.groupingSeparator = ","
     numberFormatter.groupingSize = 3
     loaned_min_input.text = numberFormatter.string(from: NSNumber(
-        value: min_value
+        value: p_min
       ))!
     loaned_max_input.text = numberFormatter.string(from: NSNumber(
-        value: max_value
+        value: p_max
       ))!
     apr_number.text = String(format: "%.2f", i * 12 * 100)
     apr_number_back.text = String(format: "%.2f", i * 12 * 100)
