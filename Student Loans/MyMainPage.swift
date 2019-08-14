@@ -2779,8 +2779,8 @@ class MyMainPage:
       }
     }
     // let temp_pay_first = temp_pay
-    while (remainingbalance + temp_interest_amount > a) {
-      remainingbalance = remainingbalance + temp_interest_amount - a
+    while (remainingbalance - (a - temp_interest_amount) > 0) {
+      remainingbalance = remainingbalance - (a - temp_interest_amount)
       let temp_new3 = remainingbalance*100 - floor(remainingbalance*100)
       if (temp_new3 > 0.499999) && (temp_new3 < 0.5) {
         remainingbalance = round(remainingbalance*100 + 1)/100
@@ -2796,10 +2796,8 @@ class MyMainPage:
       m += 1
     }
     n = m
-    while (remainingbalance_repay_minimum + temp_interest_min > a_min) {
-      remainingbalance_repay_minimum = remainingbalance_repay_minimum
-        + temp_interest_min
-        - a_min
+    while (remainingbalance_repay_minimum - (a_min - temp_interest_min) > 0) {
+      remainingbalance_repay_minimum = remainingbalance_repay_minimum - (a_min - temp_interest_min)
       let temp_new4 = remainingbalance_repay_minimum*100
         - floor(remainingbalance_repay_minimum*100)
       if (temp_new4 > 0.499999) && (temp_new4 < 0.5) {

@@ -1482,32 +1482,33 @@ class ShowMath: UIViewController {
     } else {
       interest_pay = round(x*100)/100
     }
-    var tempx = Double()
-    if (p*i*100 - floor(p*i*100) > 0.499999)
-        && (p*i*100 - floor(p*i*100) < 0.5) {
-      tempx = (round(p*i*100 + 1)+1)/100
-    } else {
-      tempx = (round(p*i*100)+1)/100
-    }
-    var principal_pay = Double()
-    if (a == tempx) {
-      if (progress == 100) {
-        principal_pay = a - interest_pay
-      } else {
-        principal_pay = a - interest_pay
-      }
-    } else {
-      principal_pay = a - interest_pay
-    }
-    while (remainingbalance - principal_pay > 0) {
-      remainingbalance = remainingbalance - principal_pay
+    // var tempx = Double()
+    // if (p*i*100 - floor(p*i*100) > 0.499999)
+    //     && (p*i*100 - floor(p*i*100) < 0.5) {
+    //   tempx = (round(p*i*100 + 1)+1)/100
+    // } else {
+    //   tempx = (round(p*i*100)+1)/100
+    // }
+    // var principal_pay = Double()
+    // if (a == tempx) {
+    //   if (progress == 100) {
+    //     principal_pay = a - interest_pay
+    //   } else {
+    //     principal_pay = a - interest_pay
+    //   }
+    // } else {
+    //   principal_pay = a - interest_pay
+    // }
+    // principal_pay = a - interest_pay
+    while (remainingbalance - (a - interest_pay) > 0) {
+      remainingbalance = remainingbalance - (a - interest_pay)
       if (remainingbalance*100 - floor(remainingbalance*100) > 0.499999)
           && (remainingbalance*100 - floor(remainingbalance*100) < 0.5) {
         remainingbalance = round(remainingbalance*100 + 1)/100
       } else {
         remainingbalance = round(remainingbalance*100)/100
       }
-      outstandingbalance = outstandingbalance + interest - interest_pay
+      outstandingbalance = outstandingbalance + (interest - interest_pay)
       if (outstandingbalance*100 - floor(outstandingbalance*100) > 0.499999)
           && (outstandingbalance*100 - floor(outstandingbalance*100) < 0.5) {
         outstandingbalance = round(outstandingbalance*100 + 1)/100
@@ -1526,21 +1527,22 @@ class ShowMath: UIViewController {
       } else {
         interest_pay = round(x*100)/100
       }
-      if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
-        tempx = (round(p*i*100 + 1)+1)/100
-      } else {
-        tempx = (round(p*i*100)+1)/100
-      }
-      if (a == tempx) {
-        if (progress == 100) {
-          principal_pay = a - interest_pay
-        } else {
-          principal_pay = a - interest_pay
-        }
-      } else {
-        principal_pay = a - interest_pay
-      }
+      // if (p*i*100 - floor(p*i*100) > 0.499999)
+      //     && (p*i*100 - floor(p*i*100) < 0.5) {
+      //   tempx = (round(p*i*100 + 1)+1)/100
+      // } else {
+      //   tempx = (round(p*i*100)+1)/100
+      // }
+      // if (a == tempx) {
+      //   if (progress == 100) {
+      //     principal_pay = a - interest_pay
+      //   } else {
+      //     principal_pay = a - interest_pay
+      //   }
+      // } else {
+      //   principal_pay = a - interest_pay
+      // }
+      // principal_pay = a - interest_pay
       m += 1
     }
     n = m
@@ -2631,7 +2633,7 @@ class ShowMath: UIViewController {
       payment_insight_shape_label_jg4.append(etc)
       payment_insight_shape_label_jg4.append(remains)
       pay_insight_shape_label.attributedText = payment_insight_shape_label_jg4
-      pay_insight_max_string_count_1 = (String(format: "%.2f", principal_pay)
+      pay_insight_max_string_count_1 = (String(format: "%.2f", a - interest_pay)
           + " Prin.  + "
           + String(format: "%.2f", interest_pay)
           + " Int. =").count //used for right inset
@@ -2661,7 +2663,7 @@ class ShowMath: UIViewController {
         + String(format: "%.2f", remaining_interest + outstandingbalance)
         + " Int. ="
       pay_insight_shape_label.textAlignment = .right
-      pay_insight_max_string_count_1 = (String(format: "%.2f", principal_pay)
+      pay_insight_max_string_count_1 = (String(format: "%.2f", a - interest_pay)
           + " Prin.  + "
           + String(format: "%.2f", interest_pay)
           + " Int. =").count //used for right inset
@@ -2687,7 +2689,7 @@ class ShowMath: UIViewController {
         + String(format: "%.2f", remaining_interest + outstandingbalance)
         + " Int. ="
       pay_insight_shape_label.textAlignment = .right
-      pay_insight_max_string_count_1 = (String(format: "%.2f", principal_pay)
+      pay_insight_max_string_count_1 = (String(format: "%.2f", a - interest_pay)
           + " Prin.  + "
           + String(format: "%.2f", interest_pay)
           + " Int. =").count //used for right inset
@@ -2709,7 +2711,7 @@ class ShowMath: UIViewController {
         + String(format: "%.2f", remaining_interest + outstandingbalance)
         + " Int. ="
       pay_insight_shape_label.textAlignment = .right
-      pay_insight_max_string_count_1 = (String(format: "%.2f", principal_pay)
+      pay_insight_max_string_count_1 = (String(format: "%.2f", a - interest_pay)
           + " Prin.  + "
           + String(format: "%.2f", interest_pay)
           + " Int. =").count //used for right inset
@@ -2727,7 +2729,7 @@ class ShowMath: UIViewController {
         + String(format: "%.2f", remaining_interest + outstandingbalance)
         + " Int. ="
       pay_insight_shape_label.textAlignment = .right
-      pay_insight_max_string_count_1 = (String(format: "%.2f", principal_pay)
+      pay_insight_max_string_count_1 = (String(format: "%.2f", a - interest_pay)
           + " Prin.  + "
           + String(format: "%.2f", interest_pay)
           + " Int. =").count //used for right inset
@@ -3204,7 +3206,7 @@ class ShowMath: UIViewController {
       interest_pay_min = round(xxx*100)/100
     }
     var a_min = Double()
-    var temp_pay = Double()
+    // var temp_pay = Double()
     if (tenyr_indicator == 0) {
       // if (p*i*100 - floor(p*i*100) > 0.499999)
       //     && (p*i*100 - floor(p*i*100) < 0.5) {
@@ -3218,7 +3220,7 @@ class ShowMath: UIViewController {
       } else {
         a_min = (round(xx*100) + 1)/100
       }
-      temp_pay = a_min - interest_pay_min
+      // temp_pay = a_min - interest_pay_min
 //      if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
 //          && (temp_pay*100 - floor(temp_pay*100) < 0.5) {
 //        temp_pay = round(temp_pay*100 + 1)/100
@@ -3234,7 +3236,7 @@ class ShowMath: UIViewController {
             )/100
           a_min += CT()
           // a_min = temp_pay
-          temp_pay = a_min - interest_pay_min
+          // temp_pay = a_min - interest_pay_min
 //          if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
 //              && (temp_pay*100 - floor(temp_pay*100) < 0.5) {
 //            temp_pay = round(temp_pay*100 + 1)/100
@@ -3243,15 +3245,15 @@ class ShowMath: UIViewController {
 //          }
         } else {
           a_min = ceil(p/120*100)/100
-          temp_pay = a_min
+          // temp_pay = a_min
         }
       } else {
         a_min = ceil(p/120*100)/100
-        temp_pay = a_min
+        // temp_pay = a_min
       }
     }
-    while (remainingbalance_repay_minimum - temp_pay > 0) {
-      remainingbalance_repay_minimum = remainingbalance_repay_minimum - temp_pay
+    while (remainingbalance_repay_minimum - (a_min - interest_pay_min) > 0) {
+      remainingbalance_repay_minimum = remainingbalance_repay_minimum - (a_min - interest_pay_min)
       if (remainingbalance_repay_minimum*100
             - floor(remainingbalance_repay_minimum*100)
             > 0.499999)
@@ -3266,9 +3268,7 @@ class ShowMath: UIViewController {
             remainingbalance_repay_minimum*100
           )/100
       }
-      outstandingbalance_min = outstandingbalance_min
-        + temp_interest_min
-        - interest_pay_min
+      outstandingbalance_min = outstandingbalance_min + (temp_interest_min - interest_pay_min)
       if (outstandingbalance_min*100 - floor(outstandingbalance_min*100) > 0.499999)
           && (outstandingbalance_min*100 - floor(outstandingbalance_min*100) < 0.5) {
           outstandingbalance_min = round(outstandingbalance_min*100 + 1)/100
@@ -3292,7 +3292,7 @@ class ShowMath: UIViewController {
       } else {
         interest_pay_min = round(xxx*100)/100
       }
-      if (tenyr_indicator == 0) {
+      // if (tenyr_indicator == 0) {
         // if (p*i*100 - floor(p*i*100) > 0.499999)
         //     && (p*i*100 - floor(p*i*100) < 0.5) {
         //   temp_pay = (round(p*i*100 + 1))/100
@@ -3306,38 +3306,38 @@ class ShowMath: UIViewController {
         // } else {
         //   temp_pay = (round(xx*100) + 1)/100 - interest_pay_min
         // }
-        temp_pay = a_min - interest_pay_min
+        // temp_pay = a_min - interest_pay_min
       //  if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
       //      && (temp_pay*100 - floor(temp_pay*100) < 0.5) {
       //    temp_pay = round(temp_pay*100 + 1)/100
       //  } else {
       //    temp_pay = round(temp_pay*100)/100
       //  }
-      } else {
-        if (i != 0) {
-          if (progress != 0) {
+      // } else {
+        // if (i != 0) {
+          // if (progress != 0) {
             // a_min = ceil(
             //     (percentage/100*i*p*pow(1+percentage/100*i, 120))
             //       / (pow(1+percentage/100*i, 120) - 1)*100
             //   )/100
             // a_min += CT()
-            temp_pay = a_min - interest_pay_min
+            // temp_pay = a_min - interest_pay_min
 //            if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
 //                && (temp_pay*100 - floor(temp_pay*100) < 0.5) {
 //              temp_pay = round(temp_pay*100 + 1)/100
 //            } else {
 //              temp_pay = round(temp_pay*100)/100
 //            }
-          } else {
+          // } else {
             // temp_pay = ceil(p/120*100)/100
-            temp_pay = a_min
+            // temp_pay = a_min
             // temp_pay_first = temp_pay
-          }
-        } else {
+          // }
+        // } else {
           // temp_pay = ceil(p/120*100)/100
-          temp_pay = a_min
-        }
-      }
+          // temp_pay = a_min
+        // }
+      // }
       m_min += 1
     }
     n_min = m_min
