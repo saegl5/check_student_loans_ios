@@ -161,7 +161,7 @@ class MyMainPage:
     width: 80,
     height: -32
   ))
-  lazy var increment = (max_value - min_value)/number_of_increments //increment size
+  lazy var ΔN = (max_value - min_value)/number_of_increments
   lazy var progress = min_value
   lazy var rates = [
     String(format: "%.2f", APR_DIRECT),
@@ -423,9 +423,9 @@ class MyMainPage:
       min_value = max_value-1
       loaned_min_input.text = String(format: "%.0f", min_value)
     } else { }
-    increment = (max_value - min_value)/number_of_increments
-    if (increment - floor(increment) == 0) {
-      increment_input.text = String(format: "%.0f", increment)
+    ΔN = (max_value - min_value)/number_of_increments
+    if (ΔN - floor(ΔN) == 0) {
+      increment_input.text = String(format: "%.0f", ΔN)
       increment_input.textColor = UIColor(
         red: 161/255.0,
         green: 166/255.0,
@@ -443,7 +443,7 @@ class MyMainPage:
       if (number_of_increments == 0) {
         increment_input.text = "∞"
       } else {
-        increment_input.text = String(format: "%.5f", increment)
+        increment_input.text = String(format: "%.5f", ΔN)
       }
       increment_input.textColor = UIColor(
         red: 109/255.0,
@@ -493,7 +493,7 @@ class MyMainPage:
       }
     }
     if (min_value < progress) {
-      var value = (progress - min_value)/increment
+      var value = (progress - min_value)/ΔN
       if (value - floor(value) > 0.499999) && (value - floor(value) < 0.5) {
         value = round(value + 1)
       } else {
@@ -506,7 +506,7 @@ class MyMainPage:
       shared_preferences.synchronize()
       let value = 0
       self.loaned.setValue(Float(value), animated: true)
-      progress = increment * Double(self.loaned.value) + min_value
+      progress = ΔN * Double(self.loaned.value) + min_value
     }
     var temp = Double()
     if (tenyr_indicator == 0) {
@@ -612,9 +612,9 @@ class MyMainPage:
       width: String(format: "%.0f", max_value).count*12+20,
       height: -32
     ))
-    increment = (max_value - min_value)/number_of_increments
-    if (increment - floor(increment) == 0) {
-      increment_input.text = String(format: "%.0f", increment)
+    ΔN = (max_value - min_value)/number_of_increments
+    if (ΔN - floor(ΔN) == 0) {
+      increment_input.text = String(format: "%.0f", ΔN)
       increment_input.textColor = UIColor(
         red: 161/255.0,
         green: 166/255.0,
@@ -632,7 +632,7 @@ class MyMainPage:
       if (number_of_increments == 0) {
         increment_input.text = "∞"
       } else {
-        increment_input.text = String(format: "%.5f", increment)
+        increment_input.text = String(format: "%.5f", ΔN)
       }
       increment_input.textColor = UIColor(
         red: 109/255.0,
@@ -682,7 +682,7 @@ class MyMainPage:
       }
     }
     if (max_value > progress) {
-      var value = (progress - min_value)/increment
+      var value = (progress - min_value)/ΔN
       if (value - floor(value) > 0.499999) && (value - floor(value) < 0.5) {
         value = round(value + 1)
       } else {
@@ -695,7 +695,7 @@ class MyMainPage:
       shared_preferences.synchronize()
       let value = number_of_increments
       self.loaned.setValue(Float(value), animated: true)
-      progress = increment * Double(self.loaned.value) + min_value
+      progress = ΔN * Double(self.loaned.value) + min_value
     }
     var temp = Double()
     if (tenyr_indicator == 0) {
@@ -756,10 +756,10 @@ class MyMainPage:
         number_of_increments
       )
     }
-    increment = (max_value - min_value)/number_of_increments
+    ΔN = (max_value - min_value)/number_of_increments
     self.loaned.maximumValue = Float(number_of_increments)
-    if (increment - floor(increment) == 0) {
-      increment_input.text = String(format: "%.0f", increment)
+    if (ΔN - floor(ΔN) == 0) {
+      increment_input.text = String(format: "%.0f", ΔN)
       increment_input.textColor = UIColor(
         red: 161/255.0,
         green: 166/255.0,
@@ -777,7 +777,7 @@ class MyMainPage:
       if (number_of_increments == 0) {
         increment_input.text = "∞"
       } else {
-        increment_input.text = String(format: "%.5f", increment)
+        increment_input.text = String(format: "%.5f", ΔN)
       }
       increment_input.textColor = UIColor(
         red: 109/255.0,
@@ -1140,8 +1140,8 @@ class MyMainPage:
       format: "%.0f",
       number_of_increments
     )
-    if (increment - floor(increment) == 0) {
-      increment_input.text = String(format: "%.0f", increment)
+    if (ΔN - floor(ΔN) == 0) {
+      increment_input.text = String(format: "%.0f", ΔN)
       increment_input.textColor = UIColor(
         red: 161/255.0,
         green: 166/255.0,
@@ -1159,7 +1159,7 @@ class MyMainPage:
       if (number_of_increments == 0) {
         increment_input.text = "∞"
       } else {
-        increment_input.text = String(format: "%.5f", increment)
+        increment_input.text = String(format: "%.5f", ΔN)
       }
       increment_input.textColor = UIColor(
         red: 109/255.0,
@@ -1287,7 +1287,7 @@ class MyMainPage:
             )
           },
           completion: { (finished: Bool) -> Void in
-            if (self.increment - floor(self.increment) != 0) {
+            if (self.ΔN - floor(self.ΔN) != 0) {
               self.increment_input.alpha = 1.0
               UIView.animate(
                 withDuration: 0.0625,
@@ -2097,7 +2097,7 @@ class MyMainPage:
     } else {
       sender.value = roundf(sender.value)
     }
-    progress = increment * Double(sender.value) + min_value
+    progress = ΔN * Double(sender.value) + min_value
     view.addSubview(loaned)
     //subview slider thumb bubble, so it moves with thumb
     if let thumb_bubble = loaned.subviews.last as? UIImageView {
@@ -3332,7 +3332,7 @@ class MyMainPage:
       ),
       for: .normal
     )
-    if (increment - floor(increment) != 0) {
+    if (ΔN - floor(ΔN) != 0) {
       loaned.isHidden = true
       Edit_Slider_Expand(nil)
     } else { }
