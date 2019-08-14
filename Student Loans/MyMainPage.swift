@@ -518,7 +518,7 @@ class MyMainPage:
       }
     } else {
       if (i != 0) {
-        temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
         temp += CT()
       } else {
         temp = ceil(p/120*100)/100
@@ -566,7 +566,7 @@ class MyMainPage:
     test_array.removeAll() //reset array
     test_array.append(p)
     var m_min = 1
-    var a_min = ceil((i*test_array[0]*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+    var a_min = ceil((test_array[0]*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
     a_min += 0.01*Double(c)
     while ( test_array[m_min-1] - (a_min - CR(x: test_array[m_min-1]*i)) > 0 )
         && ( CR(x: a_min) != CR(x: test_array[0]*i) ) {
@@ -707,7 +707,7 @@ class MyMainPage:
       }
     } else {
       if (i != 0) {
-        temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
         temp += CT()
       } else {
         temp = ceil(p/120*100)/100
@@ -855,7 +855,7 @@ class MyMainPage:
       }
     } else {
       if (i != 0) {
-        temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
         temp += CT()
       } else {
         temp = ceil(p/120*100)/100
@@ -943,7 +943,7 @@ class MyMainPage:
       }
     } else {
       if (i != 0) {
-        temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
         temp += CT()
       } else {
         temp = ceil(p/120*100)/100
@@ -2060,7 +2060,7 @@ class MyMainPage:
     shared_preferences.synchronize()
     var temp = Double()
     if (i != 0) {
-      temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+      temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
       temp += CT()
     } else {
       temp = ceil(p/120*100)/100
@@ -2152,7 +2152,7 @@ class MyMainPage:
         }
       } else {
         if (i != 0) {
-          temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+          temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
           temp += CT()
         } else {
           temp = ceil(p/120*100)/100
@@ -2272,7 +2272,7 @@ class MyMainPage:
       }
     } else {
       if (i != 0) {
-        temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
         temp += CT()
       } else {
         temp = ceil(p/120*100)/100
@@ -2347,7 +2347,7 @@ class MyMainPage:
       }
     } else {
       if (i != 0) {
-        temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
         temp += CT()
       } else {
         temp = ceil(p/120*100)/100
@@ -2479,7 +2479,7 @@ class MyMainPage:
       }
     } else {
       if (i != 0) {
-        temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
         temp += CT()
       } else {
         temp = ceil(p/120*100)/100
@@ -2552,7 +2552,7 @@ class MyMainPage:
       }
     } else {
       if (i != 0) {
-        temp_before = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp_before = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
         temp_before += CT()
       } else {
         temp_before = ceil(p/120*100)/100
@@ -2589,7 +2589,7 @@ class MyMainPage:
       }
     } else {
       if (i != 0) {
-        temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
         temp += CT()
       } else {
         temp = ceil(p/120*100)/100
@@ -2772,7 +2772,7 @@ class MyMainPage:
       }
     } else {
       if (i != 0) {
-        a_min = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
         a_min += CT()
       } else {
         a_min = ceil(p/120*100)/100
@@ -2830,7 +2830,7 @@ class MyMainPage:
 //        }
 //      } else {
 //        if (i != 0) {
-//          a_min = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+//          a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
 //          a_min += CT()
 //        } else {
 //          a_min = ceil(p/120*100)/100
@@ -2851,8 +2851,8 @@ class MyMainPage:
     } else {
       years_text.text = "years"
     }
-    months.text = String(n - temp * 12)
-    if (n - temp * 12 == 1) {
+    months.text = String(n - 12 * temp)
+    if (n - 12 * temp == 1) {
       months_text.text = "month"
     } else {
       months_text.text = "months"
@@ -3267,7 +3267,7 @@ class MyMainPage:
       }
     } else {
       if (i != 0) {
-        temp = ceil((i*p*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
         temp += CT()
       } else {
         temp = ceil(p/120*100)/100

@@ -73,7 +73,7 @@ class ShowMath: UIViewController {
   var increment = Double()
   var max_percent_interest = 100.0
   var progress = 100.0
-  var percentage = Double()
+  var α = Double()
   var p = Double()
   var r = Double()
   var i = Double()
@@ -112,17 +112,17 @@ class ShowMath: UIViewController {
       i = pow(1 + r/365.25, 365.25/12) - 1 //approximate
       var temp = Double()
       if (tenyr_indicator == 0) {
-        if (percentage/100*p*i*100 - floor(percentage/100*p*i*100) > 0.499999)
-            && (percentage/100*p*i*100 - floor(percentage/100*p*i*100) < 0.5) {
-          temp = (round(percentage/100*p*i*100 + 1) + 1)/100
+        if (α*p*i*100 - floor(α*p*i*100) > 0.499999)
+            && (α*p*i*100 - floor(α*p*i*100) < 0.5) {
+          temp = (round(α*p*i*100 + 1) + 1)/100
         } else {
-          temp = (round(percentage/100*p*i*100) + 1)/100
+          temp = (round(α*p*i*100) + 1)/100
         }
       } else {
         if (i != 0) {
           temp = ceil(
-              (percentage/100*i*p*pow(1+percentage/100*i, 120))
-                / (pow(1+percentage/100*i, 120) - 1)*100
+              (α*p*i*pow(1+α*i, 120))
+                / (pow(1+α*i, 120) - 1)*100
             )/100
           temp += CT()
         } else {
@@ -174,13 +174,13 @@ class ShowMath: UIViewController {
     var attributedPercentInterest = NSMutableAttributedString()
     var attributedPercentBalance = NSMutableAttributedString()
     attributedPercentInterest = NSMutableAttributedString(
-      string: String(format: "%.0f", percentage) + "%",
+      string: String(format: "%.0f", α*100) + "%",
       attributes: [
         NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!
       ]
     )
     attributedPercentBalance = NSMutableAttributedString(
-      string: String(format: "%.0f", 100 - percentage) + "%",
+      string: String(format: "%.0f", 100 - α*100) + "%",
       attributes: [
         NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!
       ]
@@ -233,15 +233,15 @@ class ShowMath: UIViewController {
         test_array.removeAll() //reset array
         test_array.append(p)
         var m_min = 1
-        var a_min = ceil((percentage/100*i*test_array[0]*pow(1+percentage/100*i, 120)) / (pow(1+percentage/100*i, 120) - 1)*100)/100
+        var a_min = ceil((α*test_array[0]*i*pow(1+α*i, 120)) / (pow(1+α*i, 120) - 1)*100)/100
         a_min += 0.01*Double(c)
-        while ( test_array[m_min-1] - (a_min - CR(x: percentage/100*test_array[m_min-1]*i)) > 0 )
-            && ( CR(x: a_min) != CR(x: percentage/100*test_array[0]*i) ) {
-                test_array.append( CR(x: test_array[m_min-1] - ( a_min - CR(x: percentage/100*test_array[m_min-1]*i) )) )
+        while ( test_array[m_min-1] - (a_min - CR(x: α*test_array[m_min-1]*i)) > 0 )
+            && ( CR(x: a_min) != CR(x: α*test_array[0]*i) ) {
+                test_array.append( CR(x: test_array[m_min-1] - ( a_min - CR(x: α*test_array[m_min-1]*i) )) )
                 m_min += 1
         }
         test_array.append(0)
-        if ( CR(x: a_min) == CR(x: percentage/100*test_array[0]*i) ) {
+        if ( CR(x: a_min) == CR(x: α*test_array[0]*i) ) {
             test_array.removeAll()
         }
         return test_array
@@ -271,17 +271,17 @@ class ShowMath: UIViewController {
                 / 12 //need to convert to periodic rate in decimal form
         }
             if (tenyr_indicator == 0) {
-                if (percentage/100*p*i*100 - floor(percentage/100*p*i*100) > 0.499999)
-                    && (percentage/100*p*i*100 - floor(percentage/100*p*i*100) < 0.5) {
-                    temp = (round(percentage/100*p*i*100 + 1) + 1)/100
+                if (α*p*i*100 - floor(α*p*i*100) > 0.499999)
+                    && (α*p*i*100 - floor(α*p*i*100) < 0.5) {
+                    temp = (round(α*p*i*100 + 1) + 1)/100
                 } else {
-                    temp = (round(percentage/100*p*i*100) + 1)/100
+                    temp = (round(α*p*i*100) + 1)/100
                 }
             } else {
                 if (i != 0) {
                     temp = ceil(
-                        (percentage/100*i*p*pow(1+percentage/100*i, 120))
-                            / (pow(1+percentage/100*i, 120) - 1)*100
+                        (α*p*i*pow(1+α*i, 120))
+                            / (pow(1+α*i, 120) - 1)*100
                         )/100
                     temp += CT()
                 } else {
@@ -665,30 +665,30 @@ class ShowMath: UIViewController {
          */
     let scale = max_percent_interest/100
     /*
-         y = max_percent_interest - scale(x)
-         percentage = y
+         y = ( max_percent_interest - scale(x) )/100
+         α = y
          max_percent_interest - progress = x
          */
-    percentage = max_percent_interest - scale*(max_percent_interest - progress)
-    if (percentage - floor(percentage) > 0.499999)
-        && (percentage - floor(percentage) < 0.5) {
-        percentage = round(percentage + 1)
+    α = ( max_percent_interest - scale*(max_percent_interest - progress) )/100
+    if (α*100 - floor(α*100) > 0.499999)
+        && (α*100 - floor(α*100) < 0.5) {
+        α = round(α*100 + 1)/100
     } else {
-        percentage = round(percentage)
+        α = round(α*100)/100
     }
     var temp = Double()
     if (tenyr_indicator == 0) {
-      if (percentage/100*p*i*100 - floor(percentage/100*p*i*100) > 0.499999)
-          && (percentage/100*p*i*100 - floor(percentage/100*p*i*100) < 0.5) {
-        temp = (round(percentage/100*p*i*100 + 1) + 1)/100
+      if (α*p*i*100 - floor(α*p*i*100) > 0.499999)
+          && (α*p*i*100 - floor(α*p*i*100) < 0.5) {
+        temp = (round(α*p*i*100 + 1) + 1)/100
       } else {
-        temp = (round(percentage/100*p*i*100) + 1)/100
+        temp = (round(α*p*i*100) + 1)/100
       }
     } else {
       if (i != 0) {
         temp = ceil(
-            (percentage/100*i*p*pow(1+percentage/100*i, 120))
-              / (pow(1+percentage/100*i, 120) - 1)*100
+            (α*p*i*pow(1+α*i, 120))
+              / (pow(1+α*i, 120) - 1)*100
           )/100
         temp += CT()
       } else {
@@ -734,13 +734,13 @@ class ShowMath: UIViewController {
     var attributedPercentInterest = NSMutableAttributedString()
     var attributedPercentBalance = NSMutableAttributedString()
     attributedPercentInterest = NSMutableAttributedString(
-      string: String(format: "%.0f", percentage) + "%",
+      string: String(format: "%.0f", α*100) + "%",
       attributes: [
         NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!
       ]
     )
     attributedPercentBalance = NSMutableAttributedString(
-      string: String(format: "%.0f", 100 - percentage) + "%",
+      string: String(format: "%.0f", 100 - α*100) + "%",
       attributes: [
         NSAttributedString.Key.font: UIFont(name: "CMUSerif-Roman", size: 16.0)!
       ]
@@ -1217,13 +1217,13 @@ class ShowMath: UIViewController {
     proportion.bringSubviewToFront(slider)
     proportion.bringSubviewToFront(percent_balance)
     let scale = max_percent_interest/100
-    percentage = max_percent_interest
-      - scale*(max_percent_interest - Double(progress))
-    if (percentage - floor(percentage) > 0.499999)
-        && (percentage - floor(percentage) < 0.5) {
-      percentage = round(percentage + 1)
+    α = ( max_percent_interest
+      - scale*(max_percent_interest - Double(progress)) )/100
+    if (α*100 - floor(α*100) > 0.499999)
+        && (α*100 - floor(α*100) < 0.5) {
+      α = round(α*100 + 1)/100
     } else {
-      percentage = round(percentage)
+      α = round(α*100)/100
     }
     var attributedPercentInterestTitle = NSMutableAttributedString()
     var attributedPercentBalanceTitle = NSMutableAttributedString()
@@ -1297,7 +1297,7 @@ class ShowMath: UIViewController {
     if (i == 0) {
       slider.isEnabled = false
       attributedPercentInterest = NSMutableAttributedString(
-        string: String(format: "%.0f", percentage) + "%",
+        string: String(format: "%.0f", α*100) + "%",
         attributes: [
           NSAttributedString.Key.font: UIFont(
             name: "CMUSerif-Roman",
@@ -1309,7 +1309,7 @@ class ShowMath: UIViewController {
         ]
       )
       attributedPercentBalance = NSMutableAttributedString(
-        string: String(format: "%.0f", 100 - percentage) + "%",
+        string: String(format: "%.0f", 100 - α*100) + "%",
         attributes: [
           NSAttributedString.Key.font: UIFont(
             name: "CMUSerif-Roman",
@@ -1322,11 +1322,11 @@ class ShowMath: UIViewController {
       )
     } else {
       slider.isEnabled = true
-      let px = percentage*100
+      let px = α*100
       if (px - floor(px) > 0.99999) {
-        percentage = Double(Int(percentage*100)+1)/100
+        α = Double(Int(α*100)+1)/100
       } else {
-        percentage = Double(Int(percentage*100))/100
+        α = Double(Int(α*100))/100
       }
       var tempx = Double()
       if (p*i*100 - floor(p*i*100) > 0.499999)
@@ -1336,9 +1336,9 @@ class ShowMath: UIViewController {
         tempx = (round(p*i*100)+1)/100
       }
       //simplifying percentages:
-      if (percentage - floor(percentage) == 0) {
+      if (α*100 - floor(α*100) == 0) {
         attributedPercentInterest = NSMutableAttributedString(
-          string: String(format: "%.0f", percentage) + "%",
+          string: String(format: "%.0f", α*100) + "%",
           attributes: [
             NSAttributedString.Key.font: UIFont(
               name: "CMUSerif-Roman",
@@ -1347,7 +1347,7 @@ class ShowMath: UIViewController {
           ]
         )
         attributedPercentBalance = NSMutableAttributedString(
-          string: String(format: "%.0f", 100 - percentage) + "%",
+          string: String(format: "%.0f", 100 - α*100) + "%",
           attributes: [
             NSAttributedString.Key.font: UIFont(
               name: "CMUSerif-Roman",
@@ -1355,9 +1355,9 @@ class ShowMath: UIViewController {
             )!
           ]
         )
-      } else if (percentage*10 - floor(percentage*10) == 0) {
+      } else if (α*100*10 - floor(α*100*10) == 0) {
         attributedPercentInterest = NSMutableAttributedString(
-          string: String(format: "%.1f", percentage) + "%",
+          string: String(format: "%.1f", α*100) + "%",
           attributes: [
             NSAttributedString.Key.font: UIFont(
               name: "CMUSerif-Roman",
@@ -1366,7 +1366,7 @@ class ShowMath: UIViewController {
           ]
         )
         attributedPercentBalance = NSMutableAttributedString(
-          string: String(format: "%.1f", 100 - percentage) + "%",
+          string: String(format: "%.1f", 100 - α*100) + "%",
           attributes: [
             NSAttributedString.Key.font: UIFont(
               name: "CMUSerif-Roman",
@@ -1377,7 +1377,7 @@ class ShowMath: UIViewController {
       } else //arbitrary:
       if (progress != 100) && (a == tempx) {
         attributedPercentInterest = NSMutableAttributedString(
-          string: String(format: "%.0f", percentage) + "%",
+          string: String(format: "%.0f", α*100) + "%",
           attributes: [
             NSAttributedString.Key.font: UIFont(
               name: "CMUSerif-Roman",
@@ -1386,7 +1386,7 @@ class ShowMath: UIViewController {
           ]
         )
         attributedPercentBalance = NSMutableAttributedString(
-          string: String(format: "%.0f", 100 - percentage) + "%",
+          string: String(format: "%.0f", 100 - α*100) + "%",
           attributes: [
             NSAttributedString.Key.font: UIFont(
               name: "CMUSerif-Roman",
@@ -1396,7 +1396,7 @@ class ShowMath: UIViewController {
         )
       } else {
         attributedPercentInterest = NSMutableAttributedString(
-          string: String(format: "%.2f", percentage) + "%",
+          string: String(format: "%.2f", α*100) + "%",
           attributes: [
             NSAttributedString.Key.font: UIFont(
               name: "CMUSerif-Roman",
@@ -1405,7 +1405,7 @@ class ShowMath: UIViewController {
           ]
         )
         attributedPercentBalance = NSMutableAttributedString(
-          string: String(format: "%.2f", 100 - percentage) + "%",
+          string: String(format: "%.2f", 100 - α*100) + "%",
           attributes: [
             NSAttributedString.Key.font: UIFont(
               name: "CMUSerif-Roman",
@@ -1476,7 +1476,7 @@ class ShowMath: UIViewController {
       interest = round(remainingbalance*i*100)/100
     }
     var interest_pay = Double()
-    var x = percentage/100*remainingbalance*i
+    var x = α*remainingbalance*i
     if (x*100 - floor(x*100) > 0.499999) && (x*100 - floor(x*100) < 0.5) {
       interest_pay = round(x*100 + 1)/100
     } else {
@@ -1521,7 +1521,7 @@ class ShowMath: UIViewController {
       } else {
         interest = round(remainingbalance*i*100)/100
       }
-      x = percentage/100*remainingbalance*i
+      x = α*remainingbalance*i
       if (x*100 - floor(x*100) > 0.499999) && (x*100 - floor(x*100) < 0.5) {
         interest_pay = round(x*100 + 1)/100
       } else {
@@ -1853,7 +1853,7 @@ class ShowMath: UIViewController {
     var principal_pay3 = Double()
     var principal_pay4 = Double()
     //temp1---------------------------------------------
-    var x1 = percentage/100*p*i
+    var x1 = α*p*i
     if (x1*100 - floor(x1*100) > 0.499999) && (x1*100 - floor(x1*100) < 0.5) {
       interest_pay1 = round(x1*100 + 1)/100
     } else {
@@ -1877,7 +1877,7 @@ class ShowMath: UIViewController {
     }
     temp1 = p - principal_pay1
     //temp2---------------------------------------------
-    x1 = percentage/100*temp1*i
+    x1 = α*temp1*i
     if (x1*100 - floor(x1*100) > 0.499999) && (x1*100 - floor(x1*100) < 0.5) {
       interest_pay2 = round(x1*100 + 1)/100
     } else {
@@ -1894,7 +1894,7 @@ class ShowMath: UIViewController {
     }
     temp2 = temp1 - principal_pay2
     //temp3------------------------------------------------
-    x1 = percentage/100*temp2*i
+    x1 = α*temp2*i
     if (x1*100 - floor(x1*100) > 0.499999) && (x1*100 - floor(x1*100) < 0.5) {
       interest_pay3 = round(x1*100 + 1)/100
     } else {
@@ -1911,7 +1911,7 @@ class ShowMath: UIViewController {
     }
     temp3 = temp2 - principal_pay3
     //temp4------------------------------------------------
-    x1 = percentage/100*temp3*i
+    x1 = α*temp3*i
     if (x1*100 - floor(x1*100) > 0.499999) && (x1*100 - floor(x1*100) < 0.5) {
       interest_pay4 = round(x1*100 + 1)/100
     } else {
@@ -3037,10 +3037,10 @@ class ShowMath: UIViewController {
       + " – (12 · "
       + numberFormatter.string(from: NSNumber(value: temp5))!
       + ") = "
-    if (n - temp5 * 12 == 1) {
-      months.text! += String(n - temp5 * 12) + " month"
+    if (n - 12 * temp5 == 1) {
+      months.text! += String(n - 12 * temp5) + " month"
     } else {
-      months.text! += String(n - temp5 * 12) + " months"
+      months.text! += String(n - 12 * temp5) + " months"
     }
     if (temp5 == 0) {
       years.text = "0 years"
@@ -3050,7 +3050,7 @@ class ShowMath: UIViewController {
         months.text = String(n) + " months"
       }
     } else {
-      if (n - temp5 * 12 == 0) {
+      if (n - 12 * temp5 == 0) {
         years.attributedText = years_string
         months.text = "0 months"
       } else {
@@ -3198,7 +3198,7 @@ class ShowMath: UIViewController {
       temp_interest_min = round(remainingbalance_repay_minimum*i*100)/100
     }
     var interest_pay_min = Double()
-    var xxx = percentage/100*remainingbalance_repay_minimum*i
+    var xxx = α*remainingbalance_repay_minimum*i
     if (xxx*100 - floor(xxx*100) > 0.499999)
         && (xxx*100 - floor(xxx*100) < 0.5) {
       interest_pay_min = round(xxx*100 + 1)/100
@@ -3214,7 +3214,7 @@ class ShowMath: UIViewController {
       // } else {
       //   temp_pay = (round(p*i*100))/100
       // }
-      let xx = percentage/100*p*i
+      let xx = α*p*i
       if (xx*100 - floor(xx*100) > 0.499999) && (xx*100 - floor(xx*100) < 0.5) {
         a_min = (round(xx*100 + 1)+1)/100
       } else {
@@ -3231,8 +3231,8 @@ class ShowMath: UIViewController {
       if (i != 0) {
         if (progress != 0) {
           a_min = ceil(
-              (percentage/100*i*p*pow(1+percentage/100*i, 120))
-                / (pow(1+percentage/100*i, 120) - 1)*100
+              (α*p*i*pow(1+α*i, 120))
+                / (pow(1+α*i, 120) - 1)*100
             )/100
           a_min += CT()
           // a_min = temp_pay
@@ -3285,7 +3285,7 @@ class ShowMath: UIViewController {
       } else {
         temp_interest_min = round(remainingbalance_repay_minimum*i*100)/100
       }
-      xxx = percentage/100*remainingbalance_repay_minimum*i
+      xxx = α*remainingbalance_repay_minimum*i
       if (xxx*100 - floor(xxx*100) > 0.499999)
           && (xxx*100 - floor(xxx*100) < 0.5) {
         interest_pay_min = round(xxx*100 + 1)/100
@@ -3299,7 +3299,7 @@ class ShowMath: UIViewController {
         // } else {
         //   temp_pay = (round(p*i*100))/100
         // }
-        // let xx = percentage/100*p*i
+        // let xx = α*p*i
         // if (xx*100 - floor(xx*100) > 0.499999)
         //     && (xx*100 - floor(xx*100) < 0.5) {
         //   temp_pay = (round(xx*100 + 1)+1)/100 - interest_pay_min
@@ -3317,8 +3317,8 @@ class ShowMath: UIViewController {
         // if (i != 0) {
           // if (progress != 0) {
             // a_min = ceil(
-            //     (percentage/100*i*p*pow(1+percentage/100*i, 120))
-            //       / (pow(1+percentage/100*i, 120) - 1)*100
+            //     (α*p*i*pow(1+α*i, 120))
+            //       / (pow(1+α*i, 120) - 1)*100
             //   )/100
             // a_min += CT()
             // temp_pay = a_min - interest_pay_min
