@@ -510,12 +510,13 @@ class MyMainPage:
     }
     var temp = Double()
     if (tenyr_indicator == 0) {
-      if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
-        temp = (round(p*i*100 + 1) + 1)/100
-      } else {
-        temp = (round(p*i*100) + 1)/100
-      }
+      // if (p*i*100 - floor(p*i*100) > 0.499999)
+      //     && (p*i*100 - floor(p*i*100) < 0.5) {
+      //   temp = (round(p*i*100 + 1) + 1)/100
+      // } else {
+      //   temp = (round(p*i*100) + 1)/100
+      // }
+      temp = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
         temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
@@ -560,7 +561,7 @@ class MyMainPage:
         return round(x*100)/100
     }
   }
-    
+  
   //instructions for building test_arrays
   func BT(c:Int) -> [Double] {
     test_array.removeAll() //reset array
@@ -699,12 +700,13 @@ class MyMainPage:
     }
     var temp = Double()
     if (tenyr_indicator == 0) {
-      if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
-        temp = (round(p*i*100 + 1) + 1)/100
-      } else {
-        temp = (round(p*i*100) + 1)/100
-      }
+      // if (p*i*100 - floor(p*i*100) > 0.499999)
+      //     && (p*i*100 - floor(p*i*100) < 0.5) {
+      //   temp = (round(p*i*100 + 1) + 1)/100
+      // } else {
+      //   temp = (round(p*i*100) + 1)/100
+      // }
+      temp = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
         temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
@@ -830,12 +832,13 @@ class MyMainPage:
 
   @IBAction func Apr_Number(_ sender: UITextField) {
     i = Double(truncating: removeFormat(string: apr_number.text!))
-    let temp_new = i*100 - floor(i*100)
-    if (temp_new > 0.499999) && (temp_new < 0.5) {
-      i = round(i*100 + 1)/100 / 100 / 12
-    } else {
-      i = round(i*100)/100 / 100 / 12
-    }
+    // let temp_new = i*100 - floor(i*100)
+    // if (temp_new > 0.499999) && (temp_new < 0.5) {
+    //   i = round(i*100 + 1)/100 / 100 / 12
+    // } else {
+    //   i = round(i*100)/100 / 100 / 12
+    // }
+    i = CR(x: i)/100/12
     if (i <= 0) {
       i = 0.01 / 100 / 12
       apr_number.text = String(format: "%.2f", i * 12 * 100)
@@ -847,12 +850,13 @@ class MyMainPage:
     shared_preferences.synchronize()
     var temp = Double()
     if (tenyr_indicator == 0) {
-      if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
-        temp = (round(p*i*100 + 1) + 1)/100
-      } else {
-        temp = (round(p*i*100) + 1)/100
-      }
+      // if (p*i*100 - floor(p*i*100) > 0.499999)
+      //     && (p*i*100 - floor(p*i*100) < 0.5) {
+      //   temp = (round(p*i*100 + 1) + 1)/100
+      // } else {
+      //   temp = (round(p*i*100) + 1)/100
+      // }
+      temp = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
         temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
@@ -927,20 +931,22 @@ class MyMainPage:
 
   @IBAction func Pay_Number(_ sender: UITextField) {
     a = Double(truncating: removeFormat(string: pay_number.text!))
-    let temp_new2 = a*100 - floor(a*100)
-    if (temp_new2 > 0.499999) && (temp_new2 < 0.5) {
-      a = round(a*100 + 1)/100
-    } else {
-      a = round(a*100)/100
-    }
+    // let temp_new2 = a*100 - floor(a*100)
+    // if (temp_new2 > 0.499999) && (temp_new2 < 0.5) {
+    //   a = round(a*100 + 1)/100
+    // } else {
+    //   a = round(a*100)/100
+    // }
+    a = CR(x: a)
     var temp = Double()
     if (tenyr_indicator == 0) {
-      if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
-        temp = (round(p*i*100 + 1) + 1)/100
-      } else {
-        temp = (round(p*i*100) + 1)/100
-      }
+      // if (p*i*100 - floor(p*i*100) > 0.499999)
+      //     && (p*i*100 - floor(p*i*100) < 0.5) {
+      //   temp = (round(p*i*100 + 1) + 1)/100
+      // } else {
+      //   temp = (round(p*i*100) + 1)/100
+      // }
+      temp = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
         temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
@@ -2007,12 +2013,13 @@ class MyMainPage:
     shared_preferences.set(tenyr_indicator, forKey: "tenyr")
     shared_preferences.synchronize()
     var temp = Double()
-    if (p*i*100 - floor(p*i*100) > 0.499999)
-        && (p*i*100 - floor(p*i*100) < 0.5) {
-      temp = (round(p*i*100 + 1) + 1)/100
-    } else {
-      temp = (round(p*i*100) + 1)/100
-    }
+    // if (p*i*100 - floor(p*i*100) > 0.499999)
+    //     && (p*i*100 - floor(p*i*100) < 0.5) {
+    //   temp = (round(p*i*100 + 1) + 1)/100
+    // } else {
+    //   temp = (round(p*i*100) + 1)/100
+    // }
+    temp = CR(x: p*i) + 1/100
     if (temp >= a) {
       a = temp
       a_reference = temp
@@ -2144,12 +2151,13 @@ class MyMainPage:
       p = Double(progress)
       var temp = Double()
       if (tenyr_indicator == 0) {
-        if (p*i*100 - floor(p*i*100) > 0.499999)
-            && (p*i*100 - floor(p*i*100) < 0.5) {
-          temp = (round(p*i*100 + 1) + 1)/100
-        } else {
-          temp = (round(p*i*100) + 1)/100
-        }
+        // if (p*i*100 - floor(p*i*100) > 0.499999)
+        //     && (p*i*100 - floor(p*i*100) < 0.5) {
+        //   temp = (round(p*i*100 + 1) + 1)/100
+        // } else {
+        //   temp = (round(p*i*100) + 1)/100
+        // }
+        temp = CR(x: p*i) + 1/100
       } else {
         if (i != 0) {
           temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
@@ -2264,12 +2272,13 @@ class MyMainPage:
     }
     var temp = Double()
     if (tenyr_indicator == 0) {
-      if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
-        temp = (round(p*i*100 + 1) + 1)/100
-      } else {
-        temp = (round(p*i*100) + 1)/100
-      }
+      // if (p*i*100 - floor(p*i*100) > 0.499999)
+      //     && (p*i*100 - floor(p*i*100) < 0.5) {
+      //   temp = (round(p*i*100 + 1) + 1)/100
+      // } else {
+      //   temp = (round(p*i*100) + 1)/100
+      // }
+      temp = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
         temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
@@ -2339,12 +2348,13 @@ class MyMainPage:
   @IBAction func Interest_Rate_Unpressed_Copy(_ sender: UIButton) {
     var temp = Double()
     if (tenyr_indicator == 0) {
-      if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
-        temp = (round(p*i*100 + 1) + 1)/100
-      } else {
-        temp = (round(p*i*100) + 1)/100
-      }
+      // if (p*i*100 - floor(p*i*100) > 0.499999)
+      //     && (p*i*100 - floor(p*i*100) < 0.5) {
+      //   temp = (round(p*i*100 + 1) + 1)/100
+      // } else {
+      //   temp = (round(p*i*100) + 1)/100
+      // }
+      temp = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
         temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
@@ -2471,12 +2481,13 @@ class MyMainPage:
     apr_number_back.text = String(rates[(indexPath as NSIndexPath).row])
     var temp = Double()
     if (tenyr_indicator == 0) {
-      if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
-        temp = (round(p*i*100 + 1) + 1)/100
-      } else {
-        temp = (round(p*i*100) + 1)/100
-      }
+      // if (p*i*100 - floor(p*i*100) > 0.499999)
+      //     && (p*i*100 - floor(p*i*100) < 0.5) {
+      //   temp = (round(p*i*100 + 1) + 1)/100
+      // } else {
+      //   temp = (round(p*i*100) + 1)/100
+      // }
+      temp = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
         temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
@@ -2542,23 +2553,24 @@ class MyMainPage:
     down_unpressed.isHidden = false
     down_pressed.isHidden = true
     timer_count = 0
-    var temp_before = Double()
+    var temp = Double()
     if (tenyr_indicator == 0) {
-      if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
-        temp_before = (round(p*i*100 + 1) + 1)/100
-      } else {
-        temp_before = (round(p*i*100) + 1)/100
-      }
+      // if (p*i*100 - floor(p*i*100) > 0.499999)
+      //     && (p*i*100 - floor(p*i*100) < 0.5) {
+      //   temp = (round(p*i*100 + 1) + 1)/100
+      // } else {
+      //   temp = (round(p*i*100) + 1)/100
+      // }
+      temp = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
-        temp_before = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
-        temp_before += CT()
+        temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        temp += CT()
       } else {
-        temp_before = ceil(p/120*100)/100
+        temp = ceil(p/120*100)/100
       }
     }
-    if (a == temp_before) {
+    if (a == temp) {
       minimum.isHidden = false
     } else {
       minimum.isHidden = true
@@ -2581,12 +2593,13 @@ class MyMainPage:
     }
     var temp = Double()
     if (tenyr_indicator == 0) {
-      if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
-        temp = (round(p*i*100 + 1) + 1)/100
-      } else {
-        temp = (round(p*i*100) + 1)/100
-      }
+      // if (p*i*100 - floor(p*i*100) > 0.499999)
+      //     && (p*i*100 - floor(p*i*100) < 0.5) {
+      //   temp = (round(p*i*100 + 1) + 1)/100
+      // } else {
+      //   temp = (round(p*i*100) + 1)/100
+      // }
+      temp = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
         temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
@@ -2719,14 +2732,15 @@ class MyMainPage:
       a += temp_up
       timer_count += 1
     }
-    var temp_overpay = Double() //for interest, not pay
-    if (p*i*100 - floor(p*i*100) > 0.499999)
-        && (p*i*100 - floor(p*i*100) < 0.5) {
-      temp_overpay = (round(p*i*100 + 1))/100
-    } else {
-      temp_overpay = (round(p*i*100))/100
-    }
-    if (a > p + temp_overpay) {
+    var temp = Double() //for interest, not pay
+    // if (p*i*100 - floor(p*i*100) > 0.499999)
+    //     && (p*i*100 - floor(p*i*100) < 0.5) {
+    //   temp = (round(p*i*100 + 1))/100
+    // } else {
+    //   temp = (round(p*i*100))/100
+    // }
+    temp = CR(x: p*i)
+    if (a > p + temp) {
       minimum.text = "Overpaying!"
     }
     Lengthsaving()
@@ -2745,31 +2759,34 @@ class MyMainPage:
     //by default, all interest is paid, so there is no monthly outstanding interest
     var B_min = p
     var interest_owed = Double() //by default, interest_paid = interest_owed
-    if (B*i*100 - floor(B*i*100) > 0.499999)
-        && (B*i*100 - floor(B*i*100) < 0.5) {
-      interest_owed = (round(B*i*100 + 1))/100
-    } else {
-      interest_owed = (round(B*i*100))/100
-    }
+    // if (B*i*100 - floor(B*i*100) > 0.499999)
+    //     && (B*i*100 - floor(B*i*100) < 0.5) {
+    //   interest_owed = (round(B*i*100 + 1))/100
+    // } else {
+    //   interest_owed = (round(B*i*100))/100
+    // }
+    interest_owed = CR(x: B*i)
     var interest_owed_min = Double() //by default, interest_paid_min = interest_owed_min
-    if (B_min*i*100
-          - floor(B_min*i*100)
-          > 0.499999)
-        && (B_min*i*100
-          - floor(B_min*i*100)
-          < 0.5) {
-      interest_owed_min = (round(B_min*i*100 + 1))/100
-    } else {
-      interest_owed_min = (round(B_min*i*100))/100
-    }
+    // if (B_min*i*100
+    //       - floor(B_min*i*100)
+    //       > 0.499999)
+    //     && (B_min*i*100
+    //       - floor(B_min*i*100)
+    //       < 0.5) {
+    //   interest_owed_min = (round(B_min*i*100 + 1))/100
+    // } else {
+    //   interest_owed_min = (round(B_min*i*100))/100
+    // }
+    interest_owed_min = CR(x: B_min*i)
     var a_min = Double()
     if (tenyr_indicator == 0) {
-      if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
-        a_min = (round(p*i*100 + 1) + 1)/100
-      } else {
-        a_min = (round(p*i*100) + 1)/100
-      }
+      // if (p*i*100 - floor(p*i*100) > 0.499999)
+      //     && (p*i*100 - floor(p*i*100) < 0.5) {
+      //   a_min = (round(p*i*100 + 1) + 1)/100
+      // } else {
+      //   a_min = (round(p*i*100) + 1)/100
+      // }
+      a_min = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
         a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
@@ -2861,16 +2878,17 @@ class MyMainPage:
     } else {
       months_text.text = "months"
     }
-    if (B_min*i*100
-          - floor(B_min*i*100)
-          > 0.499999)
-        && (B_min*i*100
-          - floor(B_min*i*100)
-          < 0.5) {
-      interest_owed_min = (round(B_min*i*100 + 1))/100
-    } else {
-      interest_owed_min = (round(B_min*i*100))/100
-    }
+    // if (B_min*i*100
+    //       - floor(B_min*i*100)
+    //       > 0.499999)
+    //     && (B_min*i*100
+    //       - floor(B_min*i*100)
+    //       < 0.5) {
+    //   interest_owed_min = (round(B_min*i*100 + 1))/100
+    // } else {
+    //   interest_owed_min = (round(B_min*i*100))/100
+    // }
+    interest_owed_min = CR(x: B_min*i)
     let temp_interest_last_min = interest_owed_min
     // let total_repay_minimum_fromloop = Double(n_min-1) * a_min
     // let total_repay_minimum_finalmonth = remainingbalance_repay_minimum
@@ -2878,12 +2896,13 @@ class MyMainPage:
     let T_max = Double(n_min-1)*a_min
       + B_min
       + temp_interest_last_min
-    if (B*i*100 - floor(B*i*100) > 0.499999)
-        && (B*i*100 - floor(B*i*100) < 0.5) {
-      interest_owed = (round(B*i*100 + 1))/100
-    } else {
-      interest_owed = (round(B*i*100))/100
-    }
+    // if (B*i*100 - floor(B*i*100) > 0.499999)
+    //     && (B*i*100 - floor(B*i*100) < 0.5) {
+    //   interest_owed = (round(B*i*100 + 1))/100
+    // } else {
+    //   interest_owed = (round(B*i*100))/100
+    // }
+    interest_owed = CR(x: B*i)
     let temp_interest_last_amount = interest_owed
     let T = Double(n-1) * a + B + temp_interest_last_amount //T(a)
     var s_2 = T_max - T //T_max - T(a_2)
@@ -3263,12 +3282,13 @@ class MyMainPage:
     shared_preferences.synchronize()
     var temp = Double()
     if (tenyr_indicator == 0) {
-      if (p*i*100 - floor(p*i*100) > 0.499999)
-          && (p*i*100 - floor(p*i*100) < 0.5) {
-        temp = (round(p*i*100 + 1) + 1)/100
-      } else {
-        temp = (round(p*i*100) + 1)/100
-      }
+      // if (p*i*100 - floor(p*i*100) > 0.499999)
+      //     && (p*i*100 - floor(p*i*100) < 0.5) {
+      //   temp = (round(p*i*100 + 1) + 1)/100
+      // } else {
+      //   temp = (round(p*i*100) + 1)/100
+      // }
+      temp = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
         temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
