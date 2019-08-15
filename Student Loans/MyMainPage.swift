@@ -2800,29 +2800,31 @@ class MyMainPage:
     n = m
     while (B_min - (a_min - interest_owed_min) > 0) {  //again, by default interest_paid_min = interest_owed_min
       B_min = B_min - (a_min - interest_owed_min)
-      let temp_new4 = B_min*100
-        - floor(B_min*100)
-      if (temp_new4 > 0.499999) && (temp_new4 < 0.5) {
-        B_min = round(
-            B_min*100 + 1
-          )/100
-      } else {
-        B_min = round(
-            B_min*100
-          )/100
-      }
-      if (B_min*i*100
-            - floor(B_min*i*100)
-            > 0.499999)
-          && (B_min*i*100
-            - floor(B_min*i*100)
-            < 0.5) {
-        interest_owed_min = (round(
-            B_min*i*100 + 1
-          ))/100
-      } else {
-        interest_owed_min = (round(B_min*i*100))/100
-      }
+      // let temp_new4 = B_min*100
+      //   - floor(B_min*100)
+      // if (temp_new4 > 0.499999) && (temp_new4 < 0.5) {
+      //   B_min = round(
+      //       B_min*100 + 1
+      //     )/100
+      // } else {
+      //   B_min = round(
+      //       B_min*100
+      //     )/100
+      // }
+      B_min = CR(x: B_min)
+      // if (B_min*i*100
+      //       - floor(B_min*i*100)
+      //       > 0.499999)
+      //     && (B_min*i*100
+      //       - floor(B_min*i*100)
+      //       < 0.5) {
+      //   interest_owed_min = (round(
+      //       B_min*i*100 + 1
+      //     ))/100
+      // } else {
+      //   interest_owed_min = (round(B_min*i*100))/100
+      // }
+      interest_owed_min = CR(x: B_min*i)
 //      if (tenyr_indicator == 0) {
 //        if (p*i*100 - floor(p*i*100) > 0.499999)
 //            && (p*i*100 - floor(p*i*100) < 0.5) {

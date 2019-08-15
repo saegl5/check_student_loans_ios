@@ -1502,31 +1502,35 @@ class ShowMath: UIViewController {
     // principal_pay = a - interest_pay
     while (B - (a - interest_paid) > 0) {
       B = B - (a - interest_paid)
-      if (B*100 - floor(B*100) > 0.499999)
-          && (B*100 - floor(B*100) < 0.5) {
-        B = round(B*100 + 1)/100
-      } else {
-        B = round(B*100)/100
-      }
+      // if (B*100 - floor(B*100) > 0.499999)
+      //     && (B*100 - floor(B*100) < 0.5) {
+      //   B = round(B*100 + 1)/100
+      // } else {
+      //   B = round(B*100)/100
+      // }
+      B = CR(x: B)
       O = O + (interest_owed - interest_paid)
-      if (O*100 - floor(O*100) > 0.499999)
-          && (O*100 - floor(O*100) < 0.5) {
-        O = round(O*100 + 1)/100
-      } else {
-        O = round(O*100)/100
-      }
-      if (B*i*100 - floor(B*i*100) > 0.499999)
-          && (B*i*100 - floor(B*i*100) < 0.5) {
-        interest_owed = round(B*i*100 + 1)/100
-      } else {
-        interest_owed = round(B*i*100)/100
-      }
-      x = α*(B*i)
-      if (x*100 - floor(x*100) > 0.499999) && (x*100 - floor(x*100) < 0.5) {
-        interest_paid = round(x*100 + 1)/100
-      } else {
-        interest_paid = round(x*100)/100
-      }
+      // if (O*100 - floor(O*100) > 0.499999)
+      //     && (O*100 - floor(O*100) < 0.5) {
+      //   O = round(O*100 + 1)/100
+      // } else {
+      //   O = round(O*100)/100
+      // }
+      O = CR(x: O)
+      // if (B*i*100 - floor(B*i*100) > 0.499999)
+      //     && (B*i*100 - floor(B*i*100) < 0.5) {
+      //   interest_owed = round(B*i*100 + 1)/100
+      // } else {
+      //   interest_owed = round(B*i*100)/100
+      // }
+      interest_owed = CR(x: B*i)
+      // x = α*(B*i)
+      // if (x*100 - floor(x*100) > 0.499999) && (x*100 - floor(x*100) < 0.5) {
+      //   interest_paid = round(x*100 + 1)/100
+      // } else {
+      //   interest_paid = round(x*100)/100
+      // }
+      interest_paid = CR(x: α*(B*i))
       // if (p*i*100 - floor(p*i*100) > 0.499999)
       //     && (p*i*100 - floor(p*i*100) < 0.5) {
       //   tempx = (round(p*i*100 + 1)+1)/100
@@ -3254,44 +3258,48 @@ class ShowMath: UIViewController {
     }
     while (B_min - (a_min - interest_paid_min) > 0) {
       B_min = B_min - (a_min - interest_paid_min)
-      if (B_min*100
-            - floor(B_min*100)
-            > 0.499999)
-          && (B_min*100
-            - floor(B_min*100)
-            < 0.5) {
-        B_min = round(
-            B_min*100 + 1
-          )/100
-      } else {
-        B_min = round(
-            B_min*100
-          )/100
-      }
+      // if (B_min*100
+      //       - floor(B_min*100)
+      //       > 0.499999)
+      //     && (B_min*100
+      //       - floor(B_min*100)
+      //       < 0.5) {
+      //   B_min = round(
+      //       B_min*100 + 1
+      //     )/100
+      // } else {
+      //   B_min = round(
+      //       B_min*100
+      //     )/100
+      // }
+      B_min = CR(x: B_min)
       O_min = O_min + (interest_owed_min - interest_paid_min)
-      if (O_min*100 - floor(O_min*100) > 0.499999)
-          && (O_min*100 - floor(O_min*100) < 0.5) {
-          O_min = round(O_min*100 + 1)/100
-      } else {
-          O_min = round(O_min*100)/100
-      }
-      if (B_min*i*100
-            - floor(B_min*i*100)
-            > 0.499999)
-          && (B_min*i*100
-            - floor(B_min*i*100)
-            < 0.5) {
-        interest_owed_min = round(B_min*i*100 + 1)/100
-      } else {
-        interest_owed_min = round(B_min*i*100)/100
-      }
-      xxx = α*(B_min*i)
-      if (xxx*100 - floor(xxx*100) > 0.499999)
-          && (xxx*100 - floor(xxx*100) < 0.5) {
-        interest_paid_min = round(xxx*100 + 1)/100
-      } else {
-        interest_paid_min = round(xxx*100)/100
-      }
+      // if (O_min*100 - floor(O_min*100) > 0.499999)
+      //     && (O_min*100 - floor(O_min*100) < 0.5) {
+      //     O_min = round(O_min*100 + 1)/100
+      // } else {
+      //     O_min = round(O_min*100)/100
+      // }
+      O_min = CR(x: O_min)
+      // if (B_min*i*100
+      //       - floor(B_min*i*100)
+      //       > 0.499999)
+      //     && (B_min*i*100
+      //       - floor(B_min*i*100)
+      //       < 0.5) {
+      //   interest_owed_min = round(B_min*i*100 + 1)/100
+      // } else {
+      //   interest_owed_min = round(B_min*i*100)/100
+      // }
+      interest_owed_min = CR(x: B_min*i)
+      // xxx = α*(B_min*i)
+      // if (xxx*100 - floor(xxx*100) > 0.499999)
+      //     && (xxx*100 - floor(xxx*100) < 0.5) {
+      //   interest_paid_min = round(xxx*100 + 1)/100
+      // } else {
+      //   interest_paid_min = round(xxx*100)/100
+      // }
+      interest_paid_min = CR(x: α*(B_min*i))
       // if (tenyr_indicator == 0) {
         // if (p*i*100 - floor(p*i*100) > 0.499999)
         //     && (p*i*100 - floor(p*i*100) < 0.5) {
