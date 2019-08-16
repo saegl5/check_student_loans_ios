@@ -1485,8 +1485,8 @@ class ShowMath: UIViewController {
     }
     var B = [Double]()
     var O = [Double]()
-    var B.append(p) //monthly principal balance, defined here in order to simplify the rest too
-    var O.append(0.00) //monthly outstanding interest
+    B.append(p) //monthly principal balance, defined here in order to simplify the rest too
+    O.append(0.00) //monthly outstanding interest
     var m = 1 //defined here in order to simplify the rest
     var n = Int()
 
@@ -3229,8 +3229,8 @@ class ShowMath: UIViewController {
     total_paid.attributedText = total_paid_string
     var B_min = [Double]()
     var O_min = [Double]()
-    var B_min.append(p) //defined here in order to simplify the rest too
-    var O_min.append(0.00)
+    B_min.append(p) //defined here in order to simplify the rest too
+    O_min.append(0.00)
     var m_min = 1 //defined here in order to simplify the rest
     var n_min = Int()
 
