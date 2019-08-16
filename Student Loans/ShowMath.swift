@@ -952,8 +952,8 @@ class ShowMath: UIViewController {
         ]
       )
       var remainder_peri = String(".") //resetting the string
-      if (String(temp_dec).count < 4) {
-        for _ in 1...(4-String(temp_dec).count) {
+      if (String(temp_peri).count < 5) {
+        for _ in 1...(5-String(temp_peri).count) {
           remainder_peri.append("0")
         }
       }
