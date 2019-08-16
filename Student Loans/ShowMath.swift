@@ -2043,7 +2043,6 @@ class ShowMath: UIViewController {
         remainder_peri.append("0")
       }
     }
-    
     var charged_interest_max_string_count = Int()
     if (n-1 > 4) {
       let paragraph_charged_interest = NSMutableParagraphStyle()
