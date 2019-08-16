@@ -1560,21 +1560,21 @@ class ShowMath: UIViewController {
     }
     n = m
     //redo pay title
-    var tempx_x = Double()
+    var a_min = Double()
     // if (p*i*100 - floor(p*i*100) > 0.499999)
     //     && (p*i*100 - floor(p*i*100) < 0.5) {
     //   tempx_x = (round(p*i*100 + 1)+1)/100
     // } else {
     //   tempx_x = (round(p*i*100)+1)/100
     // }
-    tempx_x = CR(x: p*i) + 1/100
+    a_min = CR(x: p*i) + 1/100 //initial value
     attributedPayTitle = NSMutableAttributedString(
       string: "Pay Monthly",
       attributes: [
         NSAttributedString.Key.font: UIFont(name: "CMUSerif-Bold", size: 18.0)!
       ]
     )
-    if (a == tempx_x) {
+    if (a == a_min) {
       if (progress == 100) {
         attributedPaySummary = NSMutableAttributedString(
           string: " $" + String(format: "%.2f", a),
@@ -1874,15 +1874,15 @@ class ShowMath: UIViewController {
     //   interest_pay1 = round(x1*100)/100
     // }
     interest_pay1 = CR(x: α*(p*i))
-    var tempxx = Double()
+    // var tempxx = Double()
     // if (p*i*100 - floor(p*i*100) > 0.499999)
     //     && (p*i*100 - floor(p*i*100) < 0.5) {
     //   tempxx = (round(p*i*100 + 1)+1)/100
     // } else {
     //   tempxx = (round(p*i*100)+1)/100
     // }
-    tempxx = CR(x: p*i) + 1/100
-    if (a == tempxx) {
+    // tempxx = CR(x: p*i) + 1/100
+    if (a == a_min) {
       if (progress == 100) {
         principal_pay1 = a - interest_pay1
       } else {
@@ -1900,7 +1900,7 @@ class ShowMath: UIViewController {
     //   interest_pay2 = round(x1*100)/100
     // }
     interest_pay2 = CR(x: α*(temp1*i))
-    if (a == tempxx) {
+    if (a == a_min) {
       if (progress == 100) {
         principal_pay2 = a - interest_pay2
       } else {
@@ -1918,7 +1918,7 @@ class ShowMath: UIViewController {
     //   interest_pay3 = round(x1*100)/100
     // }
     interest_pay3 = CR(x: α*(temp2*i))
-    if (a == tempxx) {
+    if (a == a_min) {
       if (progress == 100) {
         principal_pay3 = a - interest_pay3
       } else {
@@ -1936,7 +1936,7 @@ class ShowMath: UIViewController {
     //   interest_pay4 = round(x1*100)/100
     // }
     interest_pay4 = CR(x: α*(temp3*i))
-    if (a == tempxx) {
+    if (a == a_min) {
       if (progress == 100) {
         principal_pay4 = a - interest_pay4
       } else {
@@ -2245,14 +2245,14 @@ class ShowMath: UIViewController {
     //   remaining_interest = round(B*i*100)/100
     // }
     interest_owed = CR(x: B*i)
-    var a_min = Double()
+    // var a_min = Double()
     // if (p*i*100 - floor(p*i*100) > 0.499999)
     //     && (p*i*100 - floor(p*i*100) < 0.5) {
     //   tempx = (round(p*i*100 + 1)+1)/100
     // } else {
     //   tempx = (round(p*i*100)+1)/100
     // }
-    a_min = CR(x: p*i) + 1/100 //initial
+    // a_min = CR(x: p*i) + 1/100
     if (n-1 > 4) { //a lot of this seems redundant
       var payment_shape_label_jg4 = NSMutableAttributedString()
       var etc = NSMutableAttributedString()
@@ -3083,15 +3083,15 @@ class ShowMath: UIViewController {
     years.adjustsFontSizeToFitWidth = true
     months.adjustsFontSizeToFitWidth = true
     var T = Double() //T(a)
-    var tempxxx = Double()
+    // var tempxxx = Double()
     // if (p*i*100 - floor(p*i*100) > 0.499999)
     //     && (p*i*100 - floor(p*i*100) < 0.5) {
     //   tempxxx = (round(p*i*100 + 1)+1)/100
     // } else {
     //   tempxxx = (round(p*i*100)+1)/100
     // }
-    tempxxx = CR(x: p*i) + 1/100
-    if (a == tempxxx) {
+    // tempxxx = CR(x: p*i) + 1/100
+    if (a == a_min) {
       if (progress == 100) {
         T = Double(n-1)
           * a
@@ -3129,7 +3129,7 @@ class ShowMath: UIViewController {
     }
     let total_paid_string = NSMutableAttributedString()
     var total_paid_expression = NSMutableAttributedString()
-    if (a == tempxxx) {
+    if (a == a_min) {
       if (progress == 100) {
         total_paid_expression = NSMutableAttributedString(
           string: "("
@@ -3231,7 +3231,7 @@ class ShowMath: UIViewController {
     //   interest_paid_min = round(xxx*100)/100
     // }
     interest_paid_min = CR(x: α*(B_min*i))
-    var a_min = Double()
+    // var a_min = Double()
     // var temp_pay = Double()
     if (tenyr_indicator == 0) {
       // if (p*i*100 - floor(p*i*100) > 0.499999)
