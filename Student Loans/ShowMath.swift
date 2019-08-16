@@ -885,13 +885,13 @@ class ShowMath: UIViewController {
     } else {
         temp_dec = Int(i*12*10000)
     }
-    print("temp_dec:",temp_dec)
     var temp_peri = Int() //don't want it rounding, unless remainder has repeated 9s at one millionths place onward
     if (i*100000 - floor(i*100000) > 0.99999) {
         temp_peri = Int(i*100000)+1
     } else {
         temp_peri = Int(i*100000)
     }
+      print("temp_peri:",temp_peri)
     if (i == 0) {
       attributedAPRSummary = NSMutableAttributedString(
         string: " " + String(format: "%.0f", i * 12 * 100) + "%",
@@ -936,14 +936,14 @@ class ShowMath: UIViewController {
           )!
         ]
       )
-      var remainder = String(".") //resetting the string
+      var remainder_dec = String(".") //resetting the string
       if (String(temp_dec).count < 4) {
         for _ in 1...(4-String(temp_dec).count) {
-          z.append("0")
+          remainder_dec.append("0")
         }
       }
       attributedAPRDecimalEquivalent = NSMutableAttributedString(
-        string: "\n" + "÷ 100 = 0" + remainder + String(temp_dec) + "...",
+        string: "\n" + "÷ 100 = 0" + remainder_dec + String(temp_dec) + "...",
         attributes: [
           NSAttributedString.Key.font: UIFont(
             name: "CMUSerif-Roman",
@@ -951,8 +951,14 @@ class ShowMath: UIViewController {
           )!
         ]
       )
+      var remainder_peri = String(".") //resetting the string
+      if (String(temp_dec).count < 4) {
+        for _ in 1...(4-String(temp_dec).count) {
+          remainder_peri.append("0")
+        }
+      }
       attributedAPRPeriodic = NSMutableAttributedString(
-        string: "\n" + "÷ 12 = 0.00" + String(temp_peri) + "... monthly",
+        string: "\n" + "÷ 12 = 0" + remainder_peri + String(temp_peri) + "... monthly",
         attributes: [
           NSAttributedString.Key.font: UIFont(
             name: "CMUSerif-Roman",
