@@ -25,7 +25,7 @@ Not designed for iPad devices<p>
 
 Alternative downloads:<br>
 [Version 2.2.2 for Panel Discussion](/Archives/panel_discussion.ipa "Click here to access the download link.")[^1]<br>
-[Version 2.6.1 - Latest](/Archives/latest-2_6_1.ipa "Click here to access the download link.") (Updated: August 5, 2019)<p>
+[Version 2.6.2 - Latest](/Archives/latest-2_6_2.ipa "Click here to access the download link.") (Updated: August 16, 2019)<p>
 
 Install alternative downloads using iTunes or Apple Configurator on iPhone devices.
 
@@ -48,7 +48,7 @@ $ git show-ref --heads --hash
 
 Check that the hash matches the commit SHA.<p>
 
-The latest version is 2.6.1. Known to work on macOS Mojave 10.14.6, in Xcode 10.3, using Swift 4.2
+The latest version is 2.6.2. Known to work on macOS Mojave 10.14.6, in Xcode 10.3, using Swift 4.2
 
 ## Usage
 
@@ -77,6 +77,7 @@ For any issues, submit a new issue.<p>
 
 ## History
 
+Aug 16, 2019 &middot; Version 2.6.2: fixed issue in which annual and monthly interest rates in "showmath" view controller displayed incorrectly for unusually small or large rates<br>
 Aug 5, 2019 &middot; Version 2.6.1: integrated checking and correcting for errors<br>
 Jul 18, 2019 &middot; Version 2.6: added button to mathematics screen for minimizing monthly payment amount for any percentage of interest payment, revised video introduction<br>
 Feb 9, 2019 &middot; Version 2.5.2: cleaned entire project, source code is 50% leaner, fixed issue where outstanding totals would not disappear if insight is closed, fixed issue where keyboard displayed after clicking on monthly balance boxes, fixed issue where users could paste text into monthly balances<br>
