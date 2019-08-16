@@ -2932,7 +2932,7 @@ class ShowMath: UIViewController {
       // } else {
       //   pt1 = round(pt1*100)/100
       // }
-      pt1 = CR(x: abs(a - (B + interest_owed + O)))
+      var pt1 = CR(x: abs(a - (B + interest_owed + O)))
       let pt2 = pt1 - floor(pt1)
       let pt3 = pt2*100
       var pt4 = Int()
