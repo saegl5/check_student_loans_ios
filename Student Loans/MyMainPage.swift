@@ -2751,13 +2751,15 @@ class MyMainPage:
     
   //instructions for calculating time and savings
   func Lengthsaving() {
+    var B = [Double]()
+    var B_min = [Double]()
+    var B.append(p) //monthly principal balance
+    //by default, all interest is paid, so there is no monthly outstanding interest
+    var B_min.append(p)
     var m = 1
     var m_min = 1
     var n = Int()
     var n_min = Int()
-    var B = p //monthly principal balance
-    //by default, all interest is paid, so there is no monthly outstanding interest
-    var B_min = p
     var interest_owed = Double() //by default, interest_paid = interest_owed
     // if (B*i*100 - floor(B*i*100) > 0.499999)
     //     && (B*i*100 - floor(B*i*100) < 0.5) {
