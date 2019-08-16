@@ -936,7 +936,7 @@ class ShowMath: UIViewController {
           )!
         ]
       )
-      var z = String()
+      var z = String(".")
       for _ in 0...(4-String(temp_peri).count)+1 {
         z.append("0")
       }
