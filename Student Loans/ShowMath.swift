@@ -891,7 +891,6 @@ class ShowMath: UIViewController {
     } else {
         temp_peri = Int(i*100000)
     }
-      print("temp_peri:",temp_peri)
     if (i == 0) {
       attributedAPRSummary = NSMutableAttributedString(
         string: " " + String(format: "%.0f", i * 12 * 100) + "%",
@@ -2038,6 +2037,14 @@ class ShowMath: UIViewController {
     } else {
       temp_peri = Int(i*100000)
     }
+    var remainder_peri = String(".") //resetting the string
+    if (String(temp_peri).count < 5) {
+      for _ in 1...(5-String(temp_peri).count) {
+        remainder_peri.append("0")
+      }
+    }
+        string: "\n" + "÷ 12 = 0" + remainder_peri + String(temp_peri) + "... monthly",
+
     var charged_interest_max_string_count = Int()
     if (n-1 > 4) {
       let paragraph_charged_interest = NSMutableParagraphStyle()
@@ -2046,19 +2053,19 @@ class ShowMath: UIViewController {
       paragraph_charged_interest_ellipse.alignment = .center
       let charged_interest_shape_label_jg4 = NSMutableAttributedString(
         string: String(format: "%.2f", p)
-          + " · 0.00"
+          + " · 0" + remainder_peri
           + String(temp_peri)
           + "...\n"
           + String(format: "%.2f", temp1)
-          + " · 0.00"
+          + " · 0" + remainder_peri
           + String(temp_peri)
           + "...\n"
           + String(format: "%.2f", temp2)
-          + " · 0.00"
+          + " · 0" + remainder_peri
           + String(temp_peri)
           + "...\n"
           + String(format: "%.2f", temp3)
-          + " · 0.00"
+          + " · 0" + remainder_peri
           + String(temp_peri)
           + "...\n",
         attributes: [
@@ -2075,7 +2082,7 @@ class ShowMath: UIViewController {
       )
       let remains = NSMutableAttributedString(
         string: String(format: "%.2f", B)
-          + " · 0.00"
+          + " · 0" + remainder_peri
           + String(temp_peri)
           + "...",
         attributes: [
@@ -2118,28 +2125,28 @@ class ShowMath: UIViewController {
       charged_interest_shape_label_jg4.append(remains)
       charged_interest_shape_label.attributedText = charged_interest_shape_label_jg4
       charged_interest_max_string_count = (String(format: "%.2f", p)
-          + " · 0.00"
+          + " · 0" + remainder_peri
           + String(temp_peri)
           + "...").count //used for right inset
     } else if (n-1 == 4) {
       charged_interest_shape_label.text = String(format: "%.2f", p)
-        + " · 0.00"
+        + " · 0" + remainder_peri
         + String(temp_peri)
         + "...\n"
         + String(format: "%.2f", temp1)
-        + " · 0.00"
+        + " · 0" + remainder_peri
         + String(temp_peri)
         + "...\n"
         + String(format: "%.2f", temp2)
-        + " · 0.00"
+        + " · 0" + remainder_peri
         + String(temp_peri)
         + "...\n"
         + String(format: "%.2f", temp3)
-        + " · 0.00"
+        + " · 0" + remainder_peri
         + String(temp_peri)
         + "...\n"
         + String(format: "%.2f", B)
-        + " · 0.00"
+        + " · 0" + remainder_peri
         + String(temp_peri)
         + "..."
       charged_interest_shape_label.textAlignment = .right
@@ -2149,24 +2156,24 @@ class ShowMath: UIViewController {
         )
       } else { }
       charged_interest_max_string_count = (String(format: "%.2f", p)
-          + " · 0.00"
+          + " · 0" + remainder_peri
           + String(temp_peri)
           + "...").count //used for right inset
     } else if (n-1 == 3) {
       charged_interest_shape_label.text = String(format: "%.2f", p)
-        + " · 0.00"
+        + " · 0" + remainder_peri
         + String(temp_peri)
         + "...\n"
         + String(format: "%.2f", temp1)
-        + " · 0.00"
+        + " · 0" + remainder_peri
         + String(temp_peri)
         + "...\n"
         + String(format: "%.2f", temp2)
-        + " · 0.00"
+        + " · 0" + remainder_peri
         + String(temp_peri)
         + "...\n"
         + String(format: "%.2f", B)
-        + " · 0.00"
+        + " · 0" + remainder_peri
         + String(temp_peri)
         + "..."
       charged_interest_shape_label.textAlignment = .right
@@ -2176,20 +2183,20 @@ class ShowMath: UIViewController {
         )
       } else { }
       charged_interest_max_string_count = (String(format: "%.2f", p)
-          + " · 0.00"
+          + " · 0" + remainder_peri
           + String(temp_peri)
           + "...").count //used for right inset
     } else if (n-1 == 2) {
       charged_interest_shape_label.text = String(format: "%.2f", p)
-        + " · 0.00"
+        + " · 0" + remainder_peri
         + String(temp_peri)
         + "...\n"
         + String(format: "%.2f", temp1)
-        + " · 0.00"
+        + " · 0" + remainder_peri
         + String(temp_peri)
         + "...\n"
         + String(format: "%.2f", B)
-        + " · 0.00"
+        + " · 0" + remainder_peri
         + String(temp_peri)
         + "..."
       charged_interest_shape_label.textAlignment = .right
@@ -2199,16 +2206,16 @@ class ShowMath: UIViewController {
         )
       } else { }
       charged_interest_max_string_count = (String(format: "%.2f", p)
-          + " · 0.00"
+          + " · 0" + remainder_peri
           + String(temp_peri)
           + "...").count //used for right inset
     } else if (n-1 == 1) {
       charged_interest_shape_label.text = String(format: "%.2f", p)
-        + " · 0.00"
+        + " · 0" + remainder_peri
         + String(temp_peri)
         + "...\n"
         + String(format: "%.2f", B)
-        + " · 0.00"
+        + " · 0" + remainder_peri
         + String(temp_peri)
         + "..."
       charged_interest_shape_label.textAlignment = .right
@@ -2218,7 +2225,7 @@ class ShowMath: UIViewController {
         )
       } else { }
       charged_interest_max_string_count = (String(format: "%.2f", p)
-          + " · 0.00"
+          + " · 0" + remainder_peri
           + String(temp_peri)
           + "...").count //used for right inset
     } else {
@@ -2226,7 +2233,7 @@ class ShowMath: UIViewController {
           format: "%.2f",
           B
         )
-        + " · 0.00"
+        + " · 0" + remainder_peri
         + String(temp_peri)
         + "..."
       charged_interest_shape_label.textAlignment = .right
@@ -2239,7 +2246,7 @@ class ShowMath: UIViewController {
             format: "%.2f",
             B
           )
-          + " · 0.00"
+          + " · 0" + remainder_peri
           + String(temp_peri)
           + "...").count //used for right inset
     }
