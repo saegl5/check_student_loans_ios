@@ -936,10 +936,11 @@ class ShowMath: UIViewController {
           )!
         ]
       )
-      print((String(temp_peri)).count)
-      if (temp_dec > 0) && (temp_dec <= 9) {
-        print(temp_dec)
-      }
+      for z in (4-String(temp_peri)).count)+1
+        print(1)
+      // if (temp_dec > 0) && (temp_dec <= 9) {
+      //   print(temp_dec)
+      // }
       attributedAPRDecimalEquivalent = NSMutableAttributedString(
         string: "\n" + "÷ 100 = 0.0" + String(temp_dec) + "...",
         attributes: [
