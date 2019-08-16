@@ -2043,8 +2043,7 @@ class ShowMath: UIViewController {
         remainder_peri.append("0")
       }
     }
-        string: "\n" + "÷ 12 = 0" + remainder_peri + String(temp_peri) + "... monthly",
-
+    
     var charged_interest_max_string_count = Int()
     if (n-1 > 4) {
       let paragraph_charged_interest = NSMutableParagraphStyle()
