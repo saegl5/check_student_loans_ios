@@ -936,7 +936,8 @@ class ShowMath: UIViewController {
           )!
         ]
       )
-      if (0 <= temp_dec <= 9) {
+      print((String(temp_peri)).count)
+      if (temp_dec > 0) && (temp_dec <= 9) {
         print(temp_dec)
       }
       attributedAPRDecimalEquivalent = NSMutableAttributedString(
