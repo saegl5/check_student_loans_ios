@@ -936,9 +936,11 @@ class ShowMath: UIViewController {
           )!
         ]
       )
-      var z = String(".")
-      for _ in 0...(4-String(temp_peri).count)+1 {
-        z.append("0")
+      var z = String(".") //resetting the string
+      while (String(temp_peri).count < 4) {
+        for _ in 1...(4-String(temp_peri).count) {
+          z.append("0")
+        }
       }
       print(z)
       // if (temp_dec > 0) && (temp_dec <= 9) {
