@@ -508,7 +508,7 @@ class MyMainPage:
       self.loaned.setValue(Float(value), animated: true)
       progress = ΔN * Double(self.loaned.value) + p_min
     }
-    var temp = Double()
+    var a_min = Double()
     if (tenyr_indicator == 0) {
       // if (p*i*100 - floor(p*i*100) > 0.499999)
       //     && (p*i*100 - floor(p*i*100) < 0.5) {
@@ -516,18 +516,18 @@ class MyMainPage:
       // } else {
       //   temp = (round(p*i*100) + 1)/100
       // }
-      temp = CR(x: p*i) + 1/100
+      a_min = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
-        temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
-        temp += CT()
+        a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        a_min += CT()
       } else {
-        temp = ceil(p/120*100)/100
+        a_min = ceil(p/120*100)/100
       }
     }
-    if (temp >= a) {
-      a = temp
-      a_reference = temp
+    if (a_min >= a) {
+      a = a_min
+      a_reference = a_min
       shared_preferences.set(a, forKey: "pay_monthly")
       shared_preferences.synchronize()
       if (a - floor(a) == 0) {
@@ -698,7 +698,7 @@ class MyMainPage:
       self.loaned.setValue(Float(value), animated: true)
       progress = ΔN * Double(self.loaned.value) + p_min
     }
-    var temp = Double()
+    var a_min = Double()
     if (tenyr_indicator == 0) {
       // if (p*i*100 - floor(p*i*100) > 0.499999)
       //     && (p*i*100 - floor(p*i*100) < 0.5) {
@@ -706,18 +706,18 @@ class MyMainPage:
       // } else {
       //   temp = (round(p*i*100) + 1)/100
       // }
-      temp = CR(x: p*i) + 1/100
+      a_min = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
-        temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
-        temp += CT()
+        a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        a_min += CT()
       } else {
-        temp = ceil(p/120*100)/100
+        a_min = ceil(p/120*100)/100
       }
     }
-    if (temp >= a) {
-      a = temp
-      a_reference = temp
+    if (a_min >= a) {
+      a = a_min
+      a_reference = a_min
       shared_preferences.set(a, forKey: "pay_monthly")
       shared_preferences.synchronize()
       if (a - floor(a) == 0) {
@@ -848,7 +848,7 @@ class MyMainPage:
     shared_preferences.set(2, forKey: "position")
     shared_preferences.set(i * 12 * 100, forKey: "interest")
     shared_preferences.synchronize()
-    var temp = Double()
+    var a_min = Double()
     if (tenyr_indicator == 0) {
       // if (p*i*100 - floor(p*i*100) > 0.499999)
       //     && (p*i*100 - floor(p*i*100) < 0.5) {
@@ -856,18 +856,18 @@ class MyMainPage:
       // } else {
       //   temp = (round(p*i*100) + 1)/100
       // }
-      temp = CR(x: p*i) + 1/100
+      a_min = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
-        temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
-        temp += CT()
+        a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        a_min += CT()
       } else {
-        temp = ceil(p/120*100)/100
+        a_min = ceil(p/120*100)/100
       }
     }
-    if (temp >= a) {
-      a = temp
-      a_reference = temp
+    if (a_min >= a) {
+      a = a_min
+      a_reference = a_min
       shared_preferences.set(a, forKey: "pay_monthly")
       shared_preferences.synchronize()
       if (a - floor(a) == 0) {
@@ -938,7 +938,7 @@ class MyMainPage:
     //   a = round(a*100)/100
     // }
     a = CR(x: a)
-    var temp = Double()
+    var a_min = Double()
     if (tenyr_indicator == 0) {
       // if (p*i*100 - floor(p*i*100) > 0.499999)
       //     && (p*i*100 - floor(p*i*100) < 0.5) {
@@ -946,18 +946,18 @@ class MyMainPage:
       // } else {
       //   temp = (round(p*i*100) + 1)/100
       // }
-      temp = CR(x: p*i) + 1/100
+      a_min = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
-        temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
-        temp += CT()
+        a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        a_min += CT()
       } else {
-        temp = ceil(p/120*100)/100
+        a_min = ceil(p/120*100)/100
       }
     }
-    if (a <= temp) {
-      a = temp
-      a_reference = temp
+    if (a <= a_min) {
+      a = a_min
+      a_reference = a_min
       minimum.isHidden = false
       minimum.text = "Minimum"
       pay_number.text = String(format: "%.2f", a)
@@ -2012,17 +2012,17 @@ class MyMainPage:
     tenyr_indicator = 0.0
     shared_preferences.set(tenyr_indicator, forKey: "tenyr")
     shared_preferences.synchronize()
-    var temp = Double()
+    var a_min = Double()
     // if (p*i*100 - floor(p*i*100) > 0.499999)
     //     && (p*i*100 - floor(p*i*100) < 0.5) {
     //   temp = (round(p*i*100 + 1) + 1)/100
     // } else {
     //   temp = (round(p*i*100) + 1)/100
     // }
-    temp = CR(x: p*i) + 1/100
-    if (temp >= a) {
-      a = temp
-      a_reference = temp
+    a_min = CR(x: p*i) + 1/100
+    if (a_min >= a) {
+      a = a_min
+      a_reference = a_min
       shared_preferences.set(a, forKey: "pay_monthly")
       shared_preferences.synchronize()
       if (a - floor(a) == 0) {
@@ -2065,16 +2065,16 @@ class MyMainPage:
     tenyr_indicator = 1.0
     shared_preferences.set(tenyr_indicator, forKey: "tenyr")
     shared_preferences.synchronize()
-    var temp = Double()
+    var a_min = Double()
     if (i != 0) {
-      temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
-      temp += CT()
+      a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+      a_min += CT()
     } else {
-      temp = ceil(p/120*100)/100
+      a_min = ceil(p/120*100)/100
     }
-    if (temp >= a) {
-      a = temp
-      a_reference = temp
+    if (a_min >= a) {
+      a = a_min
+      a_reference = a_min
       shared_preferences.set(a, forKey: "pay_monthly")
       shared_preferences.synchronize()
       if (a - floor(a) == 0) {
@@ -2149,7 +2149,7 @@ class MyMainPage:
     }
     if (Double(progress) != p) {
       p = Double(progress)
-      var temp = Double()
+      var a_min = Double()
       if (tenyr_indicator == 0) {
         // if (p*i*100 - floor(p*i*100) > 0.499999)
         //     && (p*i*100 - floor(p*i*100) < 0.5) {
@@ -2157,18 +2157,18 @@ class MyMainPage:
         // } else {
         //   temp = (round(p*i*100) + 1)/100
         // }
-        temp = CR(x: p*i) + 1/100
+        a_min = CR(x: p*i) + 1/100
       } else {
         if (i != 0) {
-          temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
-          temp += CT()
+          a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+          a_min += CT()
         } else {
-          temp = ceil(p/120*100)/100
+          a_min = ceil(p/120*100)/100
         }
       }
-      if (temp >= a) {
-        a = temp
-        a_reference = temp
+      if (a_min >= a) {
+        a = a_min
+        a_reference = a_min
         shared_preferences.set(a, forKey: "pay_monthly")
         shared_preferences.synchronize()
         if (a - floor(a) == 0) {
@@ -2270,7 +2270,7 @@ class MyMainPage:
       invisible_back.isHidden = true
       self.table_view.alpha = 0.0
     }
-    var temp = Double()
+    var a_min = Double()
     if (tenyr_indicator == 0) {
       // if (p*i*100 - floor(p*i*100) > 0.499999)
       //     && (p*i*100 - floor(p*i*100) < 0.5) {
@@ -2278,18 +2278,18 @@ class MyMainPage:
       // } else {
       //   temp = (round(p*i*100) + 1)/100
       // }
-      temp = CR(x: p*i) + 1/100
+      a_min = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
-        temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
-        temp += CT()
+        a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        a_min += CT()
       } else {
-        temp = ceil(p/120*100)/100
+        a_min = ceil(p/120*100)/100
       }
     }
-    if (temp >= a) {
-      a = temp
-      a_reference = temp
+    if (a_min >= a) {
+      a = a_min
+      a_reference = a_min
       shared_preferences.set(a, forKey: "pay_monthly")
       shared_preferences.synchronize()
       if (a - floor(a) == 0) {
@@ -2346,7 +2346,7 @@ class MyMainPage:
   }
 
   @IBAction func Interest_Rate_Unpressed_Copy(_ sender: UIButton) {
-    var temp = Double()
+    var a_min = Double()
     if (tenyr_indicator == 0) {
       // if (p*i*100 - floor(p*i*100) > 0.499999)
       //     && (p*i*100 - floor(p*i*100) < 0.5) {
@@ -2354,16 +2354,16 @@ class MyMainPage:
       // } else {
       //   temp = (round(p*i*100) + 1)/100
       // }
-      temp = CR(x: p*i) + 1/100
+      a_min = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
-        temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
-        temp += CT()
+        a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        a_min += CT()
       } else {
-        temp = ceil(p/120*100)/100
+        a_min = ceil(p/120*100)/100
       }
     }
-    if (temp == a) {
+    if (a_min == a) {
       minimum.isHidden = false
     } else {
       minimum.isHidden = true
@@ -2479,7 +2479,7 @@ class MyMainPage:
     invisible_back.isHidden = true
     apr_number.text = String(rates[(indexPath as NSIndexPath).row])
     apr_number_back.text = String(rates[(indexPath as NSIndexPath).row])
-    var temp = Double()
+    var a_min = Double()
     if (tenyr_indicator == 0) {
       // if (p*i*100 - floor(p*i*100) > 0.499999)
       //     && (p*i*100 - floor(p*i*100) < 0.5) {
@@ -2487,18 +2487,18 @@ class MyMainPage:
       // } else {
       //   temp = (round(p*i*100) + 1)/100
       // }
-      temp = CR(x: p*i) + 1/100
+      a_min = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
-        temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
-        temp += CT()
+        a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        a_min += CT()
       } else {
-        temp = ceil(p/120*100)/100
+        a_min = ceil(p/120*100)/100
       }
     }
-    if (temp >= a) {
-      a = temp
-      a_reference = temp
+    if (a_min >= a) {
+      a = a_min
+      a_reference = a_min
       shared_preferences.set(a, forKey: "pay_monthly")
       shared_preferences.synchronize()
       if (a - floor(a) == 0) {
@@ -2553,7 +2553,7 @@ class MyMainPage:
     down_unpressed.isHidden = false
     down_pressed.isHidden = true
     timer_count = 0
-    var temp = Double()
+    var a_min = Double()
     if (tenyr_indicator == 0) {
       // if (p*i*100 - floor(p*i*100) > 0.499999)
       //     && (p*i*100 - floor(p*i*100) < 0.5) {
@@ -2561,16 +2561,16 @@ class MyMainPage:
       // } else {
       //   temp = (round(p*i*100) + 1)/100
       // }
-      temp = CR(x: p*i) + 1/100
+      a_min = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
-        temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
-        temp += CT()
+        a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        a_min += CT()
       } else {
-        temp = ceil(p/120*100)/100
+        a_min = ceil(p/120*100)/100
       }
     }
-    if (a == temp) {
+    if (a == a_min) {
       minimum.isHidden = false
     } else {
       minimum.isHidden = true
@@ -2591,7 +2591,7 @@ class MyMainPage:
       temp_down = set_down_timer2_increment
       minimum.text = "↓ \(numberFormatter.string(from: NSNumber(value: temp_down))!)"
     }
-    var temp = Double()
+    var a_min = Double()
     if (tenyr_indicator == 0) {
       // if (p*i*100 - floor(p*i*100) > 0.499999)
       //     && (p*i*100 - floor(p*i*100) < 0.5) {
@@ -2599,20 +2599,20 @@ class MyMainPage:
       // } else {
       //   temp = (round(p*i*100) + 1)/100
       // }
-      temp = CR(x: p*i) + 1/100
+      a_min = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
-        temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
-        temp += CT()
+        a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        a_min += CT()
       } else {
-        temp = ceil(p/120*100)/100
+        a_min = ceil(p/120*100)/100
       }
     }
     if (a == a_reference) && (a - floor(a) > 0) {
       //latter condition is in case ``a'' has no remainder, or else will get stuck in loop
-      if (floor(a / down_button_increment)*down_button_increment <= temp) {
-        a = temp
-        a_reference = temp
+      if (floor(a / down_button_increment)*down_button_increment <= a_min) {
+        a = a_min
+        a_reference = a_min
         if (a - floor(a) == 0) {
           pay_number.text = numberFormatter.string(from: NSNumber(value: Int(
               a
@@ -2638,9 +2638,9 @@ class MyMainPage:
         pay_number.text = "\(numberFormatter.string(from: NSNumber(value: a))!)"
       }
     } else {
-      if (a - temp_down <= temp) {
-        a = temp
-        a_reference = temp
+      if (a - temp_down <= a_min) {
+        a = a_min
+        a_reference = a_min
         if (a - floor(a) == 0) {
           pay_number.text = numberFormatter.string(from: NSNumber(value: Int(
               a
@@ -2732,15 +2732,15 @@ class MyMainPage:
       a += temp_up
       timer_count += 1
     }
-    var temp = Double() //for interest, not pay
+    var interest_owed = Double() //for interest, not pay
     // if (p*i*100 - floor(p*i*100) > 0.499999)
     //     && (p*i*100 - floor(p*i*100) < 0.5) {
     //   temp = (round(p*i*100 + 1))/100
     // } else {
     //   temp = (round(p*i*100))/100
     // }
-    temp = CR(x: p*i)
-    if (a > p + temp) {
+    interest_owed = CR(x: p*i)
+    if (a > p + interest_owed) {
       minimum.text = "Overpaying!"
     }
     Lengthsaving()
@@ -2860,20 +2860,21 @@ class MyMainPage:
       m_min += 1
     }
     n_min = m_min
-    var temp = Int()
+    var l_y = Int()
     if (Double(n / 12) - floor(Double(n / 12)) > 0.99999) {
-      temp = Int(floor(Double(n / 12) + 1))
+      l_y = Int(floor(Double(n / 12) + 1))
     } else {
-      temp = Int(floor(Double(n / 12)))
+      l_y = Int(floor(Double(n / 12)))
     }
-    years.text = numberFormatter.string(from: NSNumber(value: temp))!
-    if (temp == 1) {
+    years.text = numberFormatter.string(from: NSNumber(value: l_y))!
+    if (l_y == 1) {
       years_text.text = "year"
     } else {
       years_text.text = "years"
     }
-    months.text = String(n - 12 * temp)
-    if (n - 12 * temp == 1) {
+    let l_m = n - 12 * l_y
+    months.text = String(l_m)
+    if (l_m == 1) {
       months_text.text = "month"
     } else {
       months_text.text = "months"
@@ -3280,7 +3281,7 @@ class MyMainPage:
     shared_preferences.set(p, forKey: "loaned")
     shared_preferences.set(i * 12 * 100, forKey: "interest")
     shared_preferences.synchronize()
-    var temp = Double()
+    var a_min = Double()
     if (tenyr_indicator == 0) {
       // if (p*i*100 - floor(p*i*100) > 0.499999)
       //     && (p*i*100 - floor(p*i*100) < 0.5) {
@@ -3288,17 +3289,17 @@ class MyMainPage:
       // } else {
       //   temp = (round(p*i*100) + 1)/100
       // }
-      temp = CR(x: p*i) + 1/100
+      a_min = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
-        temp = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
-        temp += CT()
+        a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        a_min += CT()
       } else {
-        temp = ceil(p/120*100)/100
+        a_min = ceil(p/120*100)/100
       }
     }
-    a = temp
-    a_reference = temp
+    a = a_min
+    a_reference = a_min
     shared_preferences.set(a, forKey: "pay_monthly")
     shared_preferences.set(tenyr_indicator, forKey: "tenyr")
     shared_preferences.synchronize()

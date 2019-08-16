@@ -110,7 +110,7 @@ class ShowMath: UIViewController {
     if compound.isOn {
       r = i*12*100/100 // i*12*100 is for reverting to APR(%)
       i = pow(1 + r/365.25, 365.25/12) - 1 //approximate
-      var temp = Double()
+      var a_min = Double()
       if (tenyr_indicator == 0) {
         // if (α*(p*i)*100 - floor(α*(p*i)*100) > 0.499999)
         //     && (α*(p*i)*100 - floor(α*(p*i)*100) < 0.5) {
@@ -118,20 +118,20 @@ class ShowMath: UIViewController {
         // } else {
         //   temp = (round(α*(p*i)*100) + 1)/100
         // }
-        temp = CR(x: α*(p*i)) + 1/100
+        a_min = CR(x: α*(p*i)) + 1/100
       } else {
         if (i != 0) {
-          temp = ceil(
+          a_min = ceil(
               (α*(p*i)*pow(1+α*i, 120))
                 / (pow(1+α*i, 120) - 1)*100
             )/100
-          temp += CT()
+          a_min += CT()
         } else {
-          temp = ceil(p/120*100)/100
+          a_min = ceil(p/120*100)/100
         }
       }
-      if (temp >= a) {
-        a = temp
+      if (a_min >= a) {
+        a = a_min
       } else { }
     } else {
       r = shared_preferences.double(forKey: "interest")/100
@@ -263,7 +263,7 @@ class ShowMath: UIViewController {
     }
     
     @IBAction func pay_monthly_minimize(_ sender: UIButton) {
-        var temp = Double()
+        var a_min = Double()
         r = shared_preferences.double(forKey: "interest")/100
         if compound.isOn {
             i = pow(1 + r/365.25, 365.25/12) - 1 //approximate
@@ -278,19 +278,19 @@ class ShowMath: UIViewController {
                 // } else {
                 //     temp = (round(α*(p*i)*100) + 1)/100
                 // }
-                temp = CR(x: α*(p*i)) + 1/100
+                a_min = CR(x: α*(p*i)) + 1/100
             } else {
                 if (i != 0) {
-                    temp = ceil(
+                    a_min = ceil(
                         (α*(p*i)*pow(1+α*i, 120))
                             / (pow(1+α*i, 120) - 1)*100
                         )/100
-                    temp += CT()
+                    a_min += CT()
                 } else {
-                    temp = ceil(p/120*100)/100
+                    a_min = ceil(p/120*100)/100
                 }
             }
-        a = temp
+        a = a_min
         Variables()
     }
     
@@ -679,7 +679,7 @@ class ShowMath: UIViewController {
     //     α = round(α*100)/100
     // }
     α = CR(x: α)
-    var temp = Double()
+    var a_min = Double()
     if (tenyr_indicator == 0) {
       // if (α*(p*i)*100 - floor(α*(p*i)*100) > 0.499999)
       //     && (α*(p*i)*100 - floor(α*(p*i)*100) < 0.5) {
@@ -687,20 +687,20 @@ class ShowMath: UIViewController {
       // } else {
       //   temp = (round(α*(p*i)*100) + 1)/100
       // }
-      temp = CR(x: α*(p*i)) + 1/100
+      a_min = CR(x: α*(p*i)) + 1/100
     } else {
       if (i != 0) {
-        temp = ceil(
+        a_min = ceil(
             (α*(p*i)*pow(1+α*i, 120))
               / (pow(1+α*i, 120) - 1)*100
           )/100
-        temp += CT()
+        a_min += CT()
       } else {
-        temp = ceil(p/120*100)/100
+        a_min = ceil(p/120*100)/100
       }
     }
-    if (temp >= a) {
-      a = temp
+    if (a_min >= a) {
+      a = a_min
     } else { }
     var attributedPercentInterestTitle = NSMutableAttributedString()
     attributedPercentInterestTitle = NSMutableAttributedString(
@@ -964,21 +964,21 @@ class ShowMath: UIViewController {
     } else {
       compound.isEnabled = true
     }
-    var tempx = Double()
+    var a_min = Double()
     // if (p*i*100 - floor(p*i*100) > 0.499999)
     //     && (p*i*100 - floor(p*i*100) < 0.5) {
     //   tempx = (round(p*i*100 + 1)+1)/100
     // } else {
     //   tempx = (round(p*i*100)+1)/100
     // }
-    tempx = CR(x: p*i) + 1/100
+    a_min = CR(x: p*i) + 1/100
     attributedPayTitle = NSMutableAttributedString(
       string: "Pay Monthly",
       attributes: [
         NSAttributedString.Key.font: UIFont(name: "CMUSerif-Bold", size: 18.0)!
       ]
     )
-    if (a == tempx) {
+    if (a == a_min) {
       attributedPaySummary = NSMutableAttributedString(
         string: " $" + String(format: "%.2f", a),
         attributes: [
@@ -1334,14 +1334,14 @@ class ShowMath: UIViewController {
       } else {
         α = Double(Int(α*100))/100
       }
-      var tempx = Double()
+      // var tempx = Double()
       // if (p*i*100 - floor(p*i*100) > 0.499999)
       //     && (p*i*100 - floor(p*i*100) < 0.5) {
       //   tempx = (round(p*i*100 + 1)+1)/100
       // } else {
       //   tempx = (round(p*i*100)+1)/100
       // }
-      tempx = CR(x: p*i) + 1/100
+      // tempx = CR(x: p*i) + 1/100
       //simplifying percentages:
       if (α*100 - floor(α*100) == 0) {
         attributedPercentInterest = NSMutableAttributedString(
@@ -1382,7 +1382,7 @@ class ShowMath: UIViewController {
           ]
         )
       } else //arbitrary:
-      if (progress != 100) && (a == tempx) {
+      if (progress != 100) && (a == a_min) {
         attributedPercentInterest = NSMutableAttributedString(
           string: String(format: "%.0f", α*100) + "%",
           attributes: [
@@ -2019,11 +2019,11 @@ class ShowMath: UIViewController {
     balance_shape_label.font = UIFont(name: "CMUSerif-Roman", size: 16.0)
     balance_shape_label.adjustsFontSizeToFitWidth = true
     //Text of interest body----------------------
-    var temp = Int() //don't want it rounding, unless remainder has repeated 9s
-    if (i*100*1000 - floor(i*100*1000) > 0.99999) {
-      temp = Int(i*100*1000)+1
+    var i_append = Int() //don't want it rounding, unless remainder has repeated 9s at one millionths place onward
+    if (i*100000 - floor(i*100000) > 0.99999) {
+      i_append = Int(i*100000)+1
     } else {
-      temp = Int(i*100*1000)
+      i_append = Int(i*100000)
     }
     var charged_interest_max_string_count = Int()
     if (n-1 > 4) {
@@ -2034,19 +2034,19 @@ class ShowMath: UIViewController {
       let charged_interest_shape_label_jg4 = NSMutableAttributedString(
         string: String(format: "%.2f", p)
           + " · 0.00"
-          + String(temp)
+          + String(i_append)
           + "...\n"
           + String(format: "%.2f", temp1)
           + " · 0.00"
-          + String(temp)
+          + String(i_append)
           + "...\n"
           + String(format: "%.2f", temp2)
           + " · 0.00"
-          + String(temp)
+          + String(i_append)
           + "...\n"
           + String(format: "%.2f", temp3)
           + " · 0.00"
-          + String(temp)
+          + String(i_append)
           + "...\n",
         attributes: [
           NSAttributedString.Key.paragraphStyle: paragraph_charged_interest
@@ -2063,7 +2063,7 @@ class ShowMath: UIViewController {
       let remains = NSMutableAttributedString(
         string: String(format: "%.2f", B)
           + " · 0.00"
-          + String(temp)
+          + String(i_append)
           + "...",
         attributes: [
           NSAttributedString.Key.paragraphStyle: paragraph_charged_interest
@@ -2106,28 +2106,28 @@ class ShowMath: UIViewController {
       charged_interest_shape_label.attributedText = charged_interest_shape_label_jg4
       charged_interest_max_string_count = (String(format: "%.2f", p)
           + " · 0.00"
-          + String(temp)
+          + String(i_append)
           + "...").count //used for right inset
     } else if (n-1 == 4) {
       charged_interest_shape_label.text = String(format: "%.2f", p)
         + " · 0.00"
-        + String(temp)
+        + String(i_append)
         + "...\n"
         + String(format: "%.2f", temp1)
         + " · 0.00"
-        + String(temp)
+        + String(i_append)
         + "...\n"
         + String(format: "%.2f", temp2)
         + " · 0.00"
-        + String(temp)
+        + String(i_append)
         + "...\n"
         + String(format: "%.2f", temp3)
         + " · 0.00"
-        + String(temp)
+        + String(i_append)
         + "...\n"
         + String(format: "%.2f", B)
         + " · 0.00"
-        + String(temp)
+        + String(i_append)
         + "..."
       charged_interest_shape_label.textAlignment = .right
       if (i == 0) {
@@ -2137,24 +2137,24 @@ class ShowMath: UIViewController {
       } else { }
       charged_interest_max_string_count = (String(format: "%.2f", p)
           + " · 0.00"
-          + String(temp)
+          + String(i_append)
           + "...").count //used for right inset
     } else if (n-1 == 3) {
       charged_interest_shape_label.text = String(format: "%.2f", p)
         + " · 0.00"
-        + String(temp)
+        + String(i_append)
         + "...\n"
         + String(format: "%.2f", temp1)
         + " · 0.00"
-        + String(temp)
+        + String(i_append)
         + "...\n"
         + String(format: "%.2f", temp2)
         + " · 0.00"
-        + String(temp)
+        + String(i_append)
         + "...\n"
         + String(format: "%.2f", B)
         + " · 0.00"
-        + String(temp)
+        + String(i_append)
         + "..."
       charged_interest_shape_label.textAlignment = .right
       if (i == 0) {
@@ -2164,20 +2164,20 @@ class ShowMath: UIViewController {
       } else { }
       charged_interest_max_string_count = (String(format: "%.2f", p)
           + " · 0.00"
-          + String(temp)
+          + String(i_append)
           + "...").count //used for right inset
     } else if (n-1 == 2) {
       charged_interest_shape_label.text = String(format: "%.2f", p)
         + " · 0.00"
-        + String(temp)
+        + String(i_append)
         + "...\n"
         + String(format: "%.2f", temp1)
         + " · 0.00"
-        + String(temp)
+        + String(i_append)
         + "...\n"
         + String(format: "%.2f", B)
         + " · 0.00"
-        + String(temp)
+        + String(i_append)
         + "..."
       charged_interest_shape_label.textAlignment = .right
       if (i == 0) {
@@ -2187,16 +2187,16 @@ class ShowMath: UIViewController {
       } else { }
       charged_interest_max_string_count = (String(format: "%.2f", p)
           + " · 0.00"
-          + String(temp)
+          + String(i_append)
           + "...").count //used for right inset
     } else if (n-1 == 1) {
       charged_interest_shape_label.text = String(format: "%.2f", p)
         + " · 0.00"
-        + String(temp)
+        + String(i_append)
         + "...\n"
         + String(format: "%.2f", B)
         + " · 0.00"
-        + String(temp)
+        + String(i_append)
         + "..."
       charged_interest_shape_label.textAlignment = .right
       if (i == 0) {
@@ -2206,7 +2206,7 @@ class ShowMath: UIViewController {
       } else { }
       charged_interest_max_string_count = (String(format: "%.2f", p)
           + " · 0.00"
-          + String(temp)
+          + String(i_append)
           + "...").count //used for right inset
     } else {
       charged_interest_shape_label.text = String(
@@ -2214,7 +2214,7 @@ class ShowMath: UIViewController {
           B
         )
         + " · 0.00"
-        + String(temp)
+        + String(i_append)
         + "..."
       charged_interest_shape_label.textAlignment = .right
       if (i == 0) {
@@ -2227,7 +2227,7 @@ class ShowMath: UIViewController {
             B
           )
           + " · 0.00"
-          + String(temp)
+          + String(i_append)
           + "...").count //used for right inset
     }
     charged_interest_shape_label.numberOfLines = 0
@@ -2245,19 +2245,19 @@ class ShowMath: UIViewController {
     //   remaining_interest = round(B*i*100)/100
     // }
     interest_owed = CR(x: B*i)
-    var tempx = Double()
+    var a_min = Double()
     // if (p*i*100 - floor(p*i*100) > 0.499999)
     //     && (p*i*100 - floor(p*i*100) < 0.5) {
     //   tempx = (round(p*i*100 + 1)+1)/100
     // } else {
     //   tempx = (round(p*i*100)+1)/100
     // }
-    tempx = CR(x: p*i) + 1/100
-    if (n-1 > 4) {
+    a_min = CR(x: p*i) + 1/100 //initial
+    if (n-1 > 4) { //a lot of this seems redundant
       var payment_shape_label_jg4 = NSMutableAttributedString()
       var etc = NSMutableAttributedString()
       var remains = NSMutableAttributedString()
-      if (a == tempx) {
+      if (a == a_min) {
         if (progress == 100) {
           payment_shape_label_jg4 = NSMutableAttributedString(
             string: String(format: "%.2f", a)
@@ -2339,7 +2339,7 @@ class ShowMath: UIViewController {
       payment_shape_label_jg4.append(remains)
       payment_shape_label.attributedText = payment_shape_label_jg4
     } else if (n-1 == 4) {
-      if (a == tempx) {
+      if (a == a_min) {
         if (progress == 100) {
           payment_shape_label.text = String(format: "%.2f", a)
             + "\n"
@@ -2382,7 +2382,7 @@ class ShowMath: UIViewController {
           )
       }
     } else if (n-1 == 3) {
-      if (a == tempx) {
+      if (a == a_min) {
         if (progress == 100) {
           payment_shape_label.text = String(format: "%.2f", a)
             + "\n"
@@ -2419,7 +2419,7 @@ class ShowMath: UIViewController {
           )
       }
     } else if (n-1 == 2) {
-      if (a == tempx) {
+      if (a == a_min) {
         if (progress == 100) {
           payment_shape_label.text = String(format: "%.2f", a)
             + "\n"
@@ -2450,7 +2450,7 @@ class ShowMath: UIViewController {
           )
       }
     } else if (n-1 == 1) {
-      if (a == tempx) {
+      if (a == a_min) {
         if (progress == 100) {
           payment_shape_label.text = String(format: "%.2f", a)
             + "\n"
@@ -2932,7 +2932,7 @@ class ShowMath: UIViewController {
       // } else {
       //   pt1 = round(pt1*100)/100
       // }
-      var pt1 = CR(x: abs(a - (B + interest_owed + O)))
+      let pt1 = CR(x: abs(a - (B + interest_owed + O)))
       let pt2 = pt1 - floor(pt1)
       let pt3 = pt2*100
       var pt4 = Int()
