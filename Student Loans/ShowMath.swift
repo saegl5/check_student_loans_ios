@@ -936,18 +936,14 @@ class ShowMath: UIViewController {
           )!
         ]
       )
-      var z = String(".") //resetting the string
-      while (String(temp_peri).count < 4) {
-        for _ in 1...(4-String(temp_peri).count) {
+      var remainder = String(".") //resetting the string
+      if (String(temp_dec).count < 4) {
+        for _ in 1...(4-String(temp_dec).count) {
           z.append("0")
         }
       }
-      print(z)
-      // if (temp_dec > 0) && (temp_dec <= 9) {
-      //   print(temp_dec)
-      // }
       attributedAPRDecimalEquivalent = NSMutableAttributedString(
-        string: "\n" + "÷ 100 = 0.0" + String(temp_dec) + "...",
+        string: "\n" + "÷ 100 = 0" + remainder + String(temp_dec) + "...",
         attributes: [
           NSAttributedString.Key.font: UIFont(
             name: "CMUSerif-Roman",
