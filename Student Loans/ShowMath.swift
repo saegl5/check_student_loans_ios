@@ -903,7 +903,7 @@ class ShowMath: UIViewController {
         ]
       )
       attributedAPRDecimalEquivalent = NSMutableAttributedString(
-        string: "\n" + "÷ 100 = 0.0" + String(temp_dec) + "...",
+        string: "\n" + "÷ 100 = 0.0" + String(temp_dec) + "0...",
         attributes: [
           NSAttributedString.Key.font: UIFont(
             name: "CMUSerif-Roman",
