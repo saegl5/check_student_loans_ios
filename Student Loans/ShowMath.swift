@@ -1483,10 +1483,13 @@ class ShowMath: UIViewController {
       payment.isEnabled = true
       payment_header.isEnabled = true
     }
+    var B = [Double]()
+    var O = [Double]()
+    var B.append(p) //monthly principal balance, defined here in order to simplify the rest too
+    var O.append(0.00) //monthly outstanding interest
     var m = 1 //defined here in order to simplify the rest
     var n = Int()
-    var B = p //monthly principal balance, defined here in order to simplify the rest too
-    var O = 0.00 //monthly outstanding interest
+
     var interest_owed = Double()
     // if (B*i*100 - floor(B*i*100) > 0.499999)
     //     && (B*i*100 - floor(B*i*100) < 0.5) {
@@ -1494,7 +1497,7 @@ class ShowMath: UIViewController {
     // } else {
     //   interest_owed = round(B*i*100)/100
     // }
-    interest_owed = CR(x: B*i)
+    interest_owed = CR(x: B[m-1]*i)
     var interest_paid = Double()
     // var x = α*(B*i)
     // if (x*100 - floor(x*100) > 0.499999) && (x*100 - floor(x*100) < 0.5) {
@@ -1502,7 +1505,7 @@ class ShowMath: UIViewController {
     // } else {
     //   interest_paid = round(x*100)/100
     // }
-    interest_paid = CR(x: α*(B*i))
+    interest_paid = CR(x: α*(B[m-1]*i))
     // var tempx = Double()
     // if (p*i*100 - floor(p*i*100) > 0.499999)
     //     && (p*i*100 - floor(p*i*100) < 0.5) {
@@ -1521,37 +1524,37 @@ class ShowMath: UIViewController {
     //   principal_pay = a - interest_pay
     // }
     // principal_pay = a - interest_pay
-    while (B - (a - interest_paid) > 0) {
-      B = B - (a - interest_paid)
+    while ( B[m-1] - (a - interest_paid) > 0 ) {
+      B.append( B[m-1] - (a - interest_paid) )
       // if (B*100 - floor(B*100) > 0.499999)
       //     && (B*100 - floor(B*100) < 0.5) {
       //   B = round(B*100 + 1)/100
       // } else {
       //   B = round(B*100)/100
       // }
-      B = CR(x: B)
-      O = O + (interest_owed - interest_paid)
+      B[m] = CR(x: B[m])
+      O.append( O[m-1] + (interest_owed - interest_paid) )
       // if (O*100 - floor(O*100) > 0.499999)
       //     && (O*100 - floor(O*100) < 0.5) {
       //   O = round(O*100 + 1)/100
       // } else {
       //   O = round(O*100)/100
       // }
-      O = CR(x: O)
+      O[m] = CR(x: O[m])
       // if (B*i*100 - floor(B*i*100) > 0.499999)
       //     && (B*i*100 - floor(B*i*100) < 0.5) {
       //   interest_owed = round(B*i*100 + 1)/100
       // } else {
       //   interest_owed = round(B*i*100)/100
       // }
-      interest_owed = CR(x: B*i)
+      interest_owed = CR(x: B[m]*i)
       // x = α*(B*i)
       // if (x*100 - floor(x*100) > 0.499999) && (x*100 - floor(x*100) < 0.5) {
       //   interest_paid = round(x*100 + 1)/100
       // } else {
       //   interest_paid = round(x*100)/100
       // }
-      interest_paid = CR(x: α*(B*i))
+      interest_paid = CR(x: α*(B[m]*i))
       // if (p*i*100 - floor(p*i*100) > 0.499999)
       //     && (p*i*100 - floor(p*i*100) < 0.5) {
       //   tempx = (round(p*i*100 + 1)+1)/100
@@ -1989,7 +1992,7 @@ class ShowMath: UIViewController {
         attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
       )
       let remains = NSMutableAttributedString(
-        string: String(format: "%.2f", B),
+        string: String(format: "%.2f", B[n-2]),
         attributes: [:]
       )
       balance_shape_label_jg4.append(etc)
@@ -3224,10 +3227,13 @@ class ShowMath: UIViewController {
     total_paid_string.append(total_paid_amount_decimal_part)
     total_paid_string.append(total_paid_amount_decimal_part_label)
     total_paid.attributedText = total_paid_string
+    var B_min = [Double]()
+    var O_min = [Double]()
+    var B_min.append(p) //defined here in order to simplify the rest too
+    var O_min.append(0.00)
     var m_min = 1 //defined here in order to simplify the rest
     var n_min = Int()
-    var B_min = p //defined here in order to simplify the rest too
-    var O_min = 0.00
+
     var interest_owed_min = Double()
     // if (B_min*i*100
     //       - floor(B_min*i*100)
@@ -3239,7 +3245,7 @@ class ShowMath: UIViewController {
     // } else {
     //   interest_owed_min = round(B_min*i*100)/100
     // }
-    interest_owed_min = CR(x: B_min*i)
+    interest_owed_min = CR(x: B_min[m_min-1]*i)
     var interest_paid_min = Double()
     // var xxx = α*(B_min*i)
     // if (xxx*100 - floor(xxx*100) > 0.499999)
@@ -3248,7 +3254,7 @@ class ShowMath: UIViewController {
     // } else {
     //   interest_paid_min = round(xxx*100)/100
     // }
-    interest_paid_min = CR(x: α*(B_min*i))
+    interest_paid_min = CR(x: α*(B_min[m_min-1]*i))
     // var a_min = Double()
     // var temp_pay = Double()
     if (tenyr_indicator == 0) {
@@ -3297,8 +3303,8 @@ class ShowMath: UIViewController {
         // temp_pay = a_min
       }
     }
-    while (B_min - (a_min - interest_paid_min) > 0) {
-      B_min = B_min - (a_min - interest_paid_min)
+    while ( B_min[m_min-1] - (a_min - interest_paid_min) > 0 ) {
+      B_min.append( B_min[m_min-1] - (a_min - interest_paid_min) )
       // if (B_min*100
       //       - floor(B_min*100)
       //       > 0.499999)
@@ -3313,15 +3319,15 @@ class ShowMath: UIViewController {
       //       B_min*100
       //     )/100
       // }
-      B_min = CR(x: B_min)
-      O_min = O_min + (interest_owed_min - interest_paid_min)
+      B_min[m_min] = CR(x: B_min[m_min])
+      O_min.append( O_min[m_min-1] + (interest_owed_min - interest_paid_min) )
       // if (O_min*100 - floor(O_min*100) > 0.499999)
       //     && (O_min*100 - floor(O_min*100) < 0.5) {
       //     O_min = round(O_min*100 + 1)/100
       // } else {
       //     O_min = round(O_min*100)/100
       // }
-      O_min = CR(x: O_min)
+      O_min[m_min] = CR(x: O_min[m_min])
       // if (B_min*i*100
       //       - floor(B_min*i*100)
       //       > 0.499999)
@@ -3332,7 +3338,7 @@ class ShowMath: UIViewController {
       // } else {
       //   interest_owed_min = round(B_min*i*100)/100
       // }
-      interest_owed_min = CR(x: B_min*i)
+      interest_owed_min = CR(x: B_min[m_min]*i)
       // xxx = α*(B_min*i)
       // if (xxx*100 - floor(xxx*100) > 0.499999)
       //     && (xxx*100 - floor(xxx*100) < 0.5) {
@@ -3340,7 +3346,7 @@ class ShowMath: UIViewController {
       // } else {
       //   interest_paid_min = round(xxx*100)/100
       // }
-      interest_paid_min = CR(x: α*(B_min*i))
+      interest_paid_min = CR(x: α*(B_min[m_min]*i))
       // if (tenyr_indicator == 0) {
         // if (p*i*100 - floor(p*i*100) > 0.499999)
         //     && (p*i*100 - floor(p*i*100) < 0.5) {
