@@ -2732,15 +2732,15 @@ class MyMainPage:
       a += temp_up
       timer_count += 1
     }
-    var interest_owed = Double() //for interest, not pay
+    // var interest_owed = Double() //for interest, not pay
     // if (p*i*100 - floor(p*i*100) > 0.499999)
     //     && (p*i*100 - floor(p*i*100) < 0.5) {
     //   temp = (round(p*i*100 + 1))/100
     // } else {
     //   temp = (round(p*i*100))/100
     // }
-    interest_owed = CR(x: p*i)
-    if (a > p + interest_owed) {
+    // interest_owed = CR(x: p*i)
+    if (a > p + CR(x: p*i)) {
       minimum.text = "Overpaying!"
     }
     Lengthsaving()
@@ -2753,22 +2753,22 @@ class MyMainPage:
   func Lengthsaving() {
     var B = [Double]()
     var B_min = [Double]()
-    var B.append(p) //monthly principal balance
+    B.append(p) //monthly principal balance
     //by default, all interest is paid, so there is no monthly outstanding interest
-    var B_min.append(p)
+    B_min.append(p)
     var m = 1
     var m_min = 1
     var n = Int()
     var n_min = Int()
-    var interest_owed = Double() //by default, interest_paid = interest_owed
+    // var interest_owed = Double() //by default, interest_paid = interest_owed
     // if (B*i*100 - floor(B*i*100) > 0.499999)
     //     && (B*i*100 - floor(B*i*100) < 0.5) {
     //   interest_owed = (round(B*i*100 + 1))/100
     // } else {
     //   interest_owed = (round(B*i*100))/100
     // }
-    interest_owed = CR(x: B*i)
-    var interest_owed_min = Double() //by default, interest_paid_min = interest_owed_min
+    // interest_owed = CR(x: B[m-1]*i)
+    // var interest_owed_min = Double() //by default, interest_paid_min = interest_owed_min
     // if (B_min*i*100
     //       - floor(B_min*i*100)
     //       > 0.499999)
@@ -2779,7 +2779,7 @@ class MyMainPage:
     // } else {
     //   interest_owed_min = (round(B_min*i*100))/100
     // }
-    interest_owed_min = CR(x: B_min*i)
+    // interest_owed_min = CR(x: B_min[m_min-1]*i)
     var a_min = Double()
     if (tenyr_indicator == 0) {
       // if (p*i*100 - floor(p*i*100) > 0.499999)
@@ -2788,37 +2788,37 @@ class MyMainPage:
       // } else {
       //   a_min = (round(p*i*100) + 1)/100
       // }
-      a_min = CR(x: p*i) + 1/100
+      a_min = CR(x: B[0]*i) + 1/100
     } else {
       if (i != 0) {
-        a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        a_min = ceil((B[0]*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
         a_min += CT()
       } else {
-        a_min = ceil(p/120*100)/100
+        a_min = ceil(B[0]/120*100)/100
       }
     }
     // let temp_pay_first = temp_pay
-    while (B - (a - interest_owed) > 0) { //again, by default interest_paid = interest_owed
-      B = B - (a - interest_owed)
+    while ( B[m-1] - (a - CR(x: B[m-1]*i)) > 0 ) {
+      B.append( B[m-1] - (a - CR(x: B[m-1]*i)) )
       // let temp_new3 = B*100 - floor(B*100)
       // if (temp_new3 > 0.499999) && (temp_new3 < 0.5) {
       //   B = round(B*100 + 1)/100
       // } else {
       //   B = round(B*100)/100
       // }
-      B = CR(x: B)
+      B[m] = CR(x: B[m])
       // if (B*i*100 - floor(B*i*100) > 0.499999)
       //     && (B*i*100 - floor(B*i*100) < 0.5) {
       //   interest_owed = (round(B*i*100 + 1))/100
       // } else {
       //   interest_owed = (round(B*i*100))/100
       // }
-      interest_owed = CR(x: B*i)
+      // interest_owed = CR(x: B[m]*i)
       m += 1
     }
     n = m
-    while (B_min - (a_min - interest_owed_min) > 0) {  //again, by default interest_paid_min = interest_owed_min
-      B_min = B_min - (a_min - interest_owed_min)
+    while ( B_min[m_min-1] - (a_min - CR(x: B_min[m_min-1]*i) ) > 0 ) {
+      B_min.append( B_min[m_min-1] - (a_min - CR(x: B_min[m_min-1]*i)) )
       // let temp_new4 = B_min*100
       //   - floor(B_min*100)
       // if (temp_new4 > 0.499999) && (temp_new4 < 0.5) {
@@ -2830,7 +2830,7 @@ class MyMainPage:
       //       B_min*100
       //     )/100
       // }
-      B_min = CR(x: B_min)
+      B_min[m_min] = CR(x: B_min[m_min])
       // if (B_min*i*100
       //       - floor(B_min*i*100)
       //       > 0.499999)
@@ -2843,7 +2843,7 @@ class MyMainPage:
       // } else {
       //   interest_owed_min = (round(B_min*i*100))/100
       // }
-      interest_owed_min = CR(x: B_min*i)
+      // interest_owed_min = CR(x: B_min[m_min]*i)
 //      if (tenyr_indicator == 0) {
 //        if (p*i*100 - floor(p*i*100) > 0.499999)
 //            && (p*i*100 - floor(p*i*100) < 0.5) {
@@ -2891,23 +2891,23 @@ class MyMainPage:
     // } else {
     //   interest_owed_min = (round(B_min*i*100))/100
     // }
-    interest_owed_min = CR(x: B_min*i)
-    let temp_interest_last_min = interest_owed_min
+    // interest_owed_min = CR(x: B_min[n_min-1]*i)
+    // let temp_interest_last_min = interest_owed_min
     // let total_repay_minimum_fromloop = Double(n_min-1) * a_min
     // let total_repay_minimum_finalmonth = remainingbalance_repay_minimum
     //   + temp_interest_last_min
     let T_max = Double(n_min-1)*a_min
-      + B_min
-      + temp_interest_last_min
+      + B_min[n_min-1]
+      + CR(x: B_min[n_min-1]*i)
     // if (B*i*100 - floor(B*i*100) > 0.499999)
     //     && (B*i*100 - floor(B*i*100) < 0.5) {
     //   interest_owed = (round(B*i*100 + 1))/100
     // } else {
     //   interest_owed = (round(B*i*100))/100
     // }
-    interest_owed = CR(x: B*i)
-    let temp_interest_last_amount = interest_owed
-    let T = Double(n-1) * a + B + temp_interest_last_amount //T(a)
+    // interest_owed = CR(x: B[n-1]*i)
+    // let temp_interest_last_amount = interest_owed
+    let T = Double(n-1) * a + B[n-1] + CR(x: B[n-1]*i) //T(a)
     var s_2 = T_max - T //T_max - T(a_2)
     var s_1 = shared_preferences.double(forKey: "savings_change_key") //T_max - T(a_1)
     if (s_1 - floor(s_1) > 0.499999)
