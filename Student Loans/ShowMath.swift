@@ -121,13 +121,17 @@ class ShowMath: UIViewController {
         a_min = CR(x: α*(p*i)) + 1/100
       } else {
         if (i != 0) {
-          a_min = ceil(
-              (α*(p*i)*pow(1+α*i, 120))
-                / (pow(1+α*i, 120) - 1)*100
-            )/100
-          a_min += CT()
+            if (progress != 0) {
+                a_min = ceil(
+                    (α*(p*i)*pow(1+α*i, 120))
+                        / (pow(1+α*i, 120) - 1)*100
+                    )/100
+                a_min += CT()
+            } else {
+                a_min = ceil(p/120*100)/100
+            }
         } else {
-          a_min = ceil(p/120*100)/100
+            a_min = ceil(p/120*100)/100
         }
       }
       if (a_min >= a) {
@@ -271,16 +275,11 @@ class ShowMath: UIViewController {
             i = r
                 / 12 //need to convert to periodic rate in decimal form
         }
-            if (tenyr_indicator == 0) {
-                // if (α*(p*i)*100 - floor(α*(p*i)*100) > 0.499999)
-                //     && (α*(p*i)*100 - floor(α*(p*i)*100) < 0.5) {
-                //     temp = (round(α*(p*i)*100 + 1) + 1)/100
-                // } else {
-                //     temp = (round(α*(p*i)*100) + 1)/100
-                // }
-                a_min = CR(x: α*(p*i)) + 1/100
-            } else {
-                if (i != 0) {
+        if (tenyr_indicator == 0) {
+            a_min = CR(x: α*(p*i)) + 1/100
+        } else {
+            if (i != 0) {
+                if (progress != 0) {
                     a_min = ceil(
                         (α*(p*i)*pow(1+α*i, 120))
                             / (pow(1+α*i, 120) - 1)*100
@@ -289,7 +288,10 @@ class ShowMath: UIViewController {
                 } else {
                     a_min = ceil(p/120*100)/100
                 }
+            } else {
+                a_min = ceil(p/120*100)/100
             }
+        }
         a = a_min
         Variables()
     }
@@ -689,15 +691,19 @@ class ShowMath: UIViewController {
       // }
       a_min = CR(x: α*(p*i)) + 1/100
     } else {
-      if (i != 0) {
-        a_min = ceil(
-            (α*(p*i)*pow(1+α*i, 120))
-              / (pow(1+α*i, 120) - 1)*100
-          )/100
-        a_min += CT()
-      } else {
-        a_min = ceil(p/120*100)/100
-      }
+        if (i != 0) {
+            if (progress != 0) {
+                a_min = ceil(
+                    (α*(p*i)*pow(1+α*i, 120))
+                        / (pow(1+α*i, 120) - 1)*100
+                    )/100
+                a_min += CT()
+            } else {
+                a_min = ceil(p/120*100)/100
+            }
+        } else {
+            a_min = ceil(p/120*100)/100
+        }
     }
     if (a_min >= a) {
       a = a_min
@@ -983,7 +989,30 @@ class ShowMath: UIViewController {
     // } else {
     //   tempx = (round(p*i*100)+1)/100
     // }
-    a_min = CR(x: p*i) + 1/100
+//    a_min = CR(x: p*i) + 1/100
+    if (tenyr_indicator == 0) {
+        // if (α*(p*i)*100 - floor(α*(p*i)*100) > 0.499999)
+        //     && (α*(p*i)*100 - floor(α*(p*i)*100) < 0.5) {
+        //   temp = (round(α*(p*i)*100 + 1) + 1)/100
+        // } else {
+        //   temp = (round(α*(p*i)*100) + 1)/100
+        // }
+        a_min = CR(x: α*(p*i)) + 1/100
+    } else {
+        if (i != 0) {
+            if (progress != 0) {
+                a_min = ceil(
+                    (α*(p*i)*pow(1+α*i, 120))
+                        / (pow(1+α*i, 120) - 1)*100
+                    )/100
+                a_min += CT()
+            } else {
+                a_min = ceil(p/120*100)/100
+            }
+        } else {
+            a_min = ceil(p/120*100)/100
+        }
+    }
     attributedPayTitle = NSMutableAttributedString(
       string: "Pay Monthly",
       attributes: [
@@ -1581,7 +1610,24 @@ class ShowMath: UIViewController {
     // } else {
     //   tempx_x = (round(p*i*100)+1)/100
     // }
-    a_min = CR(x: p*i) + 1/100 //initial value
+//    a_min = CR(x: p*i) + 1/100 //initial value
+    if (tenyr_indicator == 0) {
+        a_min = CR(x: α*(p*i)) + 1/100
+    } else {
+        if (i != 0) {
+            if (progress != 0) {
+                a_min = ceil(
+                    (α*(p*i)*pow(1+α*i, 120))
+                        / (pow(1+α*i, 120) - 1)*100
+                    )/100
+                a_min += CT()
+            } else {
+                a_min = ceil(p/120*100)/100
+            }
+        } else {
+            a_min = ceil(p/120*100)/100
+        }
+    }
     attributedPayTitle = NSMutableAttributedString(
       string: "Pay Monthly",
       attributes: [
@@ -1591,7 +1637,7 @@ class ShowMath: UIViewController {
     if (a == a_min) {
       if (progress == 100) {
         attributedPaySummary = NSMutableAttributedString(
-          string: " $" + String(format: "%.2f", a),
+          string: " $" + String(format: "%.2f", a+50),
           attributes: [
             NSAttributedString.Key.font: UIFont(
               name: "CMUSerif-Roman",
@@ -3255,7 +3301,7 @@ class ShowMath: UIViewController {
     // interest_paid_min = CR(x: α*(B_min[m_min-1]*i))
     // var a_min = Double()
     // var temp_pay = Double()
-    if (tenyr_indicator == 0) {
+//    if (tenyr_indicator == 0) {
       // if (p*i*100 - floor(p*i*100) > 0.499999)
       //     && (p*i*100 - floor(p*i*100) < 0.5) {
       //   temp_pay = (round(p*i*100 + 1))/100
@@ -3268,7 +3314,7 @@ class ShowMath: UIViewController {
       // } else {
       //   a_min = (round(xx*100) + 1)/100
       // }
-      a_min = CR(x: α*(p*i)) + 1/100
+//      a_min = CR(x: α*(p*i)) + 1/100
       // temp_pay = a_min - interest_pay_min
 //      if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
 //          && (temp_pay*100 - floor(temp_pay*100) < 0.5) {
@@ -3276,31 +3322,32 @@ class ShowMath: UIViewController {
 //      } else {
 //        temp_pay = round(temp_pay*100)/100
 //      }
-    } else {
-      if (i != 0) {
-        if (progress != 0) {
-          a_min = ceil(
-              (α*(p*i)*pow(1+α*i, 120))
-                / (pow(1+α*i, 120) - 1)*100
-            )/100
-          a_min += CT()
-          // a_min = temp_pay
-          // temp_pay = a_min - interest_pay_min
-//          if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
-//              && (temp_pay*100 - floor(temp_pay*100) < 0.5) {
-//            temp_pay = round(temp_pay*100 + 1)/100
-//          } else {
-//            temp_pay = round(temp_pay*100)/100
-//          }
-        } else {
-          a_min = ceil(p/120*100)/100
-          // temp_pay = a_min
-        }
-      } else {
-        a_min = ceil(p/120*100)/100
-        // temp_pay = a_min
-      }
-    }
+//    } else {
+//      if (i != 0) {
+//        if (progress != 0) {
+//          a_min = ceil(
+//              (α*(p*i)*pow(1+α*i, 120))
+//                / (pow(1+α*i, 120) - 1)*100
+//            )/100
+//          a_min += CT()
+//          // a_min = temp_pay
+//          // temp_pay = a_min - interest_pay_min
+////          if (temp_pay*100 - floor(temp_pay*100) > 0.499999)
+////              && (temp_pay*100 - floor(temp_pay*100) < 0.5) {
+////            temp_pay = round(temp_pay*100 + 1)/100
+////          } else {
+////            temp_pay = round(temp_pay*100)/100
+////          }
+//        } else {
+//          a_min = ceil(p/120*100)/100
+//          // temp_pay = a_min
+//        }
+//      } else {
+//        a_min = ceil(p/120*100)/100
+//        // temp_pay = a_min
+//      }
+//    }
+    //a_min was already defined
     while ( B_min[m_min-1] - (a_min - CR(x: α*(B_min[m_min-1]*i))) > 0 ) {
       B_min.append( B_min[m_min-1] - (a_min - CR(x: α*(B_min[m_min-1]*i))) )
       // if (B_min*100
