@@ -1,11 +1,11 @@
 <snippet>
 <content>
  
-# ![Alt](/app_icon_and_logo.png "Check Student Loans")
+# ![Alt](./app_icon_and_logo.png "Check Student Loans")
 
 Check your student loans' length of repayment and amount of savings.<p>
 
-This project is a native iOS app that is one of two parts of an experimental study&mdash;the other part being [course material](/Resources/course_material.docx "Click here to view the course material."), and it is designed to supplement the course material.
+This project is a native iOS app that is one of two parts of an experimental study&mdash;the other part being [course material](./Resources/course_material.docx "Click here to view the course material."), and it is designed to supplement the course material.
 The combination of both parts is dubbed an _instructional app_. Users select an estimated cost, select the interest rate of their loan(s), and select a monthly payment.
 The app will estimate how long repayments will take and how much users can save by paying more than the minimum.
 (This app will not tell you how much money you have loaned. Contact your school's bursar office for that information. Once you have that information, use this app.)<p>
@@ -20,12 +20,12 @@ Features:
 It is designed for iPhone 7. Compatible with iPhone 6/6+, 6s/6s+, 7+, 8/8+ or later, but not iPhone SE or below<br>
 Not designed for iPad devices<p>
 
-[![Alt](/badge-unavailable.png "Download on the App Store.")](https://itunes.apple.com/us/app/student-loans/id1260436932?mt=8)<br>
+[![Alt](./badge-unavailable.png "Download on the App Store.")](https://itunes.apple.com/us/app/student-loans/id1260436932?mt=8)<br>
 ~~(Version 2.3.1)~~ Removed on March 24, 2019<p>
 
 Alternative downloads:<br>
-[Version 2.2.2 for Panel Discussion](/Archives/panel_discussion.ipa "Click here to access the download link.")[^1]<br>
-[Version 2.6.2 - Latest](/Archives/latest-2_6_2.ipa "Click here to access the download link.") (Updated: August 16, 2019)<p>
+[Version 2.2.2 for Panel Discussion](./Archives/panel_discussion.ipa "Click here to access the download link.")[^1]<br>
+[Version 2.6.2 - Latest](./Archives/latest-2_6_2.ipa "Click here to access the download link.") (Updated: August 16, 2019)<p>
 
 Install alternative downloads using iTunes or Apple Configurator on iPhone devices.
 
@@ -61,7 +61,7 @@ Press &minus; or &#43; to select a monthly payment nearest to yours.<p>
 To edit the slider, interest rate, monthly payment or minimum, or to enable swiping leftward, press on the padlock icon.<br>
 After editing them or enabling swiping, relock.<p>
 
-(You can check the native app's calculations against [this spreadsheet](/Resources/checking_calculations.xlsx "Click here to view the spreadsheet.").)
+(You can check the native app's calculations against [this spreadsheet](./Resources/checking_calculations.xlsx "Click here to view the spreadsheet.").)
 
 ## Contributing
 
