@@ -516,7 +516,7 @@ class MyMainPage:
       // } else {
       //   temp = (round(p*i*100) + 1)/100
       // }
-      a_min = CR(x: p*i) + 1/100
+      a_min = CR(x: p*i) + 0.01 //a_min_n
     } else {
       if (i != 0) {
         a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
@@ -706,7 +706,7 @@ class MyMainPage:
       // } else {
       //   temp = (round(p*i*100) + 1)/100
       // }
-      a_min = CR(x: p*i) + 1/100
+      a_min = CR(x: p*i) + 0.01 //a_min_n
     } else {
       if (i != 0) {
         a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
@@ -856,7 +856,7 @@ class MyMainPage:
       // } else {
       //   temp = (round(p*i*100) + 1)/100
       // }
-      a_min = CR(x: p*i) + 1/100
+      a_min = CR(x: p*i) + 0.01 //a_min_n
     } else {
       if (i != 0) {
         a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
@@ -946,7 +946,7 @@ class MyMainPage:
       // } else {
       //   temp = (round(p*i*100) + 1)/100
       // }
-      a_min = CR(x: p*i) + 1/100
+      a_min = CR(x: p*i) + 0.01 //a_min_n
     } else {
       if (i != 0) {
         a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
@@ -2019,7 +2019,7 @@ class MyMainPage:
     // } else {
     //   temp = (round(p*i*100) + 1)/100
     // }
-    a_min = CR(x: p*i) + 1/100
+    a_min = CR(x: p*i) + 0.01 //a_min_n
     if (a_min >= a) {
       a = a_min
       a_reference = a_min
@@ -2157,7 +2157,7 @@ class MyMainPage:
         // } else {
         //   temp = (round(p*i*100) + 1)/100
         // }
-        a_min = CR(x: p*i) + 1/100
+        a_min = CR(x: p*i) + 0.01 //a_min_n
       } else {
         if (i != 0) {
           a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
@@ -2278,7 +2278,7 @@ class MyMainPage:
       // } else {
       //   temp = (round(p*i*100) + 1)/100
       // }
-      a_min = CR(x: p*i) + 1/100
+      a_min = CR(x: p*i) + 0.01 //a_min_n
     } else {
       if (i != 0) {
         a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
@@ -2354,7 +2354,7 @@ class MyMainPage:
       // } else {
       //   temp = (round(p*i*100) + 1)/100
       // }
-      a_min = CR(x: p*i) + 1/100
+      a_min = CR(x: p*i) + 0.01 //a_min_n
     } else {
       if (i != 0) {
         a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
@@ -2487,7 +2487,7 @@ class MyMainPage:
       // } else {
       //   temp = (round(p*i*100) + 1)/100
       // }
-      a_min = CR(x: p*i) + 1/100
+      a_min = CR(x: p*i) + 0.01 //a_min_n
     } else {
       if (i != 0) {
         a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
@@ -2561,7 +2561,7 @@ class MyMainPage:
       // } else {
       //   temp = (round(p*i*100) + 1)/100
       // }
-      a_min = CR(x: p*i) + 1/100
+      a_min = CR(x: p*i) + 0.01 //a_min_n
     } else {
       if (i != 0) {
         a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
@@ -2599,7 +2599,7 @@ class MyMainPage:
       // } else {
       //   temp = (round(p*i*100) + 1)/100
       // }
-      a_min = CR(x: p*i) + 1/100
+      a_min = CR(x: p*i) + 0.01 //a_min_n
     } else {
       if (i != 0) {
         a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
@@ -2788,7 +2788,7 @@ class MyMainPage:
       // } else {
       //   a_min = (round(p*i*100) + 1)/100
       // }
-      a_min = CR(x: p*i) + 1/100
+      a_min = CR(x: p*i) + 0.01 //a_min_n
     } else {
       if (i != 0) {
         a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
@@ -3299,7 +3299,7 @@ class MyMainPage:
       // } else {
       //   temp = (round(p*i*100) + 1)/100
       // }
-      a_min = CR(x: p*i) + 1/100
+      a_min = CR(x: p*i) + 0.01 //a_min_n
     } else {
       if (i != 0) {
         a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
