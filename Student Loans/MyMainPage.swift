@@ -567,7 +567,7 @@ class MyMainPage:
     test_array.removeAll() //reset array
     test_array.append(p)
     var m_min = 1
-    var a_min = ceil((test_array[0]*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+    var a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
     a_min += 0.01*Double(c)
     while ( test_array[m_min-1] - (a_min - CR(x: test_array[m_min-1]*i)) > 0 )
         && ( CR(x: a_min) != CR(x: test_array[0]*i) ) {
@@ -2788,13 +2788,13 @@ class MyMainPage:
       // } else {
       //   a_min = (round(p*i*100) + 1)/100
       // }
-      a_min = CR(x: B[0]*i) + 1/100
+      a_min = CR(x: p*i) + 1/100
     } else {
       if (i != 0) {
-        a_min = ceil((B[0]*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
+        a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
         a_min += CT()
       } else {
-        a_min = ceil(B[0]/120*100)/100
+        a_min = ceil(p/120*100)/100
       }
     }
     // let temp_pay_first = temp_pay
