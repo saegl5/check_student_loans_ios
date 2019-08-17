@@ -2753,9 +2753,9 @@ class MyMainPage:
   func Lengthsaving() {
     var B = [Double]()
     var B_min = [Double]()
-    B.append(p) //monthly principal balance
+    B.append(p) //monthly principal balance, =B_0
     //by default, all interest is paid, so there is no monthly outstanding interest
-    B_min.append(p)
+    B_min.append(p) // =B_0 for B_min
     var m = 1
     var m_min = 1
     var n = Int()
@@ -2798,8 +2798,8 @@ class MyMainPage:
       }
     }
     // let temp_pay_first = temp_pay
-    while ( B[m-1] - (a - CR(x: B[m-1]*i)) > 0 ) {
-      B.append( B[m-1] - (a - CR(x: B[m-1]*i)) )
+    while ( B[m-1] - (a - CR(x: B[m-1]*i)) > 0 ) { //do
+      B.append( B[m-1] - (a - CR(x: B[m-1]*i)) ) // =B_m
       // let temp_new3 = B*100 - floor(B*100)
       // if (temp_new3 > 0.499999) && (temp_new3 < 0.5) {
       //   B = round(B*100 + 1)/100
@@ -2817,8 +2817,8 @@ class MyMainPage:
       m += 1
     }
     n = m
-    while ( B_min[m_min-1] - (a_min - CR(x: B_min[m_min-1]*i) ) > 0 ) {
-      B_min.append( B_min[m_min-1] - (a_min - CR(x: B_min[m_min-1]*i)) )
+    while ( B_min[m_min-1] - (a_min - CR(x: B_min[m_min-1]*i) ) > 0 ) { //do
+      B_min.append( B_min[m_min-1] - (a_min - CR(x: B_min[m_min-1]*i)) ) // =B_m for B_min
       // let temp_new4 = B_min*100
       //   - floor(B_min*100)
       // if (temp_new4 > 0.499999) && (temp_new4 < 0.5) {
@@ -2896,9 +2896,6 @@ class MyMainPage:
     // let total_repay_minimum_fromloop = Double(n_min-1) * a_min
     // let total_repay_minimum_finalmonth = remainingbalance_repay_minimum
     //   + temp_interest_last_min
-    let T_max = Double(n_min-1)*a_min
-      + B_min[n_min-1]
-      + CR(x: B_min[n_min-1]*i)
     // if (B*i*100 - floor(B*i*100) > 0.499999)
     //     && (B*i*100 - floor(B*i*100) < 0.5) {
     //   interest_owed = (round(B*i*100 + 1))/100
@@ -2907,9 +2904,16 @@ class MyMainPage:
     // }
     // interest_owed = CR(x: B[n-1]*i)
     // let temp_interest_last_amount = interest_owed
-    let T = Double(n-1) * a + B[n-1] + CR(x: B[n-1]*i) //T(a)
-    var s_2 = T_max - T //T_max - T(a_2)
+    let a_f = B[n-1] + CR(x: B[n-1]*i)
+    let T = Double(n-1) * a + a_f //T(a)
+    T = CR(x: T)
+
+    let a_f_min = B_min[n_min-1] + CR(x: B_min[n_min-1]*i)
+    let T_max = Double(n_min-1)*a_min + a_f_min
+    T_max = CR(x: T_max)
+
     var s_1 = shared_preferences.double(forKey: "savings_change_key") //T_max - T(a_1)
+    var s_2 = T_max - T //T_max - T(a_2)
     if (s_1 - floor(s_1) > 0.499999)
         && (s_1 - floor(s_1) < 0.5) {
       s_1 = (round(s_1 + 1))/100

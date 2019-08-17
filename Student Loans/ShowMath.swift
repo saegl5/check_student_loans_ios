@@ -1514,8 +1514,8 @@ class ShowMath: UIViewController {
     }
     var B = [Double]()
     var O = [Double]()
-    B.append(p) //monthly principal balance, defined here in order to simplify the rest too
-    O.append(0.00) //monthly outstanding interest
+    B.append(p) //monthly principal balance, defined here in order to simplify the rest too, =B_0
+    O.append(0.00) //monthly outstanding interest, =O_0
     var m = 1 //defined here in order to simplify the rest
     var n = Int()
     // var interest_owed = Double()
@@ -1552,8 +1552,8 @@ class ShowMath: UIViewController {
     //   principal_pay = a - interest_pay
     // }
     // principal_pay = a - interest_pay
-    while ( B[m-1] - (a - CR(x: α*(B[m-1]*i))) > 0 ) {
-      B.append( B[m-1] - (a - CR(x: α*(B[m-1]*i))) )
+    while ( B[m-1] - (a - CR(x: α*(B[m-1]*i))) > 0 ) { //do
+      B.append( B[m-1] - (a - CR(x: α*(B[m-1]*i))) ) // =B_m
       // if (B*100 - floor(B*100) > 0.499999)
       //     && (B*100 - floor(B*100) < 0.5) {
       //   B = round(B*100 + 1)/100
@@ -1561,7 +1561,7 @@ class ShowMath: UIViewController {
       //   B = round(B*100)/100
       // }
       B[m] = CR(x: B[m])
-      O.append( O[m-1] + (CR(x: B[m-1]*i) - CR(x: α*(B[m-1]*i))) )
+      O.append( O[m-1] + (CR(x: B[m-1]*i) - CR(x: α*(B[m-1]*i))) ) // =O_m
       // if (O*100 - floor(O*100) > 0.499999)
       //     && (O*100 - floor(O*100) < 0.5) {
       //   O = round(O*100 + 1)/100
@@ -2319,6 +2319,7 @@ class ShowMath: UIViewController {
     //   tempx = (round(p*i*100)+1)/100
     // }
     // a_min = CR(x: p*i) + 1/100
+    let a_f = B[n-1] + CR(x: B[n-1]*i) + O[n-1]
     if (n-1 > 4) { //a lot of this seems redundant
       var payment_shape_label_jg4 = NSMutableAttributedString()
       var etc = NSMutableAttributedString()
@@ -2345,7 +2346,7 @@ class ShowMath: UIViewController {
           remains = NSMutableAttributedString(
             string: String(
               format: "%.2f",
-              B[n-1] + CR(x: B[n-1]*i) + O[n-1]
+              a_f
             ),
             attributes: [:]
           )
@@ -2370,7 +2371,7 @@ class ShowMath: UIViewController {
           remains = NSMutableAttributedString(
             string: String(
               format: "%.2f",
-              B[n-1] + CR(x: B[n-1]*i) + O[n-1]
+              a_f
             ),
             attributes: [:]
           )
@@ -2396,7 +2397,7 @@ class ShowMath: UIViewController {
         remains = NSMutableAttributedString(
           string: String(
             format: "%.2f",
-            B[n-1] + CR(x: B[n-1]*i) + O[n-1]
+            a_f
           ),
           attributes: [:]
         )
@@ -2417,7 +2418,7 @@ class ShowMath: UIViewController {
             + "\n"
             + String(
               format: "%.2f",
-              B[n-1] + CR(x: B[n-1]*i) + O[n-1]
+              a_f
             )
         } else {
           payment_shape_label.text = String(format: "%.2f", a)
@@ -2430,7 +2431,7 @@ class ShowMath: UIViewController {
             + "\n"
             + String(
               format: "%.2f",
-              B[n-1] + CR(x: B[n-1]*i) + O[n-1]
+              a_f
             )
         }
       } else {
@@ -2444,7 +2445,7 @@ class ShowMath: UIViewController {
           + "\n"
           + String(
             format: "%.2f",
-            B[n-1] + CR(x: B[n-1]*i) + O[n-1]
+            a_f
           )
       }
     } else if (n-1 == 3) {
@@ -2458,7 +2459,7 @@ class ShowMath: UIViewController {
             + "\n"
             + String(
               format: "%.2f",
-              B[n-1] + CR(x: B[n-1]*i) + O[n-1]
+              a_f
             )
         } else {
           payment_shape_label.text = String(format: "%.2f", a)
@@ -2469,7 +2470,7 @@ class ShowMath: UIViewController {
             + "\n"
             + String(
               format: "%.2f",
-              B[n-1] + CR(x: B[n-1]*i) + O[n-1]
+              a_f
             )
         }
       } else {
@@ -2481,7 +2482,7 @@ class ShowMath: UIViewController {
           + "\n"
           + String(
             format: "%.2f",
-            B[n-1] + CR(x: B[n-1]*i) + O[n-1]
+            a_f
           )
       }
     } else if (n-1 == 2) {
@@ -2493,7 +2494,7 @@ class ShowMath: UIViewController {
             + "\n"
             + String(
               format: "%.2f",
-              B[n-1] + CR(x: B[n-1]*i) + O[n-1]
+              a_f
             )
         } else {
           payment_shape_label.text = String(format: "%.2f", a)
@@ -2502,7 +2503,7 @@ class ShowMath: UIViewController {
             + "\n"
             + String(
               format: "%.2f",
-              B[n-1] + CR(x: B[n-1]*i) + O[n-1]
+              a_f
             )
         }
       } else {
@@ -2512,7 +2513,7 @@ class ShowMath: UIViewController {
           + "\n"
           + String(
             format: "%.2f",
-            B[n-1] + CR(x: B[n-1]*i) + O[n-1]
+            a_f
           )
       }
     } else if (n-1 == 1) {
@@ -2522,14 +2523,14 @@ class ShowMath: UIViewController {
             + "\n"
             + String(
               format: "%.2f",
-              B[n-1] + CR(x: B[n-1]*i) + O[n-1]
+              a_f
             )
         } else {
           payment_shape_label.text = String(format: "%.2f", a)
             + "\n"
             + String(
               format: "%.2f",
-              B[n-1] + CR(x: B[n-1]*i) + O[n-1]
+              a_f
             )
         }
       } else {
@@ -2537,13 +2538,13 @@ class ShowMath: UIViewController {
           + "\n"
           + String(
             format: "%.2f",
-            B[n-1] + CR(x: B[n-1]*i) + O[n-1]
+            a_f
           )
       }
     } else {
       payment_shape_label.text = String(
         format: "%.2f",
-        B[n-1] + CR(x: B[n-1]*i) + O[n-1]
+        a_f
       )
     }
     payment_shape_label.textAlignment = .center
@@ -2971,11 +2972,11 @@ class ShowMath: UIViewController {
 
     if (n == 1)
         && (a
-          - (B[n-1] + CR(x: B[n-1]*i) + O[n-1]) != 0) {
+          - (a_f) != 0) {
       // var pt1 = Double()
       var refund_string = NSMutableAttributedString()
       if (a
-          - (B[n-1] + CR(x: B[n-1]*i) + O[n-1])
+          - (a_f)
           > 0) {
         refund_string = NSMutableAttributedString(
           string: "Refunded $",
@@ -2998,7 +2999,7 @@ class ShowMath: UIViewController {
       // } else {
       //   pt1 = round(pt1*100)/100
       // }
-      let pt1 = CR(x: abs(a - (B[n-1] + CR(x: B[n-1]*i) + O[n-1])))
+      let pt1 = CR(x: abs(a - (a_f)))
       let pt2 = pt1 - floor(pt1)
       let pt3 = pt2*100
       var pt4 = Int()
@@ -3032,7 +3033,7 @@ class ShowMath: UIViewController {
       refund.attributedText = refund_string
       if (floor(pt1) >= 5)
           && (a
-            - (B[n-1] + CR(x: B[n-1]*i) + O[n-1])
+            - (a_f)
             > 0) {
         //arbitrary
         coffee_cup.text = "☕︎"
@@ -3159,24 +3160,12 @@ class ShowMath: UIViewController {
     // tempxxx = CR(x: p*i) + 1/100
     if (a == a_min) {
       if (progress == 100) {
-        T = Double(n-1)
-          * a
-          + B[n-1]
-          + CR(x: B[n-1]*i)
-          + O[n-1]
+        T = Double(n-1) * a + a_f
       } else {
-        T = Double(n-1)
-          * a
-          + B[n-1]
-          + CR(x: B[n-1]*i)
-          + O[n-1]
+        T = Double(n-1) * a + a_f
       }
     } else {
-      T = Double(n-1)
-        * a
-        + B[n-1]
-        + CR(x: B[n-1]*i)
-        + O[n-1]
+      T = Double(n-1) * a + a_f
     }
     // if (T*100 - floor(T*100) > 0.499999)
     //     && (T*100 - floor(T*100) < 0.5) {
@@ -3205,7 +3194,7 @@ class ShowMath: UIViewController {
             + ") + "
             + String(
               format: "%.2f",
-              B[n-1] + CR(x: B[n-1]*i) + O[n-1]
+              a_f
             )
             + " = ",
           attributes: [:]
@@ -3219,7 +3208,7 @@ class ShowMath: UIViewController {
             + ") + "
             + String(
               format: "%.2f",
-              B[n-1] + CR(x: B[n-1]*i) + O[n-1]
+              a_f
             )
             + " = ",
           attributes: [:]
@@ -3234,7 +3223,7 @@ class ShowMath: UIViewController {
           + ") + "
           + String(
             format: "%.2f",
-            B[n-1] + CR(x: B[n-1]*i) + O[n-1]
+            a_f
           )
           + " = ",
         attributes: [:]
@@ -3272,8 +3261,8 @@ class ShowMath: UIViewController {
     total_paid_string.append(total_paid_amount_decimal_part)
     total_paid_string.append(total_paid_amount_decimal_part_label)
     total_paid.attributedText = total_paid_string
-    var B_min = [Double]()
-    var O_min = [Double]()
+    var B_min = [Double]() // =B_0 for B_min
+    var O_min = [Double]() // =O_0 for O_min
     B_min.append(p) //defined here in order to simplify the rest too
     O_min.append(0.00)
     var m_min = 1 //defined here in order to simplify the rest
@@ -3348,8 +3337,8 @@ class ShowMath: UIViewController {
 //      }
 //    }
     //a_min was already defined
-    while ( B_min[m_min-1] - (a_min - CR(x: α*(B_min[m_min-1]*i))) > 0 ) {
-      B_min.append( B_min[m_min-1] - (a_min - CR(x: α*(B_min[m_min-1]*i))) )
+    while ( B_min[m_min-1] - (a_min - CR(x: α*(B_min[m_min-1]*i))) > 0 ) { //do
+      B_min.append( B_min[m_min-1] - (a_min - CR(x: α*(B_min[m_min-1]*i))) ) // =B_m for B_min
       // if (B_min*100
       //       - floor(B_min*100)
       //       > 0.499999)
@@ -3365,7 +3354,7 @@ class ShowMath: UIViewController {
       //     )/100
       // }
       B_min[m_min] = CR(x: B_min[m_min])
-      O_min.append( O_min[m_min-1] + (CR(x: B_min[m_min-1]*i) - CR(x: α*(B_min[m_min-1]*i))) )
+      O_min.append( O_min[m_min-1] + (CR(x: B_min[m_min-1]*i) - CR(x: α*(B_min[m_min-1]*i))) ) // =O_m for O_min
       // if (O_min*100 - floor(O_min*100) > 0.499999)
       //     && (O_min*100 - floor(O_min*100) < 0.5) {
       //     O_min = round(O_min*100 + 1)/100
@@ -3457,10 +3446,8 @@ class ShowMath: UIViewController {
     // let total_repay_minimum_finalmonth = remainingbalance_repay_minimum
     //   + temp_interest_last_min
     //   + outstandingbalance_min
-    var T_max = Double(n_min-1)*a_min
-      + B_min[n_min-1]
-      + CR(x: B_min[n_min-1]*i)
-      + O_min[n_min-1]
+    let a_f_min = B_min[n_min-1] + CR(x: B_min[n_min-1]*i) + O_min[n_min-1]
+    var T_max = Double(n_min-1)*a_min + a_f_min
     //appended to total paid
     // var pppt1 = T_max
     // if (T_max*100 - floor(T_max*100) > 0.499999)
@@ -3494,7 +3481,7 @@ class ShowMath: UIViewController {
           + " · "
           + String(format: "%.2f", a_min)
           + ") + "
-          + String(format: "%.2f", B_min[n_min-1] + CR(x: B_min[n_min-1]*i) + O_min[n_min-1])
+          + String(format: "%.2f", a_f_min)
           + " = ",
         attributes: [:]
       )
