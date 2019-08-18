@@ -24,7 +24,7 @@ Not designed for iPad devices<p>
 ~~(Version 2.3.1)~~ Removed on March 24, 2019<p>
 
 Alternative downloads:<br>
-[Version 2.2.2 for Panel Discussion](./Archives/panel_discussion.ipa "Click here to access the download link.")[^1]<sup>[1](#myfootnote1)</sup><br>
+[Version 2.2.2 for Panel Discussion](./Archives/panel_discussion.ipa "Click here to access the download link.")[^1]<br>
 [Version 2.6.2 - Latest](./Archives/latest-2_6_2.ipa "Click here to access the download link.") (Updated: August 16, 2019)<p>
 
 Install alternative downloads using iTunes or Apple Configurator on iPhone devices.
@@ -117,7 +117,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-<a name="myfootnote1">1</a>. Footnote content goes here
 [^1]: Exceptions: Rounding and interest computations are corrected, and the monthly balance table is restructured.
 [^2]: If you have more than one type of loan or you have multiple loans, select the rate for the biggest one. If you are unsure about your rate, choose 4.45% since Direct Loans are more popular.
 [^3]: Interest Rates and Fees. (n.d.). Retrieved from [https://studentaid.ed.gov/sa/types/loans/interest-rates](https://studentaid.ed.gov/sa/types/loans/interest-rates "Click here to visit the office of Federal Student Aid.")
