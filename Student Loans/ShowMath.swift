@@ -3473,7 +3473,7 @@ class ShowMath: UIViewController {
     var total_paid_expression_if_min = NSMutableAttributedString()
     // let T = ppt1
     if (round(T_max-T) == 0.0) {
-      //bizzare that cannot use T_max-T <= 0.0
+      //bizarre that cannot use T_max-T <= 0.0
       total_paid_expression_if_min = NSMutableAttributedString(
         string: "",
         attributes: [:]
