@@ -2320,7 +2320,7 @@ class ShowMath: UIViewController {
     // }
     // a_min = CR(x: p*i) + 1/100
     let a_f = B[n-1] + CR(x: B[n-1]*i) + O[n-1]
-    let B[n] = B[n-1] - (a_f - CR(x: B[n-1]*i) - O[n-1]) //= 0, but we will use its value for monthly balance table
+    B[n] = B[n-1] - (a_f - CR(x: B[n-1]*i) - O[n-1]) //= 0, but we will use its value for monthly balance table
     //O[n] = 0
     if (n-1 > 4) { //a lot of this seems redundant
       var payment_shape_label_jg4 = NSMutableAttributedString()
