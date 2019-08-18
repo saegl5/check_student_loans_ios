@@ -2907,13 +2907,13 @@ class MyMainPage:
     let a_f = B[n-1] + CR(x: B[n-1]*i)
     //B[n] = B[n-1] - (a_f - CR(x: B[n-1]*i)) = 0
     //O[n] = 0
-    let T = Double(n-1) * a + a_f //T(a)
+    var T = Double(n-1) * a + a_f //T(a)
     T = CR(x: T)
 
     let a_f_min = B_min[n_min-1] + CR(x: B_min[n_min-1]*i)
     //B_min[n_min] = B_min[n_min-1] - (a_f_min - CR(x: B_min[n_min-1]*i)) = 0
     //O_min[n_min] = 0
-    let T_max = Double(n_min-1)*a_min + a_f_min
+    var T_max = Double(n_min-1)*a_min + a_f_min
     T_max = CR(x: T_max)
 
     var s_1 = shared_preferences.double(forKey: "savings_change_key") //T_max - T(a_1)
