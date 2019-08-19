@@ -65,12 +65,12 @@ After editing them or enabling swiping, relock.<p>
 
 ## Contributing
 
-Sign into GitLab.com, to fork the project.<p>
+Sign into GitHub.com, to fork the project.<p>
 
 Modify the source code.<br>
 Under Source Control, select Commit, and Push the changes.<p>
 
-Return to GitLab.com, and submit a merge request.<br>
+Return to GitHub.com, and submit a merge request.<br>
 For any issues, submit a new issue.<p>
 
 (For instructions on how to export a new video introduction, consult the README in [this directory](/Resources/'How to Use App' Video "Click here to access the directory.").)
