@@ -24,7 +24,7 @@ Not designed for iPad devices<p>
 ~~(Version 2.3.1)~~ Removed on March 24, 2019<p>
 
 Alternative downloads:<br>
-[Version 2.2.2 for Panel Discussion](./Archives/panel_discussion.ipa "Click here to access the download link.")[^1]<br>
+[Version 2.2.2 for Panel Discussion](./Archives/panel_discussion.ipa "Click here to access the download link.")<br>
 [Version 2.6.2 - Latest](./Archives/latest-2_6_2.ipa "Click here to access the download link.") (Updated: August 16, 2019)<p>
 
 Install alternative downloads using iTunes or Apple Configurator on iPhone devices.
@@ -55,7 +55,7 @@ The latest version is 2.6.2. Known to work on macOS Mojave 10.14.6, in Xcode 10.
 Under Product, choose a Destination (e.g., iPhone 7 or a user's own iPhone device), and click Run.<p>
 
 Move the thumb of the slider, to select an estimated cost nearest to yours.<br>
-Press &#x25BC; to select the interest rate of your loan.[^2]<sup>,</sup>[^3]<br>
+Press &#x25BC; to select the [interest rate](https://studentaid.ed.gov/sa/types/loans/interest-rates "Click here to visit the office of Federal Student Aid.") of your loan.<br>
 Press &minus; or &#43; to select a monthly payment nearest to yours.<p>
 
 To edit the slider, interest rate, monthly payment or minimum, or to enable swiping leftward, press on the padlock icon.<br>
@@ -82,7 +82,7 @@ Aug 5, 2019 &middot; Version 2.6.1: integrated checking and correcting for error
 Jul 18, 2019 &middot; Version 2.6: added button to mathematics screen for minimizing monthly payment amount for any percentage of interest payment, revised video introduction<br>
 Feb 9, 2019 &middot; Version 2.5.2: cleaned entire project, source code is 50% leaner, fixed issue where outstanding totals would not disappear if insight is closed, fixed issue where keyboard displayed after clicking on monthly balance boxes, fixed issue where users could paste text into monthly balances<br>
 Jan 16, 2019 &middot; Version 2.5.1: upgraded codebase, fixed video introduction close button, hid status bar when video introduction controls are displayed, fixed edit pay monthly box from dropping to bottom of view controller, displayed alert if device is incompatible with app, addressed warnings<br>
-Oct 12, 2018: refreshed entire project[^4]<br>
+Oct 12, 2018: refreshed entire project but inadvertently purged commit history<br>
 Oct 1, 2018 &middot; Version 2.4: permitted users to revert developments, fixed issue where coffee cup displays even though users must pay extra, fixed issue where text in remaining balance column is misaligned for greater monthly payments, fixed issue where text colors in remaining balance did not return after closing breakdown of pay, fixed text color of dots for remaining balance<br>
 May 27, 2018 &middot; Version 2.3.2: corrected maturity rating, fulfilled conditions of SIL Open Font License<br>
 Mar 24, 2018 &middot; Version 2.3.1: added key to Info.plist, added license<br>
@@ -116,11 +116,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-[^1]: Exceptions: Rounding and interest computations are corrected, and the monthly balance table is restructured.
-[^2]: If you have more than one type of loan or you have multiple loans, select the rate for the biggest one. If you are unsure about your rate, choose 4.45% since Direct Loans are more popular.
-[^3]: Interest Rates and Fees. (n.d.). Retrieved from [https://studentaid.ed.gov/sa/types/loans/interest-rates](https://studentaid.ed.gov/sa/types/loans/interest-rates "Click here to visit the office of Federal Student Aid.")
-[^4]: Purged commit history dating up to October 12, 2018, meaning that the displayed number of commits is inaccurate
 
 </content>
 </snippet>
