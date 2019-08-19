@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AVKit //test
+import AVKit
 
 class MyMainPage:
     UIViewController,
