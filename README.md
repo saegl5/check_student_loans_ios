@@ -36,13 +36,13 @@ Get [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12 "Click here 
 Clone the project:
 
 <pre>
-https://gitlab.com/saegl5/check_student_loans_app_iOS.git
+https://github.com/saegl5/check_student_loans_ios.git
 </pre>
 
 (Recommended) Open the Terminal, and verify the project's integrity:
 
 <pre>
-$ cd /path/to/check_student_loans_app_iOS
+$ cd /path/to/check_student_loans_ios
 $ git show-ref --heads --hash
 </pre>
 
