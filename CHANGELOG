@@ -1,3 +1,4 @@
+Aug 21, 2019 · Version 2.6.3: corrected rounding errors involving change in savings
 Aug 16, 2019 · Version 2.6.2: Version 2.6.2: fixed issue in which annual and monthly interest rates in "showmath" view controller displayed incorrectly for unusually small or large rates, and fixed a crash when minimizing the monthly payment for ten-year minimum and paying only principal
 Aug 5, 2019 · Version 2.6.1: integrated checking and correcting for errors
 Jul 18, 2019 · Version 2.6: added button to mathematics screen for minimizing monthly payment amount for any percentage of interest payment, revised video introduction
