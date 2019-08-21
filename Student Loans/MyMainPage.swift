@@ -2920,7 +2920,7 @@ class MyMainPage:
     var s_2 = T_max - T //T_max - T(a_2)
     if (s_1 - floor(s_1) > 0.499999)
         && (s_1 - floor(s_1) < 0.5) {
-      s_1 = (round(s_1 + 1))/100
+      s_1 = (round(s_1 + 1)) // /100
     } else {
       s_1 = round(s_1)
     }
@@ -2940,7 +2940,7 @@ class MyMainPage:
       }
     } else {
       if (s_2 - floor(s_2) > 0.499999) && (s_2 - floor(s_2) < 0.5) {
-        s_2 = (round(s_2 + 1))/100
+        s_2 = (round(s_2 + 1)) // /100
       } else {
         s_2 = round(s_2)
       }
