@@ -28,6 +28,11 @@ class MyMainPage:
   internal var APR_PERKINS = 5.00 //%
   //------------------------------------------
 
+  //------------------------------------------
+  //  SELECT DEFAULT MINIMUM MONTHLY PAYMENT
+  var tenyr_indicator = 0.0 // 0.0 (absolute minimum), 1.0 (ten-year minimum)
+  //------------------------------------------
+
   @IBOutlet var swipe: UISwipeGestureRecognizer!
   @IBOutlet weak  var loaned_title: UILabel!
   @IBOutlet weak  var loaned: UISlider!
@@ -147,7 +152,6 @@ class MyMainPage:
   var p_max = 10000.0
   var N = 40.0 //20 is optimal
   var unlocked_indicator = 0 //1 if locked, 0 if not
-  var tenyr_indicator = 0.0
   var timer1 = Timer()
   var timer2 = Timer()
   var down_button_increment = 50.0
