@@ -30,7 +30,7 @@ class MyMainPage:
 
   //------------------------------------------
   //  SELECT DEFAULT MINIMUM MONTHLY PAYMENT
-  var tenyr_indicator = 0.0 // 0.0 (absolute minimum), 1.0 (ten-year minimum)
+  var tenyr_indicator = 1.0 // 0.0 (absolute minimum), 1.0 (ten-year minimum)
   //------------------------------------------
 
   @IBOutlet var swipe: UISwipeGestureRecognizer!
@@ -2909,14 +2909,14 @@ class MyMainPage:
     // interest_owed = CR(x: B[n-1]*i)
     // let temp_interest_last_amount = interest_owed
     let a_f = B[n-1] + CR(x: B[n-1]*i)
-    //B[n] = B[n-1] - (a_f - CR(x: B[n-1]*i)) = 0
-    //O[n] = 0
+    //B.append( B[n-1] - (a_f - CR(x: B[n-1]*i)) ) = 0
+    //O.append(0.00)
     var T = Double(n-1) * a + a_f //T(a)
     T = CR(x: T)
 
     let a_f_min = B_min[n_min-1] + CR(x: B_min[n_min-1]*i)
-    //B_min[n_min] = B_min[n_min-1] - (a_f_min - CR(x: B_min[n_min-1]*i)) = 0
-    //O_min[n_min] = 0
+    //B_min.append( B_min[n_min-1] - (a_f_min - CR(x: B_min[n_min-1]*i)) ) = 0
+    //O_min.append(0.00)
     var T_max = Double(n_min-1)*a_min + a_f_min
     T_max = CR(x: T_max)
 
@@ -3297,6 +3297,8 @@ class MyMainPage:
     shared_preferences.synchronize()
     var a_min = Double()
     if (tenyr_indicator == 0) {
+        absolute.setImage(UIImage(named: "Submit"), for: .normal)
+        tenyr.setImage(UIImage(named: "Off"), for: .normal)
       // if (p*i*100 - floor(p*i*100) > 0.499999)
       //     && (p*i*100 - floor(p*i*100) < 0.5) {
       //   temp = (round(p*i*100 + 1) + 1)/100
@@ -3305,6 +3307,8 @@ class MyMainPage:
       // }
       a_min = CR(x: p*i) + 0.01 //a_min_n
     } else {
+        absolute.setImage(UIImage(named: "Off"), for: .normal)
+        tenyr.setImage(UIImage(named: "Submit"), for: .normal)
       if (i != 0) {
         a_min = ceil((p*i*pow(1+i, 120)) / (pow(1+i, 120) - 1)*100)/100
         a_min += CT()

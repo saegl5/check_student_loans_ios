@@ -1637,7 +1637,7 @@ class ShowMath: UIViewController {
     if (a == a_min) {
       if (progress == 100) {
         attributedPaySummary = NSMutableAttributedString(
-          string: " $" + String(format: "%.2f", a+50),
+          string: " $" + String(format: "%.2f", a),
           attributes: [
             NSAttributedString.Key.font: UIFont(
               name: "CMUSerif-Roman",
@@ -2320,8 +2320,8 @@ class ShowMath: UIViewController {
     // }
     // a_min = CR(x: p*i) + 1/100
     let a_f = B[n-1] + CR(x: B[n-1]*i) + O[n-1]
-    B[n] = B[n-1] - (a_f - CR(x: B[n-1]*i) - O[n-1]) //= 0, but we will use its value for monthly balance table
-    //O[n] = 0
+    B.append( B[n-1] - (a_f - CR(x: B[n-1]*i) - O[n-1]) ) //= 0, but we will use its value for monthly balance table
+    //O.append(0.00)
     if (n-1 > 4) { //a lot of this seems redundant
       var payment_shape_label_jg4 = NSMutableAttributedString()
       var etc = NSMutableAttributedString()
@@ -2571,7 +2571,7 @@ class ShowMath: UIViewController {
         string: "︙\n",
         attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
       )
-      let remains = NSMutableAttributedString(string: String(format: "%.2f", B[n]), attributes: [:])
+      let remains = NSMutableAttributedString(string: String(format: "%.2f", abs(B[n])), attributes: [:])
       if (insight == 1) {
         remaining_label_jg4.setAttributes(
           [
@@ -2623,7 +2623,7 @@ class ShowMath: UIViewController {
         + "\n"
         + String(format: "%.2f", B[4])
         + "\n"
-        + String(format: "%.2f", B[n])
+        + String(format: "%.2f", abs(B[n]))
       if (insight == 1) {
         remaining_label.textColor = UIColor.lightGray.withAlphaComponent(0.5)
       } else {
@@ -2636,7 +2636,7 @@ class ShowMath: UIViewController {
         + "\n"
         + String(format: "%.2f", B[3])
         + "\n"
-        + String(format: "%.2f", B[n])
+        + String(format: "%.2f", abs(B[n]))
       if (insight == 1) {
         remaining_label.textColor = UIColor.lightGray.withAlphaComponent(0.5)
       } else {
@@ -2647,21 +2647,21 @@ class ShowMath: UIViewController {
         + "\n"
         + String(format: "%.2f", B[2])
         + "\n"
-        + String(format: "%.2f", B[n])
+        + String(format: "%.2f", abs(B[n]))
       if (insight == 1) {
         remaining_label.textColor = UIColor.lightGray.withAlphaComponent(0.5)
       } else {
         remaining_label.textColor = UIColor.black
       }
     } else if (n-1 == 1) {
-      remaining_label.text = String(format: "%.2f", B[1]) + "\n" + String(format: "%.2f", B[n])
+      remaining_label.text = String(format: "%.2f", B[1]) + "\n" + String(format: "%.2f", abs(B[n]))
       if (insight == 1) {
         remaining_label.textColor = UIColor.lightGray.withAlphaComponent(0.5)
       } else {
         remaining_label.textColor = UIColor.black
       }
     } else {
-      remaining_label.text = String(format: "%.2f", B[n])
+      remaining_label.text = String(format: "%.2f", abs(B[n]))
       if (insight == 1) {
         remaining_label.textColor = UIColor.lightGray.withAlphaComponent(0.5)
       } else {
@@ -3235,12 +3235,12 @@ class ShowMath: UIViewController {
       string: numberFormatter.string(from: NSNumber(value: floor(T)))!
     )
     var total_paid_amount_decimal_part = NSMutableAttributedString()
-    if (ppt3 < 100) && (ppt3 >= 10) {
+    if (ppt4 < 100) && (ppt4 >= 10) {
       total_paid_amount_decimal_part = NSMutableAttributedString(
         string: "." + String(ppt4),
         attributes: [:]
       )
-    } else if (ppt3 < 10) && (ppt3 >= 1) {
+    } else if (ppt4 < 10) && (ppt4 >= 1) {
       total_paid_amount_decimal_part = NSMutableAttributedString(
         string: ".0" + String(ppt4),
         attributes: [:]
@@ -3449,8 +3449,8 @@ class ShowMath: UIViewController {
     //   + temp_interest_last_min
     //   + outstandingbalance_min
     let a_f_min = B_min[n_min-1] + CR(x: B_min[n_min-1]*i) + O_min[n_min-1]
-    //B_min[n_min] = B_min[n_min-1] - (a_f_min - CR(x: B_min[n_min-1]*i) - O_min[n_min-1]) = 0
-    //O_min[n_min] = 0
+    //B_min.append( B_min[n_min-1] - (a_f_min - CR(x: B_min[n_min-1]*i) - O_min[n_min-1]) ) = 0
+    //O_min.append(0.00)
     var T_max = Double(n_min-1)*a_min + a_f_min
     //appended to total paid
     // var pppt1 = T_max
@@ -3495,12 +3495,12 @@ class ShowMath: UIViewController {
       string: "$" + numberFormatter.string(from: NSNumber(value: floor(T_max)))!
     )
     var total_paid_amount_decimal_part_if_min = NSMutableAttributedString()
-    if (pppt3 < 100) && (pppt3 >= 10) {
+    if (pppt4 < 100) && (pppt4 >= 10) {
       total_paid_amount_decimal_part_if_min = NSMutableAttributedString(
         string: "." + String(pppt4),
         attributes: [:]
       )
-    } else if (pppt3 < 10) && (pppt3 >= 1) {
+    } else if (pppt4 < 10) && (pppt4 >= 1) {
       total_paid_amount_decimal_part_if_min = NSMutableAttributedString(
         string: ".0" + String(pppt4),
         attributes: [:]
@@ -3559,12 +3559,12 @@ class ShowMath: UIViewController {
       savings_string_equals_amount = NSMutableAttributedString(
         string: numberFormatter.string(from: NSNumber(value: floor(s)))!
       )
-      if (ppppt3 < 100) && (ppppt3 >= 10) {
+      if (ppppt4 < 100) && (ppppt4 >= 10) {
         savings_string_equals_amount_decimal_part = NSMutableAttributedString(
           string: "." + String(ppppt4),
           attributes: [:]
         )
-      } else if (ppppt3 < 10) && (ppppt3 >= 1) {
+      } else if (ppppt4 < 10) && (ppppt4 >= 1) {
         savings_string_equals_amount_decimal_part = NSMutableAttributedString(
           string: ".0" + String(ppppt4),
           attributes: [:]
