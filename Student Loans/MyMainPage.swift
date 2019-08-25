@@ -22,7 +22,7 @@ class MyMainPage:
   //
   //  Loan Types: Direct Subsidized Loans & Direct Unsubsidized Loans
   //  Borrower Type: Undergraduate
-  internal var APR_DIRECT = 4.45 //% (if rates are ever different, pick the higher one)
+  internal var APR_DIRECT = 4.53 //% (if rates are ever different, pick the higher one)
   //
   //  Loan Types: Perkins Loans
   internal var APR_PERKINS = 5.00 //%
