@@ -24,7 +24,7 @@ class MyMainPage:
   //  Borrower Type: Undergraduate
   internal var APR_DIRECT = 4.45 //% (if rates are ever different, pick the higher one)
   //
-  //  Loan Types: Perkins Loans test
+  //  Loan Types: Perkins Loans
   internal var APR_PERKINS = 5.00 //%
   //------------------------------------------
 
