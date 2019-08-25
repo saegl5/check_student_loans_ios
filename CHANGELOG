@@ -1,3 +1,4 @@
+Aug 24, 2019 · Version 2.7: changed default minimum to ten-year minimum, highlighted option in source code to revert the default minimum, fixed appending final balances to balance arrays, reverted test that forgot to revert, corrected error in which remainders of total paid and savings might display three digits, corrected error in which final balance in table often displayed a negative zero since last version
 Aug 21, 2019 · Version 2.6.3: corrected rounding errors involving change in savings
 Aug 16, 2019 · Version 2.6.2: fixed issue in which annual and monthly interest rates in "showmath" view controller displayed incorrectly for unusually small or large rates, and fixed a crash when minimizing the monthly payment for ten-year minimum and paying only principal
 Aug 5, 2019 · Version 2.6.1: integrated checking and correcting for errors
