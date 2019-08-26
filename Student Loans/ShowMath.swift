@@ -3368,8 +3368,9 @@ class ShowMath: UIViewController {
             a_min = ceil(p/120*100)/100
         }
     }
-    while ( B_min[m_min-1] - (a_min - CR(x: α*(B_min[m_min-1]*i))) > 0 ) { //do
-      B_min.append( B_min[m_min-1] - (a_min - CR(x: α*(B_min[m_min-1]*i))) ) // =B_m for B_min
+    // for T_max, set α=1
+    while ( B_min[m_min-1] - (a_min - CR(x: 1*(B_min[m_min-1]*i))) > 0 ) { //do
+      B_min.append( B_min[m_min-1] - (a_min - CR(x: 1*(B_min[m_min-1]*i))) ) // =B_m for B_min
       // if (B_min*100
       //       - floor(B_min*100)
       //       > 0.499999)
@@ -3385,7 +3386,7 @@ class ShowMath: UIViewController {
       //     )/100
       // }
       B_min[m_min] = CR(x: B_min[m_min])
-      O_min.append( O_min[m_min-1] + (CR(x: B_min[m_min-1]*i) - CR(x: α*(B_min[m_min-1]*i))) ) // =O_m for O_min
+      O_min.append( O_min[m_min-1] + (CR(x: B_min[m_min-1]*i) - CR(x: 1*(B_min[m_min-1]*i))) ) // =O_m for O_min
       // if (O_min*100 - floor(O_min*100) > 0.499999)
       //     && (O_min*100 - floor(O_min*100) < 0.5) {
       //     O_min = round(O_min*100 + 1)/100
