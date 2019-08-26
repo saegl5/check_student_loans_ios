@@ -2784,7 +2784,7 @@ class MyMainPage:
     //   interest_owed_min = (round(B_min*i*100))/100
     // }
     // interest_owed_min = CR(x: B_min[m_min-1]*i)
-    var a_min = Double()
+    var a_min = Double() //this one is for T_max
     if (tenyr_indicator == 0) {
       // if (p*i*100 - floor(p*i*100) > 0.499999)
       //     && (p*i*100 - floor(p*i*100) < 0.5) {

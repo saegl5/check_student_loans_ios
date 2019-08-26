@@ -79,6 +79,7 @@ class ShowMath: UIViewController {
   var i = Double()
   var a = Double()
   var tenyr_indicator = Double()
+  var a_min_max = Bool()
   var attributedPayTitle = NSMutableAttributedString()
   var attributedPaySummary = NSMutableAttributedString()
   var insight = 0 //1 if insight bubble open, 0 if not
@@ -238,6 +239,11 @@ class ShowMath: UIViewController {
         test_array.removeAll() //reset array
         test_array.append(p)
         var m_min = 1
+        var α_temp = Double()
+        if (a_min_max == true) {
+          α_temp = α
+          α = 1
+        }
         var a_min = ceil((α*(p*i)*pow(1+α*i, 120)) / (pow(1+α*i, 120) - 1)*100)/100
         a_min += 0.01*Double(c)
         while ( test_array[m_min-1] - (a_min - CR(x: α*(test_array[m_min-1]*i))) > 0 )
@@ -248,6 +254,9 @@ class ShowMath: UIViewController {
         test_array.append(0)
         if ( CR(x: a_min) == CR(x: α*(test_array[0]*i)) ) {
             test_array.removeAll()
+        }
+        if (a_min_max == true) {
+          α = α_temp
         }
         return test_array
     }
@@ -1603,7 +1612,7 @@ class ShowMath: UIViewController {
     }
     n = m
     //redo pay title
-    var a_min = Double()
+    var a_min = Double() //this one is NOT for T_max
     // if (p*i*100 - floor(p*i*100) > 0.499999)
     //     && (p*i*100 - floor(p*i*100) < 0.5) {
     //   tempx_x = (round(p*i*100 + 1)+1)/100
@@ -3338,7 +3347,27 @@ class ShowMath: UIViewController {
 //        // temp_pay = a_min
 //      }
 //    }
-    //a_min was already defined
+    a_min = Double() //redefining a_min
+    // this one IS for T_max, set α=1
+    if (tenyr_indicator == 0) {
+        a_min = CR(x: 1*(p*i)) + 0.01 //a_min_n
+    } else {
+        if (i != 0) {
+            if (progress != 0) {
+                a_min = ceil(
+                    (1*(p*i)*pow(1+1*i, 120))
+                        / (pow(1+1*i, 120) - 1)*100
+                    )/100
+                a_min_max = true
+                a_min += CT()
+                a_min_max = false
+            } else {
+                a_min = ceil(p/120*100)/100
+            }
+        } else {
+            a_min = ceil(p/120*100)/100
+        }
+    }
     while ( B_min[m_min-1] - (a_min - CR(x: α*(B_min[m_min-1]*i))) > 0 ) { //do
       B_min.append( B_min[m_min-1] - (a_min - CR(x: α*(B_min[m_min-1]*i))) ) // =B_m for B_min
       // if (B_min*100
