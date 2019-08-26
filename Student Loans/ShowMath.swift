@@ -3353,7 +3353,7 @@ class ShowMath: UIViewController {
         a_min = CR(x: 1*(p*i)) + 0.01 //a_min_n
     } else {
         if (i != 0) {
-            if (progress != 0) {
+            // if (progress != 0) {
                 a_min = ceil(
                     (1*(p*i)*pow(1+1*i, 120))
                         / (pow(1+1*i, 120) - 1)*100
@@ -3361,9 +3361,9 @@ class ShowMath: UIViewController {
                 a_min_max = true
                 a_min += CT()
                 a_min_max = false
-            } else {
-                a_min = ceil(p/120*100)/100
-            }
+            // } else {
+            //     a_min = ceil(p/120*100)/100
+            // }
         } else {
             a_min = ceil(p/120*100)/100
         }
