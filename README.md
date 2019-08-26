@@ -24,7 +24,7 @@ Not designed for iPad devices<p>
 
 Alternative downloads:<br>
 [Version 2.2.2 for Panel Discussion](./Archives/panel_discussion.ipa "Click here to access the download link.")<br>
-[Version 2.7 - Latest](./Archives/latest-2_7.ipa "Click here to access the download link.") (Updated: August 16, 2019)<p>
+[Version 2.7.1 - Latest](./Archives/latest-2_7_1.ipa "Click here to access the download link.") (Updated: August 16, 2019)<p>
 
 Install alternative downloads using iTunes or Apple Configurator on iPhone devices.
 
@@ -44,7 +44,7 @@ $ git show-ref --heads --hash
 </pre>
 Check that the hash matches the commit SHA.<p>
 
-The latest version is 2.7. Known to work on macOS Mojave 10.14.6, in Xcode 10.3, using Swift 4.2
+The latest version is 2.7.1. Known to work on macOS Mojave 10.14.6, in Xcode 10.3, using Swift 4.2
 
 ## Usage
 
@@ -73,6 +73,7 @@ For any issues, submit a new issue or discuss an existing one.<p>
 
 ## History
 
+Aug 26, 2019 &middot; Version 2.7.1: fixed issue in which maximum payments changed with percentages of interest payments<br>
 Aug 24, 2019 &middot; Version 2.7: changed default minimum to ten-year minimum, highlighted option in source code to revert the default minimum, fixed appending final balances to balance arrays, reverted test that forgot to revert, corrected error in which remainders of total paid and savings might display three digits, corrected error in which final balance in table often displayed a negative zero since last version<br>
 Aug 21, 2019 &middot; Version 2.6.3: corrected rounding errors involving change in savings, decided to exit beta<br>
 Aug 16, 2019 &middot; Version 2.6.2: fixed issue in which annual and monthly interest rates in "showmath" view controller displayed incorrectly for unusually small or large rates, and fixed a crash when minimizing the monthly payment for ten-year minimum and paying only principal<br>
