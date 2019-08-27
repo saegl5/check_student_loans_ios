@@ -34,7 +34,7 @@ Get [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12 "Click here 
 
 Clone the project:
 <pre>
-$ git clone https://github.com/saegl5/check_student_loans_ios.git
+$ git clone https://github.com/saegl5/Check-Student-Loans-for-iOS.git
 </pre>
 
 (Recommended) Open the Terminal, and verify the project's integrity:
