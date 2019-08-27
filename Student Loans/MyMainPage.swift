@@ -2922,46 +2922,44 @@ class MyMainPage:
 
     var s_1 = shared_preferences.double(forKey: "savings_change_key") //T_max - T(a_1)
     var s_2 = T_max - T //T_max - T(a_2)
-    if (s_1 - floor(s_1) > 0.499999)
-        && (s_1 - floor(s_1) < 0.5) {
-      s_1 = (round(s_1 + 1)) // /100
-    } else {
-      s_1 = round(s_1)
-    }
+    // if (s_1 - floor(s_1) > 0.499999)
+    //     && (s_1 - floor(s_1) < 0.5) {
+    //   s_1 = (round(s_1 + 1)) // /100
+    // } else {
+    //   s_1 = round(s_1)
+    // }
+    s_1 = CR(x: s_1)
+    s_2 = CR(x: s_2)
+    var Δs = Double()
     if (s_2 <= 0) {
       savings.text = "$" + numberFormatter.string(from: 0)!
-      if (0-s_1) < 0 {
+      Δs = 0-s_1
+      if (Δs) < 0 {
         //rounding error is insignificant
         savings_change.text = "↓ $"
-          + numberFormatter.string(from: NSNumber(value: abs(
-            0-s_1
-          )))!
-      } else if (0-s_1) == 0 {
-        savings_change.text = "no change"
-      } else {
-        savings_change.text = "↑ $"
-          + numberFormatter.string(from: NSNumber(value: 0-s_1))!
-      }
-    } else {
-      if (s_2 - floor(s_2) > 0.499999) && (s_2 - floor(s_2) < 0.5) {
-        s_2 = (round(s_2 + 1)) // /100
-      } else {
-        s_2 = round(s_2)
-      }
-      savings.text = "$" + numberFormatter.string(from: NSNumber(value: s_2))!
-      let Δs = s_2-s_1
-      if (Δs) < 0 {
-        savings_change.text = "↓ $"
-          + numberFormatter.string(from: NSNumber(value: abs(
-            Δs
-          )))!
+          + numberFormatter.string(from: NSNumber(value: CR(x: abs(Δs)/100)*100))!
       } else if (Δs) == 0 {
         savings_change.text = "no change"
       } else {
         savings_change.text = "↑ $"
-          + numberFormatter.string(from: NSNumber(
-            value: Δs
-          ))!
+          + numberFormatter.string(from: NSNumber(value: CR(x: (Δs)/100)*100))!
+      }
+    } else {
+      // if (s_2 - floor(s_2) > 0.499999) && (s_2 - floor(s_2) < 0.5) {
+      //   s_2 = (round(s_2 + 1)) // /100
+      // } else {
+      //   s_2 = round(s_2)
+      // }
+      savings.text = "$" + numberFormatter.string(from: NSNumber(value: CR(x: s_2/100)*100))!
+      Δs = s_2-s_1
+      if (Δs) < 0 {
+        savings_change.text = "↓ $"
+          + numberFormatter.string(from: NSNumber(value: CR(x: abs(Δs)/100)*100))!
+      } else if (Δs) == 0 {
+        savings_change.text = "no change"
+      } else {
+        savings_change.text = "↑ $"
+          + numberFormatter.string(from: NSNumber(value: CR(x: (Δs)/100)*100))!
       }
     }
     shared_preferences.set(s_2, forKey: "savings_change_key") // s_2 will become s_1
