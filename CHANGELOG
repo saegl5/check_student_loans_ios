@@ -1,3 +1,4 @@
+Aug 27, 2019 · Version 2.7.2: updated interest rate, fixed issue in which savings was rounded before change in savings was calculated
 Aug 26, 2019 · Version 2.7.1: fixed issue in which maximum payments changed with percentages of interest payments
 Aug 24, 2019 · Version 2.7: changed default minimum to ten-year minimum, highlighted option in source code to revert the default minimum, fixed appending final balances to balance arrays, reverted test that forgot to revert, corrected error in which remainders of total paid and savings might display three digits, corrected error in which final balance in table often displayed a negative zero since last version
 Aug 21, 2019 · Version 2.6.3: corrected rounding errors involving change in savings, decided to exit beta
