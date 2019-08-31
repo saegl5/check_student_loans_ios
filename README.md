@@ -39,7 +39,7 @@ $ git clone https://github.com/saegl5/Check-Student-Loans-for-iOS.git
 
 (Recommended) Open the Terminal, and verify the project's integrity:
 <pre>
-$ cd /path/to/check_student_loans_ios
+$ cd /path/to/Check-Student-Loans-for-iOS
 $ git show-ref --heads --hash
 </pre>
 Check that the hash matches the commit SHA.<p>
