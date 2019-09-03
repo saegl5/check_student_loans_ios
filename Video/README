@@ -65,3 +65,6 @@ Images of newer Ubuntu versions (i.e., 18.04 LTS onward), though, may not work.
 OpenShot 1.4.3 is unstable, so save the project frequently.
 Make sure that imported files are located in the project directory; they are not copied or moved into the directory automatically.
 Videos were recorded in Open Broadcaster Software (OBS), hence presence of the ``obs'' directory in /usr/local/introduction.
+
+Utilizing a separate CHANGELOG for the ``Video'' directory because the video itself is drawn from a project. 
+However, not publishing releases of the video introduction; this is because it is integrated into the iOS app.
