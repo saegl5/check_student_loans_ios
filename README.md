@@ -5,7 +5,7 @@
 
 Check your student loans' length of repayment and amount of savings.<p>
 
-This project is a native iOS app that is one of two parts of an experimental study&mdash;the other part being [course material](./Resources/ "Click here to locate the course material."), and it is designed to supplement the course material.
+This project is a native iOS app that is one of two parts of an experimental study&mdash;the other part being [course material](../Check-Student-Loans-Resources "Click here to locate the course material."), and it is designed to supplement the course material.
 The combination of both parts is dubbed an *instructional app*. Users select an estimated cost, select the interest rate of their loan(s), and select a monthly payment.
 The app will estimate how long repayments will take and how much users can save by paying more than the minimum. It can perform such estimates for realistic and hypothetical situations.
 (This app will not tell you how much money you have loaned. Contact your school's bursar office for that information. Once you have that information, use this app.)<p>
@@ -57,7 +57,7 @@ Press &minus; or &#43; to select a monthly payment nearest to yours.<p>
 To edit the slider, interest rate, monthly payment or minimum, or to enable swiping leftward, press on the padlock icon.<br>
 After editing them or enabling swiping, relock.<p>
 
-(You can check the native app's calculations against [this spreadsheet](./Resources/Other/checking_calculations.xlsx "Click here to view the spreadsheet.").)
+(You can check the native app's calculations against [this spreadsheet](https://github.com/saegl5/Check-Student-Loans-Resources/blob/master/Other/checking_calculations.xlsx "Click here to view the spreadsheet.").)
 
 ## Contributing
 
@@ -69,7 +69,7 @@ Under Source Control, select Commit, and Push the changes.<p>
 Return to GitHub.com, and submit a new pull request.<br>
 For any issues, submit a new issue or discuss an existing one.<p>
 
-(For instructions on how to export a new video introduction, consult the README in [this directory](./Resources/Video/ "Click here to access the directory.").)
+(For instructions on how to export a new video introduction, consult the README in [this directory](./Video/ "Click here to access the directory.").)
 
 ## History
 
