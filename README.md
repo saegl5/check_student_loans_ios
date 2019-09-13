@@ -44,11 +44,11 @@ $ git show-ref --heads --hash
 </pre>
 Check that the hash matches the commit SHA.<p>
 
-The latest version is 2.7.2. Known to work on macOS Mojave 10.14.6, in Xcode 10.3, using Swift 4.2
+Under Product, choose a Destination (e.g., iPhone 7 or a user's own iPhone device), and click Run.<p>
+
+The native app's latest version is 2.7.2. Known to work on macOS Mojave 10.14.6, in Xcode 10.3, using Swift 4.2
 
 ## Usage
-
-Under Product, choose a Destination (e.g., iPhone 7 or a user's own iPhone device), and click Run.<p>
 
 Move the thumb of the slider, to select an estimated cost nearest to yours.<br>
 Press &#x25BC; to select the [interest rate](https://studentaid.ed.gov/sa/types/loans/interest-rates "Click here to visit the office of Federal Student Aid.") of your loan.<br>
