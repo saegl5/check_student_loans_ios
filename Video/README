@@ -7,7 +7,7 @@ Export Instructions - Ubuntu only!
 
 Download ubuntu-17.10-desktop-amd64.iso from http://old-releases.ubuntu.com/releases/17.10/
 Download VMware Workstation 15 Player from https://www.vmware.com/products/workstation-player.html
-Create a new virtual machine entitled ``Ubuntu 17.10'' using Easy Install.
+Create a new virtual machine entitled "Ubuntu 17.10" using Easy Install.
 Memory: 4 GB or more, Processors: 2 or more, Virtualize Intel VT-x/EPT or AMD-V/RVI
 
 (2) Install OpenShot 1.4.3 and GStreamer Libav plug-in.
@@ -33,7 +33,7 @@ $ sudo chmod -R o+w /usr/local/introduction
 $ cd /usr/local/introduction
 $ openshot "Default Project.osp"
 
-(6) Edit it, then export a new ``introduction.mov''.
+(6) Edit it, then export a new "introduction.mov".
 
 File > Export Video...
 File Name: introduction
@@ -48,7 +48,7 @@ Optional
 To address ERROR 1:
 $ cd /usr/share/openshot/openshot && python -m openshot
 
-To address ``No LADSPA plugins were found!'':
+To address "No LADSPA plugins were found!":
 $ sudo apt install ladspa-sdk (example)
 
 Compress the project (i.e., archive it), and clean up:
@@ -64,7 +64,7 @@ Images of Ubuntu 16.04 LTS, 16.10 and 17.04 may also work.
 Images of newer Ubuntu versions (i.e., 18.04 LTS onward), though, may not work.
 OpenShot 1.4.3 is unstable, so save the project frequently.
 Make sure that imported files are located in the project directory; they are not copied or moved into the directory automatically.
-Videos were recorded in Open Broadcaster Software (OBS), hence presence of the ``obs'' directory in /usr/local/introduction.
+Videos were recorded in Open Broadcaster Software (OBS), hence presence of the obs/ directory in /usr/local/introduction.
 
-Utilizing a separate CHANGELOG for the ``Video'' directory because the video itself is drawn from a project. 
+Utilizing a separate CHANGELOG for the Video/ directory because the video itself is drawn from a project. 
 However, not publishing releases of the video introduction; this is because it is integrated into the iOS app.
