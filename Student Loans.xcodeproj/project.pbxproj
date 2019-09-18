@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1600A37F230D84B100F9505A /* introduction.mov in Resources */ = {isa = PBXBuildFile; fileRef = 1600A37E230D84B100F9505A /* introduction.mov */; };
+		16003517233289B3004D4483 /* introduction.mov in Resources */ = {isa = PBXBuildFile; fileRef = 16003516233289B3004D4483 /* introduction.mov */; };
 		16014D5822CEE155000D18F9 /* cmunbx.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 16014D5722CEE155000D18F9 /* cmunbx.ttf */; };
 		6438C3BE2200C3C9009EA1F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6438C3BD2200C3C8009EA1F8 /* Main.storyboard */; };
 		6438C3C02200C3DB009EA1F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6438C3BF2200C3DB009EA1F8 /* LaunchScreen.storyboard */; };
@@ -20,7 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1600A37E230D84B100F9505A /* introduction.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = introduction.mov; path = Resources/Video/introduction.mov; sourceTree = SOURCE_ROOT; };
+		16003516233289B3004D4483 /* introduction.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = introduction.mov; path = Video/introduction.mov; sourceTree = SOURCE_ROOT; };
 		16014D5722CEE155000D18F9 /* cmunbx.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = cmunbx.ttf; path = Fonts/cmunbx.ttf; sourceTree = "<group>"; };
 		6438C3BD2200C3C8009EA1F8 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6438C3BF2200C3DB009EA1F8 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 				6461067021FFA8FB0017D23F /* Info.plist */,
 				16014D5722CEE155000D18F9 /* cmunbx.ttf */,
 				6461067D21FFADF40017D23F /* cmunrm.ttf */,
-				1600A37E230D84B100F9505A /* introduction.mov */,
+				16003516233289B3004D4483 /* introduction.mov */,
 			);
 			path = "Student Loans";
 			sourceTree = "<group>";
@@ -137,7 +137,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1600A37F230D84B100F9505A /* introduction.mov in Resources */,
+				16003517233289B3004D4483 /* introduction.mov in Resources */,
 				6461066C21FFA8FB0017D23F /* Assets.xcassets in Resources */,
 				6438C3BE2200C3C9009EA1F8 /* Main.storyboard in Resources */,
 				6438C3C02200C3DB009EA1F8 /* LaunchScreen.storyboard in Resources */,
