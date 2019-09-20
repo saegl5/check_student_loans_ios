@@ -24,7 +24,7 @@ Not designed for iPad devices<p>
 
 Alternative downloads:<br>
 [Version 2.2.2 for Panel Discussion](./Archives/panel_discussion.ipa "Click here to access the download link.")<br>
-[Version 2.7.2 - Latest](./Archives/latest-2_7_2.ipa "Click here to access the download link.") (Updated: August 16, 2019)<p>
+[Version 2.7.3 - Latest](./Archives/latest-2_7_3.ipa "Click here to access the download link.") (Updated: September 20, 2019)<p>
 
 Install alternative downloads using iTunes or Apple Configurator on iPhone devices.
 
@@ -48,7 +48,7 @@ Check that the hash matches the commit SHA.<p>
 
 Under Product, choose a Destination (e.g., iPhone 7 or a user's own iPhone device), and click Run.<p>
 
-The native app's latest version is 2.7.2. Known to work on macOS Mojave 10.14.6, in Xcode 10.3, using Swift 4.2
+The native app's latest version is 2.7.3. Known to work on macOS Mojave 10.14.6, in Xcode 10.3, using Swift 4.2
 
 ## Usage
 
@@ -75,6 +75,7 @@ For any issues, submit a new issue or discuss an existing one.<p>
 
 ## History
 
+Sep 20, 2019 &middot; Version 2.7.3: corrected location of video file because its location had moved<br>
 Aug 27, 2019 &middot; Version 2.7.2: updated interest rate, fixed issue in which savings was rounded before change in savings was calculated<br>
 Aug 26, 2019 &middot; Version 2.7.1: fixed issue in which maximum payments changed with percentages of interest payments<br>
 Aug 24, 2019 &middot; Version 2.7: changed default minimum to ten-year minimum, highlighted option in source code to revert the default minimum, fixed appending final balances to balance arrays, reverted test that forgot to revert, corrected error in which remainders of total paid and savings might display three digits, corrected error in which final balance in table often displayed a negative zero since last version<br>
