@@ -48,7 +48,7 @@ Check that the hash matches the commit SHA.<p>
 
 Under Product, choose a Destination (e.g., iPhone 7 or a user's own iPhone device), and click Run.<p>
 
-The native app's latest version is 2.7.3. Known to work on macOS Mojave 10.14.6, in Xcode 10.3, using Swift 4.2
+The native app's latest version is 2.7.3. Known to work on macOS Mojave 10.14.6, in Xcode 10.3, using Swift 4.2. At the time of writing, Xcode 11 and Swift 5.1 are the latest versions.
 
 ## Usage
 
