@@ -76,6 +76,7 @@ For any issues, submit a new issue or discuss an existing one.<p>
 ## History
 
 Sep 20, 2019 &middot; Version 2.7.3: corrected location of video file because its location had moved<br>
+Sep 17, 2019: starting signing commits, signed and re-committed old ones, inadvertently lost empty commits but they were empty anyway<br>
 Aug 27, 2019 &middot; Version 2.7.2: updated interest rate, fixed issue in which savings was rounded before change in savings was calculated<br>
 Aug 26, 2019 &middot; Version 2.7.1: fixed issue in which maximum payments changed with percentages of interest payments<br>
 Aug 24, 2019 &middot; Version 2.7: changed default minimum to ten-year minimum, highlighted option in source code to revert the default minimum, fixed appending final balances to balance arrays, reverted test that forgot to revert, corrected error in which remainders of total paid and savings might display three digits, corrected error in which final balance in table often displayed a negative zero since last version<br>
