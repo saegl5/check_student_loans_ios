@@ -5,7 +5,7 @@
 
 Check your student loans' length of repayment and amount of savings.<p>
 
-This project is a native iOS app that is one of two parts of an experimental study&mdash;the other part being [course material](https://gitlab.com/saegl5/check-student-loans-course-material "Click here to locate the course material."), and it is designed to supplement the course material.
+This project is a native iOS app that is one of two parts of an experimental study&mdash;the other part being [course material](https://gitlab.com/check-student-loans/course-material "Click here to locate the course material."), and it is designed to supplement the course material.
 The combination of both parts is dubbed an *instructional app*. Users select an estimated cost, select the interest rate of their loan(s), and select a monthly payment.
 The app will estimate how long repayments will take and how much users can save by paying more than the minimum. It can perform such estimates for realistic and hypothetical situations.
 (This app will not tell you how much money you have loaned. Contact your school's bursar office for that information. Once you have that information, use this app.)<p>
@@ -34,14 +34,14 @@ Get [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12 "Click here 
 
 Clone the project:
 <pre>
-$ git clone https://gitlab.com/saegl5/check-student-loans-for-ios.git
+$ git clone https://gitlab.com/check-student-loans/ios.git
 </pre>
 
 (Recommended) Verify the project's authenticity: Look for "Verified" next to the commit SHA (e.g., Verified e733a45d).
 
 (Recommended) Open the Terminal, and verify the project's integrity:
 <pre>
-$ cd /path/to/check-student-loans-for-ios
+$ cd /path/to/ios
 $ git show-ref --heads --hash
 </pre>
 Check that the hash matches the commit SHA.<p>
@@ -59,7 +59,7 @@ Press &minus; or &#43; to select a monthly payment nearest to yours.<p>
 To edit the slider, interest rate, monthly payment or minimum, or to enable swiping leftward, press on the padlock icon.<br>
 After editing them or enabling swiping, relock.<p>
 
-(You can check the native app's calculations against [this spreadsheet](https://gitlab.com/saegl5/check-student-loans-other-resources/blob/master/checking_calculations.xlsx "Click here to view the spreadsheet.").)
+(You can check the native app's calculations against [this spreadsheet](https://gitlab.com/check-student-loans/other-resources/blob/master/checking_calculations.xlsx "Click here to view the spreadsheet.").)
 
 ## Contributing
 
