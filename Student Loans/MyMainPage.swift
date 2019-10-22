@@ -3119,10 +3119,11 @@ class MyMainPage:
     edit_apr_shape_tweak_trianglePath.close()
     edit_apr_shape_tweak_triangleLayer.path = edit_apr_shape_tweak_trianglePath.cgPath
     let CGPoint_xtemp = ((edit_apr_shape.frame.width-interest_rate_unpressed.frame.width)/2)+(0.75*interest_rate_unpressed.frame.width-8.5)
-    let CGPoint_ytemp = (edit_apr_shape.frame.height-interest_rate_unpressed.frame.height-10)+(interest_rate_unpressed.frame.height/2-6)
+    let CGPoint_ytemp1 = (edit_apr_shape.frame.height-interest_rate_unpressed.frame.height-10)
+    let CGPoint_ytemp2 = (interest_rate_unpressed.frame.height/2-6)
     edit_apr_shape_tweak_triangleLayer.position = CGPoint(
       x: CGPoint_xtemp,
-      y: CGPoint_ytemp
+      y: CGPoint_ytemp1 + CGPoint_ytemp2
     )
     edit_apr_shape_tweak_triangleLayer.fillColor = UIColor.clear.cgColor
     edit_apr_shape_tweak_triangleLayer.borderWidth = 0.25
