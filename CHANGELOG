@@ -1,3 +1,4 @@
+Sep 25, 2019: unified author name and email of all commits
 Sep 20, 2019 · Version 2.7.3: corrected location of video file because its location had moved
 Sep 17, 2019: starting signing commits, signed and re-committed old ones, inadvertently lost empty commits but they were empty anyway
 Aug 27, 2019 · Version 2.7.2: updated interest rate, fixed issue in which savings was rounded before change in savings was calculated
