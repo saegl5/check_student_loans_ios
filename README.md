@@ -23,8 +23,8 @@ Not designed for iPad devices<p>
 ~~(Version 2.3.1)~~ Removed on March 24, 2019<p>
 
 Alternative downloads:<br>
-[Version 2.2.2 for Panel Discussion](./Archives/panel_discussion.ipa "Click here to access the download link.")<br>
-[Version 2.7.3 - Latest](./Archives/latest.ipa "Click here to access the download link.") (Updated: September 20, 2019)<p>
+[Version 2.2.2 for Panel Discussion](./Archives/panel_discussion.ipa "Click here to access the download link.") &nbsp; &#x2713; Clean [[Details](https://www.virustotal.com/gui/file/ace2008e882942ece20cc21ea0f0a1fd85abb3797e05c9d37baaa53f2119fb7c/detection)]<br>
+[Version 2.7.3 - Latest](./Archives/latest.ipa "Click here to access the download link.") (Sep 20, 2019) &nbsp; &#x2713; Clean [[Details](https://www.virustotal.com/gui/file/aac4f84aaf8fc01f3ef63ef37cc1236be45e10070f5cecfd5299928048cb0e7b/detection)]<p>
 
 Install alternative downloads using iTunes or Apple Configurator on iPhone devices.
 
