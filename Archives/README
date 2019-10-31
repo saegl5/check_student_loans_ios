@@ -9,10 +9,10 @@ Prerequisites: gnupg (https://www.gnupg.org/)
 
 To verify the authenticity of the application packages in Terminal:
 $ gpg --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 0x4191f431
-$ gpg --verify SHA1SUMS.gpg SHA1SUMS (example)
+$ gpg --verify SHA1SUMS.gpg SHA1SUMS   # example
 
 To verify the integrity of the application packages in Terminal:
-$ shasum -a 1 -c SHA1SUMS (example)
+$ shasum -a 1 -c SHA1SUMS   # example
 
 --------------------------------------------------------------------------------------------------
 

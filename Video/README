@@ -49,11 +49,11 @@ To address ERROR 1:
 $ cd /usr/share/openshot/openshot && python -m openshot
 
 To address "No LADSPA plugins were found!":
-$ sudo apt install ladspa-sdk (example)
+$ sudo apt install ladspa-sdk   # example
 
 Compress the project (i.e., archive it), and clean up:
 $ sudo tar -czf introduction.tar.gz *
-$ mv introduction.tar.gz $HOME/Desktop/ (example)
+$ mv introduction.tar.gz $HOME/Desktop/   # example
 $ sudo rm -r /usr/local/introduction
 
 --------------------------------------------------------------------------------------------------

@@ -32,25 +32,30 @@ Install alternative downloads using iTunes or Apple Configurator on iPhone devic
 
 Get [Xcode](https://itunes.apple.com/us/app/xcode/id497799835?mt=12 "Click here to visit the App Store.") from the App Store, and install it.<p>
 
-Clone the project:
+Also, download and install [Git](https://git-scm.com/downloads "Click here to access the download link.").
+
+Open the Terminal, and clone the project:
 <pre>
-$ git clone https://gitlab.com/check-student-loans/ios.git
+git clone https://gitlab.com/check-student-loans/ios.git
 </pre>
 
-(Recommended) Verify the project's authenticity: Look for "Verified" next to the commit SHA (e.g., Verified e733a45d).
+(Recommended) Verify the project's authenticity: Look in GitLab for "Verified" next to the commit SHA (e.g., Verified e733a45d).
 
 (Recommended) Open the Terminal, and verify the project's integrity:
 <pre>
-$ cd /path/to/ios
-$ git show-ref --heads --hash
+cd ios
+git show-ref --heads --hash
 </pre>
 Check that the hash matches the commit SHA.<p>
 
-Under Product, choose a Destination (e.g., iPhone 7 or a user's own iPhone device), and click Run.<p>
-
-Known to work in Xcode 11.1 using Swift 4.2
+Open the project in Xcode, and build the native app:<br>
+* For a virtual or connected iPhone device, select Product > Build.<br>
+* Otherwise, select Product > Archive > Distribute App; select a method of distribution; and follow the prompts. If this fails, consult [this answer](https://stackoverflow.com/questions/1191989/create-ipa-for-iphone#1494310 "Click here to reveal the answer.") on how to export IPA files manually, the original response.<p>
 
 ## Usage
+
+Under Product, choose a Destination (e.g., iPhone 7 or a connected device), and click Run.<br>
+Or, install the IPA file using iTunes or Apple Configurator on a user's own iPhone device.<p>
 
 Move the thumb of the slider, to select an estimated cost nearest to yours.<br>
 Press &#x25BC; to select the [interest rate](https://studentaid.ed.gov/sa/types/loans/interest-rates "Click here to visit the office of Federal Student Aid.") of your loan.<br>
@@ -58,6 +63,8 @@ Press &minus; or &#43; to select a monthly payment nearest to yours.<p>
 
 To edit the slider, interest rate, monthly payment or minimum, or to enable swiping leftward, press on the padlock icon.<br>
 After editing them or enabling swiping, relock.<p>
+
+Known to work in Xcode 11.1 using Swift 4.2
 
 (You can check the native app's calculations against [this spreadsheet](https://gitlab.com/check-student-loans/other-resources/blob/master/checking_calculations.xlsx "Click here to view the spreadsheet.").)
 
