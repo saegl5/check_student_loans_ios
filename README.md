@@ -84,6 +84,7 @@ For any issues, submit a new issue or discuss an existing one.<p>
 
 ## History
 
+Oct 31, 2019: enhanced accessibility<br>
 Sep 25, 2019: unified author name and email of all commits<br>
 Sep 20, 2019 &middot; Version 2.7.3: corrected location of video file because its location had moved<br>
 Sep 17, 2019: starting signing commits, signed and re-committed old ones, inadvertently lost empty commits but they were empty anyway<br>
