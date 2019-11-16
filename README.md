@@ -59,7 +59,7 @@ Open the project in Xcode, and build the native app:<br>
 Under Product, choose a Destination (e.g., iPhone 7 or a connected device), and click Run.<br>
 Or, install the IPA file using iTunes or Apple Configurator on a user's own iPhone device.<p>
 
-Move the thumb of the slider, to select an estimated cost nearest to yours.<br>
+Move the slider's thumb, to select an estimated cost nearest to yours.<br>
 Press &#x25BC; to select the [interest rate](https://studentaid.ed.gov/sa/types/loans/interest-rates "Click here to visit the office of Federal Student Aid.") of your loan.<br>
 Press &minus; or &#43; to select a monthly payment nearest to yours.<p>
 
