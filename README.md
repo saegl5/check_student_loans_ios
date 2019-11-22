@@ -68,7 +68,7 @@ After editing them or enabling swiping, relock.<p>
 
 Known to work in Xcode 11.1 using Swift 4.2
 
-(You can check the native app's calculations against [this spreadsheet](https://gitlab.com/check-student-loans/other-resources/blob/master/checking_calculations.xlsx "Click here to view the spreadsheet.").)
+(You can test the native app's calculations against [this spreadsheet](https://gitlab.com/check-student-loans/other-resources/blob/master/checking_calculations.xlsx "Click here to view the spreadsheet.").)
 
 ## Contributing
 
