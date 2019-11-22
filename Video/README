@@ -16,11 +16,11 @@ Launch a terminal.
 $ sudo sed -i -re 's/([a-z]{2}\.)?archive.ubuntu.com|security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list && sudo apt update
 $ sudo apt install openshot gstreamer1.0-libav
 
-(3) Install the iOS_profile.
+(3) Install the video_profile.
 
 Launch OpenShot---for it to set up one's home directory, then close it.
 Return to the terminal.
-$ mv iOS_profile ~/.openshot/user_profiles/
+$ mv video_profile ~/.openshot/user_profiles/
 
 (4) Extract introduction.tar.gz, and set permissions.
 
@@ -39,7 +39,7 @@ File > Export Video...
 File Name: introduction
 Profile: All Formats
 Target: MOV (h.264)
-Video Profile: iOS_profile
+Video Profile: video_profile
 Export Video
 
 --------------------------------------------------------------------------------------------------
