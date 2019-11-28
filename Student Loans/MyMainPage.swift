@@ -56,8 +56,8 @@ class MyMainPage:
   @IBOutlet weak  var down_timer2_seconds: UITextField!
   @IBOutlet weak  var down_timer1_seconds_label: UILabel!
   @IBOutlet weak  var down_timer2_seconds_label: UILabel!
-  @IBOutlet weak  var down_timer1_increment: UITextField!
-  @IBOutlet weak  var down_timer2_increment: UITextField!
+  @IBOutlet weak  var down_timer1_increment: UITextField! // decrement
+  @IBOutlet weak  var down_timer2_increment: UITextField! // decrement
   @IBOutlet weak  var stack_inputs_up: UIStackView!
   @IBOutlet weak  var stack_inputs_timers_up: UIStackView!
   @IBOutlet weak  var up_timer1: UIImageView!
@@ -142,8 +142,8 @@ class MyMainPage:
 
   var set_down_timer1_seconds = 2.0 //2*4=8 quarter seconds
   var set_down_timer2_seconds = 4.0 //4*4=16 quarter seconds
-  var set_down_timer1_increment = 100.0
-  var set_down_timer2_increment = 1000.0
+  var set_down_timer1_increment = 100.0 // decrement
+  var set_down_timer2_increment = 1000.0 // decrement
   var set_up_timer1_seconds = 2.0 //2*4=8 quarter seconds
   var set_up_timer2_seconds = 4.0 //4*4=16 quarter seconds
   var set_up_timer1_increment = 100.0
@@ -154,7 +154,7 @@ class MyMainPage:
   var unlocked_indicator = 0 //1 if locked, 0 if not
   var timer1 = Timer()
   var timer2 = Timer()
-  var down_button_increment = 50.0
+  var down_button_increment = 50.0 // decrement
   var temp_down = 50.0
   var up_button_increment = 50.0
   var temp_up = 50.0
