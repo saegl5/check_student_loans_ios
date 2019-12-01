@@ -16,7 +16,7 @@ Features:
 * Automatic estimation
 * Customization
 * Swipe leftward (if enabled) to view how estimates were calculated.
-* Swipe leftward (if enabled) to examine how estimates would vary, depending if interest compounded and on the percentage of interest users paid monthly.
+* Swipe leftward (if enabled) to examine how estimates would vary, depending if interest were compounded and on the percentage of interest users paid monthly.
 
 It is designed for iPhone 7. Compatible with iPhone 6/6 Plus, 6s/6s Plus, 7 Plus, 8/8 Plus or later, but not iPhone SE or below<br>
 Not designed for iPad devices<p>
