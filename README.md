@@ -112,7 +112,7 @@ Potential Xcode bug: Unlike for plain text, for attributed text the interface bu
 
 MIT
 
-Copyright (c) 2018-2019 Ed Silkworth
+Copyright (c) 2018-2020 Ed Silkworth
 
 </content>
 </snippet>
