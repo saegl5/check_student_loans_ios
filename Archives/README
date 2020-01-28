@@ -20,3 +20,5 @@ $ shasum -a 1 -c SHA1SUMS   # example
 
 "panel_discussion.ipa" is a close replica of the native app utilized in the study.
 Exceptions are that rounding and interest computations are corrected, and the monthly balance table is restructured.
+
+"panel_discussion.ipa" and "summative.ipa" are identical
