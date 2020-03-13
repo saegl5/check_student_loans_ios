@@ -1,0 +1,24 @@
+Install each application package using iTunes or Apple Configurator on iPhone devices.
+
+Instructional App = course material + iOS app
+
+--------------------------------------------------------------------------------------------------
+Optional
+
+Prerequisites: gnupg (https://www.gnupg.org/)
+
+To verify the authenticity of the application packages in Terminal:
+$ gpg --keyserver hkps://keyserver.ubuntu.com:443 --recv-keys 0x4191f431
+$ gpg --verify SHA1SUMS.gpg SHA1SUMS   # example
+
+To verify the integrity of the application packages in Terminal:
+$ shasum -a 1 -c SHA1SUMS   # example
+
+--------------------------------------------------------------------------------------------------
+
+[Notes]
+
+panel_discussion.ipa is a close replica of the native app utilized in the study.
+Exceptions are that rounding and interest computations are corrected, and the monthly balance table is restructured.
+
+panel_discussion.ipa and summative.ipa are identical
