@@ -3,7 +3,9 @@
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
  
-# ![Alt](./app_icon_and_logo.png "Check Student Loans")
+![Alt](./app_icon_and_logo.png "Check Student Loans")
+
+## Native App
 
 Check your student loans' length of repayment and amount of savings.<p>
 
