@@ -83,7 +83,7 @@ Modify the source code.<br>
 Under Source Control, select Commit, and Push the changes.<p>
 
 Return to GitLab, and submit a new pull request.<br>
-For any issues, submit a new issue or discuss an existing one.<p>
+To report any issues, submit a new issue or discuss an existing one.<p>
 
 (For instructions on how to export a new video introduction, consult the README in [this directory](./Video/ "Click here to access the directory.").)
 
