@@ -80,7 +80,7 @@ Known to work in Xcode 11.1 using Swift 4.2
 Sign into GitLab, to fork the project.<p>
 
 Modify the source code.<br>
-Under Source Control, select Commit, and Push the changes.<p>
+Stage, commit and push the changes.<p>
 
 Return to GitLab, and submit a new pull request.<br>
 To report any issues, submit a new issue or discuss an existing one.<p>
